@@ -5,11 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next start"
   },
   "dependencies": {
-    "next": "15.3.4",
+    "next": "15.3.5",
     "react": "^19",
     "react-dom": "^19",
     "gray-matter": "^4.0.3",
@@ -21,6 +20,6 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "15.3.4"
+    "eslint-config-next": "15.3.5"
   }
 }
