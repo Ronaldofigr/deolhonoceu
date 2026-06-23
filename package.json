@@ -1,72 +1,28 @@
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
-
-export interface NewsItem {
-  slug: string
-  title: string
-  titleEn: string
-  excerpt: string
-  excerptEn: string
-  source: string
-  sourceUrl: string
-  sourceType: 'nasa' | 'esa' | 'sci' | 'obs'
-  tags: string[]
-  date: string
-  content: string
-  contentEn: string
-}
-
-export interface Article {
-  slug: string
-  title: string
-  titleEn: string
-  category: string
-  categoryEn: string
-  readingTime: number
-  content: string
-  contentEn: string
-  date: string
-  type: 'concept' | 'discovery'
-}
-
-const noticiasDir = path.join(process.cwd(), 'content', 'noticias')
-const artigosDir  = path.join(process.cwd(), 'content', 'artigos')
-
-function ensureDir(dir: string) {
-  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true })
-}
-
-export function getAllNews(): NewsItem[] {
-  ensureDir(noticiasDir)
-  const files = fs.readdirSync(noticiasDir).filter(f => f.endsWith('.md'))
-  return files
-    .map(file => {
-      const raw = fs.readFileSync(path.join(noticiasDir, file), 'utf8')
-      const { data, content } = matter(raw)
-      return { slug: file.replace('.md',''), ...data, content } as NewsItem
-    })
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-    .slice(0, 20)
-}
-
-export function getAllArticles(): Article[] {
-  ensureDir(artigosDir)
-  const files = fs.readdirSync(artigosDir).filter(f => f.endsWith('.md'))
-  return files
-    .map(file => {
-      const raw = fs.readFileSync(path.join(artigosDir, file), 'utf8')
-      const { data, content } = matter(raw)
-      return { slug: file.replace('.md',''), ...data, content } as Article
-    })
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-    .slice(0, 10)
-}
-
-export function formatDate(dateStr: string, lang: string = 'pt'): string {
-  const d = new Date(dateStr)
-  if (lang === 'pt') {
-    return d.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' })
+{
+  "name": "deolhonoceu",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "14.2.3",
+    "react": "^18",
+    "react-dom": "^18",
+    "gray-matter": "^4.0.3",
+    "remark": "^15.0.1",
+    "remark-html": "^16.0.1",
+    "date-fns": "^3.6.0"
+  },
+  "devDependencies": {
+    "typescript": "^5",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.3"
   }
-  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
 }
