@@ -23,6 +23,10 @@ const T = {
     about: 'De Olho no Céu reúne automaticamente notícias de fontes como NASA, ESA, Space.com e o Centro de Ciência Viva do Algarve, e usa inteligência artificial para reescrever cada descoberta em linguagem acessível — sem fórmulas, sem jargão. Dois artigos conceituais sobre física e astrofísica são publicados todos os dias.',
     aboutLabel: 'Sobre o projeto',
     less: '← Menos',
+    readNews: 'Ler notícia completa →',
+    lessNews: '← Recolher',
+    photoWeek: '📷 Imagem da Semana',
+    photoCredit: 'Crédito',
   },
   en: {
     nav: ['News','Articles','About'],
@@ -43,6 +47,10 @@ const T = {
     about: 'Eye on the Sky automatically gathers news from NASA, ESA, Space.com and the Algarve Living Science Centre, and uses AI to rewrite each discovery in plain language — no formulas, no jargon. Two conceptual articles on physics and astrophysics are published every day.',
     aboutLabel: 'About',
     less: '← Less',
+    readNews: 'Read full news →',
+    lessNews: '← Collapse',
+    photoWeek: '📷 Image of the Week',
+    photoCredit: 'Credit',
   }
 }
 
@@ -63,6 +71,16 @@ const TICKERS = {
   ]
 }
 
+interface PhotoWeek {
+  imageUrl: string
+  title: string
+  titleEn: string
+  caption: string
+  captionEn: string
+  credit: string
+  week: string
+}
+
 function fmtDate(d: string, lang: string) {
   const dt = new Date(d)
   return lang === 'pt'
@@ -70,10 +88,19 @@ function fmtDate(d: string, lang: string) {
     : dt.toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' })
 }
 
-export default function HomeClient({ news, articles }: { news: NewsItem[], articles: Article[] }) {
+export default function HomeClient({
+  news,
+  articles,
+  photoWeek,
+}: {
+  news: import('@/lib/content').NewsItem[]
+  articles: import('@/lib/content').Article[]
+  photoWeek: PhotoWeek | null
+}) {
   const [lang, setLang] = useState<'pt'|'en'>('pt')
   const [tick, setTick] = useState(0)
   const [expanded, setExpanded] = useState<string|null>(null)
+  const [expandedNews, setExpandedNews] = useState<string|null>(null)
   const t = T[lang]
 
   useEffect(() => {
@@ -83,32 +110,62 @@ export default function HomeClient({ news, articles }: { news: NewsItem[], artic
 
   return (
     <>
+      {/* HEADER */}
       <header className="site-header">
         <a href="/" className="header-logo">
           <div className="logo-icon" />
           <span className="logo-text">{t.title} <span>{t.glow}</span></span>
         </a>
         <nav className="header-nav">
-          {t.nav.map(n => <a key={n} href={`#${n.toLowerCase()}`}>{n}</a>)}
+          {t.nav.map(n => <a key={n} href={#${n.toLowerCase()}}>{n}</a>)}
         </nav>
         <div className="lang-toggle">
-          <button className={`lang-btn${lang==='pt'?' active':''}`} onClick={()=>setLang('pt')}>PT</button>
-          <button className={`lang-btn${lang==='en'?' active':''}`} onClick={()=>setLang('en')}>EN</button>
+          <button className={lang-btn${lang==='pt'?' active':''}} onClick={()=>setLang('pt')}>PT</button>
+          <button className={lang-btn${lang==='en'?' active':''}} onClick={()=>setLang('en')}>EN</button>
         </div>
       </header>
 
+      {/* HERO */}
       <div className="hero-banner">
         <div className="hero-eyebrow">{t.eyebrow}</div>
         <h1 className="hero-title">{t.title} <span className="glow">{t.glow}</span></h1>
         <p className="hero-subtitle">{t.sub}</p>
       </div>
 
+      {/* FOTO DA SEMANA */}
+      {photoWeek && (
+        <div className="photo-week">
+          <div className="photo-week-label">{t.photoWeek}</div>
+          <div className="photo-week-inner">
+            <img
+              src={photoWeek.imageUrl}
+              alt={lang === 'pt' ? photoWeek.title : photoWeek.titleEn}
+              className="photo-week-img"
+              onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+            />
+            <div className="photo-week-caption">
+              <h3 className="photo-week-title">
+                {lang === 'pt' ? photoWeek.title : photoWeek.titleEn}
+              </h3>
+              <p className="photo-week-text">
+                {lang === 'pt' ? photoWeek.caption : photoWeek.captionEn}
+              </p>
+              <span className="photo-week-credit">
+                {t.photoCredit}: {photoWeek.credit}
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* TICKER */}
       <div className="live-ticker">
         <span className="ticker-label">{t.live}</span>
         <span className="ticker-dot" />
         <span className="ticker-text"><strong>{TICKERS[lang][tick]}</strong></span>
       </div>
 
+      {/* MAIN GRID */}
       <main className="main-grid">
         {/* LEFT — NEWS */}
         <section className="panel-left" id="noticias">
@@ -120,20 +177,49 @@ export default function HomeClient({ news, articles }: { news: NewsItem[], artic
 
           {news.length === 0
             ? <p style={{color:'var(--text-muted)',fontSize:'0.85rem',padding:'2rem 0',textAlign:'center'}}>{t.noNews}</p>
-            : news.map(item => (
-              <article className="news-card" key={item.slug}>
-                <div className="news-card-meta">
-                  <span className={`news-source ${item.sourceType}`}>{item.source}</span>
-                  <span className="news-date">{fmtDate(item.date, lang)}</span>
-                </div>
-                <h2 className="news-title">{lang==='pt' ? item.title : (item.titleEn||item.title)}</h2>
-                <p className="news-excerpt">{lang==='pt' ? item.excerpt : (item.excerptEn||item.excerpt)}</p>
-                {item.tags?.length > 0 && (
-                  <div className="news-tags">{item.tags.map(tag=><span className="news-tag" key={tag}>{tag}</span>)}</div>
-                )}
-                <a href={item.sourceUrl} className="news-link" target="_blank" rel="noopener noreferrer">{t.source} ↗</a>
-              </article>
-            ))
+            : news.map(item => {
+              const isNewsOpen = expandedNews === item.slug
+              const newsBody = lang==='pt' ? item.content : (item.contentEn||item.content)
+              const newsParas = newsBody ? newsBody.split('\n\n').filter(Boolean) : []
+              return (
+                <article className="news-card" key={item.slug}>
+                  <div className="news-card-meta">
+                    <span className={news-source ${item.sourceType}}>{item.source}</span>
+                    <span className="news-date">{fmtDate(item.date, lang)}</span>
+                  </div>
+                  <h2 className="news-title">{lang==='pt' ? item.title : (item.titleEn||item.title)}</h2>
+                  <p className="news-excerpt">{lang==='pt' ? item.excerpt : (item.excerptEn||item.excerpt)}</p>
+
+                  {/* Texto completo expansível */}
+                  {newsParas.length > 0 && (
+                    <div className="article-body" style={{marginTop:'0.6rem'}}>
+                      {(isNewsOpen ? newsParas : newsParas.slice(0,1)).map((p,i)=>(
+                        <p key={i} style={{fontFamily:"'Crimson Pro',serif",fontSize:'0.9rem',color:'var(--text-secondary)',lineHeight:1.65,marginBottom:'0.5rem'}}>{p}</p>
+                      ))}
+                    </div>
+                  )}
+
+                  {item.tags?.length > 0 && (
+                    <div className="news-tags">{item.tags.map(tag=><span className="news-tag" key={tag}>{tag}</span>)}</div>
+                  )}
+
+                  <div style={{display:'flex',alignItems:'center',gap:'0.75rem',marginTop:'0.6rem',flexWrap:'wrap'}}>
+                    {newsParas.length > 1 && (
+                      <button
+                        className="read-more-btn"
+                        onClick={()=>setExpandedNews(isNewsOpen?null:item.slug)}
+                        style={{borderColor:'var(--aurora-cyan)',color:'var(--aurora-cyan)'}}
+                      >
+                        {isNewsOpen ? t.lessNews : t.readNews}
+                      </button>
+                    )}
+                    <a href={item.sourceUrl} className="news-link" target="_blank" rel="noopener noreferrer">
+                      {t.source} ↗️
+                    </a>
+                  </div>
+                </article>
+              )
+            })
           }
         </section>
 
@@ -162,7 +248,7 @@ export default function HomeClient({ news, articles }: { news: NewsItem[], artic
                     <span style={{color:'var(--text-muted)',fontSize:'0.6rem'}}>{cat} · {fmtDate(item.date,lang)}</span>
                   </div>
                   <h2 className="article-title">{title}</h2>
-                  <div className="article-reading-time">⏱ {item.readingTime} {t.minRead}</div>
+                  <div className="article-reading-time">⏱️ {item.readingTime} {t.minRead}</div>
                   <div className="article-body">
                     {(isOpen ? paras : paras.slice(0,2)).map((p,i)=><p key={i}>{p}</p>)}
                   </div>
