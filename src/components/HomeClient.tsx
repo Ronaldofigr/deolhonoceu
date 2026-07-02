@@ -119,11 +119,11 @@ export default function HomeClient({
           <span className="logo-text">{t.title} <span className="glow">{t.glow}</span></span>
         </a>
         <nav className="header-nav">
-          {t.nav.map(n => <a key={n} href={#${n.toLowerCase()}}>{n}</a>)}
+          {t.nav.map(n => <a key={n} href={`#${n.toLowerCase()}`}>{n}</a>)}
         </nav>
         <div className="lang-toggle">
-          <button className={lang-btn ${lang==='pt' ? 'active':''}} onClick={()=>setLang('pt')}>PT</button>
-          <button className={lang-btn ${lang==='en' ? 'active':''}} onClick={()=>setLang('en')}>EN</button>
+          <button className={`lang-btn ${lang==='pt' ? 'active':''}`} onClick={()=>setLang('pt')}>PT</button>
+          <button className={`lang-btn ${lang==='en' ? 'active':''}`} onClick={()=>setLang('en')}>EN</button>
         </div>
       </header>
 
@@ -186,7 +186,7 @@ export default function HomeClient({
               return (
                 <article className="news-card" key={item.slug}>
                   <div className="news-card-meta">
-                    <span className="news-source">{news-source} {item.sourceType}</span>
+                    <span className={`news-source ${item.sourceType}`}>{item.source}</span>
                     <span className="news-date">{fmtDate(item.date, lang)}</span>
                   </div>
                   <h2 className="news-title">{lang==='pt' ? item.title : (item.titleEn||item.title)}</h2>
