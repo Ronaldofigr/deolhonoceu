@@ -76,10 +76,20 @@ TÍTULO: {entry['title_original']}
 RESUMO: {entry['excerpt_original']}
 FONTE: {entry['source']}
 
-Reescreva como divulgação científica para leigos. Responda SOMENTE com JSON válido:
-{{"title":"título PT máx 90 chars","titleEn":"title EN max 90 chars","excerpt":"resumo PT 2-3 frases max 280 chars","excerptEn":"summary EN 2-3 sentences max 280 chars","tags":["tag1","tag2","tag3"],"content":"texto PT 3-4 parágrafos sem fórmulas com analogias","contentEn":"text EN 3-4 paragraphs no formulas"}}"""
+Reescreva como divulgação científica para leigos.
+
+IMPORTANTE sobre o campo "content":
+- Deve ter NO MÍNIMO 200 palavras (bem mais longo que o excerpt, nunca repetir o excerpt)
+- Deve ter 3-4 parágrafos SEPARADOS PELO LITERAL \\n\\n (duas quebras de linha) entre cada parágrafo
+- Explique contexto, detalhes técnicos em linguagem simples, com analogias, e relevância da descoberta
+- Sem fórmulas matemáticas
+
+O mesmo vale para "contentEn" em inglês.
+
+Responda SOMENTE com JSON válido:
+{{"title":"título PT máx 90 chars","titleEn":"title EN max 90 chars","excerpt":"resumo PT 2-3 frases max 280 chars","excerptEn":"summary EN 2-3 sentences max 280 chars","tags":["tag1","tag2","tag3"],"content":"texto PT mínimo 200 palavras, 3-4 parágrafos separados por \\n\\n, sem fórmulas, com analogias","contentEn":"text EN minimum 200 words, 3-4 paragraphs separated by \\n\\n, no formulas"}}"""
     try:
-        raw = call_claude(prompt)
+        raw = call_claude(prompt, max_tokens=1600)
         m = re.search(r'\{[\s\S]+\}', raw)
         if m:
             data = json.loads(m.group())
