@@ -7,6 +7,15 @@ on:
     - cron: '0 10 * * *'
   workflow_dispatch:
 
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   update-content:
     runs-on: ubuntu-latest
@@ -21,7 +30,7 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Instalar dependências
+      - name: Instalar dependências Python
         run: pip install -r automation/requirements.txt
 
       - name: Executar script
@@ -36,3 +45,34 @@ jobs:
           git add content/
           git diff --staged --quiet || git commit -m "🔭 Conteúdo automático: $(date '+%Y-%m-%d')"
           git push
+
+  build-and-deploy:
+    needs: update-content
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Instalar dependências Node
+        run: npm ci
+
+      - name: Build (export estático)
+        run: npm run build
+
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload do artefato
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+
+      - name: Deploy no GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
