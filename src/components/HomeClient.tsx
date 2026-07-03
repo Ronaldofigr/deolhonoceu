@@ -93,11 +93,11 @@ function fmtDate(d: string, lang: string) {
 export default function HomeClient({
   news,
   articles,
-  photoWeek,
+  photoWeek = null,
 }: {
   news: import('@/lib/content').NewsItem[]
   articles: import('@/lib/content').Article[]
-  photoWeek: PhotoWeek | null
+  photoWeek?: PhotoWeek | null
 }) {
   const [lang, setLang] = useState<'pt' | 'en'>('pt')
   const [tick, setTick] = useState(0)
