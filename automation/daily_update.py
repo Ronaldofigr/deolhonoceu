@@ -4,10 +4,11 @@ De Olho no Céu — Automação diária
 Busca RSS científicos e gera artigos com Claude API.
 """
 
-import os, sys, json, time, re, datetime, feedparser, anthropic
+import os, sys, json, time, re, datetime, feedparser, anthropic, requests
 from pathlib import Path
 
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
+NASA_API_KEY = os.environ.get("NASA_API_KEY", "DEMO_KEY")
 BASE_DIR = Path(__file__).parent.parent
 
 RSS_SOURCES = [
@@ -45,6 +46,10 @@ def slug(text):
     return text.strip('-')[:60]
 
 def today(): return datetime.date.today().isoformat()
+
+def iso_week():
+    y, w, _ = datetime.date.today().isocalendar()
+    return f"{y}-W{w:02d}"
 
 def call_claude(prompt, max_tokens=1200):
     client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
@@ -160,6 +165,71 @@ date: "{today()}"
     (folder / f"{s}.md").write_text(md, encoding="utf-8")
     return f"  ✅  {s}"
 
+def gen_photo_week():
+    """Busca a Imagem Astronômica do Dia (APOD) da NASA e atualiza 1x por semana."""
+    photo_path = BASE_DIR / "content" / "foto-semana.json"
+    current_week = iso_week()
+
+    if photo_path.exists():
+        try:
+            existing = json.loads(photo_path.read_text(encoding="utf-8"))
+            if existing.get("week") == current_week:
+                return "  ⏭  Foto da semana já atualizada"
+        except Exception:
+            pass
+
+    try:
+        date_cursor = datetime.date.today()
+        apod = None
+        for _ in range(6):
+            resp = requests.get(
+                "https://api.nasa.gov/planetary/apod",
+                params={"api_key": NASA_API_KEY, "date": date_cursor.isoformat()},
+                timeout=20,
+            )
+            resp.raise_for_status()
+            candidate = resp.json()
+            if candidate.get("media_type") == "image":
+                apod = candidate
+                break
+            date_cursor -= datetime.timedelta(days=1)
+
+        if not apod:
+            return "  ⚠️  Foto da semana: nenhuma imagem encontrada nos últimos dias"
+
+        image_url = apod.get("hdurl") or apod.get("url")
+        title_en = apod.get("title", "")
+        explanation_en = apod.get("explanation", "")
+        credit = apod.get("copyright", "NASA")
+        if credit:
+            credit = credit.strip().replace("\n", " ")
+        else:
+            credit = "NASA"
+
+        prompt = f"""Traduza e adapte para português do Brasil, em tom de divulgação científica acessível:
+TÍTULO: {title_en}
+LEGENDA: {explanation_en}
+
+Responda SOMENTE com JSON válido:
+{{"title":"título PT curto e atrativo","caption":"legenda PT em até 3 frases, linguagem simples, sem jargão"}}"""
+        raw = call_claude(prompt, max_tokens=600)
+        m = re.search(r'\{[\s\S]+\}', raw)
+        data_pt = json.loads(m.group()) if m else {}
+
+        photo_data = {
+            "imageUrl": image_url,
+            "title": data_pt.get("title") or title_en,
+            "titleEn": title_en,
+            "caption": data_pt.get("caption") or explanation_en[:300],
+            "captionEn": explanation_en,
+            "credit": credit,
+            "week": current_week,
+        }
+        photo_path.write_text(json.dumps(photo_data, ensure_ascii=False, indent=2), encoding="utf-8")
+        return f"  ✅  Foto da semana atualizada ({current_week})"
+    except Exception as e:
+        return f"  ⚠️  Foto da semana: {e}"
+
 def cleanup(days=30):
     cutoff = datetime.date.today() - datetime.timedelta(days=days)
     for folder in ["noticias","artigos"]:
@@ -196,6 +266,9 @@ def main():
         print(f"   Tópico: {topic}")
         data = gen_article(topic)
         if data: print(save_article(data)); time.sleep(2)
+
+    print("\n📷 Atualizando foto da semana...")
+    print(gen_photo_week())
 
     print("\n🗑️  Limpando conteúdo antigo...")
     cleanup()
