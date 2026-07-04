@@ -75,6 +75,20 @@ def fetch_rss():
             print(f"  ⚠️  {src['name']}: {ex}")
     return entries
 
+def news_key(entry):
+    """Chave estável baseada na fonte original (não no título reescrito pela IA),
+    para reconhecer a mesma notícia em execuções diferentes do script."""
+    base = entry.get("url") or entry.get("title_original", "")
+    key = slug(base)
+    if not key:
+        key = slug(entry.get("title_original", "")) or "item"
+    return key[:50]
+
+def news_already_saved(key):
+    folder = BASE_DIR / "content" / "noticias"
+    if not folder.exists(): return False
+    return any(key in f.stem for f in folder.glob("*.md"))
+
 def gen_news(entry):
     prompt = f"""Notícia científica bruta:
 TÍTULO: {entry['title_original']}
@@ -105,11 +119,10 @@ Responda SOMENTE com JSON válido:
         print(f"  ⚠️  {e}")
     return None
 
-def save_news(data):
-    s = f"{data['date']}-{slug(data['title'])}"
+def save_news(data, key):
+    s = f"{data['date']}-{key}"
     folder = BASE_DIR / "content" / "noticias"
     folder.mkdir(parents=True, exist_ok=True)
-    if any(folder.glob(f"*{slug(data['title'])}*")): return f"  ⏭  Já existe: {s}"
     tags = "[" + ", ".join(f'"{t}"' for t in data.get("tags",[])) + "]"
     md = f"""---
 title: "{data['title']}"
@@ -145,11 +158,10 @@ Responda SOMENTE com JSON válido:
         print(f"  ⚠️  {e}")
     return None
 
-def save_article(data):
-    s = f"{today()}-{slug(data['title'])}"
+def save_article(data, topic_key):
+    s = f"{today()}-{topic_key}"
     folder = BASE_DIR / "content" / "artigos"
     folder.mkdir(parents=True, exist_ok=True)
-    if any(folder.glob(f"*{slug(data['title'])}*")): return f"  ⏭  Já existe: {s}"
     md = f"""---
 title: "{data['title']}"
 titleEn: "{data['titleEn']}"
@@ -164,6 +176,11 @@ date: "{today()}"
 """
     (folder / f"{s}.md").write_text(md, encoding="utf-8")
     return f"  ✅  {s}"
+
+def article_topic_used(topic_key):
+    folder = BASE_DIR / "content" / "artigos"
+    if not folder.exists(): return False
+    return any(topic_key in f.stem for f in folder.glob("*.md"))
 
 def gen_photo_week():
     """Busca a Imagem Astronômica do Dia (APOD) da NASA e atualiza 1x por semana."""
@@ -253,19 +270,36 @@ def main():
     print(f"   {len(entries)} entradas")
 
     print("\n✍️  Gerando notícias...")
-    for e in entries[:5]:
+    generated = 0
+    for e in entries:
+        if generated >= 5:
+            break
+        key = news_key(e)
+        if news_already_saved(key):
+            print(f"  ⏭  Já existe: {key}")
+            continue
         data = gen_news(e)
-        if data: print(save_news(data)); time.sleep(2)
+        if data:
+            print(save_news(data, key))
+            generated += 1
+            time.sleep(2)
 
     print("\n🌌 Gerando artigos conceituais...")
-    folder = BASE_DIR / "content" / "artigos"
-    existing = " ".join(f.stem for f in folder.glob("*.md")) if folder.exists() else ""
-    available = [t for t in TOPICS if slug(t) not in existing]
-    if not available: available = TOPICS
-    for topic in available[:2]:
+    generated_articles = 0
+    for topic in TOPICS:
+        if generated_articles >= 2:
+            break
+        topic_key = slug(topic)
+        if article_topic_used(topic_key):
+            continue
         print(f"   Tópico: {topic}")
         data = gen_article(topic)
-        if data: print(save_article(data)); time.sleep(2)
+        if data:
+            print(save_article(data, topic_key))
+            generated_articles += 1
+            time.sleep(2)
+    if generated_articles == 0:
+        print("  ⏭  Todos os tópicos já foram cobertos")
 
     print("\n📷 Atualizando foto da semana...")
     print(gen_photo_week())
