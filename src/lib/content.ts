@@ -60,4 +60,23 @@ export function getAllArticles(): Article[] {
     })
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 10)
+export interface PhotoWeek {
+  imageUrl: string
+  title: string
+  titleEn: string
+  caption: string
+  captionEn: string
+  credit: string
+  week: string
+}
+
+export function getPhotoWeek(): PhotoWeek | null {
+  const file = path.join(process.cwd(), 'content', 'foto-semana.json')
+  if (!fs.existsSync(file)) return null
+  try {
+    const raw = fs.readFileSync(file, 'utf8')
+    return JSON.parse(raw) as PhotoWeek
+  } catch {
+    return null
+  }
 }
