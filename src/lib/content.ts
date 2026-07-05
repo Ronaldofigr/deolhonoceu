@@ -45,7 +45,7 @@ export function getAllNews(): NewsItem[] {
       return { slug: file.replace('.md', ''), ...data, content } as NewsItem
     })
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-    .slice(0, 20)
+    .slice(0, 10)
 }
 
 export function getAllArticles(): Article[] {
