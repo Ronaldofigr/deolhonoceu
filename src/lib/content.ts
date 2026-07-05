@@ -81,3 +81,28 @@ export function getPhotoWeek(): PhotoWeek | null {
     return null
   }
 }
+export function getAllNewsArchive(): NewsItem[] {
+  const dir = path.join(process.cwd(), 'content', 'noticias')
+  ensureDir(dir)
+  const files = fs.readdirSync(dir).filter(f => f.endsWith('.md'))
+  return files
+    .map(file => {
+      const raw = fs.readFileSync(path.join(dir, file), 'utf8')
+      const { data, content } = matter(raw)
+      return { slug: file.replace('.md', ''), ...data, content } as NewsItem
+    })
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+}
+
+export function getAllArticlesArchive(): Article[] {
+  const dir = path.join(process.cwd(), 'content', 'artigos')
+  ensureDir(dir)
+  const files = fs.readdirSync(dir).filter(f => f.endsWith('.md'))
+  return files
+    .map(file => {
+      const raw = fs.readFileSync(path.join(dir, file), 'utf8')
+      const { data, content } = matter(raw)
+      return { slug: file.replace('.md', ''), ...data, content } as Article
+    })
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+}
