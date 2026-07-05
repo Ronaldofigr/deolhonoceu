@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 import type { NewsItem, Article } from '@/lib/content'
 
 const T = {
@@ -28,6 +29,8 @@ const T = {
     lessNews: '↑ Recolher',
     photoWeek: '📷 Imagem da Semana',
     photoCredit: 'Crédito',
+    archiveNews: 'Arquivo de Notícias',
+    archiveArticles: 'Arquivo de Artigos',
   },
   en: {
     nav: ['News','Articles','About'],
@@ -53,6 +56,8 @@ const T = {
     lessNews: '↑ Collapse',
     photoWeek: '📷 Image of the Week',
     photoCredit: 'Credit',
+    archiveNews: 'News Archive',
+    archiveArticles: 'Articles Archive',
   }
 }
 
@@ -114,12 +119,14 @@ export default function HomeClient({
     <>
       {/* HEADER */}
       <header className="site-header">
-        <a href="/" className="header-logo">
+        <Link href="/" className="header-logo">
           <div className="logo-icon" />
           <span className="logo-text">{t.title} <span className="glow">{t.glow}</span></span>
-        </a>
+        </Link>
         <nav className="header-nav">
           {t.nav.map(n => <a key={n} href={`#${n.toLowerCase()}`}>{n}</a>)}
+          <Link href="/arquivo-noticias/">{t.archiveNews}</Link>
+          <Link href="/arquivo-artigos/">{t.archiveArticles}</Link>
         </nav>
         <div className="lang-toggle">
           <button className={`lang-btn ${lang==='pt' ? 'active':''}`} onClick={()=>setLang('pt')}>PT</button>
