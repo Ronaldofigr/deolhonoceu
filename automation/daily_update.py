@@ -105,9 +105,79 @@ def find_image_wikimedia(query):
         print(f"    ⚠️  Wikimedia: {e}")
     return None
 
+def find_image_wikipedia(query):
+    """Usa a busca e a miniatura de artigos da Wikipédia em português — geralmente uma foto bem curada."""
+    try:
+        search = requests.get("https://pt.wikipedia.org/w/api.php", params={
+            "action": "opensearch", "search": query, "limit": 1, "namespace": 0, "format": "json",
+        }, timeout=15, headers={"User-Agent": "DeOlhoNoCeu/1.0 (site automatizado de astronomia)"})
+        search.raise_for_status()
+        titles = search.json()[1]
+        if not titles:
+            return None
+        title = titles[0]
+        resp = requests.get("https://pt.wikipedia.org/w/api.php", params={
+            "action": "query", "format": "json", "prop": "pageimages",
+            "piprop": "original", "titles": title,
+        }, timeout=15, headers={"User-Agent": "DeOlhoNoCeu/1.0 (site automatizado de astronomia)"})
+        resp.raise_for_status()
+        pages = resp.json().get("query", {}).get("pages", {})
+        for _, page in pages.items():
+            url = page.get("original", {}).get("source")
+            if url and not url.lower().endswith(".svg"):
+                return {"url": url, "credit": f"Wikipédia — {title}"}
+    except Exception as e:
+        print(f"    ⚠️  Wikipedia: {e}")
+    return None
+
+def find_image_openverse(query):
+    """Busca ampla em bancos de imagens de licença aberta (Flickr, museus, arquivos públicos etc.)."""
+    try:
+        resp = requests.get("https://api.openverse.org/v1/images/", params={
+            "q": query, "license_type": "commercial,modification", "page_size": 1,
+        }, timeout=15, headers={"User-Agent": "DeOlhoNoCeu/1.0 (site automatizado de astronomia)"})
+        resp.raise_for_status()
+        results = resp.json().get("results", [])
+        if results:
+            item = results[0]
+            url = item.get("url")
+            creator = item.get("creator") or "Openverse"
+            source = item.get("source") or ""
+            if url:
+                return {"url": url, "credit": f"{creator} / {source}" if source else creator}
+    except Exception as e:
+        print(f"    ⚠️  Openverse: {e}")
+    return None
+
+def find_image_fallback_apod():
+    """Último recurso: uma foto real e aleatória do arquivo histórico da NASA (APOD).
+    Garante que sempre haja uma imagem, mesmo quando nenhuma busca por palavra-chave encontra nada."""
+    import random
+    for _ in range(8):
+        try:
+            date_try = datetime.date.today() - datetime.timedelta(days=random.randint(1, 3000))
+            resp = requests.get("https://api.nasa.gov/planetary/apod",
+                                 params={"api_key": NASA_API_KEY, "date": date_try.isoformat()}, timeout=15)
+            resp.raise_for_status()
+            data = resp.json()
+            if data.get("media_type") == "image":
+                url = data.get("hdurl") or data.get("url")
+                credit = data.get("copyright")
+                credit = credit.strip().replace("\n", " ") if credit else "NASA"
+                if url:
+                    return {"url": url, "credit": credit}
+        except Exception:
+            continue
+    return None
+
 def find_image(query):
-    """Ordem de prioridade: acervo NASA (domínio público) → Wikimedia Commons (licenciado)."""
-    return find_image_nasa(query) or find_image_wikimedia(query)
+    """Ordem de prioridade, alargando a busca até garantir uma imagem:
+    NASA → Wikipédia → Wikimedia Commons → Openverse → foto aleatória da NASA (garantia final)."""
+    return (find_image_nasa(query)
+            or find_image_wikipedia(query)
+            or find_image_wikimedia(query)
+            or find_image_openverse(query)
+            or find_image_fallback_apod())
 
 def slug(text):
     text = text.lower()
