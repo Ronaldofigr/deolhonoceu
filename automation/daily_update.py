@@ -65,6 +65,7 @@ def find_image_nasa(query):
         resp = requests.get("https://images-api.nasa.gov/search",
                              params={"q": query, "media_type": "image"}, timeout=15)
         resp.raise_for_status()
+        resp.encoding = "utf-8"
         items = resp.json().get("collection", {}).get("items", [])
         for it in items:
             links = it.get("links", [])
@@ -89,6 +90,7 @@ def find_image_wikimedia(query):
             "prop": "imageinfo", "iiprop": "url|mime|size|extmetadata", "iiurlwidth": 1200,
         }, timeout=15, headers={"User-Agent": "DeOlhoNoCeu/1.0 (site automatizado de astronomia)"})
         resp.raise_for_status()
+        resp.encoding = "utf-8"
         pages = resp.json().get("query", {}).get("pages", {})
         for _, page in pages.items():
             info = page.get("imageinfo", [{}])[0]
@@ -117,6 +119,7 @@ def find_image_wikipedia(query):
             "action": "opensearch", "search": query, "limit": 1, "namespace": 0, "format": "json",
         }, timeout=15, headers={"User-Agent": "DeOlhoNoCeu/1.0 (site automatizado de astronomia)"})
         search.raise_for_status()
+        search.encoding = "utf-8"
         titles = search.json()[1]
         if not titles:
             return None
@@ -126,6 +129,7 @@ def find_image_wikipedia(query):
             "piprop": "original", "titles": title,
         }, timeout=15, headers={"User-Agent": "DeOlhoNoCeu/1.0 (site automatizado de astronomia)"})
         resp.raise_for_status()
+        resp.encoding = "utf-8"
         pages = resp.json().get("query", {}).get("pages", {})
         for _, page in pages.items():
             url = page.get("original", {}).get("source")
@@ -143,6 +147,7 @@ def find_image_openverse(query):
             "q": query, "license_type": "commercial,modification", "page_size": 1,
         }, timeout=15, headers={"User-Agent": "DeOlhoNoCeu/1.0 (site automatizado de astronomia)"})
         resp.raise_for_status()
+        resp.encoding = "utf-8"
         results = resp.json().get("results", [])
         if results:
             item = results[0]
@@ -169,6 +174,7 @@ def find_image_fallback_apod():
             resp = requests.get("https://api.nasa.gov/planetary/apod",
                                  params={"api_key": NASA_API_KEY, "date": date_try.isoformat()}, timeout=15)
             resp.raise_for_status()
+            resp.encoding = "utf-8"
             data = resp.json()
             if data.get("media_type") == "image":
                 url = data.get("hdurl") or data.get("url")
@@ -380,6 +386,7 @@ def gen_photo_week():
                 timeout=20,
             )
             resp.raise_for_status()
+            resp.encoding = "utf-8"
             candidate = resp.json()
             if candidate.get("media_type") == "image":
                 apod = candidate
