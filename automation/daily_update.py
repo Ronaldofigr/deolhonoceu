@@ -56,8 +56,11 @@ def extract_rss_image(e):
         return m.group(1)
     return None
 
+import time
+
 def find_image_nasa(query):
     """Busca uma imagem de domínio público no acervo oficial da NASA (sem chave de API)."""
+    time.sleep(1.2)
     try:
         resp = requests.get("https://images-api.nasa.gov/search",
                              params={"q": query, "media_type": "image"}, timeout=15)
@@ -78,6 +81,7 @@ def find_image_nasa(query):
 def find_image_wikimedia(query):
     """Busca uma imagem licenciada no Wikimedia Commons, com crédito do autor extraído automaticamente.
     Restringe a fotos/ilustrações reais, rejeitando páginas escaneadas de documentos/artigos."""
+    time.sleep(1.5)
     try:
         resp = requests.get("https://commons.wikimedia.org/w/api.php", params={
             "action": "query", "format": "json", "generator": "search",
@@ -107,6 +111,7 @@ def find_image_wikimedia(query):
 
 def find_image_wikipedia(query):
     """Usa a busca e a miniatura de artigos da Wikipédia em português — geralmente uma foto bem curada."""
+    time.sleep(1.5)
     try:
         search = requests.get("https://pt.wikipedia.org/w/api.php", params={
             "action": "opensearch", "search": query, "limit": 1, "namespace": 0, "format": "json",
@@ -132,6 +137,7 @@ def find_image_wikipedia(query):
 
 def find_image_openverse(query):
     """Busca ampla em bancos de imagens de licença aberta (Flickr, museus, arquivos públicos etc.)."""
+    time.sleep(1.2)
     try:
         resp = requests.get("https://api.openverse.org/v1/images/", params={
             "q": query, "license_type": "commercial,modification", "page_size": 1,
@@ -153,7 +159,11 @@ def find_image_fallback_apod():
     """Último recurso: uma foto real e aleatória do arquivo histórico da NASA (APOD).
     Garante que sempre haja uma imagem, mesmo quando nenhuma busca por palavra-chave encontra nada."""
     import random
-    for _ in range(8):
+    if NASA_API_KEY == "DEMO_KEY":
+        print("    ⚠️  Usando DEMO_KEY da NASA (limite baixo e compartilhado). "
+              "Configure o secret NASA_API_KEY com uma chave própria e gratuita em https://api.nasa.gov para evitar falhas por limite de requisições.")
+    for _ in range(4):
+        time.sleep(1.2)
         try:
             date_try = datetime.date.today() - datetime.timedelta(days=random.randint(1, 3000))
             resp = requests.get("https://api.nasa.gov/planetary/apod",
@@ -166,7 +176,8 @@ def find_image_fallback_apod():
                 credit = credit.strip().replace("\n", " ") if credit else "NASA"
                 if url:
                     return {"url": url, "credit": credit}
-        except Exception:
+        except Exception as e:
+            print(f"    ⚠️  APOD (fallback): {e}")
             continue
     return None
 
