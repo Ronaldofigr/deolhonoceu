@@ -6,6 +6,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   backfill:
     runs-on: ubuntu-latest
@@ -33,5 +37,13 @@ jobs:
           git config user.email "bot@deolhonoceu.vercel.app"
           git add content/
           git diff --staged --quiet || git commit -m "🖼️ Backfill: imagens em conteúdo antigo"
-          git pull --rebase origin main
+          git fetch origin main
+          if ! git rebase origin/main; then
+            echo "⚠️  Conflito detectado. Mantendo a versão já publicada."
+            git diff --name-only --diff-filter=U | while read -r f; do
+              git checkout --theirs -- "$f"
+              git add "$f"
+            done
+            GIT_EDITOR=true git rebase --continue
+          fi
           git push
