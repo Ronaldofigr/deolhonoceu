@@ -12,11 +12,12 @@ NASA_API_KEY = os.environ.get("NASA_API_KEY", "DEMO_KEY")
 BASE_DIR = Path(__file__).parent.parent
 
 RSS_SOURCES = [
+    {"url": "https://news.google.com/rss/search?q=Starship+SpaceX+when:2d&hl=pt-BR&gl=BR&ceid=BR:pt-BR", "name": "SpaceX/Starship", "type": "spacex", "label": "SpaceX"},
     {"url": "https://www.nasa.gov/news-release/feed/",            "name": "NASA",                        "type": "nasa", "label": "NASA"},
     {"url": "https://www.esa.int/rssfeed/Our_Activities/Space_Science", "name": "ESA",                  "type": "esa",  "label": "ESA"},
     {"url": "https://www.space.com/feeds/all",                    "name": "Space.com",                   "type": "sci",  "label": "Space.com"},
     {"url": "https://skyandtelescope.org/feed/",                  "name": "Sky & Telescope",             "type": "sci",  "label": "Sky & Tel."},
-    {"url": "https://www.ccvalg.pt/feed/",                        "name": "Centro Ciência Viva Algarve", "type": "obs",  "label": "C. Ciência Viva"},
+    {"url": "https://www.ccvalg.pt/astronomia/?feed=rss2",        "name": "Centro Ciência Viva Algarve", "type": "obs",  "label": "C. Ciência Viva"},
 ]
 
 TOPICS = [
