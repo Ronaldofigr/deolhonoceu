@@ -15,6 +15,8 @@ export interface NewsItem {
   date: string
   content: string
   contentEn: string
+  image?: string
+  imageCredit?: string
 }
 
 export interface Article {
@@ -28,6 +30,8 @@ export interface Article {
   contentEn: string
   date: string
   type: string
+  image?: string
+  imageCredit?: string
 }
 
 function ensureDir(dir: string) {
