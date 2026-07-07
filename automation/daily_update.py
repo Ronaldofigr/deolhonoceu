@@ -76,19 +76,25 @@ def find_image_nasa(query):
     return None
 
 def find_image_wikimedia(query):
-    """Busca uma imagem licenciada no Wikimedia Commons, com crédito do autor extraído automaticamente."""
+    """Busca uma imagem licenciada no Wikimedia Commons, com crédito do autor extraído automaticamente.
+    Restringe a fotos/ilustrações reais, rejeitando páginas escaneadas de documentos/artigos."""
     try:
         resp = requests.get("https://commons.wikimedia.org/w/api.php", params={
             "action": "query", "format": "json", "generator": "search",
-            "gsrsearch": query, "gsrnamespace": 6, "gsrlimit": 1,
-            "prop": "imageinfo", "iiprop": "url|extmetadata", "iiurlwidth": 1200,
+            "gsrsearch": f"{query} filetype:bitmap", "gsrnamespace": 6, "gsrlimit": 5,
+            "prop": "imageinfo", "iiprop": "url|mime|size|extmetadata", "iiurlwidth": 1200,
         }, timeout=15, headers={"User-Agent": "DeOlhoNoCeu/1.0 (site automatizado de astronomia)"})
         resp.raise_for_status()
         pages = resp.json().get("query", {}).get("pages", {})
         for _, page in pages.items():
             info = page.get("imageinfo", [{}])[0]
+            mime = info.get("mime", "")
             url = info.get("thumburl") or info.get("url")
-            if not url:
+            if not url or not mime.startswith("image/") or mime in ("image/svg+xml",):
+                continue
+            # descarta páginas de documentos escaneados (proporção muito "retrato" e alta resolução de texto)
+            width, height = info.get("width", 0), info.get("height", 0)
+            if width and height and height / width > 1.6 and width < 1000:
                 continue
             meta = info.get("extmetadata", {})
             artist = strip_html(meta.get("Artist", {}).get("value", ""))
