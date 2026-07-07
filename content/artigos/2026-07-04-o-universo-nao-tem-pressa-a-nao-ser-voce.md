@@ -7,7 +7,7 @@ type: "concept"
 readingTime: 3
 date: "2026-07-04"
 image: "https://apod.nasa.gov/apod/image/1808/PencilNebula_Perez_1553.jpg"
-imageCredit: "Jos� Joaqu�n Perez"
+imageCredit: "José Joaquín Perez"
 ---
 
 Imagine que você e um amigo combinam de se encontrar às três da tarde. Parece simples, certo? Mas e se esse amigo estivesse viajando em uma nave espacial a quase a velocidade da luz? Para sua surpresa, o relógio dele estaria marcando um horário completamente diferente do seu — e nenhum dos dois estaria errado. Essa situação aparentemente absurda é exatamente o que Albert Einstein propôs em 1905, com apenas 26 anos, ao publicar sua Teoria da Relatividade Especial. A ideia central é desconcertante: o tempo e o espaço não são fixos e universais, como gavetas imóveis onde o universo se organiza. Eles se dobram, esticam e encolhem dependendo de quão rápido você está se movendo.
