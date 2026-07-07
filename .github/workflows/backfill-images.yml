@@ -1,0 +1,37 @@
+name: Backfill de Imagens — De Olho no Céu
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependências Python
+        run: pip install -r automation/requirements.txt
+
+      - name: Executar backfill
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          NASA_API_KEY: ${{ secrets.NASA_API_KEY }}
+        run: python automation/backfill_images.py
+
+      - name: Commit e push
+        run: |
+          git config user.name "De Olho no Céu Bot"
+          git config user.email "bot@deolhonoceu.vercel.app"
+          git add content/
+          git diff --staged --quiet || git commit -m "🖼️ Backfill: imagens em conteúdo antigo"
+          git pull --rebase origin main
+          git push
