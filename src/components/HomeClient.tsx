@@ -196,6 +196,18 @@ export default function HomeClient({
                     <span className={`news-source ${item.sourceType}`}>{item.source}</span>
                     <span className="news-date">{fmtDate(item.date, lang)}</span>
                   </div>
+                  {item.image && (
+                    <div className="news-card-image-wrap">
+                      <img
+                        src={item.image}
+                        alt={lang==='pt' ? item.title : (item.titleEn||item.title)}
+                        className="news-card-image"
+                        loading="lazy"
+                        onError={(e) => { (e.target as HTMLImageElement).parentElement!.style.display = 'none' }}
+                      />
+                      {item.imageCredit && <span className="news-card-image-credit">{t.photoCredit}: {item.imageCredit}</span>}
+                    </div>
+                  )}
                   <h2 className="news-title">{lang==='pt' ? item.title : (item.titleEn||item.title)}</h2>
                   <p className="news-excerpt">{lang==='pt' ? item.excerpt : (item.excerptEn||item.excerpt)}</p>
 
@@ -256,6 +268,18 @@ export default function HomeClient({
                     </span>
                     <span style={{color:'var(--text-muted)',fontSize:'0.6rem'}}>{cat} · {fmtDate(item.date, lang)}</span>
                   </div>
+                  {item.image && (
+                    <div className="news-card-image-wrap">
+                      <img
+                        src={item.image}
+                        alt={title}
+                        className="news-card-image"
+                        loading="lazy"
+                        onError={(e) => { (e.target as HTMLImageElement).parentElement!.style.display = 'none' }}
+                      />
+                      {item.imageCredit && <span className="news-card-image-credit">{t.photoCredit}: {item.imageCredit}</span>}
+                    </div>
+                  )}
                   <h2 className="article-title">{title}</h2>
                   <div className="article-reading-time">☕ {item.readingTime} {t.minRead}</div>
                   <div className="article-body">
