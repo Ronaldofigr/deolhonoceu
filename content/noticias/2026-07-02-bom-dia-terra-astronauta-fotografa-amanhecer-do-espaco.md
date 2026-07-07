@@ -8,6 +8,8 @@ sourceType: "nasa"
 sourceUrl: "https://www.nasa.gov/image-article/good-morning-earth/"
 tags: ["NASA", "Estação Espacial Internacional", "astronomia"]
 date: "2026-07-02"
+image: "https://apod.nasa.gov/apod/image/1811/46PCherney_NoText.jpg"
+imageCredit: "Terrastro"
 ---
 
 Imagine acordar para o amanhecer — não uma, mas dezesseis vezes em um único dia. É exatamente o que vivem os astronautas a bordo da Estação Espacial Internacional (ISS). Em 26 de junho de 2026, o astronauta da NASA Chris Williams registrou uma dessas saídas de sol enquanto orbitava o nosso planeta, produzindo uma imagem de tirar o fôlego.

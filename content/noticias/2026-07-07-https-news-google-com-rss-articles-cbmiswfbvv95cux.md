@@ -8,6 +8,8 @@ sourceType: "spacex"
 sourceUrl: "https://news.google.com/rss/articles/CBMiswFBVV95cUxNM3VOTkx3YU10VzFOZ29fTVAzOFhPT0ljX2JGVjllc01ZNTdTT2xTVXZqdDhkbDBoUExXczJ4NENBRU9SS0VUZGVwYzlIWWJ2eFZETEp6eUtUem5CbzJ4LUtYWVJ1NEhXM0tSdGI4Vi0xUWhUQVJiYTNmOGJQTUl1YmNMWVVHT3hMa3BxRERXY1dGdDFEN2tHalZMd0IwcFJnejV3V0tqRTNINmlTQXdRblY1dw?oc=5"
 tags: ["tempestades solares", "exploração espacial", "tecnologia"]
 date: "2026-07-07"
+image: "https://apod.nasa.gov/apod/image/2501/AtlasParanal_Kurak_2000.jpg"
+imageCredit: "Martin Mašek  (FZU, Czech Academy of Sciences)  &  Jakub Kuřák"
 ---
 
 O Sol, apesar de ser a fonte de toda vida na Terra, também pode ser uma ameaça. De tempos em tempos, nossa estrela libera explosões colossais de partículas carregadas de energia — as chamadas tempestades solares ou ejeções de massa coronal. Quando essas rajadas atingem a Terra, podem sobrecarregar satélites, derrubar redes elétricas inteiras e até inutilizar sistemas de comunicação e GPS. Em 1989, uma tempestade solar deixou toda a província de Quebec, no Canadá, sem eletricidade por nove horas. Se algo semelhante ocorresse hoje, as consequências econômicas seriam catastróficas, na casa dos trilhões de dólares.

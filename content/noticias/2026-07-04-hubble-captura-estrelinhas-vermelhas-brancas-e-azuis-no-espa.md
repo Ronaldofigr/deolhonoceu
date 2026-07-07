@@ -8,6 +8,8 @@ sourceType: "nasa"
 sourceUrl: "https://science.nasa.gov/missions/hubble/nasas-hubble-spies-stellar-sparkler-for-july-4th/"
 tags: ["Hubble", "estrelas", "aglomerado estelar", "NASA", "astronomia"]
 date: "2026-07-04"
+image: "https://apod.nasa.gov/apod/image/2305/PIA19048europa.jpg"
+imageCredit: "NASA"
 ---
 
 Imagine segurar um sparkler — aquele palito de fogos de artifício que faísca em todas as direções numa noite escura. Agora imagine isso em escala cósmica, com estrelas vermelhas, brancas e azuis brilhando simultaneamente no vasto espaço. Foi exatamente essa cena que o telescópio espacial Hubble, da NASA, registrou em sua mais recente imagem: um aglomerado de estrelas com cores tão distintas que parecem uma celebração galáctica.

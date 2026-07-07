@@ -6,6 +6,8 @@ categoryEn: "Astrophysics"
 type: "concept"
 readingTime: 3
 date: "2026-07-03"
+image: "https://apod.nasa.gov/apod/image/2409/MoonPleiades_Dyer_2048.jpg"
+imageCredit: "Alan Dyer,  TWAN"
 ---
 
 Imagine uma panela de pressão gigantesca — tão grande quanto um milhão de Terras empilhadas — onde o calor é tão extremo que os próprios átomos perdem a cabeça. É mais ou menos assim que funciona o interior do Sol e de todas as outras estrelas do universo. Lá dentro, num processo chamado fusão nuclear, partículas minúsculas se fundem umas às outras liberando quantidades absurdas de energia. Essa energia é exatamente a luz e o calor que chegam até você em um dia ensolarado.

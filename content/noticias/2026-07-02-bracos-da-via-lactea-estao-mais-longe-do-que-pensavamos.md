@@ -8,6 +8,8 @@ sourceType: "esa"
 sourceUrl: "https://www.esa.int/Science_Exploration/Space_Science/XMM-Newton/XMM-Newton_helps_revise_distance_to_outer_spiral_arms"
 tags: ["Via Láctea", "astronomia", "supernovas", "XMM-Newton", "galáxia"]
 date: "2026-07-02"
+image: "https://apod.nasa.gov/apod/image/2307/EtaCarinae_HubbleSchmidt_1764.jpg"
+imageCredit: "NASA,  ESA,  Hubble;  Processing &  License:  Judy Schmidt"
 ---
 
 Imagine tentar medir o tamanho da sua própria casa estando dentro dela, no escuro, com uma lanterna. É exatamente esse o desafio que os astrônomos enfrentam ao tentar mapear a Via Láctea: somos parte dela, o que torna a tarefa extraordinariamente difícil. Agora, uma nova descoberta feita com os telescópios espaciais XMM-Newton, da Agência Espacial Europeia (ESA), e Chandra, da NASA, está ajudando a redesenhar esse mapa com mais precisão.

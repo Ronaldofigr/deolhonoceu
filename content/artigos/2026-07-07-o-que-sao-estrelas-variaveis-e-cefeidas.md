@@ -6,6 +6,8 @@ categoryEn: "Astronomy"
 type: "concept"
 readingTime: 3
 date: "2026-07-07"
+image: "https://apod.nasa.gov/apod/image/2012/AntennaeGpotw1345a_2048.jpg"
+imageCredit: "NASA"
 ---
 
 Imagine que você está em uma cidade à noite e percebe que uma lâmpada na janela de um vizinho acende e apaga em um ritmo constante e previsível. Você poderia usar esse piscar como um relógio. No universo, existem estrelas que fazem exatamente isso: brilham mais forte, depois mais fraco, e repetem esse ciclo com uma pontualidade impressionante. Essas são as chamadas estrelas variáveis — astros cujo brilho muda ao longo do tempo. As causas podem ser variadas: algumas pulsam como um coração, expandindo e contraindo sua própria matéria; outras têm uma estrela companheira que as eclipsa periodicamente. O resultado é um céu muito mais dinâmico do que parece à primeira vista.

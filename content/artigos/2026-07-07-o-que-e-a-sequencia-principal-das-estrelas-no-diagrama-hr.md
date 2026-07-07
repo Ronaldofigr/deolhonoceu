@@ -6,6 +6,8 @@ categoryEn: "Astronomy"
 type: "concept"
 readingTime: 3
 date: "2026-07-07"
+image: "https://apod.nasa.gov/apod/image/2002/StarTrailsTree_Parchini_4000.jpg"
+imageCredit: "Saeid Parchini"
 ---
 
 Imagine que você pudesse fotografar todas as pessoas do mundo e organizá-las num único gráfico, colocando as mais altas de um lado e as mais pesadas de outro. Rapidamente perceberia que a maioria das pessoas se agrupa numa faixa diagonal — pessoas mais altas tendem a ser também mais pesadas. Com as estrelas acontece algo parecido. No início do século XX, os astrônomos Ejnar Hertzsprung e Henry Norris Russell tiveram a ideia de criar um gráfico comparando a temperatura e o brilho de milhares de estrelas. O resultado foi surpreendente: a maioria das estrelas não se espalha aleatoriamente pelo gráfico, mas se concentra numa longa faixa diagonal chamada de Sequência Principal.

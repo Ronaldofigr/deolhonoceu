@@ -8,6 +8,8 @@ sourceType: "esa"
 sourceUrl: "https://www.esa.int/ESA_Multimedia/Videos/2026/06/Thousands_of_planets_are_hidden_in_this_photo"
 tags: ["Euclid", "exoplanetas", "Via Láctea", "microlensing gravitacional", "ESA", "astronomia"]
 date: "2026-07-04"
+image: "https://apod.nasa.gov/apod/image/2505/NGC6366_3500.jpg"
+imageCredit: "Massimo Di Fusco"
 ---
 
 Imagine tentar encontrar uma vela acesa na frente de um holofote. Esse é, em essência, o desafio de descobrir planetas escondidos no coração da nossa galáxia. Agora, o telescópio espacial Euclid, da Agência Espacial Europeia (ESA), deu um passo gigantesco nessa direção. Apenas três anos após seu lançamento, ele capturou uma imagem monumental do centro da Via Láctea: um mosaico com dezenas de milhões de estrelas, obtido em apenas 26 horas de observação. É como tirar uma foto panorâmica de uma cidade inteira em uma única noite, com detalhes tão nítidos que se pode ver cada janela iluminada.

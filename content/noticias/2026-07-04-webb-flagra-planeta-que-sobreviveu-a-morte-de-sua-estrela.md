@@ -8,6 +8,8 @@ sourceType: "esa"
 sourceUrl: "https://www.esa.int/Science_Exploration/Space_Science/Webb/Webb_studies_how_a_planet_survived_the_death_of_its_star"
 tags: ["exoplanetas", "anã branca", "telescópio James Webb", "sistema solar", "evolução estelar"]
 date: "2026-07-04"
+image: "https://apod.nasa.gov/apod/image/2412/PurpleMountainObservatoryXuYiStationFireball.jpg"
+imageCredit: "Purple Mountain (Tsuchinshan)"
 ---
 
 Imagine que o Sol se apague — não de uma vez, mas em uma morte lenta e dramática. Primeiro ele incha até engolir os planetas mais próximos, depois encolhe até virar um objeto denso e quente chamado anã branca, do tamanho da Terra, mas com uma massa comparável à do próprio Sol. É exatamente esse o futuro do nosso sistema estelar, daqui a bilhões de anos. Agora, o Telescópio Espacial James Webb nos deu uma prévia desse destino ao observar um planeta gigante que sobreviveu exatamente a esse processo.

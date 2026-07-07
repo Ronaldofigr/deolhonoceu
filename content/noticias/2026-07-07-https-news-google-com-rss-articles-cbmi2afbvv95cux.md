@@ -8,6 +8,8 @@ sourceType: "spacex"
 sourceUrl: "https://news.google.com/rss/articles/CBMi2AFBVV95cUxPSFQ5d2w1d0dERDlTaDlRZ1RCVU1fWjlhSkswdHAwVlVjQUFTSHMycEFZeWZWMF9Gd2FXZmp1N1N6Z3VKX3JBa082UjhVbGV2ZlZvakdwN0xGcmR5YUxZYU0xdFVWRWJwZ19jVFZnUW1yNXpXZkZsTUhEN0RxNVg5clRLMldXbE9EOGdwMC0tMndVZFEwWHlwQWtid0EyVkRRZ3hOTzVIc2xJMFBzVElvdGZEMlhEai1iNi1fRHp0WFNPRDVBTU9JeFRHVk14UVdRTWRUOGlNSjE?oc=5"
 tags: ["espaço", "foguete", "Brasil", "tecnologia espacial", "mercado espacial"]
 date: "2026-07-07"
+image: "https://apod.nasa.gov/apod/image/2111/PleiadesB_Cannane_2419.jpg"
+imageCredit: "Damien Cannane"
 ---
 
 O Brasil está se preparando para dar um grande salto tecnológico: lançar seu próprio foguete ao espaço ainda em 2024. Isso pode parecer algo corriqueiro para países como Estados Unidos ou Rússia, mas para o Brasil representa décadas de investimento, aprendizado e superação de obstáculos. Ter a capacidade de lançar foguetes de forma independente é como ter sua própria estrada ao espaço — sem ela, um país precisa 'pagar pedágio' a outras nações para colocar satélites em órbita.

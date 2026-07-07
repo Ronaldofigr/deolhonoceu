@@ -6,6 +6,8 @@ categoryEn: "Astrophysics"
 type: "concept"
 readingTime: 3
 date: "2026-07-02"
+image: "https://apod.nasa.gov/apod/image/1808/2018_08_12_Bolid_Perseus_1600pxn.jpg"
+imageCredit: "Petr Horálek"
 ---
 
 Imagine tentar empurrar dois ímãs com os polos iguais um contra o outro. Quanto mais você os aproxima, maior é a resistência que sente. Agora imagine fazer isso com partículas minúsculas chamadas prótons, que formam o núcleo dos átomos de hidrogênio. No centro do Sol, onde a temperatura chega a 15 milhões de graus Celsius e a pressão é absurdamente colossal, a natureza consegue exatamente isso: forçar esses prótons a se fundirem, criando um processo chamado fusão nuclear. É como se você pegasse dois blocos de LEGO e, em vez de apenas encaixá-los, os derretesse juntos para formar uma peça completamente nova e mais pesada.

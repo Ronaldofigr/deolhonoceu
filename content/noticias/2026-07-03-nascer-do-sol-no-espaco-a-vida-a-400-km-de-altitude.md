@@ -8,6 +8,8 @@ sourceType: "nasa"
 sourceUrl: "https://www.nasa.gov/image-article/good-morning-earth/"
 tags: ["ISS", "espaço", "astronautas", "órbita", "NASA"]
 date: "2026-07-03"
+image: "https://apod.nasa.gov/apod/image/1806/GlastLaunch2018Jan11.jpg"
+imageCredit: "NASA"
 ---
 
 Imagine acordar e ver o Sol nascer — não uma, mas dezesseis vezes no mesmo dia. Essa é a rotina dos astronautas a bordo da Estação Espacial Internacional (ISS), o laboratório orbital da NASA que viaja a cerca de 28.000 km/h a aproximadamente 400 km acima da superfície terrestre. Em 26 de junho de 2026, o astronauta Chris Williams registrou em foto um desses amanheceres deslumbrantes, revelando o momento em que a luz solar rompe o horizonte curvo da Terra vista do espaço.

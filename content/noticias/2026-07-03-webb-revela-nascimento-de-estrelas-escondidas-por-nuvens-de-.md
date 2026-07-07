@@ -8,6 +8,8 @@ sourceType: "nasa"
 sourceUrl: "https://science.nasa.gov/missions/webb/nasas-webb-reveals-stars-sparking-to-life-in-cosmic-celebration/"
 tags: ["James Webb", "formação estelar", "nebulosa", "telescópio espacial", "astronomia"]
 date: "2026-07-03"
+image: "https://apod.nasa.gov/apod/image/2501/CollidingGalaxies_WebbHubble_1877.jpg"
+imageCredit: "NASA"
 ---
 
 Imagine tentar enxergar uma fogueira através de uma parede de fumaça densa. Por décadas, foi exatamente isso que os astrônomos enfrentaram ao tentar observar o sistema estelar FS Tau: uma região do universo onde novas estrelas estão nascendo, mas completamente envolta em espessas nuvens de poeira cósmica. Telescópios convencionais, que captam apenas a luz visível, eram praticamente cegos a esse espetáculo. O telescópio espacial James Webb, da NASA, mudou tudo isso.

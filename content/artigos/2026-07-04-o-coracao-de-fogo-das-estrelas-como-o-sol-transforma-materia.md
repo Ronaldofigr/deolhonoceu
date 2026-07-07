@@ -6,6 +6,8 @@ categoryEn: "Astrophysics"
 type: "concept"
 readingTime: 3
 date: "2026-07-04"
+image: "https://apod.nasa.gov/apod/image/2011/ngc5866_hst_1235.jpg"
+imageCredit: "NASA"
 ---
 
 Imagine que você tenta juntar dois ímãs pelo mesmo polo — eles se repelem com força. Agora imagine fazer isso com partículas atômicas, que se repelem com uma intensidade milhões de vezes maior. É exatamente esse desafio que o Sol resolve todos os dias, no processo chamado fusão nuclear. No núcleo estelar, a temperatura ultrapassa 15 milhões de graus Celsius e a pressão é tão absurda que equivale ao peso de trilhões de elefantes comprimidos num espaço do tamanho de uma ervilha. Nessas condições extremas, núcleos de hidrogênio — o elemento mais simples do universo — são forçados a se unir e formar hélio, liberando uma quantidade colossal de energia no processo.

@@ -8,6 +8,8 @@ sourceType: "sci"
 sourceUrl: "https://www.space.com/astronomy/comets/more-clues-surface-about-the-origins-of-interstellar-comet-3i-atlas"
 tags: ["cometa interestelar", "3I/ATLAS", "astronomia", "Very Large Telescope", "JWST"]
 date: "2026-07-07"
+image: "https://apod.nasa.gov/apod/image/2308/SeasonSaturnapodacasely.jpg"
+imageCredit: "Andy Casely"
 ---
 
 Imagine uma pedra arremessada de outro sistema solar que, após viajar por anos-luz de distância no vazio do espaço, passa raspando pelo nosso Sistema Solar. É exatamente isso que representa o 3I/ATLAS, o terceiro objeto interestelar já confirmado a visitar nossa vizinhança cósmica. Descoberto recentemente, ele se junta a 1I/'Oumuamua e 2I/Borisov como mensageiros de outros cantos da galáxia — e cada um deles carrega pistas valiosas sobre como planetas e corpos menores se formam ao redor de outras estrelas.

@@ -8,6 +8,8 @@ sourceType: "nasa"
 sourceUrl: "https://science.nasa.gov/missions/hubble/nasas-hubble-captures-crimson-cloud-sparkling-with-white-blue-stars/"
 tags: ["Hubble", "nebulosa", "formação estelar", "estrelas", "NASA"]
 date: "2026-07-04"
+image: "https://apod.nasa.gov/apod/image/2305/freeflyer_nasa_3000.jpg"
+imageCredit: "NASA"
 ---
 
 O Telescópio Espacial Hubble, operado pela NASA há mais de três décadas, acaba de presentear a humanidade com mais uma imagem de tirar o fôlego: uma vasta nuvem de gás na cor carmesim, salpicada por pontos luminosos de estrelas jovens nas cores azul e branca. Parece quase uma pintura abstrata, mas o que vemos é real e está acontecendo agora mesmo, a milhares de anos-luz de distância da Terra.

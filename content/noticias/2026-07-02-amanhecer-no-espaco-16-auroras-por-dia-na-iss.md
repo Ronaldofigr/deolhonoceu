@@ -8,6 +8,8 @@ sourceType: "nasa"
 sourceUrl: "https://www.nasa.gov/image-article/good-morning-earth/"
 tags: ["ISS", "NASA", "espaço", "órbita", "astronomia"]
 date: "2026-07-02"
+image: "https://apod.nasa.gov/apod/image/2509/JetIss_nasa_6604.jpg"
+imageCredit: "NASA"
 ---
 
 Imagine acordar e ver o sol nascer — não uma, mas dezesseis vezes em um único dia. Esse é o cotidiano dos astronautas a bordo da Estação Espacial Internacional (ISS). Em 26 de junho de 2026, o astronauta da NASA Chris Williams registrou uma dessas auroras orbitais com sua câmera, capturando o momento em que a luz do sol irrompe pelo horizonte curvo da Terra com uma intensidade e beleza impossíveis de ver do solo.

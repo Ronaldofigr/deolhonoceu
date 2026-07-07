@@ -6,6 +6,8 @@ categoryEn: "Physics and Cosmos"
 type: "concept"
 readingTime: 3
 date: "2026-07-03"
+image: "https://apod.nasa.gov/apod/image/2502/IMG_0340-Internet-2.jpg"
+imageCredit: "Vojan Höfer"
 ---
 
 Imagine que você e um amigo combinam de se encontrar numa praça. Você vai a pé, ele vai de bicicleta. Vocês partem do mesmo ponto, mas chegam em tempos diferentes — nada de surpreendente até aqui. Agora imagine que, quanto mais rápido seu amigo pedala, mais devagar o relógio dele passa a marcar. Parece loucura, mas é exatamente isso que Albert Einstein propôs em 1905 com a Teoria da Relatividade Especial: o tempo não é uma constante universal. Ele é flexível, e a velocidade com que nos movemos interfere diretamente em como o experimentamos.

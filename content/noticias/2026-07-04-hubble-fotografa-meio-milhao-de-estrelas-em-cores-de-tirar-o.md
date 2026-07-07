@@ -8,6 +8,8 @@ sourceType: "nasa"
 sourceUrl: "https://science.nasa.gov/missions/hubble/nasas-hubble-spots-star-spangled-cosmic-scene/"
 tags: ["Hubble", "aglomerado globular", "Messier 3", "estrelas", "Via Láctea"]
 date: "2026-07-04"
+image: "https://apod.nasa.gov/apod/image/2003/Pano_Robley2.jpg"
+imageCredit: "Patrick Lécureuil"
 ---
 
 Imagine reunir mais de 500 mil estrelas em uma única esfera gigante, compacta e brilhante — como uma bola de natal feita de sóis. É exatamente isso que o telescópio espacial Hubble, da NASA, fotografou ao apontar suas lentes para Messier 3 (M3), um dos aglomerados globulares mais famosos do céu. A imagem resultante é um espetáculo de cores: estrelas vermelhas, brancas e azuis convivem em harmonia nesse objeto celeste fascinante.

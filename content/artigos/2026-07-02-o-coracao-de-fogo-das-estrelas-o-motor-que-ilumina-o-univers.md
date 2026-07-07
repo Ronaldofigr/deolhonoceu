@@ -6,6 +6,8 @@ categoryEn: "Astrophysics"
 type: "concept"
 readingTime: 3
 date: "2026-07-02"
+image: "https://apod.nasa.gov/apod/image/2004/SailingStone_Burke_1366.jpg"
+imageCredit: "NASA"
 ---
 
 Imagine que você está tentando juntar dois ímãs pelo mesmo polo — eles se repelem com força, não é? Agora imagine que você precisa de uma pressão absurda para obrigá-los a se unir. É exatamente isso que acontece no interior do Sol e de todas as outras estrelas, em um processo chamado fusão nuclear. Lá dentro, átomos de hidrogênio — o elemento mais simples do universo — são forçados a se fundir e formar um novo elemento, o hélio. Essa "colagem" libera uma quantidade colossal de energia, e é justamente essa energia que chega até nós na forma de luz e calor.

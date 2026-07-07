@@ -8,6 +8,8 @@ sourceType: "nasa"
 sourceUrl: "https://science.nasa.gov/missions/webb/nasas-webb-reveals-stars-sparking-to-life-in-cosmic-celebration/"
 tags: ["James Webb", "formação estelar", "FS Tau", "nebulosa", "astronomia"]
 date: "2026-07-02"
+image: "https://apod.nasa.gov/apod/image/2110/SH2-308NS.jpg"
+imageCredit: "Nik Szymanek"
 ---
 
 Imagine tentar enxergar uma vela acesa dentro de um quarto cheio de fumaça. Esse era o desafio dos astrônomos ao tentar observar o sistema estelar FS Tau, envolto em densas nuvens de poeira cósmica. Agora, o Telescópio Espacial James Webb, da NASA, conseguiu 'ver através' dessa fumaça usando luz infravermelha — um tipo de radiação invisível aos nossos olhos, mas que atravessa a poeira como se ela não existisse.

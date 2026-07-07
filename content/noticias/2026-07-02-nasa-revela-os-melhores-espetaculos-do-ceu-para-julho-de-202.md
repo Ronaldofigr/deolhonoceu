@@ -8,6 +8,8 @@ sourceType: "nasa"
 sourceUrl: "https://science.nasa.gov/solar-system/whats-up-july-2026-skywatching-tips-from-nasa/"
 tags: ["astronomia", "NASA", "céu noturno", "cometa", "Saturno", "Via Láctea"]
 date: "2026-07-02"
+image: "https://apod.nasa.gov/apod/image/1807/enceladusstripes_cassini_3237.jpg"
+imageCredit: "NASA"
 ---
 
 Se você já quis ter um motivo para acordar antes do sol nascer, julho de 2026 oferece um dos melhores. Nas primeiras horas da manhã, a Lua se aproxima de planetas vizinhos no céu, criando um encontro visual deslumbrante. Imagine a cena: enquanto o mundo ainda dorme, esses astros se alinham como lanternas suspensas no horizonte, um espetáculo gratuito acessível a qualquer pessoa com olhos e curiosidade.

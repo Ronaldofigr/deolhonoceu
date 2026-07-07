@@ -8,6 +8,8 @@ sourceType: "sci"
 sourceUrl: "https://www.space.com/astronomy/moon/human-flight-was-still-7-years-away-in-1776-now-were-headed-back-to-the-moon"
 tags: ["exploração espacial", "história da aviação", "lua", "tecnologia", "nasa"]
 date: "2026-07-04"
+image: "https://apod.nasa.gov/apod/image/2108/m74_APOD.jpg"
+imageCredit: "NASA"
 ---
 
 Imagine que você nasceu numa época em que o meio de transporte mais rápido disponível era um cavalo a galope. Nenhum avião, nenhum foguete, nenhum satélite — sequer um balão havia cruzado os céus. Era exatamente assim o mundo em 4 de julho de 1776, quando os Estados Unidos da América declararam sua independência. A humanidade havia feito pequenas tentativas de entender o voo ao longo dos séculos — dos esboços de Leonardo da Vinci às pipas e experimentos curiosos —, mas ninguém ainda havia deixado o chão de forma controlada em uma aeronave tripulada.

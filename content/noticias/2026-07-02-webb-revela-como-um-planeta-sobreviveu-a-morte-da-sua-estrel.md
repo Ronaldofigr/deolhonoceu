@@ -8,6 +8,8 @@ sourceType: "esa"
 sourceUrl: "https://www.esa.int/Science_Exploration/Space_Science/Webb/Webb_studies_how_a_planet_survived_the_death_of_its_star"
 tags: ["exoplanetas", "anã branca", "James Webb", "sistema solar", "astrofísica"]
 date: "2026-07-02"
+image: "https://apod.nasa.gov/apod/image/2002/CenA_hst.jpg"
+imageCredit: "NASA"
 ---
 
 Imagine que o Sol, daqui a bilhões de anos, incha enormemente, engole os planetas internos e depois encolhe até virar uma bolinha densa e sem brilho — o que chamamos de anã branca. O que aconteceria com Júpiter? Seria destruído ou conseguiria sobreviver? O Telescópio Espacial James Webb acaba de nos dar a primeira resposta real para essa pergunta ao observar um sistema distante onde exatamente isso já aconteceu.

@@ -6,6 +6,8 @@ categoryEn: "Physics and Cosmology"
 type: "concept"
 readingTime: 3
 date: "2026-07-07"
+image: "https://apod.nasa.gov/apod/image/2605/CometR3_Orion.jpg"
+imageCredit: "Julien De Winter,  Sascha Ebeler  Text: Keighley Rockcliffe   (NASA GSFC,  UMBC CSST,  CRESST II)"
 ---
 
 Imagine que você filma um copo caindo da mesa e se quebrando no chão. Agora reproduza o vídeo ao contrário: os cacos saltam do chão, se encaixam perfeitamente e o copo pousa intacto na mesa. Qualquer criança sabe que isso é impossível na vida real — e a física tem um nome para explicar exatamente por quê isso nunca acontece. Esse nome é entropia, uma das ideias mais profundas e fascinantes de toda a ciência.

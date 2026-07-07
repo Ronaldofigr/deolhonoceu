@@ -8,6 +8,8 @@ sourceType: "sci"
 sourceUrl: "https://www.space.com/space-exploration/international-space-station/even-astronauts-in-space-saw-america-250-fireworks-on-the-fourth-of-july-see-their-iss-view-of-los-angeles-video"
 tags: ["ISS", "astronautas", "espaço"]
 date: "2026-07-07"
+image: "https://apod.nasa.gov/apod/image/1901/Vela-DSS-New-L.jpg"
+imageCredit: "Robert Gendler"
 ---
 
 No dia 4 de julho de 2025, os Estados Unidos celebraram 250 anos de independência com uma das maiores festas de fogos de artifício de sua história. Mas enquanto milhões de americanos olhavam para o céu em busca do espetáculo, havia um grupo muito especial que observava tudo de uma perspectiva completamente diferente: os astronautas a bordo da Estação Espacial Internacional (ISS), flutuando a aproximadamente 400 quilômetros acima da superfície terrestre.

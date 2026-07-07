@@ -6,6 +6,8 @@ categoryEn: "Physics and Cosmology"
 type: "concept"
 readingTime: 3
 date: "2026-07-04"
+image: "https://apod.nasa.gov/apod/image/2305/SeaBlueSky_Horalek_960.jpg"
+imageCredit: "Petr Horálek / Institute of Physics in Opava, Sovena Jani"
 ---
 
 Imagine que você e um amigo combinam de se encontrar às três da tarde. Parece simples, certo? Mas e se esse amigo estivesse viajando em uma nave espacial a quase a velocidade da luz? Para sua surpresa, o relógio dele estaria marcando um horário completamente diferente do seu — e ambos estariam certos. Essa é a essência da Teoria da Relatividade Especial, publicada por Albert Einstein em 1905, que revolucionou a forma como entendemos o tempo, o espaço e a própria realidade.

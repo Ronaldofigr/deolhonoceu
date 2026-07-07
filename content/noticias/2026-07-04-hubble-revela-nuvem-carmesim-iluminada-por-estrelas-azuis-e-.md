@@ -8,6 +8,8 @@ sourceType: "nasa"
 sourceUrl: "https://science.nasa.gov/missions/hubble/nasas-hubble-captures-crimson-cloud-sparkling-with-white-blue-stars/"
 tags: ["Hubble", "nebulosa", "estrelas", "NASA", "astronomia"]
 date: "2026-07-04"
+image: "https://apod.nasa.gov/apod/image/2010/1c-english-triplet-16.jpg"
+imageCredit: "NASA"
 ---
 
 Imagine um enorme tapete de veludo vermelho espalhado pelo espaço, bordado com diamantes brancos e safiras azuis. É exatamente essa a sensação ao olhar para a mais recente imagem capturada pelo telescópio espacial Hubble da NASA: uma vasta nuvem de gás de cor carmesim intensa, salpicada por estrelas jovens e brilhantes em tons de azul e branco. A imagem parece mais obra de arte do que fotografia científica, mas cada detalhe carrega informações preciosas sobre como o universo funciona.

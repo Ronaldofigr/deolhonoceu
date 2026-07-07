@@ -8,6 +8,8 @@ sourceType: "nasa"
 sourceUrl: "https://science.nasa.gov/missions/hubble/nasas-hubble-spies-stellar-sparkler-for-july-4th/"
 tags: ["Hubble", "estrelas", "aglomerado estelar", "NASA", "astronomia"]
 date: "2026-07-04"
+image: "https://apod.nasa.gov/apod/image/2511/NGC1055JohnHayes.jpg"
+imageCredit: "John Hayes"
 ---
 
 Imagine segurar um sparkler — aquele palito cintilante de festa junina — e agitá-lo no escuro. As faíscas colorem o ar de vermelho, branco e dourado em todas as direções. Agora imagine que essas faíscas são, na verdade, estrelas massivas, cada uma delas milhares de vezes maior do que o nosso Sol, espalhadas por uma região do universo a milhares de anos-luz de distância. É exatamente essa a cena registrada pelo telescópio espacial Hubble, da NASA, em sua mais recente imagem divulgada ao público.

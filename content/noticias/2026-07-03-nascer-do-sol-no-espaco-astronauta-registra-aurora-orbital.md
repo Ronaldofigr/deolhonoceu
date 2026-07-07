@@ -8,6 +8,8 @@ sourceType: "nasa"
 sourceUrl: "https://www.nasa.gov/image-article/good-morning-earth/"
 tags: ["ISS", "NASA", "órbita", "astronauta", "espaço"]
 date: "2026-07-03"
+image: "https://apod.nasa.gov/apod/image/2009/SunsetMonths_Vanzella_2400.jpg"
+imageCredit: "Luca Vanzella"
 ---
 
 Imagine acordar e assistir ao nascer do sol — não uma vez, mas dezesseis vezes em um único dia. É exatamente isso que vivem os astronautas a bordo da Estação Espacial Internacional (ISS). Em 26 de junho de 2026, o astronauta da NASA Chris Williams registrou em foto um desses momentos mágicos: o instante em que a luz do Sol começa a iluminar a curvatura da Terra vista do espaço, criando um arco dourado e alaranjado no horizonte do planeta.

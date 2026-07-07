@@ -8,6 +8,8 @@ sourceType: "nasa"
 sourceUrl: "https://www.nasa.gov/general/nasas-artemis-ii-breaks-agency-streaming-record/"
 tags: ["Artemis II", "NASA", "Lua", "exploração espacial", "transmissão ao vivo"]
 date: "2026-07-03"
+image: "https://apod.nasa.gov/apod/image/2606/Mermaid.jpg"
+imageCredit: "Data acquisition: Sy Ming Wong; Processing: Guangyan Gao  Text:  Cecilia Chirenti  (NASA GSFC,  UMCP,  CRESST II)"
 ---
 
 A missão Artemis II, que levou quatro astronautas em uma jornada histórica ao redor da Lua, não conquistou apenas os céus — conquistou também as telas do mundo inteiro. A cobertura ao vivo realizada pela NASA somou mais de 149,4 milhões de visualizações em todas as suas plataformas digitais, tornando-se o evento de maior audiência já transmitido pela agência espacial americana. Para ter uma ideia da proporção, isso equivale a quase toda a população do Brasil assistindo ao mesmo tempo.

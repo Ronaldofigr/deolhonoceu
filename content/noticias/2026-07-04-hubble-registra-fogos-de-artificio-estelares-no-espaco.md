@@ -8,6 +8,8 @@ sourceType: "nasa"
 sourceUrl: "https://science.nasa.gov/missions/hubble/nasas-hubble-spies-stellar-sparkler-for-july-4th/"
 tags: ["Hubble", "estrelas", "aglomerado estelar"]
 date: "2026-07-04"
+image: "https://apod.nasa.gov/apod/image/1909/MoonJupiterPass_Hofer_1200.jpg"
+imageCredit: "Giorgia Hofer (Cortina Astronomical Association)"
 ---
 
 Imagine segurar uma estrelinha de mão — aqueles bastões de festa que faíscam em cores vivas numa noite escura. Agora imagine isso em escala cósmica, com milhares de estrelas brilhando em vermelho, branco e azul contra o fundo negro do universo. É exatamente essa a cena registrada pelo lendário telescópio espacial Hubble, da NASA, em sua mais recente imagem divulgada ao público.

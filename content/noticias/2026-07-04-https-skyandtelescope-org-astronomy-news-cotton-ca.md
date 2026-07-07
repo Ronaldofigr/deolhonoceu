@@ -8,6 +8,8 @@ sourceType: "sci"
 sourceUrl: "https://skyandtelescope.org/astronomy-news/cotton-candy-exoplanets-two-for-the-price-of-one/"
 tags: ["exoplanetas", "TESS", "NASA", "super-puff", "astronomia"]
 date: "2026-07-04"
+image: "https://apod.nasa.gov/apod/image/2201/CometLeonard_Estes_3000.jpg"
+imageCredit: "Blake Estes   (itelescope.net)"
 ---
 
 Imagine um planeta do tamanho de Júpiter, mas tão leve que, se você pudesse colocá-lo numa banheira gigante cheia de água, ele flutuaria — e ainda sobraria margem de sobra. Esse é o cenário surreal dos chamados planetas 'super-puff', ou 'super-fofinhos', uma categoria exótica de mundos que desafia nossa intuição sobre como planetas deveriam ser. Agora, o telescópio espacial TESS (Transiting Exoplanet Survey Satellite), da NASA, encontrou não um, mas dois desses objetos fascinantes orbitando a mesma estrela.

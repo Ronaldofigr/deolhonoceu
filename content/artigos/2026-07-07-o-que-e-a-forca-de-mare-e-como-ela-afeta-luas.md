@@ -6,6 +6,8 @@ categoryEn: "Astronomy"
 type: "concept"
 readingTime: 3
 date: "2026-07-07"
+image: "https://apod.nasa.gov/apod/image/2304/AlphaCamelopardis_s3100.png"
+imageCredit: "NASA"
 ---
 
 Imagine que você segura uma esponja úmida com as duas mãos e a torce. A parte do meio sofre muito mais pressão do que as extremidades, e a esponja se deforma, gemendo sob o esforço. Algo parecido acontece com luas e planetas no espaço — mas em vez de suas mãos, o culpado é a gravidade. Essa força invisível não puxa todos os pontos de um objeto com a mesma intensidade: ela é mais forte no lado mais próximo do planeta e mais fraca no lado oposto. Essa diferença de puxão, esse "cabo de guerra" gravitacional que estica e comprime os corpos celestes, tem um nome: força de maré.

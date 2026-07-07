@@ -8,6 +8,8 @@ sourceType: "spacex"
 sourceUrl: "https://news.google.com/rss/articles/CBMiogFBVV95cUxORVpfOUdxZENPLTNlX3RHazU0TUdIMVk2V1FGWGpMN1dRbHQ4M2pMQU1vcFdmV1pXTVpNU2JMSUk5MHZrWHN0THR0LXZxNXA0ZXBmOEM1UmhfWHdTTzY0SkJYUnlzZUZDelhRWkhQVlIzbU1vTVpkS2lvNUpBOHV3cXFZRF9TQWhEajQ4Zkc1UDVsY0JMd3U0S1VIOF9RbXhKNXc?oc=5"
 tags: ["Starlink", "SpaceX", "aviação", "satélite", "conectividade"]
 date: "2026-07-07"
+image: "https://apod.nasa.gov/apod/image/2206/SolSysPortrait_Trigo_1920.jpg"
+imageCredit: "Alexis Trigo"
 ---
 
 Imagine estar a 10 mil metros de altitude, cruzando o céu sobre a América Central, e conseguir assistir a um vídeo em alta definição ou participar de uma videochamada de trabalho com a mesma qualidade que teria em casa. Esse cenário, que parecia ficção científica há poucos anos, acaba de se tornar realidade para os passageiros da Copa Airlines, companhia aérea do Panamá que se tornou a primeira da América Latina a equipar sua frota com o sistema de internet via satélite Starlink, desenvolvido pela SpaceX, empresa do empresário Elon Musk.

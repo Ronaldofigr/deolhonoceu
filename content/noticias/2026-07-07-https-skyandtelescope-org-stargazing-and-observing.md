@@ -8,6 +8,8 @@ sourceType: "sci"
 sourceUrl: "https://skyandtelescope.org/stargazing-and-observing/celestial-objects-to-watch/meet-constellations/meet-the-cygnus-the-high-flying-swan/"
 tags: ["constelações", "astronomia", "mitologia", "céu noturno", "Via Láctea"]
 date: "2026-07-07"
+image: "https://apod.nasa.gov/apod/image/2205/M87bh_EHT_2629.jpg"
+imageCredit: "NASA"
 ---
 
 No coração do céu de verão do hemisfério norte, uma figura majestuosa paira sobre nossas cabeças: Cygnus, o Cisne. Diferente de muitas constelações que exigem muita imaginação para enxergar sua forma, Cygnus realmente parece com o animal que representa. Suas estrelas formam um padrão em cruz alongada — tão evidente que os astrônomos também chamam essa figura de a 'Cruz do Norte'. Imagine um cisne em pleno voo com as asas abertas, o pescoço esticado rumo ao sul do céu: é exatamente isso que você encontra ao olhar para cima em uma noite clara de agosto.

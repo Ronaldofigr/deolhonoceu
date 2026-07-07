@@ -8,6 +8,8 @@ sourceType: "nasa"
 sourceUrl: "https://science.nasa.gov/missions/hubble/nasas-hubble-spots-star-spangled-cosmic-scene/"
 tags: ["Hubble", "aglomerado globular", "Messier 3", "estrelas", "astronomia"]
 date: "2026-07-04"
+image: "https://apod.nasa.gov/apod/image/2104/M8-M20_GabrielSantos_APOD.jpg"
+imageCredit: "Gabriel Rodrigues Santos"
 ---
 
 Imagine uma bola de natal cósmica, repleta de centenas de milhares de luzes coloridas espalhadas no espaço. É exatamente isso que o telescópio espacial Hubble, da NASA, capturou ao fotografar o aglomerado globular conhecido como Messier 3, ou simplesmente M3. A imagem revela mais de 500 mil estrelas brilhando juntas, em tons de vermelho, branco e azul, formando uma das cenas mais deslumbrantes já registradas no universo.

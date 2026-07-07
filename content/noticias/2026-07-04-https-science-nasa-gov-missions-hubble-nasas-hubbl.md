@@ -8,6 +8,8 @@ sourceType: "nasa"
 sourceUrl: "https://science.nasa.gov/missions/hubble/nasas-hubble-spies-stellar-sparkler-for-july-4th/"
 tags: ["Hubble", "estrelas", "aglomerado estelar", "NASA", "astronomia"]
 date: "2026-07-04"
+image: "https://apod.nasa.gov/apod/image/2107/sh2_101_04.jpg"
+imageCredit: "Carlos Uriarte"
 ---
 
 Imagine segurar uma estrelinha de festa no meio de uma noite sem lua e observar as faíscas coloridas explodindo em todas as direções. É exatamente essa sensação que a mais recente imagem do telescópio espacial Hubble, da NASA, evoca em quem a contempla. Capturada em clima de celebração, a fotografia mostra um aglomerado de estrelas cintilando em tons de vermelho, branco e azul — as mesmas cores de uma bandeira festiva — espalhadas pelo fundo escuro e profundo do universo.

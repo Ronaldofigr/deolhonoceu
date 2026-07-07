@@ -6,6 +6,8 @@ categoryEn: "Astrophysics"
 type: "concept"
 readingTime: 3
 date: "2026-07-04"
+image: "https://apod.nasa.gov/apod/image/2109/241_lorand_fenyes_bubble_m52.jpg"
+imageCredit: "Lorand Fenyes"
 ---
 
 Imagine apertar duas bolas de massinha com tanta força que elas se fundem em uma única bola maior. Algo parecido — mas infinitamente mais poderoso — acontece no interior das estrelas a cada fração de segundo. Esse processo se chama fusão nuclear, e é ele o responsável por toda a luz e o calor que o Sol despeja sobre a Terra há cerca de 4,6 bilhões de anos. Sem ele, não haveria vida, oceanos, nem o céu azul que vemos todos os dias.

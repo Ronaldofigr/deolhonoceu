@@ -6,6 +6,8 @@ categoryEn: "Physics and Cosmology"
 type: "concept"
 readingTime: 3
 date: "2026-07-04"
+image: "https://apod.nasa.gov/apod/image/2001/Hyades_Mtanous_1998.jpg"
+imageCredit: "Jose Mtanous"
 ---
 
 Imagine que você está parado em uma plataforma de trem e vê outro trem passar a toda velocidade. Para você, aquele trem vai rápido. Mas para quem está dentro dele, é você que está se afastando. Essa ideia de que o movimento é sempre relativo ao observador existia desde Galileu. O que Albert Einstein fez em 1905, com apenas 26 anos, foi acrescentar uma reviravolta desconcertante: existe uma coisa no universo que não é relativa a absolutamente nada — a velocidade da luz. Ela é sempre a mesma para qualquer observador, em qualquer situação. E essa constatação aparentemente simples quebrou tudo o que achávamos saber sobre espaço e tempo.

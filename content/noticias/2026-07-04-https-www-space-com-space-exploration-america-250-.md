@@ -8,6 +8,8 @@ sourceType: "sci"
 sourceUrl: "https://www.space.com/space-exploration/america-250-from-1776-to-the-moon-and-beyond-a-space-com-series"
 tags: ["exploração espacial", "NASA", "história científica"]
 date: "2026-07-04"
+image: "https://apod.nasa.gov/apod/image/2105/WardTLE2021c.jpg"
+imageCredit: "Barden Ridge Observatory"
 ---
 
 Quando os Estados Unidos declararam independência em 1776, a ideia de que seres humanos pudessem viajar para além da atmosfera terrestre era pura fantasia. Naquela época, os maiores avanços tecnológicos eram os moinhos a vapor e as primeiras máquinas industriais. Dois séculos e meio depois, o mesmo país que nasceu em meio a mosquetes e carroças colocou homens na Lua, lançou sondas que hoje vagam além dos limites do nosso sistema solar e opera uma estação espacial habitada continuamente há mais de duas décadas.

@@ -8,6 +8,8 @@ sourceType: "nasa"
 sourceUrl: "https://science.nasa.gov/missions/hubble/nasas-hubble-spies-stellar-sparkler-for-july-4th/"
 tags: ["Hubble", "estrelas", "astronomia"]
 date: "2026-07-04"
+image: "https://apod.nasa.gov/apod/image/2005/JupiterIR_Gemini_1400.jpg"
+imageCredit: "NASA"
 ---
 
 Imagine segurar um sparkler — aquele bastãozinho de festa junina que solta faíscas brilhantes em todas as direções — e agitá-lo no escuro. Agora imagine que essas faíscas são estrelas reais, espalhadas pelo cosmos a distâncias inimagináveis. É exatamente essa a sensação transmitida pela nova imagem capturada pelo telescópio espacial Hubble, da NASA, que registrou um campo estelar repleto de pontos luminosos nas cores vermelho, branco e azul.

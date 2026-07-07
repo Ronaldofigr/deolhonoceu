@@ -8,6 +8,8 @@ sourceType: "sci"
 sourceUrl: "https://www.space.com/space-exploration/launches-spacecraft/spacex-falcon-9-transporter-17-rideshare-launch-81-satellites"
 tags: ["SpaceX", "Falcon 9", "satélites", "órbita", "lançamento espacial"]
 date: "2026-07-07"
+image: "https://apod.nasa.gov/apod/image/1808/m2018_08_06Adp.jpg"
+imageCredit: "D. Peach"
 ---
 
 Imagine colocar 81 passageiros dentro de um único ônibus e enviá-los todos ao mesmo tempo para destinos no céu. É exatamente isso que a SpaceX fez na madrugada de 7 de julho, quando seu foguete Falcon 9 decolou da Califórnia carregando 81 satélites a bordo, numa missão chamada de 'rideshare' — ou, em português, uma espécie de carona compartilhada no espaço.

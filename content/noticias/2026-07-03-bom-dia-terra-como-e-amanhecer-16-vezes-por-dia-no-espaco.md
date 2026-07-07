@@ -8,6 +8,8 @@ sourceType: "nasa"
 sourceUrl: "https://www.nasa.gov/image-article/good-morning-earth/"
 tags: ["ISS", "NASA", "astronautas", "órbita", "Terra"]
 date: "2026-07-03"
+image: "https://apod.nasa.gov/apod/image/1912/M33-HaLRGB-RayLiao.jpg"
+imageCredit: "Rui Liao"
 ---
 
 Imagine acordar de manhã, tomar um café, e antes do almoço já ter visto o Sol nascer seis vezes. Parece impossível aqui na Terra, mas é exatamente a rotina dos astronautas a bordo da Estação Espacial Internacional (ISS). Em 26 de junho de 2026, o astronauta norte-americano Chris Williams registrou uma dessas cenas em uma fotografia deslumbrante: um amanhecer visto do espaço, com a curvatura do planeta ao fundo e os primeiros raios de luz dourada cortando a escuridão do cosmos.

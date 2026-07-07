@@ -8,6 +8,8 @@ sourceType: "nasa"
 sourceUrl: "https://science.nasa.gov/missions/hubble/nasas-hubble-captures-crimson-cloud-sparkling-with-white-blue-stars/"
 tags: ["Hubble", "nebulosa", "formação estelar", "NASA", "estrelas"]
 date: "2026-07-03"
+image: "https://apod.nasa.gov/apod/image/1806/MarsDustStorm_Hubble_3000.jpg"
+imageCredit: "NASA"
 ---
 
 Imagine mergulhar em uma pintura abstrata gigante, onde manchas vermelhas profundas se misturam a faíscas de luz branca e azul intensa. É exatamente essa a sensação ao contemplar a mais recente imagem capturada pelo telescópio espacial Hubble, da NASA. A foto registra uma vasta nuvem de gás e poeira cósmica banhada em tons carmesins, onde estrelas jovens e energéticas cintilam como diamantes espalhados sobre veludo vermelho.

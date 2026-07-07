@@ -8,6 +8,8 @@ sourceType: "nasa"
 sourceUrl: "https://www.nasa.gov/image-article/good-morning-earth/"
 tags: ["ISS", "NASA", "espaço"]
 date: "2026-07-02"
+image: "https://apod.nasa.gov/apod/image/2207/a11pan1040226lftsm.jpg"
+imageCredit: "NASA"
 ---
 
 Imagine acordar e ver o sol nascer 16 vezes em um único dia. Isso é a rotina dos astronautas a bordo da Estação Espacial Internacional (ISS), o laboratório orbital que orbita a Terra a cerca de 400 quilômetros de altitude. O astronauta da NASA Chris Williams registrou em foto um desses espetaculares amanheceres em 26 de junho de 2026, revelando uma visão que pouquíssimos seres humanos já tiveram o privilégio de contemplar.

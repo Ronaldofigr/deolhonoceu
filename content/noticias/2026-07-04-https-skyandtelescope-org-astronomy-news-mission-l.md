@@ -8,6 +8,8 @@ sourceType: "sci"
 sourceUrl: "https://skyandtelescope.org/astronomy-news/mission-launches-to-rescue-swift-observatory/"
 tags: ["Swift Observatory", "astrofísica", "órbita terrestre baixa", "telescópio espacial", "missão de resgate"]
 date: "2026-07-04"
+image: "https://apod.nasa.gov/apod/image/1806/MilkyWayStromatolites_Zhang_1587.jpg"
+imageCredit: "Jingyi Zhang"
 ---
 
 Imagine um vigia incansável que patrulha o céu há duas décadas, alertando cientistas do mundo inteiro sempre que algo explosivo e misterioso acontece no universo. Esse é o Observatório Swift, um telescópio espacial da NASA lançado em 2004 com uma missão especial: detectar os chamados Gamma-Ray Bursts (GRBs), ou seja, explosões de raios gama — os eventos mais energéticos conhecidos no cosmos, capazes de liberar em segundos mais energia do que o Sol emite em toda a sua vida. O Swift foi projetado para girar rapidamente sobre si mesmo e apontar seus instrumentos para essas explosões em menos de um minuto, funcionando como um fotógrafo de reflexos rápidos pronto para capturar flashes cósmicos fugazes.

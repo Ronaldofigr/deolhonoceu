@@ -6,6 +6,8 @@ categoryEn: "Astrophysics"
 type: "concept"
 readingTime: 3
 date: "2026-07-03"
+image: "https://apod.nasa.gov/apod/image/2411/Ldn1355HelpingHandFR2048.png"
+imageCredit: "Francesco Radici"
 ---
 
 Imagine que você tem duas bolinhas de gude que se repelem com força quando se aproximam — como dois ímãs com o mesmo polo. Agora imagine apertar essas bolinhas com uma pressão tão absurda que elas se fundem em uma só, liberando uma explosão de energia. É exatamente isso que acontece no interior do Sol e de todas as estrelas do universo. Esse processo se chama fusão nuclear, e ele é responsável por toda a luz e o calor que tornam a vida possível aqui na Terra.

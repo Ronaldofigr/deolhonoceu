@@ -6,6 +6,8 @@ categoryEn: "Physics and Cosmology"
 type: "concept"
 readingTime: 3
 date: "2026-07-02"
+image: "https://apod.nasa.gov/apod/image/2606/JupiterPersonVenus_Nikodem_960.jpg"
+imageCredit: "Marek Nikodem  (PPSAE)"
 ---
 
 Imagine que você e um amigo combinam de se encontrar ao meio-dia em uma praça. Parece simples, certo? Mas e se o seu amigo estivesse viajando a uma velocidade próxima à da luz? Para ele, o meio-dia poderia chegar em um momento completamente diferente do seu. Isso não é ficção científica — é o coração da Teoria da Relatividade Especial, proposta por Albert Einstein em 1905. Ela revolucionou nossa forma de entender o espaço, o tempo e a realidade em si, derrubando ideias que pareciam absolutamente óbvias há séculos.

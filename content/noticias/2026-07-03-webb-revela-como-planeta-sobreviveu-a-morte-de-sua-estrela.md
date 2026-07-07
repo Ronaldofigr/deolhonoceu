@@ -8,6 +8,8 @@ sourceType: "esa"
 sourceUrl: "https://www.esa.int/Science_Exploration/Space_Science/Webb/Webb_studies_how_a_planet_survived_the_death_of_its_star"
 tags: ["exoplanetas", "anã branca", "James Webb", "sistema solar", "estrelas"]
 date: "2026-07-03"
+image: "https://apod.nasa.gov/apod/image/2109/AuroraIceland_Necchi_1280.jpg"
+imageCredit: "Davide Necchi"
 ---
 
 Imagine que o Sol morre. Após bilhões de anos brilhando, ele se expande em uma gigante vermelha, engolindo Mercúrio, Vênus e possivelmente a própria Terra, antes de colapsar em uma bola densa e quente chamada anã branca — um objeto do tamanho da Terra, mas com a massa do Sol. O que acontece com os planetas que sobrevivem a esse caos? O Telescópio Espacial James Webb acaba de nos dar a primeira resposta concreta, ao estudar em detalhe um sistema a cerca de 80 anos-luz de distância.

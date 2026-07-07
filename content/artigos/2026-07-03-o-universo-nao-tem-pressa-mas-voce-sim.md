@@ -6,6 +6,8 @@ categoryEn: "Physics & Cosmos"
 type: "concept"
 readingTime: 3
 date: "2026-07-03"
+image: "https://apod.nasa.gov/apod/image/1911/StarTrailsOnRedPlanet2048.jpg"
+imageCredit: "Dengyi Huang"
 ---
 
 Imagine que você e um amigo combinam de se encontrar numa praça. Você chega de bicicleta, ele a pé. Para você, as casas da rua parecem passar rápido; para ele, devagar. Cada um experimenta o movimento de forma diferente — e isso é completamente normal. Agora imagine que, em vez de velocidade, o que muda entre vocês é o próprio tempo. Parece loucura, mas foi exatamente isso que Albert Einstein propôs em 1905, aos 26 anos, com a chamada Teoria da Relatividade Especial. A ideia central é tão simples quanto perturbadora: o tempo e o espaço não são absolutos e imutáveis como um palco fixo onde a vida acontece. Eles se dobram, esticam e comprimem dependendo de como você se move.

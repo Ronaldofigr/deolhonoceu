@@ -8,6 +8,8 @@ sourceType: "nasa"
 sourceUrl: "https://science.nasa.gov/missions/hubble/nasas-hubble-captures-crimson-cloud-sparkling-with-white-blue-stars/"
 tags: ["Hubble", "nebulosa", "formação estelar"]
 date: "2026-07-04"
+image: "https://apod.nasa.gov/apod/image/2111/astronomy101_hk_750.jpg"
+imageCredit: "HK (The League of Lost Causes)"
 ---
 
 Imagine um céu noturno onde, em vez de escuridão, você vê uma enorme nuvem vermelha iluminada por centenas de estrelas brilhantes — algumas tão azuis e brancas que parecem diamantes espalhados sobre veludo escarlate. É exatamente isso que o telescópio espacial Hubble, da NASA, capturou em sua mais recente imagem deslumbrante: uma nebulosa, ou seja, uma vasta nuvem de gás e poeira no espaço, colorida de carmesim e pontilhada por estrelas jovens e intensamente luminosas.

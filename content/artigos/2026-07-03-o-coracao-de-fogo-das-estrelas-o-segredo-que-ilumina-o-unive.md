@@ -6,6 +6,8 @@ categoryEn: "Astrophysics"
 type: "concept"
 readingTime: 3
 date: "2026-07-03"
+image: "https://apod.nasa.gov/apod/image/1810/CTA_inauguratedSarahBrands.jpg"
+imageCredit: "Sarah Brands"
 ---
 
 Imagine que você tem duas bolinhas de gude e quer juntá-las para formar uma só. Em condições normais, isso seria simples. Agora imagine que essas bolinhas se repelem com uma força absurda, como dois ímãs com o mesmo polo se afastando com violência. Para forçar a união, você precisaria de uma pressão e um calor inimagináveis. É exatamente isso que acontece no núcleo do Sol e de todas as estrelas: a fusão nuclear. Lá, átomos de hidrogênio — o elemento mais simples do universo — são comprimidos com tanta força que se fundem, formando um novo elemento chamado hélio. Esse processo libera uma quantidade colossal de energia, que viaja por milhões de quilômetros até chegar à sua pele como um raio de sol numa tarde de verão.

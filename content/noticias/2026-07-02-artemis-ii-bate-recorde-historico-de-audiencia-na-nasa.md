@@ -8,6 +8,8 @@ sourceType: "nasa"
 sourceUrl: "https://www.nasa.gov/general/nasas-artemis-ii-breaks-agency-streaming-record/"
 tags: ["Artemis II", "NASA", "Lua", "exploração espacial", "transmissão ao vivo"]
 date: "2026-07-02"
+image: "https://apod.nasa.gov/apod/image/2604/GHR3777LunaPleiadi_101400.jpg"
+imageCredit: "Giorgia Hofer"
 ---
 
 Imagine assistir ao lançamento de um foguete rumo à Lua com outros 149 milhões de pessoas ao redor do mundo — é exatamente isso que aconteceu com a missão Artemis II da NASA. A cobertura ao vivo da missão quebrou todos os recordes anteriores de audiência da agência espacial americana, consolidando o retorno humano à Lua como um dos eventos mais acompanhados da história recente da ciência.

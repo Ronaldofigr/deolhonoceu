@@ -8,6 +8,8 @@ sourceType: "esa"
 sourceUrl: "https://www.esa.int/Science_Exploration/Space_Science/XMM-Newton/XMM-Newton_helps_revise_distance_to_outer_spiral_arms"
 tags: ["Via Láctea", "astronomia", "supernovas", "raios-X", "galáxia"]
 date: "2026-07-03"
+image: "https://apod.nasa.gov/apod/image/2006/Eclipse-under-bamboos.jpg"
+imageCredit: "Somak Raychaudhury"
 ---
 
 Imagine tentar medir o tamanho de uma floresta enquanto você está dentro dela, cercado por árvores em todas as direções. É exatamente esse o desafio que os astrônomos enfrentam ao tentar mapear a Via Láctea: estamos dentro da nossa própria galáxia e não podemos simplesmente dar um passo atrás para vê-la de cima. Por isso, medir distâncias dentro da galáxia é uma das tarefas mais difíceis e importantes da astronomia moderna.

@@ -6,6 +6,8 @@ categoryEn: "Physics and Cosmology"
 type: "concept"
 readingTime: 3
 date: "2026-07-04"
+image: "https://apod.nasa.gov/apod/image/1811/JupiterSwirls_JunoBrealey_3709.jpg"
+imageCredit: "NASA"
 ---
 
 Imagine que você está parado em uma plataforma de trem e vê dois raios caírem simultaneamente, um à sua esquerda e outro à sua direita. Agora imagine alguém dentro de um trem em movimento passando por você exatamente nesse instante. Para essa pessoa, os dois raios não cairão ao mesmo tempo — ela verá primeiro o raio na direção para a qual o trem avança. Isso não é uma ilusão ou erro de percepção: os dois observadores estão igualmente certos. Essa é a essência perturbadora da Teoria da Relatividade Especial, publicada por Albert Einstein em 1905: o tempo e o espaço não são palcos fixos e universais onde a vida acontece, mas sim algo flexível, que muda dependendo de como e com que velocidade você se move.
