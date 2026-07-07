@@ -7,7 +7,7 @@ type: "concept"
 readingTime: 3
 date: "2026-07-02"
 image: "https://apod.nasa.gov/apod/image/1907/LightningVolcano_Montufar_1440.jpg"
-imageCredit: "Sergio Mont�far   (Pinceladas Nocturnas)"
+imageCredit: "Sergio Montúfar   (Pinceladas Nocturnas)"
 ---
 
 Imagine que você e um amigo combinam de se encontrar numa praça. Você vai de bicicleta, ele vai a pé. Para você, as casas da rua parecem passar rápido; para ele, devagar. Cada um experimenta a mesma rua de um jeito diferente, dependendo de como se move. Einstein, em 1905, percebeu que o universo inteiro funciona assim — só que de um jeito muito mais radical e surpreendente. A isso ele chamou de Teoria da Relatividade Especial.
