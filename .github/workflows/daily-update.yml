@@ -44,7 +44,15 @@ jobs:
           git config user.email "bot@deolhonoceu.vercel.app"
           git add content/
           git diff --staged --quiet || git commit -m "🔭 Conteúdo automático: $(date '+%Y-%m-%d')"
-          git pull --rebase origin main
+          git fetch origin main
+          if ! git rebase origin/main; then
+            echo "⚠️  Conflito detectado (duas execuções geraram o mesmo item). Mantendo a versão já publicada."
+            git diff --name-only --diff-filter=U | while read -r f; do
+              git checkout --theirs -- "$f"
+              git add "$f"
+            done
+            GIT_EDITOR=true git rebase --continue
+          fi
           git push
 
   build-and-deploy:
