@@ -102,6 +102,18 @@ export default function ArchiveNewsClient({ news }: { news: NewsItem[] }) {
                     <span className={`news-source ${item.sourceType}`}>{item.source}</span>
                     <span className="news-date">{fmtDate(item.date, lang)}</span>
                   </div>
+                  {item.image && (
+                    <div className="news-card-image-wrap">
+                      <img
+                        src={item.image}
+                        alt={lang === 'pt' ? item.title : (item.titleEn || item.title)}
+                        className="news-card-image"
+                        loading="lazy"
+                        onError={(e) => { (e.target as HTMLImageElement).parentElement!.style.display = 'none' }}
+                      />
+                      {item.imageCredit && <span className="news-card-image-credit">Crédito: {item.imageCredit}</span>}
+                    </div>
+                  )}
                   <h3 className="news-title">{lang === 'pt' ? item.title : (item.titleEn || item.title)}</h3>
                   <p className="news-excerpt">{lang === 'pt' ? item.excerpt : (item.excerptEn || item.excerpt)}</p>
 
