@@ -39,6 +39,70 @@ TOPICS = [
     "o que é a sequência principal das estrelas no diagrama HR",
 ]
 
+def strip_html(s):
+    return re.sub(r'<[^>]+>', '', s or '').strip()
+
+def extract_rss_image(e):
+    """Tenta achar uma imagem já embutida no próprio item do RSS (enclosure, media:content, ou <img> no HTML)."""
+    media = e.get("media_content") or e.get("media_thumbnail")
+    if media and isinstance(media, list) and media[0].get("url"):
+        return media[0]["url"]
+    for l in e.get("links", []):
+        if l.get("rel") == "enclosure" and "image" in l.get("type", ""):
+            return l.get("href")
+    html = e.get("summary", "") or e.get("description", "")
+    m = re.search(r'<img[^>]+src=["\']([^"\']+)["\']', html)
+    if m:
+        return m.group(1)
+    return None
+
+def find_image_nasa(query):
+    """Busca uma imagem de domínio público no acervo oficial da NASA (sem chave de API)."""
+    try:
+        resp = requests.get("https://images-api.nasa.gov/search",
+                             params={"q": query, "media_type": "image"}, timeout=15)
+        resp.raise_for_status()
+        items = resp.json().get("collection", {}).get("items", [])
+        for it in items:
+            links = it.get("links", [])
+            data = it.get("data", [{}])[0]
+            img = next((l["href"] for l in links if l.get("render") == "image"), None)
+            if img:
+                center = data.get("center", "")
+                credit = f"NASA/{center}" if center and center != "NASA" else "NASA"
+                return {"url": img, "credit": credit}
+    except Exception as e:
+        print(f"    ⚠️  NASA Images: {e}")
+    return None
+
+def find_image_wikimedia(query):
+    """Busca uma imagem licenciada no Wikimedia Commons, com crédito do autor extraído automaticamente."""
+    try:
+        resp = requests.get("https://commons.wikimedia.org/w/api.php", params={
+            "action": "query", "format": "json", "generator": "search",
+            "gsrsearch": query, "gsrnamespace": 6, "gsrlimit": 1,
+            "prop": "imageinfo", "iiprop": "url|extmetadata", "iiurlwidth": 1200,
+        }, timeout=15, headers={"User-Agent": "DeOlhoNoCeu/1.0 (site automatizado de astronomia)"})
+        resp.raise_for_status()
+        pages = resp.json().get("query", {}).get("pages", {})
+        for _, page in pages.items():
+            info = page.get("imageinfo", [{}])[0]
+            url = info.get("thumburl") or info.get("url")
+            if not url:
+                continue
+            meta = info.get("extmetadata", {})
+            artist = strip_html(meta.get("Artist", {}).get("value", ""))
+            license_name = meta.get("LicenseShortName", {}).get("value", "")
+            credit_parts = [p for p in [artist, "Wikimedia Commons", license_name] if p]
+            return {"url": url, "credit": " / ".join(credit_parts)}
+    except Exception as e:
+        print(f"    ⚠️  Wikimedia: {e}")
+    return None
+
+def find_image(query):
+    """Ordem de prioridade: acervo NASA (domínio público) → Wikimedia Commons (licenciado)."""
+    return find_image_nasa(query) or find_image_wikimedia(query)
+
 def slug(text):
     text = text.lower()
     for a,b in [('áàãâä','a'),('éèê','e'),('íìî','i'),('óòõôö','o'),('úùû','u'),('ç','c')]:
@@ -71,7 +135,8 @@ def fetch_rss():
                 raw = re.sub(r'<[^>]+>', '', e.get("summary","") or e.get("description","")).strip()
                 entries.append({"source": src["label"], "source_type": src["type"],
                                 "url": e.get("link","#"), "title_original": e.get("title",""),
-                                "excerpt_original": raw[:600], "date": today()})
+                                "excerpt_original": raw[:600], "date": today(),
+                                "image_from_rss": extract_rss_image(e)})
         except Exception as ex:
             print(f"  ⚠️  {src['name']}: {ex}")
     return entries
@@ -115,6 +180,14 @@ Responda SOMENTE com JSON válido:
             data = json.loads(m.group())
             data.update({"source": entry["source"], "sourceType": entry["source_type"],
                          "sourceUrl": entry["url"], "date": entry["date"]})
+            if entry.get("image_from_rss"):
+                data["image"] = entry["image_from_rss"]
+                data["imageCredit"] = entry["source"]
+            else:
+                img = find_image(entry["title_original"] or data.get("title", ""))
+                if img:
+                    data["image"] = img["url"]
+                    data["imageCredit"] = img["credit"]
             return data
     except Exception as e:
         print(f"  ⚠️  {e}")
@@ -125,6 +198,10 @@ def save_news(data, key):
     folder = BASE_DIR / "content" / "noticias"
     folder.mkdir(parents=True, exist_ok=True)
     tags = "[" + ", ".join(f'"{t}"' for t in data.get("tags",[])) + "]"
+    image_fields = ""
+    if data.get("image"):
+        img_credit = (data.get("imageCredit") or "").replace('"', "'")
+        image_fields = f'image: "{data["image"]}"\nimageCredit: "{img_credit}"\n'
     md = f"""---
 title: "{data['title']}"
 titleEn: "{data['titleEn']}"
@@ -135,7 +212,7 @@ sourceType: "{data['sourceType']}"
 sourceUrl: "{data['sourceUrl']}"
 tags: {tags}
 date: "{data['date']}"
----
+{image_fields}---
 
 {data['content']}
 """
@@ -154,7 +231,13 @@ Responda SOMENTE com JSON válido:
     try:
         raw = call_claude(prompt, max_tokens=1500)
         m = re.search(r'\{[\s\S]+\}', raw)
-        if m: return json.loads(m.group())
+        if m:
+            data = json.loads(m.group())
+            img = find_image(topic)
+            if img:
+                data["image"] = img["url"]
+                data["imageCredit"] = img["credit"]
+            return data
     except Exception as e:
         print(f"  ⚠️  {e}")
     return None
@@ -163,6 +246,10 @@ def save_article(data, topic_key):
     s = f"{today()}-{topic_key}"
     folder = BASE_DIR / "content" / "artigos"
     folder.mkdir(parents=True, exist_ok=True)
+    image_fields = ""
+    if data.get("image"):
+        img_credit = (data.get("imageCredit") or "").replace('"', "'")
+        image_fields = f'image: "{data["image"]}"\nimageCredit: "{img_credit}"\n'
     md = f"""---
 title: "{data['title']}"
 titleEn: "{data['titleEn']}"
@@ -171,7 +258,7 @@ categoryEn: "{data['categoryEn']}"
 type: "concept"
 readingTime: {data.get('readingTime',3)}
 date: "{today()}"
----
+{image_fields}---
 
 {data['content']}
 """
