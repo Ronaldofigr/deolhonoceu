@@ -110,6 +110,18 @@ export default function ArchiveArticlesClient({ articles }: { articles: Article[
                     </span>
                     <span style={{ color: 'var(--text-muted)', fontSize: '0.6rem' }}>{cat} · {fmtDate(item.date, lang)}</span>
                   </div>
+                  {item.image && (
+                    <div className="news-card-image-wrap">
+                      <img
+                        src={item.image}
+                        alt={title}
+                        className="news-card-image"
+                        loading="lazy"
+                        onError={(e) => { (e.target as HTMLImageElement).parentElement!.style.display = 'none' }}
+                      />
+                      {item.imageCredit && <span className="news-card-image-credit">Crédito: {item.imageCredit}</span>}
+                    </div>
+                  )}
                   <h3 className="article-title">{title}</h3>
                   <div className="article-reading-time">☕ {item.readingTime} {t.minRead}</div>
                   <div className="article-body">
