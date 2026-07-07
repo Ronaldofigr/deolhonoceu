@@ -61,9 +61,9 @@ def process_folder(folder, query_fields):
 def main():
     print("🖼️  Backfill de imagens — De Olho no Céu\n")
     print("Notícias:")
-    process_folder("noticias", ["title", "excerpt"])
+    process_folder("noticias", ["title"])
     print("Artigos:")
-    process_folder("artigos", ["title", "category"])
+    process_folder("artigos", ["title"])
     print("✅ Concluído!")
 
 
