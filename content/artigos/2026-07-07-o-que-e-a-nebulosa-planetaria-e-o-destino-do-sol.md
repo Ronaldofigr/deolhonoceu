@@ -6,8 +6,7 @@ categoryEn: "Astronomy"
 type: "concept"
 readingTime: 3
 date: "2026-07-07"
-image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Aprecia%C3%A7%C3%A3o_philosophica_dos_descrobimentos_dos_Portuguezes_e_das_raz%C3%B5es_%28IA_apreciacaophilos00peri%29.pdf/page1-500px-Aprecia%C3%A7%C3%A3o_philosophica_dos_descrobimentos_dos_Portuguezes_e_das_raz%C3%B5es_%28IA_apreciacaophilos00peri%29.pdf.jpg"
-imageCredit: "Periera, João Felix, 1822- [from old catalog] / Wikimedia Commons / Public domain"
+
 ---
 
 Imagine uma vela que queima por bilhões de anos e, no momento final, em vez de simplesmente se apagar, explode em uma nuvem luminosa de cores vibrantes — violeta, azul, vermelho e laranja. É exatamente isso que acontece quando uma estrela como o nosso Sol chega ao fim de sua vida e cria o que os astrônomos chamam de nebulosa planetária. O nome é um pouco enganoso: não tem nada a ver com planetas. O termo surgiu no século XVIII porque, pelo telescópio, essas estruturas redondas e coloridas lembravam os discos dos planetas gigantes. Na prática, são os fantasmas luminosos de estrelas mortas.
