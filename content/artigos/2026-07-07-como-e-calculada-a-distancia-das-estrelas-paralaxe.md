@@ -7,6 +7,8 @@ type: "concept"
 readingTime: 3
 date: "2026-07-07"
 
+image: "https://apod.nasa.gov/apod/image/2401/Sh2_155_4K_5Mb.jpg"
+imageCredit: "Gábor Galambos"
 ---
 
 Feche um olho e aponte o dedo indicador para um objeto distante. Agora troque o olho aberto — sem mover o dedo. Percebeu como ele parece saltar de posição em relação ao fundo? Isso é paralaxe: a mudança aparente de posição de um objeto dependendo de onde você o observa. Seus dois olhos, separados por alguns centímetros, já usam esse princípio para te dar noção de profundidade. Os astrônomos fazem exatamente a mesma coisa, mas com uma escala absurdamente maior: usam a própria órbita da Terra ao redor do Sol como se fosse um par de olhos gigantesco.

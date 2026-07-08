@@ -7,6 +7,8 @@ type: "concept"
 readingTime: 3
 date: "2026-07-07"
 
+image: "https://apod.nasa.gov/apod/image/2308/SeasonSaturnapodacasely.jpg"
+imageCredit: "Andy Casely"
 ---
 
 Imagine uma vela que queima por bilhões de anos e, no momento final, em vez de simplesmente se apagar, explode em uma nuvem luminosa de cores vibrantes — violeta, azul, vermelho e laranja. É exatamente isso que acontece quando uma estrela como o nosso Sol chega ao fim de sua vida e cria o que os astrônomos chamam de nebulosa planetária. O nome é um pouco enganoso: não tem nada a ver com planetas. O termo surgiu no século XVIII porque, pelo telescópio, essas estruturas redondas e coloridas lembravam os discos dos planetas gigantes. Na prática, são os fantasmas luminosos de estrelas mortas.
