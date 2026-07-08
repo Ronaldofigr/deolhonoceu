@@ -6,8 +6,7 @@ categoryEn: "Astronomy"
 type: "concept"
 readingTime: 3
 date: "2026-07-07"
-image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/O_grande_debate_sobre_a_estrutura_do_Universo.pdf/page1-960px-O_grande_debate_sobre_a_estrutura_do_Universo.pdf.jpg"
-imageCredit: "Heber Doust Curtis / Harlow Shapley / Wikimedia Commons / CC BY 4.0"
+
 ---
 
 Imagine uma metrópole com um milhão de habitantes vivendo em um espaço equivalente a algumas dezenas de anos-luz. Agora substitua cada habitante por uma estrela brilhante. Você acabou de visualizar um aglomerado globular — uma das estruturas mais fascinantes e antigas do cosmos. São agrupamentos esféricos de estrelas, tão densamente compactados que, vistos de longe, parecem uma única bola de luz resplandecente. Nossa galáxia, a Via Láctea, possui cerca de 150 desses objetos orbitando como satélites fiéis ao redor do seu centro.
