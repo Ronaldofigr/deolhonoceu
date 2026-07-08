@@ -68,6 +68,38 @@ const T = {
     moonNext: 'Next phase',
     moonEvent: 'Next event',
     moonCultural: "This month's cultural name",
+  },
+  es: {
+    nav: ['Noticias','Artículos','Acerca de'],
+    eyebrow: 'Astronomía y Astrofísica',
+    title: 'Con la Mirada en el',
+    glow: 'Cielo',
+    sub: 'El universo explicado para todos — noticias y descubrimientos en lenguaje simple.',
+    live: 'En vivo',
+    leftTitle: 'Noticias y Descubrimientos',
+    rightTitle: 'Conceptos y Física',
+    readMore: 'Leer artículo completo →',
+    source: 'Fuente original',
+    minRead: 'min de lectura',
+    concept: '★ Concepto',
+    discovery: '☄️ Descubrimiento',
+    noNews: 'Ejecute el script de Python para generar noticias automáticamente.',
+    noArt: 'Ejecute el script de Python para generar artículos automáticamente.',
+    footer: 'Con la Mirada en el Cielo · Contenido generado por IA a partir de fuentes científicas · Actualizado diariamente',
+    about: 'Con la Mirada en el Cielo recopila automáticamente noticias de fuentes como la NASA, la ESA, Space.com y el Centro de Ciencia Viva del Algarve, y usa inteligencia artificial para reescribir cada descubrimiento en lenguaje accesible — sin fórmulas, sin jerga. Todos los días se publican dos artículos conceptuales sobre física y astrofísica.',
+    aboutLabel: 'Sobre el proyecto',
+    less: '↑ Menos',
+    readNews: 'Leer noticia completa →',
+    lessNews: '↑ Contraer',
+    photoWeek: '📷 Imagen de la Semana',
+    photoCredit: 'Crédito',
+    archiveNews: 'Archivo de Noticias',
+    archiveArticles: 'Archivo de Artículos',
+    moonPhase: 'Fase actual',
+    moonIllum: 'iluminada',
+    moonNext: 'Próxima fase',
+    moonEvent: 'Próximo evento',
+    moonCultural: 'Nombre cultural del mes',
   }
 }
 
@@ -85,6 +117,13 @@ const TICKERS = {
     '⚫ Black hole M87* equals 6.5 billion suns in mass',
     '🪐 Saturn would float on water — less dense than it',
     '☀️ Sunlight takes 8 min 20 sec to reach Earth',
+  ],
+  es: [
+    '🌌 La Vía Láctea tiene entre 100 y 400 mil millones de estrellas',
+    '🛰️ El James Webb opera a 1,5 millones de km de la Tierra',
+    '⚫ El agujero negro M87* equivale a 6.500 millones de soles',
+    '🪐 Saturno flotaría en el agua — es menos denso que ella',
+    '☀️ La luz del Sol tarda 8 min 20 s en llegar a la Tierra',
   ]
 }
 
@@ -92,17 +131,27 @@ interface PhotoWeek {
   imageUrl: string
   title: string
   titleEn: string
+  titleEs: string
   caption: string
   captionEn: string
+  captionEs: string
   credit: string
   week: string
 }
 
 function fmtDate(d: string, lang: string) {
   const dt = new Date(d)
-  return lang === 'pt'
-    ? dt.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' })
-    : dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+  if (lang === 'pt') return dt.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' })
+  if (lang === 'es') return dt.toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' })
+  return dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+}
+
+// Escolhe o texto no idioma ativo, com fallback em cascata (es → en → pt)
+// para conteúdo antigo que ainda não tenha tradução em todos os idiomas.
+function pick(lang: string, pt: string, en?: string, es?: string) {
+  if (lang === 'pt') return pt
+  if (lang === 'es') return es || en || pt
+  return en || pt
 }
 
 export default function HomeClient({
@@ -116,7 +165,7 @@ export default function HomeClient({
   photoWeek?: PhotoWeek | null
   moonInfo?: import('@/lib/content').MoonInfo | null
 }) {
-  const [lang, setLang] = useState<'pt' | 'en'>('pt')
+  const [lang, setLang] = useState<'pt' | 'en' | 'es'>('pt')
   const [tick, setTick] = useState(0)
   const [expanded, setExpanded] = useState<string | null>(null)
   const [expandedNews, setExpandedNews] = useState<string | null>(null)
@@ -143,6 +192,7 @@ export default function HomeClient({
         <div className="lang-toggle">
           <button className={`lang-btn ${lang==='pt' ? 'active':''}`} onClick={()=>setLang('pt')}>PT</button>
           <button className={`lang-btn ${lang==='en' ? 'active':''}`} onClick={()=>setLang('en')}>EN</button>
+          <button className={`lang-btn ${lang==='es' ? 'active':''}`} onClick={()=>setLang('es')}>ES</button>
         </div>
       </header>
 
@@ -160,16 +210,16 @@ export default function HomeClient({
           <div className="photo-week-inner">
             <img
               src={photoWeek.imageUrl}
-              alt={lang === 'pt' ? photoWeek.title : photoWeek.titleEn}
+              alt={pick(lang, photoWeek.title, photoWeek.titleEn, photoWeek.titleEs)}
               className="photo-week-img"
               onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
             />
             <div className="photo-week-caption">
               <h3 className="photo-week-title">
-                {lang === 'pt' ? photoWeek.title : photoWeek.titleEn}
+                {pick(lang, photoWeek.title, photoWeek.titleEn, photoWeek.titleEs)}
               </h3>
               <p className="photo-week-text">
-                {lang === 'pt' ? photoWeek.caption : photoWeek.captionEn}
+                {pick(lang, photoWeek.caption, photoWeek.captionEn, photoWeek.captionEs)}
               </p>
               <span className="photo-week-credit">
                 {t.photoCredit}: {photoWeek.credit}
@@ -192,7 +242,7 @@ export default function HomeClient({
           {moonInfo.imagem && (
             <img
               src={moonInfo.imagem}
-              alt={lang === 'pt' ? moonInfo.fase : moonInfo.faseEn}
+              alt={pick(lang, moonInfo.fase, moonInfo.faseEn)}
               className="moon-bar-img"
               onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
             />
@@ -201,7 +251,7 @@ export default function HomeClient({
             <div className="moon-bar-item">
               <span className="moon-bar-label">{t.moonPhase}</span>
               <span className="moon-bar-value">
-                🌙 {lang === 'pt' ? moonInfo.fase : moonInfo.faseEn} · {moonInfo.iluminacao}% {t.moonIllum}
+                🌙 {pick(lang, moonInfo.fase, moonInfo.faseEn)} · {moonInfo.iluminacao}% {t.moonIllum}
               </span>
             </div>
             <div className="moon-bar-item">
@@ -239,7 +289,7 @@ export default function HomeClient({
             ? <p style={{color:'var(--text-muted)',fontSize:'0.85rem',padding:'2rem 0',textAlign:'center'}}>{t.noNews}</p>
             : news.map(item => {
               const isNewsOpen = expandedNews === item.slug
-              const newsBody = lang==='pt' ? item.content : (item.contentEn||item.content)
+              const newsBody = pick(lang, item.content, item.contentEn, item.contentEs) || item.content
               const newsParas = newsBody ? newsBody.split('\n\n').filter(Boolean) : []
               return (
                 <article className="news-card" key={item.slug}>
@@ -251,7 +301,7 @@ export default function HomeClient({
                     <div className="news-card-image-wrap">
                       <img
                         src={item.image}
-                        alt={lang==='pt' ? item.title : (item.titleEn||item.title)}
+                        alt={pick(lang, item.title, item.titleEn, item.titleEs)}
                         className="news-card-image"
                         loading="lazy"
                         onError={(e) => { (e.target as HTMLImageElement).parentElement!.style.display = 'none' }}
@@ -259,8 +309,8 @@ export default function HomeClient({
                       {item.imageCredit && <span className="news-card-image-credit">{t.photoCredit}: {item.imageCredit}</span>}
                     </div>
                   )}
-                  <h2 className="news-title">{lang==='pt' ? item.title : (item.titleEn||item.title)}</h2>
-                  <p className="news-excerpt">{lang==='pt' ? item.excerpt : (item.excerptEn||item.excerpt)}</p>
+                  <h2 className="news-title">{pick(lang, item.title, item.titleEn, item.titleEs)}</h2>
+                  <p className="news-excerpt">{pick(lang, item.excerpt, item.excerptEn, item.excerptEs)}</p>
 
                   {/* Texto completo expansível */}
                   {newsParas.length > 0 && (
@@ -307,9 +357,9 @@ export default function HomeClient({
             ? <p style={{color:'var(--text-muted)',fontSize:'0.85rem',padding:'2rem 0',textAlign:'center'}}>{t.noArt}</p>
             : articles.map(item => {
               const isOpen = expanded === item.slug
-              const body = lang==='pt' ? item.content : (item.contentEn||item.content)
-              const title = lang==='pt' ? item.title : (item.titleEn||item.title)
-              const cat = lang==='pt' ? item.category : (item.categoryEn||item.category)
+              const body = pick(lang, item.content, item.contentEn, item.contentEs) || item.content
+              const title = pick(lang, item.title, item.titleEn, item.titleEs)
+              const cat = pick(lang, item.category, item.categoryEn, item.categoryEs)
               const paras = body.split('\n\n').filter(Boolean)
               return (
                 <article className="article-card" key={item.slug}>
