@@ -6,8 +6,7 @@ categoryEn: "Astronomy"
 type: "concept"
 readingTime: 3
 date: "2026-07-07"
-image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/A_poesia_como_militancia%2C_Hist%C3%B3ria_no_Museu_da_Pessoa_%28103913%29.pdf/page1-960px-A_poesia_como_militancia%2C_Hist%C3%B3ria_no_Museu_da_Pessoa_%28103913%29.pdf.jpg"
-imageCredit: "Museu da Pessoa / Wikimedia Commons / CC BY-SA 4.0"
+
 ---
 
 Imagine que você está sentado ao redor de uma fogueira numa noite fria. Se você se aproxima demais, o calor fica insuportável. Se você se afasta muito, o frio toma conta. Mas existe aquela distância perfeita — nem quente demais, nem fria demais — onde você se sente completamente confortável. As estrelas funcionam exatamente da mesma forma com seus planetas. Os astrônomos chamam essa faixa de distância ideal de "zona habitável", e é nela que a vida, pelo menos como a conhecemos, tem chances reais de existir.
