@@ -25,26 +25,43 @@ const T = {
     concept: '★ Concept',
     discovery: '☄️ Discovery',
   },
+  es: {
+    title: 'Archivo de Artículos',
+    back: '← Volver al inicio',
+    readMore: 'Leer artículo completo →',
+    less: '↑ Menos',
+    empty: 'No se encontraron artículos.',
+    minRead: 'min de lectura',
+    concept: '★ Concepto',
+    discovery: '☄️ Descubrimiento',
+  },
 }
 
 const MONTHS_PT = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro']
 const MONTHS_EN = ['January','February','March','April','May','June','July','August','September','October','November','December']
+const MONTHS_ES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']
 
-function monthLabel(key: string, lang: 'pt' | 'en') {
+function monthLabel(key: string, lang: 'pt' | 'en' | 'es') {
   const [y, m] = key.split('-').map(Number)
-  const months = lang === 'pt' ? MONTHS_PT : MONTHS_EN
-  return lang === 'pt' ? `${months[m - 1]} de ${y}` : `${months[m - 1]} ${y}`
+  const months = lang === 'pt' ? MONTHS_PT : lang === 'es' ? MONTHS_ES : MONTHS_EN
+  return lang === 'en' ? `${months[m - 1]} ${y}` : `${months[m - 1]} de ${y}`
 }
 
 function fmtDate(d: string, lang: string) {
   const dt = new Date(d)
-  return lang === 'pt'
-    ? dt.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' })
-    : dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+  if (lang === 'pt') return dt.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' })
+  if (lang === 'es') return dt.toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' })
+  return dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+}
+
+function pick(lang: string, pt: string, en?: string, es?: string) {
+  if (lang === 'pt') return pt
+  if (lang === 'es') return es || en || pt
+  return en || pt
 }
 
 export default function ArchiveArticlesClient({ articles }: { articles: Article[] }) {
-  const [lang, setLang] = useState<'pt' | 'en'>('pt')
+  const [lang, setLang] = useState<'pt' | 'en' | 'es'>('pt')
   const [expanded, setExpanded] = useState<string | null>(null)
   const t = T[lang]
 
@@ -67,6 +84,7 @@ export default function ArchiveArticlesClient({ articles }: { articles: Article[
         <div className="lang-toggle">
           <button className={`lang-btn ${lang === 'pt' ? 'active' : ''}`} onClick={() => setLang('pt')}>PT</button>
           <button className={`lang-btn ${lang === 'en' ? 'active' : ''}`} onClick={() => setLang('en')}>EN</button>
+          <button className={`lang-btn ${lang === 'es' ? 'active' : ''}`} onClick={() => setLang('es')}>ES</button>
         </div>
       </header>
 
@@ -98,9 +116,9 @@ export default function ArchiveArticlesClient({ articles }: { articles: Article[
 
             {groups[key].map(item => {
               const isOpen = expanded === item.slug
-              const body = lang === 'pt' ? item.content : (item.contentEn || item.content)
-              const title = lang === 'pt' ? item.title : (item.titleEn || item.title)
-              const cat = lang === 'pt' ? item.category : (item.categoryEn || item.category)
+              const body = pick(lang, item.content, item.contentEn, item.contentEs) || item.content
+              const title = pick(lang, item.title, item.titleEn, item.titleEs)
+              const cat = pick(lang, item.category, item.categoryEn, item.categoryEs)
               const paras = body.split('\n\n').filter(Boolean)
               return (
                 <article className="article-card" key={item.slug}>
