@@ -21,26 +21,41 @@ const T = {
     source: 'Original source',
     empty: 'No news found.',
   },
+  es: {
+    title: 'Archivo de Noticias',
+    back: '← Volver al inicio',
+    readMore: 'Leer noticia completa →',
+    less: '↑ Contraer',
+    source: 'Fuente original',
+    empty: 'No se encontraron noticias.',
+  },
 }
 
 const MONTHS_PT = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro']
 const MONTHS_EN = ['January','February','March','April','May','June','July','August','September','October','November','December']
+const MONTHS_ES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']
 
-function monthLabel(key: string, lang: 'pt' | 'en') {
+function monthLabel(key: string, lang: 'pt' | 'en' | 'es') {
   const [y, m] = key.split('-').map(Number)
-  const months = lang === 'pt' ? MONTHS_PT : MONTHS_EN
-  return lang === 'pt' ? `${months[m - 1]} de ${y}` : `${months[m - 1]} ${y}`
+  const months = lang === 'pt' ? MONTHS_PT : lang === 'es' ? MONTHS_ES : MONTHS_EN
+  return lang === 'en' ? `${months[m - 1]} ${y}` : `${months[m - 1]} de ${y}`
 }
 
 function fmtDate(d: string, lang: string) {
   const dt = new Date(d)
-  return lang === 'pt'
-    ? dt.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' })
-    : dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+  if (lang === 'pt') return dt.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' })
+  if (lang === 'es') return dt.toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' })
+  return dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+}
+
+function pick(lang: string, pt: string, en?: string, es?: string) {
+  if (lang === 'pt') return pt
+  if (lang === 'es') return es || en || pt
+  return en || pt
 }
 
 export default function ArchiveNewsClient({ news }: { news: NewsItem[] }) {
-  const [lang, setLang] = useState<'pt' | 'en'>('pt')
+  const [lang, setLang] = useState<'pt' | 'en' | 'es'>('pt')
   const [expandedNews, setExpandedNews] = useState<string | null>(null)
   const t = T[lang]
 
@@ -63,6 +78,7 @@ export default function ArchiveNewsClient({ news }: { news: NewsItem[] }) {
         <div className="lang-toggle">
           <button className={`lang-btn ${lang === 'pt' ? 'active' : ''}`} onClick={() => setLang('pt')}>PT</button>
           <button className={`lang-btn ${lang === 'en' ? 'active' : ''}`} onClick={() => setLang('en')}>EN</button>
+          <button className={`lang-btn ${lang === 'es' ? 'active' : ''}`} onClick={() => setLang('es')}>ES</button>
         </div>
       </header>
 
@@ -94,7 +110,7 @@ export default function ArchiveNewsClient({ news }: { news: NewsItem[] }) {
 
             {groups[key].map(item => {
               const isOpen = expandedNews === item.slug
-              const body = lang === 'pt' ? item.content : (item.contentEn || item.content)
+              const body = pick(lang, item.content, item.contentEn, item.contentEs) || item.content
               const paras = body ? body.split('\n\n').filter(Boolean) : []
               return (
                 <article className="news-card" key={item.slug}>
@@ -106,7 +122,7 @@ export default function ArchiveNewsClient({ news }: { news: NewsItem[] }) {
                     <div className="news-card-image-wrap">
                       <img
                         src={item.image}
-                        alt={lang === 'pt' ? item.title : (item.titleEn || item.title)}
+                        alt={pick(lang, item.title, item.titleEn, item.titleEs)}
                         className="news-card-image"
                         loading="lazy"
                         onError={(e) => { (e.target as HTMLImageElement).parentElement!.style.display = 'none' }}
@@ -114,8 +130,8 @@ export default function ArchiveNewsClient({ news }: { news: NewsItem[] }) {
                       {item.imageCredit && <span className="news-card-image-credit">Crédito: {item.imageCredit}</span>}
                     </div>
                   )}
-                  <h3 className="news-title">{lang === 'pt' ? item.title : (item.titleEn || item.title)}</h3>
-                  <p className="news-excerpt">{lang === 'pt' ? item.excerpt : (item.excerptEn || item.excerpt)}</p>
+                  <h3 className="news-title">{pick(lang, item.title, item.titleEn, item.titleEs)}</h3>
+                  <p className="news-excerpt">{pick(lang, item.excerpt, item.excerptEn, item.excerptEs)}</p>
 
                   {isOpen && paras.length > 0 && (
                     <div className="news-article-body" style={{ marginTop: '0.6rem' }}>
