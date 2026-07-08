@@ -6,8 +6,7 @@ categoryEn: "Astronomy"
 type: "concept"
 readingTime: 3
 date: "2026-07-07"
-image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/As_estrelas_Cefeidas_enquanto_velas-padr%C3%A3o.pdf/page1-960px-As_estrelas_Cefeidas_enquanto_velas-padr%C3%A3o.pdf.jpg"
-imageCredit: "Henrietta Swan Leavitt / Wikimedia Commons / CC BY 4.0"
+
 ---
 
 Feche um olho e aponte o dedo indicador para um objeto distante. Agora troque o olho aberto — sem mover o dedo. Percebeu como ele parece saltar de posição em relação ao fundo? Isso é paralaxe: a mudança aparente de posição de um objeto dependendo de onde você o observa. Seus dois olhos, separados por alguns centímetros, já usam esse princípio para te dar noção de profundidade. Os astrônomos fazem exatamente a mesma coisa, mas com uma escala absurdamente maior: usam a própria órbita da Terra ao redor do Sol como se fosse um par de olhos gigantesco.
