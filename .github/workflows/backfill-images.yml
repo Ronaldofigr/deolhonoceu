@@ -41,16 +41,24 @@ jobs:
           git config user.email "bot@deolhonoceu.vercel.app"
           git add content/
           git diff --staged --quiet || git commit -m "🖼️ Backfill: imagens em conteúdo antigo"
-          git fetch origin main
-          if ! git rebase origin/main; then
-            echo "⚠️  Conflito detectado. Mantendo a versão já publicada."
-            git diff --name-only --diff-filter=U | while read -r f; do
-              git checkout --theirs -- "$f"
-              git add "$f"
-            done
-            GIT_EDITOR=true git rebase --continue
-          fi
-          git push
+
+          for tentativa in 1 2 3 4 5; do
+            git fetch origin main
+            if ! git rebase origin/main; then
+              echo "⚠️  Conflito detectado. Mantendo a versão já publicada."
+              git diff --name-only --diff-filter=U | while read -r f; do
+                git checkout --theirs -- "$f"
+                git add "$f"
+              done
+              GIT_EDITOR=true git rebase --continue
+            fi
+            if git push; then
+              echo "✅ Push feito na tentativa $tentativa"
+              break
+            fi
+            echo "⚠️  Push rejeitado (corrida com outra execução), tentativa $tentativa — tentando de novo..."
+            sleep $((RANDOM % 6 + 2))
+          done
 
   build-and-deploy:
     needs: backfill
