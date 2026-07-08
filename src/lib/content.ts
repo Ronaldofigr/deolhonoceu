@@ -85,6 +85,32 @@ export function getPhotoWeek(): PhotoWeek | null {
     return null
   }
 }
+export interface MoonInfo {
+  fase: string
+  faseEn: string
+  iluminacao: number
+  proximaFase: string
+  proximaFaseData: string
+  evento: string
+  eventoData: string
+  nomeCultural: string
+  mes: number
+  atualizadoEm: string
+  imagem?: string
+  imagemCredito?: string
+}
+
+export function getMoonInfo(): MoonInfo | null {
+  const file = path.join(process.cwd(), 'content', 'lua.json')
+  if (!fs.existsSync(file)) return null
+  try {
+    const raw = fs.readFileSync(file, 'utf8')
+    return JSON.parse(raw) as MoonInfo
+  } catch {
+    return null
+  }
+}
+
 export function getAllNewsArchive(): NewsItem[] {
   const dir = path.join(process.cwd(), 'content', 'noticias')
   ensureDir(dir)
