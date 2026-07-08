@@ -1,21 +1,21 @@
 ---
 title: "Incêndio Cottonwood devasta mais de 400 km² em Utah"
-titleEn: "Cottonwood Fire Chars Over 400 Square Kilometers in Utah"
-excerpt: "Um grande incêndio florestal consumiu mais de 150 milhas quadradas no estado de Utah, nos EUA, atingindo até áreas de uma estação de esqui. A NASA registrou o avanço das chamas por satélite."
-excerptEn: "A massive wildfire burned more than 150 square miles in Utah, USA, sweeping through parts of a ski resort. NASA tracked the blaze's advance via satellite imagery."
+titleEn: "Cottonwood Fire Scorches Over 400 km² in Utah"
+excerpt: "Um incêndio de grandes proporções varreu o estado de Utah, nos EUA, queimando mais de 150 milhas quadradas e atingindo parte de uma estação de esqui. As imagens da NASA registraram a extensão da devastação."
+excerptEn: "A massive wildfire swept through Utah, USA, burning over 150 square miles and reaching parts of a ski resort. NASA imagery captured the full extent of the destruction."
 source: "NASA"
 sourceType: "nasa"
 sourceUrl: "https://science.nasa.gov/earth/earth-observatory/cottonwood-fire-chars-utah/"
-tags: ["incêndio florestal", "Utah", "NASA", "sensoriamento remoto", "mudanças climáticas"]
+tags: ["incêndios florestais", "Utah", "NASA", "clima", "desastres naturais"]
 date: "2026-07-08"
-image: "https://apod.nasa.gov/apod/image/1902/marsshadow_opportunity_1024.jpg"
-imageCredit: "NASA"
+image: "https://apod.nasa.gov/apod/image/2501/AtlasFields_Salazar_3214.jpg"
+imageCredit: "Mauricio Salazar"
 ---
 
-O incêndio conhecido como Cottonwood Fire (Incêndio Cottonwood) se tornou um dos eventos de fogo mais expressivos recentemente registrados no estado de Utah, nos Estados Unidos. As chamas consumiram mais de 150 milhas quadradas — o equivalente a aproximadamente 400 quilômetros quadrados, uma área maior do que a cidade de São Paulo inteira. Para ter uma ideia da escala, imagine cobrir com cinzas toda uma grande metrópole: é dessa magnitude que estamos falando.
+O incêndio conhecido como Cottonwood Fire se tornou um dos eventos de fogo mais impactantes recentemente registrados no estado de Utah, nos Estados Unidos. As chamas consumiram uma área superior a 150 milhas quadradas — o equivalente a mais de 400 quilômetros quadrados, uma superfície comparável à cidade inteira de São Paulo sendo tomada pelo fogo. A NASA utilizou seus satélites de observação terrestre para documentar a extensão da destruição vista do espaço, revelando uma cicatriz escura e avermelhada gravada na paisagem.
 
-O incêndio foi tão intenso que chegou a varrer partes de uma estação de esqui da região, um ambiente que normalmente associamos a neve e frio intenso, mas que no verão torna-se vulnerável às chamas devido à vegetação seca e ao calor extremo. Essa é uma realidade cada vez mais comum no oeste dos Estados Unidos, onde o aumento das temperaturas globais prolonga as temporadas de seca e transforma florestas inteiras em verdadeiro combustível natural para o fogo.
+Incêndios dessa magnitude não surgem do nada. Eles são favorecidos por uma combinação perigosa de fatores: vegetação seca acumulada ao longo de meses ou anos de estiagem, ventos fortes que funcionam como um soprador gigante alimentando as chamas, e temperaturas elevadas que ressequem ainda mais o ambiente. O oeste dos Estados Unidos tem enfrentado ciclos de seca cada vez mais intensos, parcialmente ligados às mudanças climáticas globais, o que transforma florestas e pradarias em verdadeiro combustível à espera de uma faísca.
 
-A NASA monitorou o avanço do incêndio utilizando satélites equipados com sensores especiais capazes de detectar calor e fumaça mesmo através de nuvens. Esse tipo de observação remota é fundamental para que equipes de emergência planejem combates ao fogo com mais precisão, além de fornecer dados científicos valiosos sobre como os incêndios se propagam e quais regiões são mais vulneráveis.
+Um dos aspectos mais incomuns desse incêndio foi o fato de ter atingido parte de uma estação de esqui — um ambiente que a maioria das pessoas associa à neve e ao frio, não ao fogo. Isso ilustra bem como os incêndios florestais modernos estão se tornando imprevisíveis e capazes de alcançar locais que historicamente eram considerados seguros. As estações de esqui situadas em altitudes elevadas possuem vegetação densa nas encostas, que durante os meses secos do verão se torna altamente inflamável.
 
-Eventos como o Cottonwood Fire reforçam a urgência das discussões sobre gestão de florestas e adaptação às mudanças climáticas. Incêndios de grande porte liberam enormes quantidades de dióxido de carbono na atmosfera, contribuindo para o aquecimento global — criando um ciclo preocupante em que o clima mais quente favorece mais incêndios, que por sua vez aquecem ainda mais o planeta. Compreender e monitorar esses eventos é o primeiro passo para interromper esse ciclo.
+As imagens de satélite da NASA são ferramentas fundamentais para gestores de emergência, cientistas e governos monitorarem a evolução desses desastres em tempo quase real. Elas permitem mapear as áreas queimadas com precisão, planejar operações de combate ao fogo e, posteriormente, estudar como o ecossistema se recupera. Compreender e acompanhar incêndios como o Cottonwood Fire é essencial para que sociedades possam se preparar melhor para um futuro em que esses eventos tendem a se tornar mais frequentes e intensos.
