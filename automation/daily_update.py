@@ -264,12 +264,12 @@ IMPORTANTE sobre o campo "content":
 - Explique contexto, detalhes técnicos em linguagem simples, com analogias, e relevância da descoberta
 - Sem fórmulas matemáticas
 
-O mesmo vale para "contentEn" em inglês.
+O mesmo vale para "contentEn" em inglês e "contentEs" em espanhol.
 
 Responda SOMENTE com JSON válido:
-{{"title":"título PT máx 90 chars","titleEn":"title EN max 90 chars","excerpt":"resumo PT 2-3 frases max 280 chars","excerptEn":"summary EN 2-3 sentences max 280 chars","tags":["tag1","tag2","tag3"],"content":"texto PT mínimo 200 palavras, 3-4 parágrafos separados por \\n\\n, sem fórmulas, com analogias","contentEn":"text EN minimum 200 words, 3-4 paragraphs separated by \\n\\n, no formulas"}}"""
+{{"title":"título PT máx 90 chars","titleEn":"title EN max 90 chars","titleEs":"título ES máx 90 chars","excerpt":"resumo PT 2-3 frases max 280 chars","excerptEn":"summary EN 2-3 sentences max 280 chars","excerptEs":"resumen ES 2-3 frases máx 280 chars","tags":["tag1","tag2","tag3"],"content":"texto PT mínimo 200 palavras, 3-4 parágrafos separados por \\n\\n, sem fórmulas, com analogias","contentEn":"text EN minimum 200 words, 3-4 paragraphs separated by \\n\\n, no formulas","contentEs":"texto ES mínimo 200 palabras, 3-4 párrafos separados por \\n\\n, sin fórmulas"}}"""
     try:
-        raw = call_claude(prompt, max_tokens=1600)
+        raw = call_claude(prompt, max_tokens=2100)
         m = re.search(r'\{[\s\S]+\}', raw)
         if m:
             data = json.loads(m.group())
@@ -297,11 +297,17 @@ def save_news(data, key):
     if data.get("image"):
         img_credit = (data.get("imageCredit") or "").replace('"', "'")
         image_fields = f'image: "{data["image"]}"\nimageCredit: "{img_credit}"\n'
+    titulo_es = (data.get('titleEs') or data['titleEn']).replace('"', "'")
+    resumo_es = (data.get('excerptEs') or data['excerptEn']).replace('"', "'")
+    content_en = data.get('contentEn', '')
+    content_es = data.get('contentEs') or content_en
     md = f"""---
 title: "{data['title']}"
 titleEn: "{data['titleEn']}"
+titleEs: "{titulo_es}"
 excerpt: "{data['excerpt']}"
 excerptEn: "{data['excerptEn']}"
+excerptEs: "{resumo_es}"
 source: "{data['source']}"
 sourceType: "{data['sourceType']}"
 sourceUrl: "{data['sourceUrl']}"
@@ -310,6 +316,14 @@ date: "{data['date']}"
 {image_fields}---
 
 {data['content']}
+
+<!--lang:en-->
+
+{content_en}
+
+<!--lang:es-->
+
+{content_es}
 """
     (folder / f"{s}.md").write_text(md, encoding="utf-8")
     return f"  ✅  {s}"
@@ -322,9 +336,9 @@ def gen_article(topic):
 - Último parágrafo: curiosidade surpreendente
 
 Responda SOMENTE com JSON válido:
-{{"title":"título PT criativo","titleEn":"title EN","category":"categoria PT","categoryEn":"category EN","content":"texto PT parágrafos separados por \\n\\n","contentEn":"text EN paragraphs separated by \\n\\n","readingTime":3}}"""
+{{"title":"título PT criativo","titleEn":"title EN","titleEs":"título ES creativo","category":"categoria PT","categoryEn":"category EN","categoryEs":"categoría ES","content":"texto PT parágrafos separados por \\n\\n","contentEn":"text EN paragraphs separated by \\n\\n","contentEs":"texto ES párrafos separados por \\n\\n","readingTime":3}}"""
     try:
-        raw = call_claude(prompt, max_tokens=1500)
+        raw = call_claude(prompt, max_tokens=2100)
         m = re.search(r'\{[\s\S]+\}', raw)
         if m:
             data = json.loads(m.group())
@@ -345,17 +359,31 @@ def save_article(data, topic_key):
     if data.get("image"):
         img_credit = (data.get("imageCredit") or "").replace('"', "'")
         image_fields = f'image: "{data["image"]}"\nimageCredit: "{img_credit}"\n'
+    categoria_es = (data.get('categoryEs') or data['categoryEn']).replace('"', "'")
+    titulo_es = (data.get('titleEs') or data['titleEn']).replace('"', "'")
+    content_en = data.get('contentEn', '')
+    content_es = data.get('contentEs') or content_en
     md = f"""---
 title: "{data['title']}"
 titleEn: "{data['titleEn']}"
+titleEs: "{titulo_es}"
 category: "{data['category']}"
 categoryEn: "{data['categoryEn']}"
+categoryEs: "{categoria_es}"
 type: "concept"
 readingTime: {data.get('readingTime',3)}
 date: "{today()}"
 {image_fields}---
 
 {data['content']}
+
+<!--lang:en-->
+
+{content_en}
+
+<!--lang:es-->
+
+{content_es}
 """
     (folder / f"{s}.md").write_text(md, encoding="utf-8")
     return f"  ✅  {s}"
@@ -407,13 +435,13 @@ def gen_photo_week():
         else:
             credit = "NASA"
 
-        prompt = f"""Traduza e adapte para português do Brasil, em tom de divulgação científica acessível:
+        prompt = f"""Traduza e adapte para português do Brasil E para espanhol, em tom de divulgação científica acessível:
 TÍTULO: {title_en}
 LEGENDA: {explanation_en}
 
 Responda SOMENTE com JSON válido:
-{{"title":"título PT curto e atrativo","caption":"legenda PT em até 3 frases, linguagem simples, sem jargão"}}"""
-        raw = call_claude(prompt, max_tokens=600)
+{{"title":"título PT curto e atrativo","caption":"legenda PT em até 3 frases, linguagem simples, sem jargão","titleEs":"título ES corto y atractivo","captionEs":"leyenda ES en hasta 3 frases, lenguaje simple"}}"""
+        raw = call_claude(prompt, max_tokens=800)
         m = re.search(r'\{[\s\S]+\}', raw)
         data_pt = json.loads(m.group()) if m else {}
 
@@ -421,8 +449,10 @@ Responda SOMENTE com JSON válido:
             "imageUrl": image_url,
             "title": data_pt.get("title") or title_en,
             "titleEn": title_en,
+            "titleEs": data_pt.get("titleEs") or title_en,
             "caption": data_pt.get("caption") or explanation_en[:300],
             "captionEn": explanation_en,
+            "captionEs": data_pt.get("captionEs") or explanation_en[:300],
             "credit": credit,
             "week": current_week,
         }
