@@ -6,8 +6,7 @@ categoryEn: "Cosmology"
 type: "concept"
 readingTime: 3
 date: "2026-07-07"
-image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/A_lei_de_expans%C3%A3o_do_universo.pdf/page1-960px-A_lei_de_expans%C3%A3o_do_universo.pdf.jpg"
-imageCredit: "Georges LemaîtreTradutor:  Júlio C. Fabris e  Oliver F. Piattella / Wikimedia Commons / CC BY 4.0"
+
 ---
 
 Imagine que você assa um pão de passas. Enquanto a massa cresce no forno, cada passa se afasta de todas as outras — não porque elas se movam sozinhas pelo pão, mas porque a própria massa está se expandindo. O universo funciona de maneira surpreendentemente parecida. As galáxias não estão voando umas para longe das outras através do espaço: é o próprio espaço que está crescendo, levando as galáxias junto com ele, como as passas presas na massa em expansão.
