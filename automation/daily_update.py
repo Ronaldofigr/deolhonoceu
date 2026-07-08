@@ -4,7 +4,7 @@ De Olho no Céu — Automação diária
 Busca RSS científicos e gera artigos com Claude API.
 """
 
-import os, sys, json, time, re, datetime, feedparser, anthropic, requests
+import os, sys, json, time, re, math, datetime, feedparser, anthropic, requests
 from pathlib import Path
 
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
@@ -444,6 +444,134 @@ def cleanup(days=30):
                         f.unlink(); print(f"  🗑️  {f.name}")
                 except: pass
 
+# ---------------------------------------------------------------------------
+# 🌙 Fase da Lua, próximos eventos astronômicos e nomes culturais
+# ---------------------------------------------------------------------------
+
+SYNODIC_MONTH = 29.530588853
+REF_NEW_MOON = datetime.datetime(2000, 1, 6, 18, 14, tzinfo=datetime.timezone.utc)
+
+FASES_LUA = [
+    (0.0, "Lua Nova", "new moon"),
+    (1.84566, "Lua Crescente", "waxing crescent moon"),
+    (5.53699, "Quarto Crescente", "first quarter moon"),
+    (9.22831, "Lua Gibosa Crescente", "waxing gibbous moon"),
+    (12.91963, "Lua Cheia", "full moon"),
+    (16.61096, "Lua Gibosa Minguante", "waning gibbous moon"),
+    (20.30228, "Quarto Minguante", "last quarter moon"),
+    (23.99361, "Lua Minguante", "waning crescent moon"),
+    (27.68493, "Lua Nova", "new moon"),
+]
+
+FASES_PRINCIPAIS = [
+    (0.0, "Lua Nova"),
+    (7.38265, "Quarto Crescente"),
+    (14.76529, "Lua Cheia"),
+    (22.14794, "Quarto Minguante"),
+]
+
+# Nomes culturais tradicionais (folclore norte-americano/europeu) para a lua cheia de cada mês
+NOMES_CULTURAIS_LUA_CHEIA = {
+    1: "Lua do Lobo", 2: "Lua da Neve", 3: "Lua do Verme", 4: "Lua Rosa",
+    5: "Lua das Flores", 6: "Lua do Morango", 7: "Lua do Cervo", 8: "Lua do Esturjão",
+    9: "Lua da Colheita", 10: "Lua do Caçador", 11: "Lua do Castor", 12: "Lua Fria",
+}
+
+# Datas anuais aproximadas de eventos astronômicos recorrentes (mês, dia, nome)
+EVENTOS_ASTRONOMICOS = [
+    (1, 3, "Chuva de meteoros Quadrantídeas (pico)"),
+    (3, 20, "Equinócio de março"),
+    (4, 22, "Chuva de meteoros Líridas (pico)"),
+    (5, 5, "Chuva de meteoros Eta Aquáridas (pico)"),
+    (6, 21, "Solstício de junho"),
+    (7, 30, "Chuva de meteoros Delta Aquáridas do Sul (pico)"),
+    (8, 12, "Chuva de meteoros Perseidas (pico)"),
+    (9, 22, "Equinócio de setembro"),
+    (10, 21, "Chuva de meteoros Oriônidas (pico)"),
+    (11, 17, "Chuva de meteoros Leônidas (pico)"),
+    (12, 13, "Chuva de meteoros Gemínidas (pico)"),
+    (12, 21, "Solstício de dezembro"),
+]
+
+
+def moon_age(dt):
+    dias = (dt - REF_NEW_MOON).total_seconds() / 86400
+    return dias % SYNODIC_MONTH
+
+
+def moon_phase_now(dt):
+    age = moon_age(dt)
+    nome_pt, nome_en = "Lua Nova", "new moon"
+    for limite, pt, en in FASES_LUA:
+        if age >= limite:
+            nome_pt, nome_en = pt, en
+    iluminacao = round((1 - math.cos(2 * math.pi * age / SYNODIC_MONTH)) / 2 * 100)
+    return nome_pt, nome_en, iluminacao
+
+
+def proxima_fase_principal(dt):
+    age = moon_age(dt)
+    melhor = None
+    for alvo, nome in FASES_PRINCIPAIS:
+        delta = (alvo - age) % SYNODIC_MONTH
+        if melhor is None or delta < melhor[0]:
+            melhor = (delta, nome)
+    delta_dias, nome = melhor
+    data_futura = (dt + datetime.timedelta(days=delta_dias)).date()
+    return nome, data_futura.isoformat()
+
+
+def proximo_evento_astronomico(dt):
+    hoje = dt.date()
+    candidatos = []
+    for mes, dia, nome in EVENTOS_ASTRONOMICOS:
+        try:
+            data_evento = datetime.date(hoje.year, mes, dia)
+        except ValueError:
+            continue
+        if data_evento < hoje:
+            data_evento = datetime.date(hoje.year + 1, mes, dia)
+        candidatos.append((data_evento, nome))
+    candidatos.sort()
+    data_evento, nome = candidatos[0]
+    return nome, data_evento.isoformat()
+
+
+def gen_moon_info():
+    """Calcula a fase atual da Lua, a próxima fase, o próximo evento astronômico
+    e o nome cultural da lua cheia do mês — sempre com uma imagem ilustrativa e crédito."""
+    try:
+        agora = datetime.datetime.now(datetime.timezone.utc)
+        nome_fase_pt, nome_fase_en, iluminacao = moon_phase_now(agora)
+        proxima_fase_nome, proxima_fase_data = proxima_fase_principal(agora)
+        evento_nome, evento_data = proximo_evento_astronomico(agora)
+        nome_cultural = NOMES_CULTURAIS_LUA_CHEIA.get(agora.month, "")
+
+        data = {
+            "fase": nome_fase_pt,
+            "faseEn": nome_fase_en[0].upper() + nome_fase_en[1:],
+            "iluminacao": iluminacao,
+            "proximaFase": proxima_fase_nome,
+            "proximaFaseData": proxima_fase_data,
+            "evento": evento_nome,
+            "eventoData": evento_data,
+            "nomeCultural": nome_cultural,
+            "mes": agora.month,
+            "atualizadoEm": today(),
+        }
+
+        img = find_image(f"{nome_fase_en} astronomy")
+        if img:
+            data["imagem"] = img["url"]
+            data["imagemCredito"] = img["credit"]
+
+        (BASE_DIR / "content" / "lua.json").write_text(
+            json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+        return f"  ✅  Fase atual: {nome_fase_pt} ({iluminacao}% iluminada)"
+    except Exception as e:
+        return f"  ⚠️  {e}"
+
+
 def main():
     print(f"\n🔭 De Olho no Céu — {today()}")
     if not ANTHROPIC_API_KEY:
@@ -487,6 +615,9 @@ def main():
 
     print("\n📷 Atualizando foto da semana...")
     print(gen_photo_week())
+
+    print("\n🌙 Atualizando informações da Lua...")
+    print(gen_moon_info())
 
     print("\n🗑️  Limpando conteúdo antigo...")
     cleanup()
