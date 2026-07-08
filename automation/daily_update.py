@@ -98,9 +98,11 @@ def find_image_wikimedia(query):
             url = info.get("thumburl") or info.get("url")
             if not url or not mime.startswith("image/") or mime in ("image/svg+xml",):
                 continue
+            if ".pdf" in url.lower():
+                continue  # miniatura de página de documento/artigo escaneado, não é uma foto
             # descarta páginas de documentos escaneados (proporção muito "retrato" e alta resolução de texto)
             width, height = info.get("width", 0), info.get("height", 0)
-            if width and height and height / width > 1.6 and width < 1000:
+            if width and height and height / width > 1.3:
                 continue
             meta = info.get("extmetadata", {})
             artist = strip_html(meta.get("Artist", {}).get("value", ""))
