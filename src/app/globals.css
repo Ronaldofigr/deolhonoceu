@@ -100,6 +100,18 @@ h1,h2,h3,h4 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; line-h
 .hero-subtitle { font-family: 'Crimson Pro', serif; font-size: 1.05rem; color: var(--text-secondary); font-style: italic; max-width: 540px; margin: 0 auto; }
 
 /* TICKER */
+.moon-bar { background: var(--panel-dark); border-bottom: 1px solid var(--border-dim); padding: 0.75rem 1.5rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; position: relative; }
+.moon-bar-img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 1px solid var(--border-glow); }
+.moon-bar-items { display: flex; flex-wrap: wrap; gap: 1.25rem; flex: 1; }
+.moon-bar-item { display: flex; flex-direction: column; gap: 2px; }
+.moon-bar-label { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.08em; color: var(--text-muted); text-transform: uppercase; }
+.moon-bar-value { font-size: 0.8rem; color: var(--text-secondary); }
+.moon-bar-credit { font-family: 'Space Mono', monospace; font-size: 0.6rem; color: var(--text-muted); flex-basis: 100%; text-align: right; }
+@media (max-width: 640px) {
+  .moon-bar { padding: 0.75rem 1rem; }
+  .moon-bar-items { gap: 0.75rem; }
+}
+
 .live-ticker { background: var(--panel-dark); border-bottom: 1px solid var(--border-dim); padding: 0.45rem 1.5rem; display: flex; align-items: center; gap: 0.75rem; overflow: hidden; }
 .ticker-label { font-family: 'Space Mono', monospace; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; color: var(--solar-gold); background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.3); padding: 2px 7px; border-radius: 3px; flex-shrink: 0; text-transform: uppercase; }
 .ticker-dot { width: 6px; height: 6px; background: var(--solar-gold); border-radius: 50%; animation: pulse-gold 2s infinite; flex-shrink: 0; }
