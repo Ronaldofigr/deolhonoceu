@@ -31,6 +31,11 @@ const T = {
     photoCredit: 'Crédito',
     archiveNews: 'Arquivo de Notícias',
     archiveArticles: 'Arquivo de Artigos',
+    moonPhase: 'Fase atual',
+    moonIllum: 'iluminada',
+    moonNext: 'Próxima fase',
+    moonEvent: 'Próximo evento',
+    moonCultural: 'Nome cultural do mês',
   },
   en: {
     nav: ['News','Articles','About'],
@@ -58,6 +63,11 @@ const T = {
     photoCredit: 'Credit',
     archiveNews: 'News Archive',
     archiveArticles: 'Articles Archive',
+    moonPhase: 'Current phase',
+    moonIllum: 'illuminated',
+    moonNext: 'Next phase',
+    moonEvent: 'Next event',
+    moonCultural: "This month's cultural name",
   }
 }
 
@@ -99,10 +109,12 @@ export default function HomeClient({
   news,
   articles,
   photoWeek = null,
+  moonInfo = null,
 }: {
   news: import('@/lib/content').NewsItem[]
   articles: import('@/lib/content').Article[]
   photoWeek?: PhotoWeek | null
+  moonInfo?: import('@/lib/content').MoonInfo | null
 }) {
   const [lang, setLang] = useState<'pt' | 'en'>('pt')
   const [tick, setTick] = useState(0)
@@ -173,6 +185,45 @@ export default function HomeClient({
         <span className="ticker-dot" />
         <span className="ticker-text"><strong>{TICKERS[lang][tick]}</strong></span>
       </div>
+
+      {/* FASE DA LUA */}
+      {moonInfo && (
+        <div className="moon-bar">
+          {moonInfo.imagem && (
+            <img
+              src={moonInfo.imagem}
+              alt={lang === 'pt' ? moonInfo.fase : moonInfo.faseEn}
+              className="moon-bar-img"
+              onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+            />
+          )}
+          <div className="moon-bar-items">
+            <div className="moon-bar-item">
+              <span className="moon-bar-label">{t.moonPhase}</span>
+              <span className="moon-bar-value">
+                🌙 {lang === 'pt' ? moonInfo.fase : moonInfo.faseEn} · {moonInfo.iluminacao}% {t.moonIllum}
+              </span>
+            </div>
+            <div className="moon-bar-item">
+              <span className="moon-bar-label">{t.moonNext}</span>
+              <span className="moon-bar-value">{moonInfo.proximaFase} — {fmtDate(moonInfo.proximaFaseData, lang)}</span>
+            </div>
+            <div className="moon-bar-item">
+              <span className="moon-bar-label">{t.moonEvent}</span>
+              <span className="moon-bar-value">{moonInfo.evento} — {fmtDate(moonInfo.eventoData, lang)}</span>
+            </div>
+            {moonInfo.nomeCultural && (
+              <div className="moon-bar-item">
+                <span className="moon-bar-label">{t.moonCultural}</span>
+                <span className="moon-bar-value">{moonInfo.nomeCultural}</span>
+              </div>
+            )}
+          </div>
+          {moonInfo.imagemCredito && (
+            <span className="moon-bar-credit">{t.photoCredit}: {moonInfo.imagemCredito}</span>
+          )}
+        </div>
+      )}
 
       {/* MAIN GRID */}
       <main className="main-grid">
