@@ -1,0 +1,91 @@
+name: Backfill de Traduções — De Olho no Céu
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependências Python
+        run: pip install -r automation/requirements.txt
+
+      - name: Executar backfill de traduções
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          NASA_API_KEY: ${{ secrets.NASA_API_KEY }}
+        run: python automation/backfill_translations.py
+
+      - name: Commit e push
+        run: |
+          git config user.name "De Olho no Céu Bot"
+          git config user.email "bot@deolhonoceu.vercel.app"
+          git add content/
+          git diff --staged --quiet || git commit -m "🌐 Backfill: traduções EN/ES em conteúdo antigo"
+
+          for tentativa in 1 2 3 4 5; do
+            git fetch origin main
+            if ! git rebase origin/main; then
+              echo "⚠️  Conflito detectado. Mantendo a versão já publicada."
+              git diff --name-only --diff-filter=U | while read -r f; do
+                git checkout --theirs -- "$f"
+                git add "$f"
+              done
+              GIT_EDITOR=true git rebase --continue
+            fi
+            if git push; then
+              echo "✅ Push feito na tentativa $tentativa"
+              break
+            fi
+            echo "⚠️  Push rejeitado, tentativa $tentativa — tentando de novo..."
+            sleep $((RANDOM % 6 + 2))
+          done
+
+  build-and-deploy:
+    needs: backfill
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Instalar dependências Node
+        run: npm install
+
+      - name: Build (export estático)
+        run: npm run build
+
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload do artefato
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+
+      - name: Deploy no GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
