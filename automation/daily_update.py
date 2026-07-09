@@ -236,6 +236,52 @@ def fetch_rss():
             print(f"  ⚠️  {src['name']}: {ex}")
     return entries
 
+STOPWORDS_TITULO = set(
+    "a o os as um uma de do da dos das em no na nos nas para por com que e ou se sua seu suas seus ao aos à às "
+    "the a an of to in on for and or is are new via aboard using announces plans reveals says says' after".split()
+)
+
+def normalize_title(t):
+    t = t.lower()
+    for a,b in [('áàãâä','a'),('éèê','e'),('íìî','i'),('óòõôö','o'),('úùû','u'),('ç','c')]:
+        for c in a: t = t.replace(c, b)
+    t = re.sub(r'[^a-z0-9 ]', ' ', t)
+    return re.sub(r'\s+', ' ', t).strip()
+
+def title_keywords(t):
+    return set(w for w in normalize_title(t).split() if len(w) > 2 and w not in STOPWORDS_TITULO)
+
+def titles_similar(a, b, threshold=0.4):
+    """Compara palavras-chave de dois títulos para saber se são provavelmente a mesma
+    notícia, mesmo vindos de fontes/URLs diferentes e com manchetes reescritas de forma diferente."""
+    if not a or not b:
+        return False
+    ka, kb = title_keywords(a), title_keywords(b)
+    if not ka or not kb:
+        return False
+    return len(ka & kb) / len(ka | kb) >= threshold
+
+def recent_source_titles(days=5):
+    """Recupera os títulos ORIGINAIS (da fonte, antes da reescrita pela IA) das notícias
+    salvas nos últimos dias, para detectar a mesma notícia relatada por fontes diferentes."""
+    folder = BASE_DIR / "content" / "noticias"
+    if not folder.exists():
+        return []
+    cutoff = datetime.date.today() - datetime.timedelta(days=days)
+    titulos = []
+    for f in folder.glob("*.md"):
+        try:
+            file_date = datetime.date.fromisoformat(f.name[:10])
+            if file_date < cutoff:
+                continue
+        except ValueError:
+            continue
+        text = f.read_text(encoding="utf-8")
+        m = re.search(r'^sourceTitle:\s*"([^"]*)"', text, re.MULTILINE)
+        if m:
+            titulos.append(m.group(1))
+    return titulos
+
 def news_key(entry):
     """Chave estável baseada na fonte original (não no título reescrito pela IA),
     para reconhecer a mesma notícia em execuções diferentes do script."""
@@ -288,7 +334,7 @@ Responda SOMENTE com JSON válido:
         print(f"  ⚠️  {e}")
     return None
 
-def save_news(data, key):
+def save_news(data, key, source_title_original=""):
     s = f"{data['date']}-{key}"
     folder = BASE_DIR / "content" / "noticias"
     folder.mkdir(parents=True, exist_ok=True)
@@ -301,6 +347,9 @@ def save_news(data, key):
     resumo_es = (data.get('excerptEs') or data['excerptEn']).replace('"', "'")
     content_en = data.get('contentEn', '')
     content_es = data.get('contentEs') or content_en
+    source_title_field = ""
+    if source_title_original:
+        source_title_field = f'sourceTitle: "{source_title_original.replace(chr(34), chr(39))}"\n'
     md = f"""---
 title: "{data['title']}"
 titleEn: "{data['titleEn']}"
@@ -311,7 +360,7 @@ excerptEs: "{resumo_es}"
 source: "{data['source']}"
 sourceType: "{data['sourceType']}"
 sourceUrl: "{data['sourceUrl']}"
-tags: {tags}
+{source_title_field}tags: {tags}
 date: "{data['date']}"
 {image_fields}---
 
@@ -613,6 +662,7 @@ def main():
 
     print("\n✍️  Gerando notícias...")
     generated = 0
+    titulos_recentes = recent_source_titles(days=5)
     for e in entries:
         if generated >= 5:
             break
@@ -620,10 +670,14 @@ def main():
         if news_already_saved(key):
             print(f"  ⏭  Já existe: {key}")
             continue
+        if any(titles_similar(e["title_original"], t) for t in titulos_recentes):
+            print(f"  ⏭  Duplicata (mesmo assunto já coberto): {e['title_original'][:60]}")
+            continue
         data = gen_news(e)
         if data:
-            print(save_news(data, key))
+            print(save_news(data, key, source_title_original=e["title_original"]))
             generated += 1
+            titulos_recentes.append(e["title_original"])
             time.sleep(2)
 
     print("\n🌌 Gerando artigos conceituais...")
