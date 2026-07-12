@@ -1,7 +1,7 @@
 {
-  "fase": "Lua Minguante",
-  "faseEn": "Waning crescent moon",
-  "iluminacao": 5,
+  "fase": "Lua Nova",
+  "faseEn": "New moon",
+  "iluminacao": 4,
   "proximaFase": "Lua Nova",
   "proximaFaseData": "2026-07-14",
   "evento": "Chuva de meteoros Delta Aquáridas do Sul (pico)",
@@ -9,6 +9,6 @@
   "nomeCultural": "Lua do Cervo",
   "mes": 7,
   "atualizadoEm": "2026-07-12",
-  "imagem": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/2011-11-19-Waning_crescent_moon.jpg/1280px-2011-11-19-Waning_crescent_moon.jpg",
-  "imagemCredito": "Thomas Bresson / Wikimedia Commons / CC BY 3.0"
+  "imagem": "https://images-assets.nasa.gov/image/PIA26596/PIA26596~medium.jpg",
+  "imagemCredito": "NASA/JPL"
 }
