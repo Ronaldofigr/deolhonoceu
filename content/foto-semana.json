@@ -1,9 +1,11 @@
 {
-  "imageUrl": "https://apod.nasa.gov/apod/image/2607/AraDragons_Prazeres_7200.jpg",
-  "title": "NGC 6188: Os Dragões de Ara",
-  "titleEn": "NGC 6188: Dragons of Ara",
-  "caption": "Onde encontrar dragões brigando no céu noturno? Na constelação austral do Altar, Ara, a nebulosa NGC 6188 — a cerca de 4.000 anos-luz de distância — abriga formas de gás e poeira que lembram criaturas míticas em combate. Estrelas jovens e massivas esculpiram essas silhuetas dramáticas com seus ventos estelares e intensa radiação ultravioleta, num campo de visão que abrange o equivalente a quatro Luas cheias.",
-  "captionEn": "Where can you find dragons fighting in the night sky?  In the southern constellation of the Altar: Ara. The dragons are, of course, actually made of suggestively shaped gas and dust.  The celestial home of the mythological battling beasts is cataloged as NGC 6188 and located about 4,000 light years away near the edge of a large molecular cloud.  Massive, young stars of the embedded Ara OB1 association were formed there only a few million years ago, sculpting the dark shapes and powering the nebular glow with stellar winds and intense ultraviolet radiation.  Joining NGC 6188 on this cosmic canvas, visible toward the lower right, is unusual emission nebula NGC 6164, also created by one of the region's massive stars.  This impressively wide field picture, captured from Queensland, Australia, spans over 2 degrees (four full Moons).",
-  "credit": "Rod Prazeres",
-  "week": "2026-W28"
+  "imageUrl": "https://apod.nasa.gov/apod/image/2607/NGC474_CfhtCoelum_1500.jpg",
+  "title": "NGC 474: A Galáxia das Cascas Misteriosas",
+  "titleEn": "Galaxy NGC 474: Shells and Star Streams",
+  "titleEs": "NGC 474: La Galaxia de las Capas Misteriosas",
+  "caption": "A galáxia NGC 474 exibe camadas de luz em forma de cascas ao seu redor, como ondas congeladas no espaço. Essas estruturas podem ser restos de galáxias menores absorvidas ao longo de bilhões de anos, ou ondas geradas pela colisão com uma galáxia vizinha. Seja qual for a causa, essa imagem revela que até galáxias de aparência simples podem esconder histórias surpreendentemente complexas.",
+  "captionEn": "What's happening to galaxy NGC 474?  The multiple layers of emission appear strangely complex given the relatively featureless appearance of the elliptical galaxy in less deep images.  The cause of the shells is a topic of research, but they are possibly tidal tails related to debris left over from absorbing numerous small galaxies in the past billion years.  Alternatively, the shells may be like ripples in a pond, where the ongoing collision with the spiral galaxy just to the right of NGC 474 is causing density waves to ripple through the galactic giant.  Regardless of the actual cause, the featured image dramatically highlights the increasing evidence that the halos of some elliptical galaxies are surprisingly complicated.  Similarly, the halo of our own Milky Way Galaxy is one example of such unexpected intricacies.  NGC 474 spans about 250,000 light years and lies about 100 million light years distant toward the constellation of the Fish (Pisces).",
+  "captionEs": "La galaxia NGC 474 muestra misteriosas capas de luz a su alrededor, como si fueran ondas congeladas en el espacio. Estas estructuras podrían ser restos de galaxias más pequeñas absorbidas a lo largo de miles de millones de años, o bien ondas provocadas por la colisión con una galaxia vecina. Esta imagen nos recuerda que incluso las galaxias de aspecto tranquilo pueden ocultar historias fascinantes y complejas.",
+  "credit": "NASA",
+  "week": "2026-W29"
 }
