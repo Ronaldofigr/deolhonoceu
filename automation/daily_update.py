@@ -296,6 +296,58 @@ def news_already_saved(key):
     if not folder.exists(): return False
     return any(key in f.stem for f in folder.glob("*.md"))
 
+def extract_json(raw):
+    """Extrai e faz o parse do JSON retornado pela IA, tolerando os erros mais comuns:
+    quebras de linha literais dentro de strings (não escapadas como \\n), tabs soltos
+    e vírgulas sobrando antes de } ou ]. Retorna None se não conseguir recuperar."""
+    m = re.search(r'\{[\s\S]+\}', raw)
+    if not m:
+        return None
+    texto = m.group()
+    try:
+        return json.loads(texto)
+    except json.JSONDecodeError:
+        pass
+
+    # Conserta quebras de linha/tabs literais que deveriam estar escapados dentro de strings
+    reparado = []
+    dentro_de_string = False
+    escapado = False
+    for ch in texto:
+        if dentro_de_string:
+            if escapado:
+                reparado.append(ch)
+                escapado = False
+                continue
+            if ch == '\\':
+                reparado.append(ch)
+                escapado = True
+                continue
+            if ch == '"':
+                dentro_de_string = False
+                reparado.append(ch)
+                continue
+            if ch == '\n':
+                reparado.append('\\n')
+                continue
+            if ch == '\r':
+                continue
+            if ch == '\t':
+                reparado.append('\\t')
+                continue
+            reparado.append(ch)
+        else:
+            if ch == '"':
+                dentro_de_string = True
+            reparado.append(ch)
+    texto_reparado = "".join(reparado)
+    # Remove vírgulas sobrando antes de fechamento de objeto/array
+    texto_reparado = re.sub(r',\s*([}\]])', r'\1', texto_reparado)
+    try:
+        return json.loads(texto_reparado)
+    except json.JSONDecodeError:
+        return None
+
 def gen_news(entry):
     prompt = f"""Notícia científica bruta:
 TÍTULO: {entry['title_original']}
@@ -316,9 +368,8 @@ Responda SOMENTE com JSON válido:
 {{"title":"título PT máx 90 chars","titleEn":"title EN max 90 chars","titleEs":"título ES máx 90 chars","excerpt":"resumo PT 2-3 frases max 280 chars","excerptEn":"summary EN 2-3 sentences max 280 chars","excerptEs":"resumen ES 2-3 frases máx 280 chars","tags":["tag1","tag2","tag3"],"content":"texto PT mínimo 200 palavras, 3-4 parágrafos separados por \\n\\n, sem fórmulas, com analogias","contentEn":"text EN minimum 200 words, 3-4 paragraphs separated by \\n\\n, no formulas","contentEs":"texto ES mínimo 200 palabras, 3-4 párrafos separados por \\n\\n, sin fórmulas"}}"""
     try:
         raw = call_claude(prompt, max_tokens=2100)
-        m = re.search(r'\{[\s\S]+\}', raw)
-        if m:
-            data = json.loads(m.group())
+        data = extract_json(raw)
+        if data:
             data.update({"source": entry["source"], "sourceType": entry["source_type"],
                          "sourceUrl": entry["url"], "date": entry["date"]})
             if entry.get("image_from_rss"):
@@ -388,9 +439,8 @@ Responda SOMENTE com JSON válido:
 {{"title":"título PT criativo","titleEn":"title EN","titleEs":"título ES creativo","category":"categoria PT","categoryEn":"category EN","categoryEs":"categoría ES","content":"texto PT parágrafos separados por \\n\\n","contentEn":"text EN paragraphs separated by \\n\\n","contentEs":"texto ES párrafos separados por \\n\\n","readingTime":3}}"""
     try:
         raw = call_claude(prompt, max_tokens=2100)
-        m = re.search(r'\{[\s\S]+\}', raw)
-        if m:
-            data = json.loads(m.group())
+        data = extract_json(raw)
+        if data:
             img = find_image(topic)
             if img:
                 data["image"] = img["url"]
@@ -491,8 +541,7 @@ LEGENDA: {explanation_en}
 Responda SOMENTE com JSON válido:
 {{"title":"título PT curto e atrativo","caption":"legenda PT em até 3 frases, linguagem simples, sem jargão","titleEs":"título ES corto y atractivo","captionEs":"leyenda ES en hasta 3 frases, lenguaje simple"}}"""
         raw = call_claude(prompt, max_tokens=800)
-        m = re.search(r'\{[\s\S]+\}', raw)
-        data_pt = json.loads(m.group()) if m else {}
+        data_pt = extract_json(raw) or {}
 
         photo_data = {
             "imageUrl": image_url,
