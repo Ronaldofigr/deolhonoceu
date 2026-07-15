@@ -17,6 +17,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8198154501527063"
           crossOrigin="anonymous"
         ></script>
+        {/* Google Analytics GA4 */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-1MSY7XE59V"></script>
+        <script dangerouslySetInnerHTML={{ __html: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-1MSY7XE59V');
+        `}} />
       </head>
       <body>{children}</body>
     </html>
