@@ -686,6 +686,9 @@ def moon_phase_image(nome_fase_en):
         return {"url": MOON_PHASE_IMAGES[key][0], "credit": MOON_PHASE_IMAGES[key][1]}
     # fallback: busca específica por 'moon + fase' no Wikimedia
     return find_image_wikimedia(f"{key} photography") or find_image_nasa(f"{key} moon")
+
+
+def gen_moon_info():
     """Calcula a fase atual da Lua, a próxima fase, o próximo evento astronômico
     e o nome cultural da lua cheia do mês — sempre com uma imagem ilustrativa e crédito."""
     try:
