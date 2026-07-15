@@ -1,7 +1,7 @@
 {
   "fase": "Lua Nova",
   "faseEn": "New moon",
-  "iluminacao": 0,
+  "iluminacao": 1,
   "proximaFase": "Quarto Crescente",
   "proximaFaseData": "2026-07-22",
   "evento": "Chuva de meteoros Delta Aquáridas do Sul (pico)",
