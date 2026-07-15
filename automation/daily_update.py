@@ -843,6 +843,140 @@ def moon_phase_image(nome_fase_en):
     return None
 
 
+def gen_sitemap():
+    """Gera um sitemap.xml com todas as URLs do site para indexação pelo Google."""
+    try:
+        base = "https://www.deolhonoceu.com.br"
+        urls = [
+            (base + "/", "1.0", "daily"),
+            (base + "/arquivo-noticias/", "0.8", "daily"),
+            (base + "/arquivo-artigos/", "0.8", "daily"),
+        ]
+        # Adiciona as notícias mais recentes (últimos 30 dias)
+        cutoff = datetime.date.today() - datetime.timedelta(days=30)
+        for folder, path_prefix in [
+            (BASE_DIR / "content" / "noticias", "/arquivo-noticias/"),
+            (BASE_DIR / "content" / "artigos", "/arquivo-artigos/"),
+        ]:
+            if folder.exists():
+                for f in sorted(folder.glob("*.md"), reverse=True)[:50]:
+                    try:
+                        file_date = datetime.date.fromisoformat(f.name[:10])
+                        if file_date >= cutoff:
+                            urls.append((base + path_prefix, "0.6", "weekly"))
+                            break  # só adiciona a página de arquivo, não cada artigo individualmente
+                    except ValueError:
+                        pass
+        sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n'
+        sitemap += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        for url, priority, changefreq in urls:
+            sitemap += f"""  <url>
+    <loc>{url}</loc>
+    <lastmod>{today()}</lastmod>
+    <changefreq>{changefreq}</changefreq>
+    <priority>{priority}</priority>
+  </url>\n"""
+        sitemap += '</urlset>'
+        out = BASE_DIR / "public" / "sitemap.xml"
+        out.write_text(sitemap, encoding="utf-8")
+        return "  ✅  sitemap.xml gerado com sucesso"
+    except Exception as e:
+        return f"  ⚠️  {e}"
+
+def gen_robots_txt():
+    """Gera robots.txt permitindo indexação completa e apontando para o sitemap."""
+    try:
+        robots = """User-agent: *
+Allow: /
+
+Sitemap: https://www.deolhonoceu.com.br/sitemap.xml
+"""
+        out = BASE_DIR / "public" / "robots.txt"
+        out.write_text(robots, encoding="utf-8")
+        return "  ✅  robots.txt gerado"
+    except Exception as e:
+        return f"  ⚠️  {e}"
+
+def gen_youtube_scripts(news_entries, articles_data):
+    """Gera scripts de vídeos curtos (YouTube Shorts / Reels) baseados nas notícias e artigos do dia.
+    Salva em content/youtube/ como arquivos Markdown prontos para uso."""
+    try:
+        folder = BASE_DIR / "content" / "youtube"
+        folder.mkdir(parents=True, exist_ok=True)
+        date_str = today()
+        output_file = folder / f"{date_str}-scripts.md"
+        if output_file.exists():
+            return "  ⏭  Scripts YouTube já gerados hoje"
+
+        scripts = []
+
+        # Script baseado na primeira notícia do dia
+        if news_entries:
+            entry = news_entries[0]
+            prompt = f"""Crie um script curto e envolvente para um YouTube Short (45-60 segundos, ~120 palavras) sobre esta notícia de astronomia:
+
+TÍTULO: {entry.get('title_original', '')}
+RESUMO: {entry.get('excerpt_original', '')[:300]}
+
+Regras:
+- Comece com uma frase de impacto que prende atenção nos primeiros 3 segundos
+- Use linguagem simples e empolgante
+- Termine com call-to-action: "Leia a notícia completa no link da bio: www.deolhonoceu.com.br"
+- Formato: apenas o texto do narrador, sem indicações de câmera
+- Em português do Brasil
+
+Responda SOMENTE com JSON: {{"titulo":"título do vídeo","script":"texto completo do script","hashtags":"#astronomia #espaco #ciencia #nasa #universo"}}"""
+            raw = call_claude(prompt, max_tokens=600)
+            data = extract_json(raw)
+            if data:
+                scripts.append(("📰 NOTÍCIA", data))
+
+        # Script baseado num artigo conceitual recente
+        recent_articles = sorted(
+            (BASE_DIR / "content" / "artigos").glob("*.md"),
+            reverse=True
+        )[:3]
+        for art_file in recent_articles:
+            text = art_file.read_text(encoding="utf-8")
+            title = extract_yaml_field(text, "title")
+            if not title:
+                continue
+            prompt = f"""Crie um script curto e envolvente para um YouTube Short (45-60 segundos, ~120 palavras) explicando este conceito de astronomia/física:
+
+TÍTULO DO ARTIGO: {title}
+
+Regras:
+- Comece com uma pergunta ou fato surpreendente
+- Explique o conceito de forma simples com uma analogia do cotidiano
+- Termine com: "Saiba mais em www.deolhonoceu.com.br"
+- Em português do Brasil
+
+Responda SOMENTE com JSON: {{"titulo":"título do vídeo","script":"texto completo do script","hashtags":"#astronomia #fisica #ciencia #espaco #universo"}}"""
+            raw = call_claude(prompt, max_tokens=600)
+            data = extract_json(raw)
+            if data:
+                scripts.append(("🌌 CONCEITO", data))
+                break
+
+        if not scripts:
+            return "  ⚠️  Nenhum script YouTube gerado"
+
+        md = f"# Scripts YouTube — {date_str}\n\n"
+        md += "> Copie estes scripts para gravar Shorts/Reels. Sempre inclua o link www.deolhonoceu.com.br na bio e descrição.\n\n"
+        for tipo, s in scripts:
+            md += f"## {tipo}: {s.get('titulo','')}\n\n"
+            md += f"**Script:**\n\n{s.get('script','')}\n\n"
+            md += f"**Hashtags:** {s.get('hashtags','')}\n\n---\n\n"
+
+        output_file.write_text(md, encoding="utf-8")
+        return f"  ✅  {len(scripts)} script(s) YouTube gerado(s) em content/youtube/{date_str}-scripts.md"
+    except Exception as e:
+        return f"  ⚠️  YouTube scripts: {e}"
+
+def extract_yaml_field(text, field):
+    m = re.search(rf'^{field}:\s*"([^"]*)"', text, re.MULTILINE)
+    return m.group(1) if m else ""
+
 def gen_moon_info():
     """Calcula a fase atual da Lua, a próxima fase, o próximo evento astronômico
     e o nome cultural da lua cheia do mês — sempre com uma imagem ilustrativa e crédito."""
@@ -943,6 +1077,13 @@ def main():
 
     print("\n📷 Atualizando foto da semana...")
     print(gen_photo_week())
+
+    print("\n🎬 Gerando scripts para YouTube...")
+    print(gen_youtube_scripts(entries, []))
+
+    print("\n🗺️  Gerando sitemap e robots.txt...")
+    print(gen_sitemap())
+    print(gen_robots_txt())
 
     print("\n🌙 Atualizando informações da Lua...")
     print(gen_moon_info())
