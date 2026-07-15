@@ -8,8 +8,6 @@ categoryEs: "Física y Cosmología"
 type: "concept"
 readingTime: 3
 date: "2026-07-09"
-image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Sess%C3%A3o_Especial_-_Dia_do_F%C3%ADsico_%2854545855512%29.jpg/1280px-Sess%C3%A3o_Especial_-_Dia_do_F%C3%ADsico_%2854545855512%29.jpg"
-imageCredit: "Agência Senado from Brasilia, Brazil / Wikimedia Commons / CC BY 2.0"
 ---
 
 Imagine que você e um amigo combinam de se encontrar às três da tarde. Parece simples, certo? Mas e se eu te dissesse que, dependendo da velocidade em que cada um de vocês está se movendo, o relógio de vocês dois marcaria horários diferentes no momento do encontro? Isso não é ficção científica — é exatamente o que Albert Einstein propôs em 1905, aos apenas 26 anos, com a chamada Teoria da Relatividade Especial. Ela revolucionou a maneira como entendemos o tempo, o espaço e a própria realidade.
