@@ -309,14 +309,33 @@ def find_image_fallback_apod():
             continue
     return None
 
+def is_valid_image_url(url):
+    """Verifica rapidamente se uma URL aponta pra uma imagem real (não PDF, SVG, texto ou página HTML)."""
+    if not url:
+        return False
+    url_lower = url.lower()
+    # Rejeita extensões não-visuais
+    bad_exts = ('.pdf', '.svg', '.txt', '.html', '.htm', '.xml', '.doc', '.docx')
+    if any(url_lower.endswith(e) or f'{e}/' in url_lower or f'{e}?' in url_lower for e in bad_exts):
+        return False
+    # Rejeita padrões típicos de thumbnails de documentos no Wikimedia
+    if 'page1-' in url_lower and '.pdf.' in url_lower:
+        return False
+    return True
+
 def find_image(query):
-    """Ordem de prioridade, alargando a busca até garantir uma imagem:
-    NASA → Wikipédia → Wikimedia Commons → Openverse → foto aleatória da NASA (garantia final)."""
-    return (find_image_nasa(query)
-            or find_image_wikipedia(query)
-            or find_image_wikimedia(query)
-            or find_image_openverse(query)
-            or find_image_fallback_apod())
+    """Ordem de prioridade com validação de URL em cada etapa:
+    NASA → Wikipédia → Wikimedia Commons → Openverse → foto aleatória NASA (garantia final)."""
+    for fn in (find_image_nasa, find_image_wikipedia, find_image_wikimedia,
+               find_image_openverse):
+        result = fn(query)
+        if result and is_valid_image_url(result.get("url", "")):
+            return result
+    # Garantia final: foto histórica aleatória da NASA
+    result = find_image_fallback_apod()
+    if result and is_valid_image_url(result.get("url", "")):
+        return result
+    return None
 
 def slug(text):
     text = text.lower()
@@ -484,8 +503,10 @@ IMPORTANTE sobre o campo "content":
 
 O mesmo vale para "contentEn" em inglês e "contentEs" em espanhol.
 
+Para o campo "imageQuery": escreva 3-5 palavras-chave em INGLÊS, técnicas e específicas ao assunto central desta notícia, adequadas para buscar uma fotografia científica real nos acervos da NASA ou Wikimedia. Exemplo: para uma notícia sobre Hubble fotografando estrelas, use "Hubble telescope star cluster NASA". Não use nomes de pessoas nem de jornais.
+
 Responda SOMENTE com JSON válido:
-{{"title":"título PT máx 90 chars","titleEn":"title EN max 90 chars","titleEs":"título ES máx 90 chars","excerpt":"resumo PT 2-3 frases max 280 chars","excerptEn":"summary EN 2-3 sentences max 280 chars","excerptEs":"resumen ES 2-3 frases máx 280 chars","tags":["tag1","tag2","tag3"],"content":"texto PT mínimo 200 palavras, 3-4 parágrafos separados por \\n\\n, sem fórmulas, com analogias","contentEn":"text EN minimum 200 words, 3-4 paragraphs separated by \\n\\n, no formulas","contentEs":"texto ES mínimo 200 palabras, 3-4 párrafos separados por \\n\\n, sin fórmulas"}}"""
+{{"title":"título PT máx 90 chars","titleEn":"title EN max 90 chars","titleEs":"título ES máx 90 chars","excerpt":"resumo PT 2-3 frases max 280 chars","excerptEn":"summary EN 2-3 sentences max 280 chars","excerptEs":"resumen ES 2-3 frases máx 280 chars","tags":["tag1","tag2","tag3"],"imageQuery":"3-5 keywords in English for image search","content":"texto PT mínimo 200 palavras, 3-4 parágrafos separados por \\n\\n, sem fórmulas, com analogias","contentEn":"text EN minimum 200 words, 3-4 paragraphs separated by \\n\\n, no formulas","contentEs":"texto ES mínimo 200 palabras, 3-4 párrafos separados por \\n\\n, sin fórmulas"}}"""
     try:
         raw = call_claude(prompt, max_tokens=2100)
         data = extract_json(raw)
@@ -496,7 +517,12 @@ Responda SOMENTE com JSON válido:
                 data["image"] = entry["image_from_rss"]
                 data["imageCredit"] = entry["source"]
             else:
-                img = find_image(entry["title_original"] or data.get("title", ""))
+                # Usa a query sugerida pelo Claude; fallback para o título original em inglês
+                image_query = (data.get("imageQuery") or
+                               entry["title_original"] or
+                               data.get("titleEn") or
+                               data.get("title", ""))
+                img = find_image(image_query)
                 if img:
                     data["image"] = img["url"]
                     data["imageCredit"] = img["credit"]
@@ -555,13 +581,17 @@ def gen_article(topic):
 - 350-500 palavras, 3-4 parágrafos
 - Último parágrafo: curiosidade surpreendente
 
+Para o campo "imageQuery": escreva 3-5 palavras-chave em INGLÊS, técnicas e específicas ao objeto astronômico ou fenômeno físico central do artigo, adequadas para buscar uma fotografia real nos acervos da NASA ou Wikimedia. Exemplo: para um artigo sobre buracos negros, use "black hole event horizon NASA". Não use conceitos abstratos nem palavras como "concept" ou "illustration".
+
 Responda SOMENTE com JSON válido:
-{{"title":"título PT criativo","titleEn":"title EN","titleEs":"título ES creativo","category":"categoria PT","categoryEn":"category EN","categoryEs":"categoría ES","content":"texto PT parágrafos separados por \\n\\n","contentEn":"text EN paragraphs separated by \\n\\n","contentEs":"texto ES párrafos separados por \\n\\n","readingTime":3}}"""
+{{"title":"título PT criativo","titleEn":"title EN","titleEs":"título ES creativo","category":"categoria PT","categoryEn":"category EN","categoryEs":"categoría ES","imageQuery":"3-5 keywords in English for image search","content":"texto PT parágrafos separados por \\n\\n","contentEn":"text EN paragraphs separated by \\n\\n","contentEs":"texto ES párrafos separados por \\n\\n","readingTime":3}}"""
     try:
         raw = call_claude(prompt, max_tokens=2100)
         data = extract_json(raw)
         if data:
-            img = find_image(topic)
+            # Usa a query sugerida pelo Claude; fallback para o tópico original
+            image_query = data.get("imageQuery") or topic
+            img = find_image(image_query)
             if img:
                 data["image"] = img["url"]
                 data["imageCredit"] = img["credit"]
