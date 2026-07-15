@@ -21,6 +21,7 @@ RSS_SOURCES = [
 ]
 
 TOPICS = [
+    # Estrelas e vida estelar
     "o que é a teoria da relatividade especial",
     "como funciona a fusão nuclear nas estrelas",
     "o que são quasares e como são formados",
@@ -37,6 +38,125 @@ TOPICS = [
     "o que são aglomerados globulares",
     "o que é a força de maré e como ela afeta luas",
     "o que é a sequência principal das estrelas no diagrama HR",
+    "o que é o diagrama de Hertzsprung-Russell e como classifica estrelas",
+    "o que é a espectroscopia e como revela a composição das estrelas",
+    "o que é o efeito Doppler e como detecta planetas e galáxias",
+    "como funciona a morte das estrelas — anãs brancas, estrelas de nêutrons e buracos negros",
+    "o que é uma supernova e por que explode",
+    "o que é uma estrela de nêutrons e como se forma",
+    "o que são magnetares — as estrelas mais magnéticas do universo",
+    "o que é uma anã branca e o que acontece quando esfria",
+    "o que é uma anã marrom — entre estrela e planeta",
+    "o que é a luminosidade e a magnitude das estrelas",
+    "o que é a paralaxe espectroscópica",
+    "como estrelas duplas e múltiplas se formam e evoluem",
+    "o que são nébulas e como formam estrelas",
+    "o que é o vento solar e como afeta os planetas",
+    # Buracos negros e gravidade
+    "o que é um buraco negro e como se detecta",
+    "o que é o horizonte de eventos de um buraco negro",
+    "o que é a radiação de Hawking",
+    "o que é a relatividade geral de Einstein",
+    "o que são ondas gravitacionais e como se detectam",
+    "o que é a singularidade de um buraco negro",
+    "o que são buracos negros supermassivos e como existem no centro das galáxias",
+    "o que é spaghettification — o estiramento perto de buracos negros",
+    "o que é um buraco de minhoca — existe mesmo",
+    "como a gravidade curva a luz — lente gravitacional",
+    "o que é a precessão de Mercúrio e a prova da relatividade geral",
+    # Cosmologia e universo
+    "o que é a teoria do Big Bang",
+    "o que é a matéria escura e por que não conseguimos vê-la",
+    "o que é a energia escura e por que acelera o universo",
+    "o que é a inflação cósmica — o universo inflando em frações de segundo",
+    "o que é o princípio cosmológico",
+    "o que é a constante cosmológica de Einstein",
+    "o que é o destino final do universo — Big Freeze, Big Rip ou Big Crunch",
+    "o que são filamentos cósmicos e a teia do universo",
+    "o que é o paradoxo de Olbers — por que o céu noturno é escuro",
+    "o que é o multiverso",
+    "o que é o princípio antrópico",
+    "o que é a nucleossíntese do Big Bang — formação dos primeiros elementos",
+    "o que é a recombinação cósmica — quando o universo ficou transparente",
+    "o que é a época da reionização",
+    # Galáxias
+    "o que são galáxias e como se classificam",
+    "o que é uma galáxia elíptica, espiral e irregular",
+    "como galáxias colidem e se fundem",
+    "o que é o Grupo Local — nossa vizinhança galáctica",
+    "o que é a Grande Nuvem de Magalhães",
+    "o que é Andrômeda e o que acontecerá quando colidir com a Via Láctea",
+    "o que são galáxias anãs e como orbitam as galáxias maiores",
+    "o que é o núcleo galáctico ativo (AGN)",
+    "o que é um blazar",
+    "o que são jatos relativísticos de galáxias",
+    # Planetas e sistema solar
+    "como se formou o sistema solar — teoria da nebular",
+    "o que é a zona de Goldilocks no sistema solar",
+    "por que Plutão deixou de ser planeta",
+    "o que é o cinturão de asteroides e como se formou",
+    "o que é o Cinturão de Kuiper",
+    "o que é a Nuvem de Oort e de onde vêm os cometas",
+    "como os anéis de Saturno se formaram",
+    "o que é a Grande Mancha Vermelha de Júpiter",
+    "o que torna a Europa de Júpiter um candidato à vida",
+    "o que é Encélado e seus gêiseres de água",
+    "o que é Titã e sua atmosfera densa",
+    "o que é Marte e por que queremos colonizá-lo",
+    "o que é a proteção magnética da Terra",
+    "como a Lua se formou — teoria do grande impacto",
+    "o que são marés e como a Lua as controla",
+    # Exoplanetas e vida
+    "o que são exoplanetas e como os detectamos",
+    "o que é o método de trânsito para detectar exoplanetas",
+    "o que é o método da velocidade radial para detectar exoplanetas",
+    "o que é a biosfera e os marcadores de vida em exoplanetas",
+    "o que é TRAPPIST-1 e seus planetas na zona habitável",
+    "o que é a equação de Drake — estimando civilizações no universo",
+    "o que é o paradoxo de Fermi — onde estão os alienígenas",
+    "o que é panspermia — a vida viajando pelo espaço",
+    "o que é a zona habitável galáctica",
+    # Física e instrumentos
+    "o que é a mecânica quântica e como se aplica à astrofísica",
+    "o que é o princípio da incerteza de Heisenberg",
+    "o que é a pressão de degenerescência que sustenta anãs brancas",
+    "o que é um telescópio e como funciona — refrator e refletor",
+    "o que é o telescópio espacial Hubble e suas descobertas",
+    "o que é o telescópio James Webb e o que pode observar",
+    "o que é radioastronomia e como expandiu nossa visão do universo",
+    "o que é a astronomia de raios-X e gama",
+    "o que é interferometria e como cria telescópios do tamanho da Terra",
+    "o que é a astronomia de ondas gravitacionais — LIGO e Virgo",
+    "o que é o redshift e como mede a expansão do universo",
+    "o que é o fundo difuso de micro-ondas e o que revela",
+    "o que é a fotometria estelar",
+    "o que são raios cósmicos e de onde vêm",
+    "o que são neutrinos e como os detectamos",
+    # Exploração espacial
+    "o que é a ISS e como os astronautas vivem em órbita",
+    "o que é propulsão iônica e como funciona",
+    "o que é a manobra gravitacional — viagem aos planetas mais rápido",
+    "como funciona uma órbita — por que satélites não caem",
+    "o que é a órbita geoestacionária",
+    "o que é o Starship da SpaceX e seus objetivos",
+    "como funciona o foguete — terceira lei de Newton no espaço",
+    "o que é a corrida espacial e seu legado científico",
+    "o que é o programa Artemis e o retorno à Lua",
+    "o que são satélites Starlink e como a rede de satélites funciona",
+    # Conceitos físicos fundamentais
+    "o que é a velocidade da luz e por que é o limite",
+    "o que é dilatação temporal — o tempo passando diferente para cada um",
+    "o que é a contração do espaço na relatividade especial",
+    "o que é equivalência massa-energia — E=mc²",
+    "o que é a pressão de radiação — a luz empurrando objetos",
+    "o que é a temperatura e como se mede no espaço",
+    "o que é o plasma e por que a maioria da matéria do universo é plasma",
+    "o que é o campo magnético e como molda o universo",
+    "o que é a constante de Hubble e a controvérsia da sua medição",
+    "o que é o paradoxo dos gêmeos da relatividade",
+    "o que é o colapso de função de onda na mecânica quântica",
+    "o que é o emaranhamento quântico",
+    "o que é a cromodinâmica quântica — quarks e glúons",
 ]
 
 def strip_html(s):
@@ -771,8 +891,25 @@ def main():
             print(save_article(data, topic_key))
             generated_articles += 1
             time.sleep(2)
+
     if generated_articles == 0:
-        print("  ⏭  Todos os tópicos já foram cobertos")
+        print("  ⏭  Todos os tópicos fixos cobertos — gerando artigo baseado nas notícias do dia...")
+        # Usa as notícias mais recentes como inspiração para um artigo conceitual inédito
+        noticias_hoje = [e for e in entries if e["date"] == today()][:3]
+        if not noticias_hoje:
+            noticias_hoje = entries[:3]
+        if noticias_hoje:
+            assuntos = "; ".join(e["title_original"] for e in noticias_hoje)
+            topic_inspirado = f"conceito científico relacionado a: {assuntos[:200]}"
+            topic_key = slug(f"inspirado-noticias-{today()}")
+            if not article_topic_used(topic_key):
+                print(f"   Tópico inspirado nas notícias do dia")
+                data = gen_article(topic_inspirado)
+                if data:
+                    print(save_article(data, topic_key))
+                    generated_articles += 1
+        if generated_articles == 0:
+            print("  ⏭  Nenhum artigo gerado hoje")
 
     print("\n📷 Atualizando foto da semana...")
     print(gen_photo_week())
