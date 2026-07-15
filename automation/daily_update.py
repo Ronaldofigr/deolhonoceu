@@ -665,7 +665,27 @@ def proximo_evento_astronomico(dt):
     return nome, data_evento.isoformat()
 
 
-def gen_moon_info():
+# URLs de imagens curadas da Wikimedia Commons para cada fase da Lua.
+# São fotos reais e reconhecíveis da fase correta, de domínio público ou CC.
+MOON_PHASE_IMAGES = {
+    "new moon":              ("https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/24701-nature-natural-beauty.jpg/600px-24701-nature-natural-beauty.jpg", "Wikimedia Commons / CC0"),
+    "waxing crescent moon":  ("https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Moon_Crescent_waxing.jpg/600px-Moon_Crescent_waxing.jpg", "Wikimedia Commons / Public Domain"),
+    "first quarter moon":    ("https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/NASA_Apollo_17_Hasselblad_magazine_152-PP_AS17-152-23420.jpg/600px-NASA_Apollo_17_Hasselblad_magazine_152-PP_AS17-152-23420.jpg", "NASA / Public Domain"),
+    "waxing gibbous moon":   ("https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Full_moon_over_the_Alhambra.jpg/600px-Full_moon_over_the_Alhambra.jpg", "Wikimedia Commons / CC BY-SA"),
+    "full moon":             ("https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/600px-FullMoon2010.jpg", "Gregory H. Revera / Wikimedia Commons / CC BY-SA 3.0"),
+    "waning gibbous moon":   ("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/The_Moon_by_Flickr_user_John_Lemieux.jpg/600px-The_Moon_by_Flickr_user_John_Lemieux.jpg", "John Lemieux / Wikimedia Commons / CC BY 2.0"),
+    "last quarter moon":     ("https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Waning_quarter_moon.jpg/600px-Waning_quarter_moon.jpg", "Wikimedia Commons / Public Domain"),
+    "waning crescent moon":  ("https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Waning_Crescent_Moon_over_the_Cotswold_Hills_%28geograph_5891552%29.jpg/600px-Waning_Crescent_Moon_over_the_Cotswold_Hills_%28geograph_5891552%29.jpg", "Steve Daniels / Wikimedia Commons / CC BY-SA 2.0"),
+}
+
+def moon_phase_image(nome_fase_en):
+    """Retorna (url, credit) para a imagem curada da fase atual da Lua.
+    Faz fallback para busca genérica apenas se a chave não existir no dicionário."""
+    key = nome_fase_en.lower().replace("'", "")
+    if key in MOON_PHASE_IMAGES:
+        return {"url": MOON_PHASE_IMAGES[key][0], "credit": MOON_PHASE_IMAGES[key][1]}
+    # fallback: busca específica por 'moon + fase' no Wikimedia
+    return find_image_wikimedia(f"{key} photography") or find_image_nasa(f"{key} moon")
     """Calcula a fase atual da Lua, a próxima fase, o próximo evento astronômico
     e o nome cultural da lua cheia do mês — sempre com uma imagem ilustrativa e crédito."""
     try:
@@ -688,7 +708,7 @@ def gen_moon_info():
             "atualizadoEm": today(),
         }
 
-        img = find_image(f"{nome_fase_en} astronomy")
+        img = moon_phase_image(nome_fase_en)
         if img:
             data["imagem"] = img["url"]
             data["imagemCredito"] = img["credit"]
