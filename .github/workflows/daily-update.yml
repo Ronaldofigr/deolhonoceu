@@ -43,7 +43,7 @@ jobs:
         run: |
           git config user.name "De Olho no Céu Bot"
           git config user.email "bot@deolhonoceu.vercel.app"
-          git add content/
+          git add content/ public/
           git diff --staged --quiet || git commit -m "🔭 Conteúdo automático: $(date '+%Y-%m-%d')"
 
           for tentativa in 1 2 3 4 5; do
