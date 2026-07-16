@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     creator: '@deolhonoceu',
   },
   verification: {
-    google: 'ca-pub-8198154501527063',
+    google: 'LAPxZG8K9BqnO2_E95UgxRPw58PBENndlIJ4bKiB2-0',
   },
 }
 
