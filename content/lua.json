@@ -1,14 +1,14 @@
 {
   "fase": "Lua Crescente",
   "faseEn": "Waxing crescent moon",
-  "iluminacao": 5,
+  "iluminacao": 9,
   "proximaFase": "Quarto Crescente",
   "proximaFaseData": "2026-07-22",
   "evento": "Chuva de meteoros Delta Aquáridas do Sul (pico)",
   "eventoData": "2026-07-30",
   "nomeCultural": "Lua do Cervo",
   "mes": 7,
-  "atualizadoEm": "2026-07-16",
+  "atualizadoEm": "2026-07-17",
   "imagem": "https://images-assets.nasa.gov/image/PIA17416/PIA17416~medium.jpg",
   "imagemCredito": "NASA/JPL"
 }
