@@ -20,6 +20,11 @@ export interface NewsItem {
   contentEs: string
   image?: string
   imageCredit?: string
+  aiGenerated?: boolean
+  aiProvider?: string
+  aiModel?: string
+  humanReviewed?: boolean
+  references?: { title: string; url: string }[]
 }
 
 export interface Article {
@@ -38,6 +43,11 @@ export interface Article {
   type: string
   image?: string
   imageCredit?: string
+  aiGenerated?: boolean
+  aiProvider?: string
+  aiModel?: string
+  humanReviewed?: boolean
+  references?: { title: string; url: string }[]
 }
 
 function ensureDir(dir: string) {

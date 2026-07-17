@@ -8,7 +8,7 @@ apenas adiciona os campos/traduções que ainda faltam.
 import re
 import json
 from pathlib import Path
-from daily_update import call_claude, BASE_DIR
+from daily_update import call_openai, parse_json_response, BASE_DIR
 
 
 def has_lang_markers(text):
@@ -50,9 +50,8 @@ CORPO:
 Responda SOMENTE com JSON válido:
 {{"titleEn":"...","excerptEn":"...","contentEn":"texto completo em inglês, parágrafos separados por \\n\\n","titleEs":"...","excerptEs":"...","contentEs":"texto completo em espanhol, parágrafos separados por \\n\\n"}}"""
     try:
-        raw = call_claude(prompt, max_tokens=2600)
-        m = re.search(r'\{[\s\S]+\}', raw)
-        return json.loads(m.group()) if m else None
+        raw = call_openai(prompt, max_tokens=6000)
+        return parse_json_response(raw)
     except Exception as e:
         print(f"     ⚠️  {e}")
         return None
@@ -70,9 +69,8 @@ CORPO:
 Responda SOMENTE com JSON válido:
 {{"titleEn":"...","categoryEn":"...","contentEn":"texto completo em inglês, parágrafos separados por \\n\\n","titleEs":"...","categoryEs":"...","contentEs":"texto completo em espanhol, parágrafos separados por \\n\\n"}}"""
     try:
-        raw = call_claude(prompt, max_tokens=2600)
-        m = re.search(r'\{[\s\S]+\}', raw)
-        return json.loads(m.group()) if m else None
+        raw = call_openai(prompt, max_tokens=6000)
+        return parse_json_response(raw)
     except Exception as e:
         print(f"     ⚠️  {e}")
         return None

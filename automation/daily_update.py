@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 """
 De Olho no Céu — Automação diária
-Busca RSS científicos e gera artigos com Claude API.
+Busca RSS científicos e gera artigos com a OpenAI API.
 """
 
-import os, sys, json, time, re, math, datetime, feedparser, anthropic, requests
+import os, sys, json, time, re, math, datetime, feedparser, requests
+from openai import OpenAI
 from pathlib import Path
 
-ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
+OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", "")
+OPENAI_MODEL = os.environ.get("OPENAI_MODEL", "gpt-5.6-sol")
 NASA_API_KEY = os.environ.get("NASA_API_KEY", "DEMO_KEY")
 BASE_DIR = Path(__file__).parent.parent
 
@@ -21,7 +23,6 @@ RSS_SOURCES = [
 ]
 
 TOPICS = [
-    # Estrelas e vida estelar
     "o que é a teoria da relatividade especial",
     "como funciona a fusão nuclear nas estrelas",
     "o que são quasares e como são formados",
@@ -38,125 +39,6 @@ TOPICS = [
     "o que são aglomerados globulares",
     "o que é a força de maré e como ela afeta luas",
     "o que é a sequência principal das estrelas no diagrama HR",
-    "o que é o diagrama de Hertzsprung-Russell e como classifica estrelas",
-    "o que é a espectroscopia e como revela a composição das estrelas",
-    "o que é o efeito Doppler e como detecta planetas e galáxias",
-    "como funciona a morte das estrelas — anãs brancas, estrelas de nêutrons e buracos negros",
-    "o que é uma supernova e por que explode",
-    "o que é uma estrela de nêutrons e como se forma",
-    "o que são magnetares — as estrelas mais magnéticas do universo",
-    "o que é uma anã branca e o que acontece quando esfria",
-    "o que é uma anã marrom — entre estrela e planeta",
-    "o que é a luminosidade e a magnitude das estrelas",
-    "o que é a paralaxe espectroscópica",
-    "como estrelas duplas e múltiplas se formam e evoluem",
-    "o que são nébulas e como formam estrelas",
-    "o que é o vento solar e como afeta os planetas",
-    # Buracos negros e gravidade
-    "o que é um buraco negro e como se detecta",
-    "o que é o horizonte de eventos de um buraco negro",
-    "o que é a radiação de Hawking",
-    "o que é a relatividade geral de Einstein",
-    "o que são ondas gravitacionais e como se detectam",
-    "o que é a singularidade de um buraco negro",
-    "o que são buracos negros supermassivos e como existem no centro das galáxias",
-    "o que é spaghettification — o estiramento perto de buracos negros",
-    "o que é um buraco de minhoca — existe mesmo",
-    "como a gravidade curva a luz — lente gravitacional",
-    "o que é a precessão de Mercúrio e a prova da relatividade geral",
-    # Cosmologia e universo
-    "o que é a teoria do Big Bang",
-    "o que é a matéria escura e por que não conseguimos vê-la",
-    "o que é a energia escura e por que acelera o universo",
-    "o que é a inflação cósmica — o universo inflando em frações de segundo",
-    "o que é o princípio cosmológico",
-    "o que é a constante cosmológica de Einstein",
-    "o que é o destino final do universo — Big Freeze, Big Rip ou Big Crunch",
-    "o que são filamentos cósmicos e a teia do universo",
-    "o que é o paradoxo de Olbers — por que o céu noturno é escuro",
-    "o que é o multiverso",
-    "o que é o princípio antrópico",
-    "o que é a nucleossíntese do Big Bang — formação dos primeiros elementos",
-    "o que é a recombinação cósmica — quando o universo ficou transparente",
-    "o que é a época da reionização",
-    # Galáxias
-    "o que são galáxias e como se classificam",
-    "o que é uma galáxia elíptica, espiral e irregular",
-    "como galáxias colidem e se fundem",
-    "o que é o Grupo Local — nossa vizinhança galáctica",
-    "o que é a Grande Nuvem de Magalhães",
-    "o que é Andrômeda e o que acontecerá quando colidir com a Via Láctea",
-    "o que são galáxias anãs e como orbitam as galáxias maiores",
-    "o que é o núcleo galáctico ativo (AGN)",
-    "o que é um blazar",
-    "o que são jatos relativísticos de galáxias",
-    # Planetas e sistema solar
-    "como se formou o sistema solar — teoria da nebular",
-    "o que é a zona de Goldilocks no sistema solar",
-    "por que Plutão deixou de ser planeta",
-    "o que é o cinturão de asteroides e como se formou",
-    "o que é o Cinturão de Kuiper",
-    "o que é a Nuvem de Oort e de onde vêm os cometas",
-    "como os anéis de Saturno se formaram",
-    "o que é a Grande Mancha Vermelha de Júpiter",
-    "o que torna a Europa de Júpiter um candidato à vida",
-    "o que é Encélado e seus gêiseres de água",
-    "o que é Titã e sua atmosfera densa",
-    "o que é Marte e por que queremos colonizá-lo",
-    "o que é a proteção magnética da Terra",
-    "como a Lua se formou — teoria do grande impacto",
-    "o que são marés e como a Lua as controla",
-    # Exoplanetas e vida
-    "o que são exoplanetas e como os detectamos",
-    "o que é o método de trânsito para detectar exoplanetas",
-    "o que é o método da velocidade radial para detectar exoplanetas",
-    "o que é a biosfera e os marcadores de vida em exoplanetas",
-    "o que é TRAPPIST-1 e seus planetas na zona habitável",
-    "o que é a equação de Drake — estimando civilizações no universo",
-    "o que é o paradoxo de Fermi — onde estão os alienígenas",
-    "o que é panspermia — a vida viajando pelo espaço",
-    "o que é a zona habitável galáctica",
-    # Física e instrumentos
-    "o que é a mecânica quântica e como se aplica à astrofísica",
-    "o que é o princípio da incerteza de Heisenberg",
-    "o que é a pressão de degenerescência que sustenta anãs brancas",
-    "o que é um telescópio e como funciona — refrator e refletor",
-    "o que é o telescópio espacial Hubble e suas descobertas",
-    "o que é o telescópio James Webb e o que pode observar",
-    "o que é radioastronomia e como expandiu nossa visão do universo",
-    "o que é a astronomia de raios-X e gama",
-    "o que é interferometria e como cria telescópios do tamanho da Terra",
-    "o que é a astronomia de ondas gravitacionais — LIGO e Virgo",
-    "o que é o redshift e como mede a expansão do universo",
-    "o que é o fundo difuso de micro-ondas e o que revela",
-    "o que é a fotometria estelar",
-    "o que são raios cósmicos e de onde vêm",
-    "o que são neutrinos e como os detectamos",
-    # Exploração espacial
-    "o que é a ISS e como os astronautas vivem em órbita",
-    "o que é propulsão iônica e como funciona",
-    "o que é a manobra gravitacional — viagem aos planetas mais rápido",
-    "como funciona uma órbita — por que satélites não caem",
-    "o que é a órbita geoestacionária",
-    "o que é o Starship da SpaceX e seus objetivos",
-    "como funciona o foguete — terceira lei de Newton no espaço",
-    "o que é a corrida espacial e seu legado científico",
-    "o que é o programa Artemis e o retorno à Lua",
-    "o que são satélites Starlink e como a rede de satélites funciona",
-    # Conceitos físicos fundamentais
-    "o que é a velocidade da luz e por que é o limite",
-    "o que é dilatação temporal — o tempo passando diferente para cada um",
-    "o que é a contração do espaço na relatividade especial",
-    "o que é equivalência massa-energia — E=mc²",
-    "o que é a pressão de radiação — a luz empurrando objetos",
-    "o que é a temperatura e como se mede no espaço",
-    "o que é o plasma e por que a maioria da matéria do universo é plasma",
-    "o que é o campo magnético e como molda o universo",
-    "o que é a constante de Hubble e a controvérsia da sua medição",
-    "o que é o paradoxo dos gêmeos da relatividade",
-    "o que é o colapso de função de onda na mecânica quântica",
-    "o que é o emaranhamento quântico",
-    "o que é a cromodinâmica quântica — quarks e glúons",
 ]
 
 def strip_html(s):
@@ -309,33 +191,14 @@ def find_image_fallback_apod():
             continue
     return None
 
-def is_valid_image_url(url):
-    """Verifica rapidamente se uma URL aponta pra uma imagem real (não PDF, SVG, texto ou página HTML)."""
-    if not url:
-        return False
-    url_lower = url.lower()
-    # Rejeita extensões não-visuais
-    bad_exts = ('.pdf', '.svg', '.txt', '.html', '.htm', '.xml', '.doc', '.docx')
-    if any(url_lower.endswith(e) or f'{e}/' in url_lower or f'{e}?' in url_lower for e in bad_exts):
-        return False
-    # Rejeita padrões típicos de thumbnails de documentos no Wikimedia
-    if 'page1-' in url_lower and '.pdf.' in url_lower:
-        return False
-    return True
-
 def find_image(query):
-    """Ordem de prioridade com validação de URL em cada etapa:
-    NASA → Wikipédia → Wikimedia Commons → Openverse → foto aleatória NASA (garantia final)."""
-    for fn in (find_image_nasa, find_image_wikipedia, find_image_wikimedia,
-               find_image_openverse):
-        result = fn(query)
-        if result and is_valid_image_url(result.get("url", "")):
-            return result
-    # Garantia final: foto histórica aleatória da NASA
-    result = find_image_fallback_apod()
-    if result and is_valid_image_url(result.get("url", "")):
-        return result
-    return None
+    """Ordem de prioridade, alargando a busca até garantir uma imagem:
+    NASA → Wikipédia → Wikimedia Commons → Openverse → foto aleatória da NASA (garantia final)."""
+    return (find_image_nasa(query)
+            or find_image_wikipedia(query)
+            or find_image_wikimedia(query)
+            or find_image_openverse(query)
+            or find_image_fallback_apod())
 
 def slug(text):
     text = text.lower()
@@ -350,15 +213,69 @@ def iso_week():
     y, w, _ = datetime.date.today().isocalendar()
     return f"{y}-W{w:02d}"
 
-def call_claude(prompt, max_tokens=1200):
-    client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
-    resp = client.messages.create(
-        model="claude-sonnet-4-6",
-        max_tokens=max_tokens,
-        system="Você é um cientista e escritor de divulgação científica de alta qualidade.",
-        messages=[{"role": "user", "content": prompt}]
-    )
-    return resp.content[0].text.strip()
+def call_openai(prompt, max_tokens=1200, web_search=False):
+    """Gera texto pela Responses API, com retentativas para falhas transitórias."""
+    client = OpenAI(api_key=OPENAI_API_KEY, timeout=120.0, max_retries=2)
+    kwargs = {
+        "model": OPENAI_MODEL,
+        "instructions": (
+            "Você é um cientista e escritor de divulgação científica rigoroso. "
+            "Não invente fatos, referências ou URLs. Responda somente no formato pedido."
+        ),
+        "input": prompt,
+        "max_output_tokens": max_tokens,
+    }
+    if web_search:
+        kwargs["tools"] = [{"type": "web_search"}]
+    response = client.responses.create(**kwargs)
+    text = response.output_text.strip()
+    if not text:
+        raise ValueError("A OpenAI API retornou uma resposta vazia")
+    return text
+
+def parse_json_response(raw):
+    """Aceita JSON puro ou cercado por markdown, mas rejeita respostas incompletas."""
+    cleaned = re.sub(r'^```(?:json)?\s*|\s*```$', '', raw.strip(), flags=re.IGNORECASE)
+    try:
+        return json.loads(cleaned)
+    except json.JSONDecodeError:
+        match = re.search(r'\{[\s\S]+\}', cleaned)
+        if not match:
+            raise ValueError("Resposta sem objeto JSON")
+        return json.loads(match.group())
+
+def normalize_references(value, fallback=None):
+    refs = list(value) if isinstance(value, list) else []
+    if fallback:
+        refs.insert(0, fallback)
+    unique, seen = [], set()
+    for ref in refs:
+        if not isinstance(ref, dict):
+            continue
+        title = str(ref.get("title", "")).strip()
+        url = str(ref.get("url", "")).strip()
+        if title and re.match(r'^https://', url) and url not in seen:
+            unique.append({"title": title[:180], "url": url})
+            seen.add(url)
+    return unique[:6]
+
+def validate_generated(data, kind):
+    required = {
+        "news": ["title", "titleEn", "titleEs", "excerpt", "excerptEn", "excerptEs", "content", "contentEn", "contentEs"],
+        "article": ["title", "titleEn", "titleEs", "category", "categoryEn", "categoryEs", "content", "contentEn", "contentEs"],
+    }[kind]
+    missing = [key for key in required if not str(data.get(key, "")).strip()]
+    if missing:
+        raise ValueError(f"Campos obrigatórios ausentes: {', '.join(missing)}")
+    if any(len(str(data[key])) > 140 for key in ("title", "titleEn", "titleEs")):
+        raise ValueError("Título acima de 140 caracteres")
+    minimum = 180 if kind == "news" else 300
+    for key in ("content", "contentEn", "contentEs"):
+        if len(str(data[key]).split()) < minimum:
+            raise ValueError(f"{key} tem menos de {minimum} palavras")
+    if not data.get("references"):
+        raise ValueError("Nenhuma referência verificável foi fornecida")
+    return data
 
 def fetch_rss():
     entries = []
@@ -435,63 +352,12 @@ def news_already_saved(key):
     if not folder.exists(): return False
     return any(key in f.stem for f in folder.glob("*.md"))
 
-def extract_json(raw):
-    """Extrai e faz o parse do JSON retornado pela IA, tolerando os erros mais comuns:
-    quebras de linha literais dentro de strings (não escapadas como \\n), tabs soltos
-    e vírgulas sobrando antes de } ou ]. Retorna None se não conseguir recuperar."""
-    m = re.search(r'\{[\s\S]+\}', raw)
-    if not m:
-        return None
-    texto = m.group()
-    try:
-        return json.loads(texto)
-    except json.JSONDecodeError:
-        pass
-
-    # Conserta quebras de linha/tabs literais que deveriam estar escapados dentro de strings
-    reparado = []
-    dentro_de_string = False
-    escapado = False
-    for ch in texto:
-        if dentro_de_string:
-            if escapado:
-                reparado.append(ch)
-                escapado = False
-                continue
-            if ch == '\\':
-                reparado.append(ch)
-                escapado = True
-                continue
-            if ch == '"':
-                dentro_de_string = False
-                reparado.append(ch)
-                continue
-            if ch == '\n':
-                reparado.append('\\n')
-                continue
-            if ch == '\r':
-                continue
-            if ch == '\t':
-                reparado.append('\\t')
-                continue
-            reparado.append(ch)
-        else:
-            if ch == '"':
-                dentro_de_string = True
-            reparado.append(ch)
-    texto_reparado = "".join(reparado)
-    # Remove vírgulas sobrando antes de fechamento de objeto/array
-    texto_reparado = re.sub(r',\s*([}\]])', r'\1', texto_reparado)
-    try:
-        return json.loads(texto_reparado)
-    except json.JSONDecodeError:
-        return None
-
 def gen_news(entry):
     prompt = f"""Notícia científica bruta:
 TÍTULO: {entry['title_original']}
 RESUMO: {entry['excerpt_original']}
 FONTE: {entry['source']}
+URL DA FONTE: {entry['url']}
 
 Reescreva como divulgação científica para leigos.
 
@@ -500,29 +366,25 @@ IMPORTANTE sobre o campo "content":
 - Deve ter 3-4 parágrafos SEPARADOS PELO LITERAL \\n\\n (duas quebras de linha) entre cada parágrafo
 - Explique contexto, detalhes técnicos em linguagem simples, com analogias, e relevância da descoberta
 - Sem fórmulas matemáticas
+- Não acrescente fatos específicos que não estejam sustentados pela fonte informada
 
 O mesmo vale para "contentEn" em inglês e "contentEs" em espanhol.
 
-Para o campo "imageQuery": escreva 3-5 palavras-chave em INGLÊS, técnicas e específicas ao assunto central desta notícia, adequadas para buscar uma fotografia científica real nos acervos da NASA ou Wikimedia. Exemplo: para uma notícia sobre Hubble fotografando estrelas, use "Hubble telescope star cluster NASA". Não use nomes de pessoas nem de jornais.
-
 Responda SOMENTE com JSON válido:
-{{"title":"título PT máx 90 chars","titleEn":"title EN max 90 chars","titleEs":"título ES máx 90 chars","excerpt":"resumo PT 2-3 frases max 280 chars","excerptEn":"summary EN 2-3 sentences max 280 chars","excerptEs":"resumen ES 2-3 frases máx 280 chars","tags":["tag1","tag2","tag3"],"imageQuery":"3-5 keywords in English for image search","content":"texto PT mínimo 200 palavras, 3-4 parágrafos separados por \\n\\n, sem fórmulas, com analogias","contentEn":"text EN minimum 200 words, 3-4 paragraphs separated by \\n\\n, no formulas","contentEs":"texto ES mínimo 200 palabras, 3-4 párrafos separados por \\n\\n, sin fórmulas"}}"""
+{{"title":"título PT máx 90 chars","titleEn":"title EN max 90 chars","titleEs":"título ES máx 90 chars","excerpt":"resumo PT 2-3 frases max 280 chars","excerptEn":"summary EN 2-3 sentences max 280 chars","excerptEs":"resumen ES 2-3 frases máx 280 chars","tags":["tag1","tag2","tag3"],"content":"texto PT mínimo 200 palavras, 3-4 parágrafos separados por \\n\\n, sem fórmulas, com analogias","contentEn":"text EN minimum 200 words, 3-4 paragraphs separated by \\n\\n, no formulas","contentEs":"texto ES mínimo 200 palabras, 3-4 párrafos separados por \\n\\n, sin fórmulas","references":[{{"title":"título da fonte original","url":"URL DA FONTE exatamente como informada"}}]}}"""
     try:
-        raw = call_claude(prompt, max_tokens=2100)
-        data = extract_json(raw)
+        raw = call_openai(prompt, max_tokens=5000)
+        data = parse_json_response(raw)
         if data:
             data.update({"source": entry["source"], "sourceType": entry["source_type"],
                          "sourceUrl": entry["url"], "date": entry["date"]})
+            data["references"] = normalize_references(data.get("references"), {"title": entry["title_original"] or entry["source"], "url": entry["url"]})
+            validate_generated(data, "news")
             if entry.get("image_from_rss"):
                 data["image"] = entry["image_from_rss"]
                 data["imageCredit"] = entry["source"]
             else:
-                # Usa a query sugerida pelo Claude; fallback para o título original em inglês
-                image_query = (data.get("imageQuery") or
-                               entry["title_original"] or
-                               data.get("titleEn") or
-                               data.get("title", ""))
-                img = find_image(image_query)
+                img = find_image(entry["title_original"] or data.get("title", ""))
                 if img:
                     data["image"] = img["url"]
                     data["imageCredit"] = img["credit"]
@@ -547,6 +409,7 @@ def save_news(data, key, source_title_original=""):
     source_title_field = ""
     if source_title_original:
         source_title_field = f'sourceTitle: "{source_title_original.replace(chr(34), chr(39))}"\n'
+    references = json.dumps(data.get("references", []), ensure_ascii=False)
     md = f"""---
 title: "{data['title']}"
 titleEn: "{data['titleEn']}"
@@ -559,6 +422,11 @@ sourceType: "{data['sourceType']}"
 sourceUrl: "{data['sourceUrl']}"
 {source_title_field}tags: {tags}
 date: "{data['date']}"
+aiGenerated: true
+aiProvider: "OpenAI"
+aiModel: "{OPENAI_MODEL}"
+humanReviewed: false
+references: {references}
 {image_fields}---
 
 {data['content']}
@@ -580,18 +448,18 @@ def gen_article(topic):
 - Use analogias do cotidiano
 - 350-500 palavras, 3-4 parágrafos
 - Último parágrafo: curiosidade surpreendente
-
-Para o campo "imageQuery": escreva 3-5 palavras-chave em INGLÊS, técnicas e específicas ao objeto astronômico ou fenômeno físico central do artigo, adequadas para buscar uma fotografia real nos acervos da NASA ou Wikimedia. Exemplo: para um artigo sobre buracos negros, use "black hole event horizon NASA". Não use conceitos abstratos nem palavras como "concept" ou "illustration".
+- Pesquise na web e sustente as afirmações em 2 a 4 fontes científicas ou institucionais confiáveis
+- Inclua apenas URLs HTTPS reais que você consultou; não invente referências
 
 Responda SOMENTE com JSON válido:
-{{"title":"título PT criativo","titleEn":"title EN","titleEs":"título ES creativo","category":"categoria PT","categoryEn":"category EN","categoryEs":"categoría ES","imageQuery":"3-5 keywords in English for image search","content":"texto PT parágrafos separados por \\n\\n","contentEn":"text EN paragraphs separated by \\n\\n","contentEs":"texto ES párrafos separados por \\n\\n","readingTime":3}}"""
+{{"title":"título PT criativo","titleEn":"title EN","titleEs":"título ES creativo","category":"categoria PT","categoryEn":"category EN","categoryEs":"categoría ES","content":"texto PT parágrafos separados por \\n\\n","contentEn":"text EN paragraphs separated by \\n\\n","contentEs":"texto ES párrafos separados por \\n\\n","readingTime":3,"references":[{{"title":"nome da fonte","url":"https://..."}}]}}"""
     try:
-        raw = call_claude(prompt, max_tokens=2100)
-        data = extract_json(raw)
+        raw = call_openai(prompt, max_tokens=6000, web_search=True)
+        data = parse_json_response(raw)
         if data:
-            # Usa a query sugerida pelo Claude; fallback para o tópico original
-            image_query = data.get("imageQuery") or topic
-            img = find_image(image_query)
+            data["references"] = normalize_references(data.get("references"))
+            validate_generated(data, "article")
+            img = find_image(topic)
             if img:
                 data["image"] = img["url"]
                 data["imageCredit"] = img["credit"]
@@ -612,6 +480,7 @@ def save_article(data, topic_key):
     titulo_es = (data.get('titleEs') or data['titleEn']).replace('"', "'")
     content_en = data.get('contentEn', '')
     content_es = data.get('contentEs') or content_en
+    references = json.dumps(data.get("references", []), ensure_ascii=False)
     md = f"""---
 title: "{data['title']}"
 titleEn: "{data['titleEn']}"
@@ -622,6 +491,11 @@ categoryEs: "{categoria_es}"
 type: "concept"
 readingTime: {data.get('readingTime',3)}
 date: "{today()}"
+aiGenerated: true
+aiProvider: "OpenAI"
+aiModel: "{OPENAI_MODEL}"
+humanReviewed: false
+references: {references}
 {image_fields}---
 
 {data['content']}
@@ -690,8 +564,9 @@ LEGENDA: {explanation_en}
 
 Responda SOMENTE com JSON válido:
 {{"title":"título PT curto e atrativo","caption":"legenda PT em até 3 frases, linguagem simples, sem jargão","titleEs":"título ES corto y atractivo","captionEs":"leyenda ES en hasta 3 frases, lenguaje simple"}}"""
-        raw = call_claude(prompt, max_tokens=800)
-        data_pt = extract_json(raw) or {}
+        raw = call_openai(prompt, max_tokens=1600)
+        m = re.search(r'\{[\s\S]+\}', raw)
+        data_pt = json.loads(m.group()) if m else {}
 
         photo_data = {
             "imageUrl": image_url,
@@ -815,168 +690,6 @@ def proximo_evento_astronomico(dt):
     return nome, data_evento.isoformat()
 
 
-# URLs de imagens curadas da Wikimedia Commons para cada fase da Lua.
-# São fotos reais e reconhecíveis da fase correta, de domínio público ou CC.
-MOON_PHASE_QUERIES = {
-    "new moon":             "new moon night sky",
-    "waxing crescent moon": "crescent moon",
-    "first quarter moon":   "first quarter moon",
-    "waxing gibbous moon":  "waxing gibbous moon",
-    "full moon":            "full moon",
-    "waning gibbous moon":  "waning gibbous moon",
-    "last quarter moon":    "last quarter moon",
-    "waning crescent moon": "waning crescent moon",
-}
-
-def moon_phase_image(nome_fase_en):
-    """Retorna (url, credit) buscando uma foto real da fase da Lua no acervo da NASA."""
-    key = nome_fase_en.lower().replace("'", "")
-    query = MOON_PHASE_QUERIES.get(key, f"{key} moon")
-    # Tenta primeiro o acervo da NASA (fotos reais, sempre disponíveis)
-    img = find_image_nasa(query)
-    if img:
-        return img
-    # Fallback: Openverse (agrega Flickr, museus etc.)
-    img = find_image_openverse(query)
-    if img:
-        return img
-    return None
-
-
-def gen_sitemap():
-    """Gera um sitemap.xml com todas as URLs do site para indexação pelo Google."""
-    try:
-        base = "https://www.deolhonoceu.com.br"
-        urls = [
-            (base + "/", "1.0", "daily"),
-            (base + "/arquivo-noticias/", "0.8", "daily"),
-            (base + "/arquivo-artigos/", "0.8", "daily"),
-        ]
-        # Adiciona as notícias mais recentes (últimos 30 dias)
-        cutoff = datetime.date.today() - datetime.timedelta(days=30)
-        for folder, path_prefix in [
-            (BASE_DIR / "content" / "noticias", "/arquivo-noticias/"),
-            (BASE_DIR / "content" / "artigos", "/arquivo-artigos/"),
-        ]:
-            if folder.exists():
-                for f in sorted(folder.glob("*.md"), reverse=True)[:50]:
-                    try:
-                        file_date = datetime.date.fromisoformat(f.name[:10])
-                        if file_date >= cutoff:
-                            urls.append((base + path_prefix, "0.6", "weekly"))
-                            break  # só adiciona a página de arquivo, não cada artigo individualmente
-                    except ValueError:
-                        pass
-        sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n'
-        sitemap += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-        for url, priority, changefreq in urls:
-            sitemap += f"""  <url>
-    <loc>{url}</loc>
-    <lastmod>{today()}</lastmod>
-    <changefreq>{changefreq}</changefreq>
-    <priority>{priority}</priority>
-  </url>\n"""
-        sitemap += '</urlset>'
-        out = BASE_DIR / "public" / "sitemap.xml"
-        out.write_text(sitemap, encoding="utf-8")
-        return "  ✅  sitemap.xml gerado com sucesso"
-    except Exception as e:
-        return f"  ⚠️  {e}"
-
-def gen_robots_txt():
-    """Gera robots.txt permitindo indexação completa e apontando para o sitemap."""
-    try:
-        robots = """User-agent: *
-Allow: /
-
-Sitemap: https://www.deolhonoceu.com.br/sitemap.xml
-"""
-        out = BASE_DIR / "public" / "robots.txt"
-        out.write_text(robots, encoding="utf-8")
-        return "  ✅  robots.txt gerado"
-    except Exception as e:
-        return f"  ⚠️  {e}"
-
-def gen_youtube_scripts(news_entries, articles_data):
-    """Gera scripts de vídeos curtos (YouTube Shorts / Reels) baseados nas notícias e artigos do dia.
-    Salva em content/youtube/ como arquivos Markdown prontos para uso."""
-    try:
-        folder = BASE_DIR / "content" / "youtube"
-        folder.mkdir(parents=True, exist_ok=True)
-        date_str = today()
-        output_file = folder / f"{date_str}-scripts.md"
-        if output_file.exists():
-            return "  ⏭  Scripts YouTube já gerados hoje"
-
-        scripts = []
-
-        # Script baseado na primeira notícia do dia
-        if news_entries:
-            entry = news_entries[0]
-            prompt = f"""Crie um script curto e envolvente para um YouTube Short (45-60 segundos, ~120 palavras) sobre esta notícia de astronomia:
-
-TÍTULO: {entry.get('title_original', '')}
-RESUMO: {entry.get('excerpt_original', '')[:300]}
-
-Regras:
-- Comece com uma frase de impacto que prende atenção nos primeiros 3 segundos
-- Use linguagem simples e empolgante
-- Termine com call-to-action: "Leia a notícia completa no link da bio: www.deolhonoceu.com.br"
-- Formato: apenas o texto do narrador, sem indicações de câmera
-- Em português do Brasil
-
-Responda SOMENTE com JSON: {{"titulo":"título do vídeo","script":"texto completo do script","hashtags":"#astronomia #espaco #ciencia #nasa #universo"}}"""
-            raw = call_claude(prompt, max_tokens=600)
-            data = extract_json(raw)
-            if data:
-                scripts.append(("📰 NOTÍCIA", data))
-
-        # Script baseado num artigo conceitual recente
-        recent_articles = sorted(
-            (BASE_DIR / "content" / "artigos").glob("*.md"),
-            reverse=True
-        )[:3]
-        for art_file in recent_articles:
-            text = art_file.read_text(encoding="utf-8")
-            title = extract_yaml_field(text, "title")
-            if not title:
-                continue
-            prompt = f"""Crie um script curto e envolvente para um YouTube Short (45-60 segundos, ~120 palavras) explicando este conceito de astronomia/física:
-
-TÍTULO DO ARTIGO: {title}
-
-Regras:
-- Comece com uma pergunta ou fato surpreendente
-- Explique o conceito de forma simples com uma analogia do cotidiano
-- Termine com: "Saiba mais em www.deolhonoceu.com.br"
-- Em português do Brasil
-
-Responda SOMENTE com JSON: {{"titulo":"título do vídeo","script":"texto completo do script","hashtags":"#astronomia #fisica #ciencia #espaco #universo"}}"""
-            raw = call_claude(prompt, max_tokens=600)
-            data = extract_json(raw)
-            if data:
-                scripts.append(("🌌 CONCEITO", data))
-                break
-
-        if not scripts:
-            return "  ⚠️  Nenhum script YouTube gerado"
-
-        md = f"# Scripts YouTube — {date_str}\n\n"
-        md += "> Copie estes scripts para gravar Shorts/Reels. Sempre inclua o link www.deolhonoceu.com.br na bio e descrição.\n\n"
-        for tipo, s in scripts:
-            md += f"## {tipo}: {s.get('titulo','')}\n\n"
-            md += f"**Script:**\n\n{s.get('script','')}\n\n"
-            md += f"**Hashtags:** {s.get('hashtags','')}\n\n---\n\n"
-
-        output_file.write_text(md, encoding="utf-8")
-        return f"  ✅  {len(scripts)} script(s) YouTube gerado(s) em content/youtube/{date_str}-scripts.md"
-    except Exception as e:
-        return f"  ⚠️  YouTube scripts: {e}"
-
-def extract_yaml_field(text, field):
-    m = re.search(rf'^{field}:\s*"([^"]*)"', text, re.MULTILINE)
-    return m.group(1) if m else ""
-
 def gen_moon_info():
     """Calcula a fase atual da Lua, a próxima fase, o próximo evento astronômico
     e o nome cultural da lua cheia do mês — sempre com uma imagem ilustrativa e crédito."""
@@ -1000,7 +713,7 @@ def gen_moon_info():
             "atualizadoEm": today(),
         }
 
-        img = moon_phase_image(nome_fase_en)
+        img = find_image(f"{nome_fase_en} astronomy")
         if img:
             data["imagem"] = img["url"]
             data["imagemCredito"] = img["credit"]
@@ -1014,8 +727,9 @@ def gen_moon_info():
 
 def main():
     print(f"\n🔭 De Olho no Céu — {today()}")
-    if not ANTHROPIC_API_KEY:
-        print("❌ ANTHROPIC_API_KEY não definida."); sys.exit(1)
+    if not OPENAI_API_KEY:
+        print("❌ OPENAI_API_KEY não definida."); sys.exit(1)
+    print(f"🤖 Modelo OpenAI: {OPENAI_MODEL} | revisão humana: não")
 
     print("\n📡 Buscando RSS...")
     entries = fetch_rss()
@@ -1055,35 +769,11 @@ def main():
             print(save_article(data, topic_key))
             generated_articles += 1
             time.sleep(2)
-
     if generated_articles == 0:
-        print("  ⏭  Todos os tópicos fixos cobertos — gerando artigo baseado nas notícias do dia...")
-        # Usa as notícias mais recentes como inspiração para um artigo conceitual inédito
-        noticias_hoje = [e for e in entries if e["date"] == today()][:3]
-        if not noticias_hoje:
-            noticias_hoje = entries[:3]
-        if noticias_hoje:
-            assuntos = "; ".join(e["title_original"] for e in noticias_hoje)
-            topic_inspirado = f"conceito científico relacionado a: {assuntos[:200]}"
-            topic_key = slug(f"inspirado-noticias-{today()}")
-            if not article_topic_used(topic_key):
-                print(f"   Tópico inspirado nas notícias do dia")
-                data = gen_article(topic_inspirado)
-                if data:
-                    print(save_article(data, topic_key))
-                    generated_articles += 1
-        if generated_articles == 0:
-            print("  ⏭  Nenhum artigo gerado hoje")
+        print("  ⏭  Todos os tópicos já foram cobertos")
 
     print("\n📷 Atualizando foto da semana...")
     print(gen_photo_week())
-
-    print("\n🎬 Gerando scripts para YouTube...")
-    print(gen_youtube_scripts(entries, []))
-
-    print("\n🗺️  Gerando sitemap e robots.txt...")
-    print(gen_sitemap())
-    print(gen_robots_txt())
 
     print("\n🌙 Atualizando informações da Lua...")
     print(gen_moon_info())

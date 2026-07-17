@@ -31,9 +31,11 @@ jobs:
 
       - name: Executar backfill
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           NASA_API_KEY: ${{ secrets.NASA_API_KEY }}
         run: python automation/backfill_images.py
+
+      - name: Validar conteúdo e referências
+        run: python automation/validate_content.py --check-urls
 
       - name: Commit e push
         run: |
