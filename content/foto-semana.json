@@ -1,9 +1,11 @@
 {
-  "imageUrl": "https://apod.nasa.gov/apod/image/2607/AraDragons_Prazeres_7200.jpg",
-  "title": "NGC 6188: Os Dragões de Ara",
-  "titleEn": "NGC 6188: Dragons of Ara",
-  "caption": "Onde encontrar dragões brigando no céu noturno? Na constelação austral do Altar, Ara, a nebulosa NGC 6188 — a cerca de 4.000 anos-luz de distância — abriga formas de gás e poeira que lembram criaturas míticas em combate. Estrelas jovens e massivas esculpiram essas silhuetas dramáticas com seus ventos estelares e intensa radiação ultravioleta, num campo de visão que abrange o equivalente a quatro Luas cheias.",
-  "captionEn": "Where can you find dragons fighting in the night sky?  In the southern constellation of the Altar: Ara. The dragons are, of course, actually made of suggestively shaped gas and dust.  The celestial home of the mythological battling beasts is cataloged as NGC 6188 and located about 4,000 light years away near the edge of a large molecular cloud.  Massive, young stars of the embedded Ara OB1 association were formed there only a few million years ago, sculpting the dark shapes and powering the nebular glow with stellar winds and intense ultraviolet radiation.  Joining NGC 6188 on this cosmic canvas, visible toward the lower right, is unusual emission nebula NGC 6164, also created by one of the region's massive stars.  This impressively wide field picture, captured from Queensland, Australia, spans over 2 degrees (four full Moons).",
-  "credit": "Rod Prazeres",
-  "week": "2026-W28"
+  "imageUrl": "https://apod.nasa.gov/apod/image/2607/ShadowandRainbow_Loschiavo.jpg",
+  "title": "Sombra e Arco-Íris",
+  "titleEn": "Shadow and Rainbow",
+  "titleEs": "Sombra y arcoíris",
+  "caption": "Ao pôr do sol de 13 de julho, a sombra da montanha e um arco-íris se alinharam nesta vista registrada no pico Smith, na Califórnia. A sombra parece apontar para o centro do arco porque ambos ficam na direção oposta ao Sol. Após tempestades na região, gotas de água refrataram e refletiram a luz solar, formando o arco colorido de cerca de 42 graus.",
+  "captionEn": "At sunset, an alignment of rainbow and mountain shadow was captured in this remarkable snapshot. The stunning view was recorded from a fire lookout on Smith Peak in the Plumas National Forest near Portola, California on July 13.  Still, near sunset it's no accident that the majestic mountain shadow seems to point to the center of the graceful rainbow arc. Due to perspective and the long line of sight the mountain shadow naturally forms a tapering triangular shape, its apex positioned at the point opposite the Sun on the horizon. Following thunderstorms across the region, the rainbow arcs across the early evening sky, with its colorful and characteristic 42 degree arc formed as sunlight is refracted and reflected by the atmospheric water droplets. The geometric center of a rainbow arc lies at the antisolar point. And in this scene from the golden hour on planet Earth, that's also oposite the setting Sun along the distant horizon.",
+  "captionEs": "Al atardecer del 13 de julio, la sombra de la montaña y un arcoíris se alinearon en esta vista captada desde el pico Smith, en California. La sombra parece apuntar al centro del arco porque ambos se encuentran en la dirección opuesta al Sol. Tras las tormentas en la región, las gotas de agua refractaron y reflejaron la luz solar, formando el arco de colores de unos 42 grados.",
+  "credit": "NASA",
+  "week": "2026-W29"
 }
