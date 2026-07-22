@@ -1,14 +1,14 @@
 {
   "fase": "Quarto Crescente",
   "faseEn": "First quarter moon",
-  "iluminacao": 45,
-  "proximaFase": "Quarto Crescente",
-  "proximaFaseData": "2026-07-22",
+  "iluminacao": 55,
+  "proximaFase": "Lua Cheia",
+  "proximaFaseData": "2026-07-29",
   "evento": "Chuva de meteoros Delta Aquáridas do Sul (pico)",
   "eventoData": "2026-07-30",
   "nomeCultural": "Lua do Cervo",
   "mes": 7,
-  "atualizadoEm": "2026-07-21",
+  "atualizadoEm": "2026-07-22",
   "imagem": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/First_quarter_moon.jpg/1280px-First_quarter_moon.jpg",
   "imagemCredito": "Astrobond / Wikimedia Commons / CC BY-SA 4.0"
 }
