@@ -35,13 +35,9 @@ jobs:
 
       - name: Executar script
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          OPENAI_MODEL: gpt-5.6-sol
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           NASA_API_KEY: ${{ secrets.NASA_API_KEY }}
         run: python automation/daily_update.py
-
-      - name: Validar conteúdo e referências
-        run: python automation/validate_content.py --check-urls
 
       - name: Commit e push
         run: |
