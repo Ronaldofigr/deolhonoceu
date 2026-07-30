@@ -344,7 +344,7 @@ def iso_week():
     return f"{y}-W{w:02d}"
 
 def call_claude(prompt, max_tokens=1200):
-    """Gera texto via API da Anthropic (Claude Sonnet)."""
+    """Gera texto via API da Anthropic usando Claude Sonnet — para tarefas que exigem qualidade máxima."""
     client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
     message = client.messages.create(
         model="claude-sonnet-4-6",
@@ -354,6 +354,20 @@ def call_claude(prompt, max_tokens=1200):
     text = message.content[0].text.strip() if message.content else ""
     if not text:
         raise ValueError("A API da Anthropic retornou uma resposta vazia")
+    return text
+
+def call_haiku(prompt, max_tokens=600):
+    """Gera texto via API da Anthropic usando Claude Haiku — para tarefas simples (10× mais barato que Sonnet).
+    Usar para: foto da semana, scripts YouTube, info da Lua, tradução de legendas curtas."""
+    client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
+    message = client.messages.create(
+        model="claude-haiku-4-5-20251001",
+        max_tokens=max_tokens,
+        messages=[{"role": "user", "content": prompt}],
+    )
+    text = message.content[0].text.strip() if message.content else ""
+    if not text:
+        raise ValueError("A API Haiku retornou uma resposta vazia")
     return text
 
 def extract_json(raw):
@@ -491,7 +505,7 @@ O mesmo vale para "contentEn" em inglês e "contentEs" em espanhol.
 Responda SOMENTE com JSON válido:
 {{"title":"título PT máx 90 chars","titleEn":"title EN max 90 chars","titleEs":"título ES máx 90 chars","excerpt":"resumo PT 2-3 frases max 280 chars","excerptEn":"summary EN 2-3 sentences max 280 chars","excerptEs":"resumen ES 2-3 frases máx 280 chars","tags":["tag1","tag2","tag3"],"content":"texto PT mínimo 200 palavras, 3-4 parágrafos separados por \\n\\n, sem fórmulas, com analogias","contentEn":"text EN minimum 200 words, 3-4 paragraphs separated by \\n\\n, no formulas","contentEs":"texto ES mínimo 200 palabras, 3-4 párrafos separados por \\n\\n, sin fórmulas","imageQuery":"3-5 keywords in English for image search"}}"""
     try:
-        raw = call_claude(prompt, max_tokens=2100)
+        raw = call_claude(prompt, max_tokens=1600)
         data = extract_json(raw)
         if data:
             data.update({"source": entry["source"], "sourceType": entry["source_type"],
@@ -563,7 +577,7 @@ def gen_article(topic):
 Responda SOMENTE com JSON válido:
 {{"title":"título PT criativo","titleEn":"title EN","titleEs":"título ES creativo","category":"categoria PT","categoryEn":"category EN","categoryEs":"categoría ES","content":"texto PT parágrafos separados por \\n\\n","contentEn":"text EN paragraphs separated by \\n\\n","contentEs":"texto ES párrafos separados por \\n\\n","readingTime":3,"references":[{{"title":"nome da fonte","url":"https://..."}}]}}"""
     try:
-        raw = call_claude(prompt, max_tokens=2100)
+        raw = call_claude(prompt, max_tokens=1600)
         data = extract_json(raw)
         if data:
             image_query = data.get("imageQuery") or topic
@@ -666,7 +680,7 @@ LEGENDA: {explanation_en}
 
 Responda SOMENTE com JSON válido:
 {{"title":"título PT curto e atrativo","caption":"legenda PT em até 3 frases, linguagem simples, sem jargão","titleEs":"título ES corto y atractivo","captionEs":"leyenda ES en hasta 3 frases, lenguaje simple"}}"""
-        raw = call_claude(prompt, max_tokens=800)
+        raw = call_haiku(prompt, max_tokens=500)
         m = re.search(r'\{[\s\S]+\}', raw)
         data_pt = json.loads(m.group()) if m else {}
 
@@ -899,7 +913,7 @@ TÍTULO: {entry.get('title_original', '')}
 RESUMO: {entry.get('excerpt_original', '')[:200]}
 Termine com: "Leia no link da bio: www.deolhonoceu.com.br"
 Responda SOMENTE com JSON: {{"titulo":"título do vídeo","script":"texto do script","hashtags":"#astronomia #espaco #ciencia #nasa #universo"}}"""
-            raw = call_claude(prompt, max_tokens=500)
+            raw = call_haiku(prompt, max_tokens=400)
             data = extract_json(raw)
             if data:
                 scripts.append(("📰 NOTÍCIA", data))
