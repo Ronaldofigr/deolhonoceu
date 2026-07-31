@@ -806,24 +806,49 @@ def proximo_evento_astronomico(dt):
     return nome, data_evento.isoformat()
 
 
-MOON_PHASE_QUERIES = {
-    "new moon":             "new moon night sky",
-    "waxing crescent moon": "crescent moon",
-    "first quarter moon":   "first quarter moon",
-    "waxing gibbous moon":  "waxing gibbous moon",
-    "full moon":            "full moon",
-    "waning gibbous moon":  "waning gibbous moon",
-    "last quarter moon":    "last quarter moon",
-    "waning crescent moon": "waning crescent moon",
+MOON_PHASE_IMAGES = {
+    "new moon": {
+        "url": "https://apod.nasa.gov/apod/image/0711/moonphases_hader.jpg",
+        "credit": "NASA APOD / Markus Hader"
+    },
+    "waxing crescent moon": {
+        "url": "https://science.nasa.gov/wp-content/uploads/2023/09/moon-phases.jpg",
+        "credit": "NASA"
+    },
+    "first quarter moon": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/NASA-Apollo8-Dec24-Earthrise.jpg/1280px-NASA-Apollo8-Dec24-Earthrise.jpg",
+        "credit": "NASA / Apollo 8"
+    },
+    "waxing gibbous moon": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Supermoon_comparison.jpg/1280px-Supermoon_comparison.jpg",
+        "credit": "NASA / Goddard Space Flight Center"
+    },
+    "full moon": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/800px-FullMoon2010.jpg",
+        "credit": "Gregory H. Revera / Wikimedia Commons / CC BY-SA 3.0"
+    },
+    "waning gibbous moon": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/LRO_WAC_mosaic_global_color.jpg/1280px-LRO_WAC_mosaic_global_color.jpg",
+        "credit": "NASA/GSFC/Arizona State University"
+    },
+    "last quarter moon": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Moon_nearside.jpg/800px-Moon_nearside.jpg",
+        "credit": "NASA / Goddard Space Flight Center / Arizona State University"
+    },
+    "waning crescent moon": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Chang%27e_5_lunar_orbiter_image_of_the_Moon.jpg/1280px-Chang%27e_5_lunar_orbiter_image_of_the_Moon.jpg",
+        "credit": "CNSA / Chang'e 5"
+    },
 }
 
 def moon_phase_image(nome_fase_en):
-    """Retorna imagem específica da fase da Lua buscando no acervo da NASA."""
+    """Retorna imagem curada da fase da Lua usando URLs diretas e confiáveis.
+    Evita buscas dinâmicas que retornam resultados irrelevantes (como Saturno)."""
     key = nome_fase_en.lower().replace("'", "")
-    query = MOON_PHASE_QUERIES.get(key, f"{key} moon")
-    img = find_image_nasa(query)
-    if img: return img
-    return find_image_openverse(query)
+    if key in MOON_PHASE_IMAGES:
+        return MOON_PHASE_IMAGES[key]
+    # fallback apenas para fases não mapeadas
+    return find_image_openverse(f"{key} moon photography")
 
 
 def gen_moon_info():
