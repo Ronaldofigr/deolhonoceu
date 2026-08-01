@@ -806,55 +806,89 @@ def proximo_evento_astronomico(dt):
     return nome, data_evento.isoformat()
 
 
+# Imagens das fases da lua com URLs de download e créditos.
+# As imagens são baixadas para public/moon/ durante o workflow,
+# evitando hotlinking externo que é bloqueado por Wikimedia/NASA.
 MOON_PHASE_IMAGES = {
     "new moon": {
-        "url": "https://apod.nasa.gov/apod/image/0711/moonphases_hader.jpg",
-        "credit": "NASA APOD / Markus Hader"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Full_Moon_Luc_Viatour.jpg/800px-Full_Moon_Luc_Viatour.jpg",
+        "credit": "Luc Viatour / Wikimedia Commons / CC BY-SA 3.0",
+        "filename": "new-moon.jpg"
     },
     "waxing crescent moon": {
-        "url": "https://science.nasa.gov/wp-content/uploads/2023/09/moon-phases.jpg",
-        "credit": "NASA"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/ISS040-E-080672_-_View_of_Earth.jpg/1024px-ISS040-E-080672_-_View_of_Earth.jpg",
+        "credit": "NASA",
+        "filename": "waxing-crescent.jpg"
     },
     "first quarter moon": {
         "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/NASA-Apollo8-Dec24-Earthrise.jpg/1280px-NASA-Apollo8-Dec24-Earthrise.jpg",
-        "credit": "NASA / Apollo 8"
+        "credit": "NASA / Apollo 8",
+        "filename": "first-quarter.jpg"
     },
     "waxing gibbous moon": {
         "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Supermoon_comparison.jpg/1280px-Supermoon_comparison.jpg",
-        "credit": "NASA / Goddard Space Flight Center"
+        "credit": "NASA / Goddard Space Flight Center",
+        "filename": "waxing-gibbous.jpg"
     },
     "full moon": {
         "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/800px-FullMoon2010.jpg",
-        "credit": "Gregory H. Revera / Wikimedia Commons / CC BY-SA 3.0"
+        "credit": "Gregory H. Revera / Wikimedia Commons / CC BY-SA 3.0",
+        "filename": "full-moon.jpg"
     },
     "waning gibbous moon": {
         "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/LRO_WAC_mosaic_global_color.jpg/1280px-LRO_WAC_mosaic_global_color.jpg",
-        "credit": "NASA/GSFC/Arizona State University"
+        "credit": "NASA/GSFC/Arizona State University",
+        "filename": "waning-gibbous.jpg"
     },
     "last quarter moon": {
         "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Moon_nearside.jpg/800px-Moon_nearside.jpg",
-        "credit": "NASA / Goddard Space Flight Center / Arizona State University"
+        "credit": "NASA / Goddard Space Flight Center / Arizona State University",
+        "filename": "last-quarter.jpg"
     },
     "waning crescent moon": {
         "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Chang%27e_5_lunar_orbiter_image_of_the_Moon.jpg/1280px-Chang%27e_5_lunar_orbiter_image_of_the_Moon.jpg",
-        "credit": "CNSA / Chang'e 5"
+        "credit": "CNSA / Chang'e 5",
+        "filename": "waning-crescent.jpg"
     },
 }
 
+MOON_IMG_DIR = BASE_DIR / "public" / "moon"
+
+def download_moon_images():
+    """Baixa imagens das fases da lua para public/moon/ se ainda não existirem.
+    Isso evita hotlinking externo (Wikimedia/NASA bloqueiam requisições de domínios externos)."""
+    MOON_IMG_DIR.mkdir(parents=True, exist_ok=True)
+    headers = {"User-Agent": "DeOlhoNoCeu/1.0 (https://www.deolhonoceu.com.br)"}
+    for fase, info in MOON_PHASE_IMAGES.items():
+        dest = MOON_IMG_DIR / info["filename"]
+        if dest.exists() and dest.stat().st_size > 10_000:
+            continue  # já baixada e parece válida
+        try:
+            resp = requests.get(info["url"], headers=headers, timeout=20, stream=True)
+            if resp.status_code == 200 and "image" in resp.headers.get("content-type", ""):
+                dest.write_bytes(resp.content)
+        except Exception:
+            pass  # silencia erros — fallback mantém imagem anterior se existir
+
 def moon_phase_image(nome_fase_en):
-    """Retorna imagem curada da fase da Lua usando URLs diretas e confiáveis.
-    Evita buscas dinâmicas que retornam resultados irrelevantes (como Saturno)."""
+    """Retorna path local da imagem da fase da Lua (servida pelo GitHub Pages).
+    Se o arquivo local ainda não existir, retorna URL externa como fallback."""
     key = nome_fase_en.lower().replace("'", "")
-    if key in MOON_PHASE_IMAGES:
-        return MOON_PHASE_IMAGES[key]
-    # fallback apenas para fases não mapeadas
-    return find_image_openverse(f"{key} moon photography")
+    info = MOON_PHASE_IMAGES.get(key)
+    if not info:
+        return None
+    local_file = MOON_IMG_DIR / info["filename"]
+    if local_file.exists() and local_file.stat().st_size > 10_000:
+        return {"url": f"/moon/{info['filename']}", "credit": info["credit"]}
+    # fallback: URL externa (pode não funcionar em hotlink, mas melhor que nada)
+    return {"url": info["url"], "credit": info["credit"]}
 
 
 def gen_moon_info():
     """Calcula a fase atual da Lua, a próxima fase, o próximo evento astronômico
     e o nome cultural da lua cheia do mês — sempre com uma imagem ilustrativa e crédito."""
     try:
+        download_moon_images()  # garante que as imagens estão em public/moon/
         agora = datetime.datetime.now(datetime.timezone.utc)
         nome_fase_pt, nome_fase_en, iluminacao = moon_phase_now(agora)
         proxima_fase_nome, proxima_fase_data = proxima_fase_principal(agora)
