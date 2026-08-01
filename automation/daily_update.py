@@ -178,40 +178,65 @@ def extract_rss_image(e):
 
 import time
 
+def _image_relevance_score(query, title, description):
+    """Pontua relevância de uma imagem em relação à query.
+    Retorna número de keywords da query encontradas no título/descrição da imagem."""
+    keywords = set(re.sub(r'[^a-z0-9 ]', ' ', query.lower()).split())
+    stopwords = {'the','a','an','of','in','on','at','to','for','and','or','is','are','was','were','with','this','that','from'}
+    keywords -= stopwords
+    if not keywords:
+        return 0
+    haystack = (title + " " + description).lower()
+    return sum(1 for kw in keywords if kw in haystack)
+
 def find_image_nasa(query):
-    """Busca uma imagem de domínio público no acervo oficial da NASA (sem chave de API)."""
+    """Busca imagem no acervo da NASA escolhendo o resultado mais relevante para a query,
+    não simplesmente o primeiro. Valida relevância via keywords no título/descrição."""
     time.sleep(1.2)
     try:
         resp = requests.get("https://images-api.nasa.gov/search",
-                             params={"q": query, "media_type": "image"}, timeout=15)
+                             params={"q": query, "media_type": "image", "page_size": 10}, timeout=15)
         resp.raise_for_status()
         resp.encoding = "utf-8"
         items = resp.json().get("collection", {}).get("items", [])
-        for it in items:
+        best_score = -1
+        best = None
+        for it in items[:10]:
             links = it.get("links", [])
             data = it.get("data", [{}])[0]
             img = next((l["href"] for l in links if l.get("render") == "image"), None)
-            if img:
+            if not img:
+                continue
+            title = data.get("title", "")
+            description = data.get("description", "")
+            score = _image_relevance_score(query, title, description)
+            if score > best_score:
+                best_score = score
                 center = data.get("center", "")
                 credit = f"NASA/{center}" if center and center != "NASA" else "NASA"
-                return {"url": img, "credit": credit}
+                best = {"url": img, "credit": credit, "score": score}
+        # Só aceita se tiver ao menos 1 keyword em comum com a query
+        if best and best_score >= 1:
+            return {"url": best["url"], "credit": best["credit"]}
     except Exception as e:
         print(f"    ⚠️  NASA Images: {e}")
     return None
 
 def find_image_wikimedia(query):
-    """Busca uma imagem licenciada no Wikimedia Commons, com crédito do autor extraído automaticamente.
-    Restringe a fotos/ilustrações reais, rejeitando páginas escaneadas de documentos/artigos."""
+    """Busca imagem no Wikimedia Commons escolhendo o resultado mais relevante via keywords.
+    Restringe a fotos/ilustrações reais, rejeitando documentos escaneados."""
     time.sleep(1.5)
     try:
         resp = requests.get("https://commons.wikimedia.org/w/api.php", params={
             "action": "query", "format": "json", "generator": "search",
-            "gsrsearch": f"{query} filetype:bitmap", "gsrnamespace": 6, "gsrlimit": 5,
+            "gsrsearch": f"{query} filetype:bitmap", "gsrnamespace": 6, "gsrlimit": 8,
             "prop": "imageinfo", "iiprop": "url|mime|size|extmetadata", "iiurlwidth": 1200,
         }, timeout=15, headers={"User-Agent": "DeOlhoNoCeu/1.0 (site automatizado de astronomia)"})
         resp.raise_for_status()
         resp.encoding = "utf-8"
         pages = resp.json().get("query", {}).get("pages", {})
+        best_score = -1
+        best = None
         for _, page in pages.items():
             info = page.get("imageinfo", [{}])[0]
             mime = info.get("mime", "")
@@ -219,16 +244,23 @@ def find_image_wikimedia(query):
             if not url or not mime.startswith("image/") or mime in ("image/svg+xml",):
                 continue
             if ".pdf" in url.lower():
-                continue  # miniatura de página de documento/artigo escaneado, não é uma foto
-            # descarta páginas de documentos escaneados (proporção muito "retrato" e alta resolução de texto)
+                continue
             width, height = info.get("width", 0), info.get("height", 0)
             if width and height and height / width > 1.3:
                 continue
+            # Usa o nome do arquivo como proxy do título para validar relevância
+            filename = page.get("title", "").replace("File:", "").replace("_", " ")
             meta = info.get("extmetadata", {})
-            artist = strip_html(meta.get("Artist", {}).get("value", ""))
-            license_name = meta.get("LicenseShortName", {}).get("value", "")
-            credit_parts = [p for p in [artist, "Wikimedia Commons", license_name] if p]
-            return {"url": url, "credit": " / ".join(credit_parts)}
+            description_meta = strip_html(meta.get("ImageDescription", {}).get("value", ""))
+            score = _image_relevance_score(query, filename, description_meta)
+            if score > best_score:
+                best_score = score
+                artist = strip_html(meta.get("Artist", {}).get("value", ""))
+                license_name = meta.get("LicenseShortName", {}).get("value", "")
+                credit_parts = [p for p in [artist, "Wikimedia Commons", license_name] if p]
+                best = {"url": url, "credit": " / ".join(credit_parts), "score": score}
+        if best and best_score >= 1:
+            return {"url": best["url"], "credit": best["credit"]}
     except Exception as e:
         print(f"    ⚠️  Wikimedia: {e}")
     return None
@@ -503,7 +535,7 @@ IMPORTANTE sobre o campo "content":
 O mesmo vale para "contentEn" em inglês e "contentEs" em espanhol.
 
 Responda SOMENTE com JSON válido:
-{{"title":"título PT máx 90 chars","titleEn":"title EN max 90 chars","titleEs":"título ES máx 90 chars","excerpt":"resumo PT 2-3 frases max 280 chars","excerptEn":"summary EN 2-3 sentences max 280 chars","excerptEs":"resumen ES 2-3 frases máx 280 chars","tags":["tag1","tag2","tag3"],"content":"texto PT mínimo 200 palavras, 3-4 parágrafos separados por \\n\\n, sem fórmulas, com analogias","contentEn":"text EN minimum 200 words, 3-4 paragraphs separated by \\n\\n, no formulas","contentEs":"texto ES mínimo 200 palabras, 3-4 párrafos separados por \\n\\n, sin fórmulas","imageQuery":"3-5 keywords in English for image search"}}"""
+{{"title":"título PT máx 90 chars","titleEn":"title EN max 90 chars","titleEs":"título ES máx 90 chars","excerpt":"resumo PT 2-3 frases max 280 chars","excerptEn":"summary EN 2-3 sentences max 280 chars","excerptEs":"resumen ES 2-3 frases máx 280 chars","tags":["tag1","tag2","tag3"],"content":"texto PT mínimo 200 palavras, 3-4 parágrafos separados por \\n\\n, sem fórmulas, com analogias","contentEn":"text EN minimum 200 words, 3-4 paragraphs separated by \\n\\n, no formulas","contentEs":"texto ES mínimo 200 palabras, 3-4 párrafos separados por \\n\\n, sin fórmulas","imageQuery":"3-5 keywords describing the SPECIFIC visual subject (rocket name, planet, telescope, celestial body or phenomenon) — never abstract terms like science or discovery"}}"""
     try:
         raw = call_claude(prompt, max_tokens=1600)
         data = extract_json(raw)
@@ -575,7 +607,7 @@ def gen_article(topic):
 - Último parágrafo: curiosidade surpreendente
 
 Responda SOMENTE com JSON válido:
-{{"title":"título PT criativo","titleEn":"title EN","titleEs":"título ES creativo","category":"categoria PT","categoryEn":"category EN","categoryEs":"categoría ES","content":"texto PT parágrafos separados por \\n\\n","contentEn":"text EN paragraphs separated by \\n\\n","contentEs":"texto ES párrafos separados por \\n\\n","readingTime":3,"references":[{{"title":"nome da fonte","url":"https://..."}}]}}"""
+{{"title":"título PT criativo","titleEn":"title EN","titleEs":"título ES creativo","category":"categoria PT","categoryEn":"category EN","categoryEs":"categoría ES","content":"texto PT parágrafos separados por \\n\\n","contentEn":"text EN paragraphs separated by \\n\\n","contentEs":"texto ES párrafos separados por \\n\\n","readingTime":3,"imageQuery":"3-5 keywords describing the SPECIFIC visual subject (planet, telescope, phenomenon, celestial body)","references":[{{"title":"nome da fonte","url":"https://..."}}]}}"""
     try:
         raw = call_claude(prompt, max_tokens=1600)
         data = extract_json(raw)
