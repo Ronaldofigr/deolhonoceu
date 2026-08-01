@@ -1,7 +1,7 @@
 {
   "fase": "Lua Gibosa Minguante",
   "faseEn": "Waning gibbous moon",
-  "iluminacao": 91,
+  "iluminacao": 93,
   "proximaFase": "Quarto Minguante",
   "proximaFaseData": "2026-08-05",
   "evento": "Chuva de meteoros Perseidas (pico)",
@@ -9,6 +9,6 @@
   "nomeCultural": "Lua do Esturjão",
   "mes": 8,
   "atualizadoEm": "2026-08-01",
-  "imagem": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/LRO_WAC_mosaic_global_color.jpg/1280px-LRO_WAC_mosaic_global_color.jpg",
+  "imagem": "/moon/waning-gibbous.jpg",
   "imagemCredito": "NASA/GSFC/Arizona State University"
 }
