@@ -16,8 +16,8 @@ aiProvider: "OpenAI"
 aiModel: "gpt-5.6-sol"
 humanReviewed: false
 references: [{"title": "NIAC 2026 Selections", "url": "https://www.nasa.gov/directorates/stmd/niac/niac-studies/niac-2026-selections/"}]
-image: "https://apod.nasa.gov/apod/image/1904/LeoTrioBauer.jpg"
-imageCredit: "Markus Bauer"
+image: "https://apod.nasa.gov/apod/image/2106/neonsaturnaurora_cassini_2560.jpg"
+imageCredit: "NASA"
 ---
 
 A NASA divulgou sua seleção de 2026 para a Fase I do programa NIAC, voltado ao estudo de conceitos avançados e pouco convencionais. A lista apresentada pela agência inclui propostas que abordam desafios muito diferentes, desde o controle da quantidade de energia solar recebida até a exploração de Vênus e a observação astronômica por interferometria. Estar na Fase I significa que essas ideias serão examinadas como conceitos: a seleção não demonstra que já funcionam nem representa uma decisão de construir uma missão. É uma etapa de investigação, semelhante a produzir o primeiro projeto técnico de uma máquina antes de fabricar suas peças.

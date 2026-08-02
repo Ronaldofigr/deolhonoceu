@@ -8,8 +8,8 @@ categoryEs: "Cosmología"
 type: "concept"
 readingTime: 3
 date: "2026-07-16"
-image: "https://apod.nasa.gov/apod/image/2505/NGC6366_3500.jpg"
-imageCredit: "Massimo Di Fusco"
+image: "https://apod.nasa.gov/apod/image/2111/LunarEclipseBuilding_Beletsky_1400.jpg"
+imageCredit: "Yuri Beletsky (Carnegie Las Campanas Observatory, TWAN)"
 ---
 
 Imagine que o universo é uma folha de papel enorme. Você está em um canto e quer chegar ao canto oposto — uma jornada de bilhões de anos-luz. Agora imagine que alguém dobra esse papel ao meio, aproximando os dois cantos, e faz um furo conectando-os diretamente. Pronto: você acabou de visualizar um buraco de minhoca. Tecnicamente chamado de "ponte de Einstein-Rosen", esse conceito surgiu em 1935 quando Albert Einstein e Nathan Rosen perceberam que as equações da relatividade geral permitiam a existência de túneis que conectariam regiões distantes do espaço-tempo — ou até universos diferentes. Não é ficção científica pura: a matemática admite essa possibilidade.

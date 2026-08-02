@@ -16,8 +16,8 @@ aiProvider: "OpenAI"
 aiModel: "gpt-5.6-sol"
 humanReviewed: false
 references: [{"title": "NASA Announces New Spacecraft Technology Demonstration Mission at Moon", "url": "https://www.nasa.gov/directorates/armd/nasa-announces-new-spacecraft-technology-demonstration-mission-at-moon/"}]
-image: "https://apod.nasa.gov/apod/image/1812/WitchHeadNebula_Mishra_2725.jpg"
-imageCredit: "Digitized Sky Survey (POSS II);   Processing:  Utkarsh Mishra"
+image: "https://images-assets.nasa.gov/image/PIA16602/PIA16602~thumb.jpg"
+imageCredit: "NASA/JPL"
 ---
 
 A NASA anunciou uma nova missão de demonstração tecnológica destinada a preparar operações mais complexas nas proximidades da Lua. Batizada de CAPSTONE 02, ela será realizada em colaboração com a indústria por meio de um contrato concedido à empresa Advanced Space. O projeto faz parte do esforço para desenvolver a próxima etapa da infraestrutura cislunar — o conjunto de veículos, sistemas de comunicação e outros recursos que poderão operar na região entre a Terra e a Lua. Essa estrutura deverá apoiar o programa Artemis e os planos da agência relacionados a uma base lunar.

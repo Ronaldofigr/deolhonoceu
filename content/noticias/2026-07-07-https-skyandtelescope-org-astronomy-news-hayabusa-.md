@@ -10,8 +10,8 @@ sourceType: "sci"
 sourceUrl: "https://skyandtelescope.org/astronomy-news/hayabusa-2-completes-flyby-past-asteroid-torifune/"
 tags: ["asteroides", "Hayabusa 2", "sistema solar", "exploração espacial", "formação planetária"]
 date: "2026-07-07"
-image: "https://apod.nasa.gov/apod/image/2002/NGC2392_HubbleSchmidt_960.jpg"
-imageCredit: "NASA"
+image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/A_Box_of_Treasure_from_Asteroid_Ryugu_%28SVS14089_-_AsteroidRyuguOrganicsV4%29.png/1280px-A_Box_of_Treasure_from_Asteroid_Ryugu_%28SVS14089_-_AsteroidRyuguOrganicsV4%29.png"
+imageCredit: "NASA's Scientific Visualization Studio - KBR Wyle Services, LLC/Dan Gallagher, Advocates in Manpower Management, Inc./John Caldwell, Catholic University of America/Heather Graham, Kyushu University/Hiroshi Naraoka, Hokkaido University/Yasuhiro Oba, JAMSTEC/Yoshinori Takano, NASA/GSFC/Jason Dworkin, NASA/GSFC/Daniel Glavin, KBR Wyle Services, LLC/LK Ward, NASA/GSFC/William Steigerwald, Yoshiko Sugahara, ADNET Systems, Inc./Lonnie Shekhtman, ADNET Systems, Inc./Aaron E. Lepsch / Wikimedia Commons / Public domain"
 ---
 
 Imagine dois balões de festa que, em vez de flutuar separados, ficaram presos um ao outro pelo meio, formando uma figura parecida com um boneco de neve. É exatamente assim que se parece o asteroide Torifune, recentemente fotografado pela sonda japonesa Hayabusa 2 durante um sobrevoo de aproximação. Esse tipo de objeto é chamado pelos cientistas de 'binário de contato' — dois corpos celestes que, ao longo de milhões de anos, foram se aproximando gradualmente até se fundir numa estrutura única, conectados por um estreito 'pescoço' de material rochoso.

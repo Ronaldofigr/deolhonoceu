@@ -11,8 +11,8 @@ sourceUrl: "https://skyandtelescope.org/astronomy-news/euclid-telescope-finds-qu
 sourceTitle: "Euclid Telescope Finds Quasars Within 700 Million Years of the Big Bang"
 tags: ["Euclid", "quasares", "cosmologia", "buracos negros", "universo primitivo"]
 date: "2026-07-14"
-image: "https://apod.nasa.gov/apod/image/2511/DoubleHelixEclipse_Liu_3301.jpg"
-imageCredit: "Chunlin Liu"
+image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Artist%E2%80%99s_concept_of_an_ancient_quasar_ESA522596.jpg/1280px-Artist%E2%80%99s_concept_of_an_ancient_quasar_ESA522596.jpg"
+imageCredit: "European Space Agency / Wikimedia Commons / CC BY-SA 3.0 igo"
 ---
 
 Imagine tentar enxergar a chama de uma vela acesa há 13 bilhões de anos, do outro lado do universo. É exatamente esse tipo de proeza que o telescópio espacial Euclid, da Agência Espacial Europeia, acaba de realizar. O instrumento identificou 31 quasares que existiam quando o universo tinha menos de 700 milhões de anos de idade — um feito notável, já que o cosmos hoje tem cerca de 13,8 bilhões de anos. Esses objetos haviam escapado da detecção de todos os telescópios anteriores.

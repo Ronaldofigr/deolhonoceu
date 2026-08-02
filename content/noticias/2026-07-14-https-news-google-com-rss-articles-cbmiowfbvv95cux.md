@@ -11,8 +11,8 @@ sourceUrl: "https://news.google.com/rss/articles/CBMiowFBVV95cUxOSWZkbm1HVS1vOV8
 sourceTitle: "SpaceX prepara 13º voo do maior foguete do mundo para quinta - SBT News"
 tags: ["SpaceX", "Starship", "foguete", "exploração espacial", "Elon Musk"]
 date: "2026-07-14"
-image: "https://apod.nasa.gov/apod/image/1906/MayanMilkyWay_Fernandez_1600.jpg"
-imageCredit: "Robert Fedez"
+image: "https://images-assets.nasa.gov/image/iss072e220043/iss072e220043~medium.jpg"
+imageCredit: "NASA/JSC"
 ---
 
 O Starship, desenvolvido pela SpaceX de Elon Musk, é o maior foguete já construído pela humanidade. Para se ter uma ideia da escala gigantesca dessa máquina, ele tem aproximadamente 120 metros de altura — quase o equivalente a um prédio de 40 andares — e é capaz de gerar uma força de empuxo maior do que qualquer outro veículo espacial da história, superando até mesmo o lendário Saturno V, que levou os astronautas à Lua nos anos 1960. Agora, a SpaceX se prepara para realizar o seu 13º voo de teste, um marco que demonstra o ritmo acelerado de desenvolvimento desse projeto revolucionário.

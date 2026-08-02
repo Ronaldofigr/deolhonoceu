@@ -8,8 +8,8 @@ categoryEs: "Astronomía"
 type: "concept"
 readingTime: 3
 date: "2026-07-28"
-image: "https://apod.nasa.gov/apod/image/2104/PIA24547_fig1.jpg"
-imageCredit: "NASA"
+image: "https://images-assets.nasa.gov/image/1100798/1100798~medium.jpg"
+imageCredit: "NASA/MSFC"
 ---
 
 Imagine um telescópio tão poderoso que consegue enxergar uma abelha pousada na Lua — e ainda detectar o calor das suas asas. Esse é, em essência, o Telescópio Espacial James Webb (JWST), lançado em dezembro de 2021 pela NASA em parceria com as agências espaciais europeia e canadense. Com um espelho principal do tamanho de uma quadra de tênis, coberto por 18 segmentos de ouro, ele orbita a 1,5 milhão de quilômetros da Terra — cerca de quatro vezes a distância até a Lua — num ponto estratégico onde consegue se manter sempre na sombra do nosso planeta, longe do calor que atrapalharia suas observações.

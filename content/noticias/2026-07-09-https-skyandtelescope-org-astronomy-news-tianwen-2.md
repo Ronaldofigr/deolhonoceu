@@ -11,8 +11,8 @@ sourceUrl: "https://skyandtelescope.org/astronomy-news/tianwen-2-arrives-at-quas
 sourceTitle: "Tianwen 2 Arrives at Quasi-Moon Kamoʻoalewa, Returns Images"
 tags: ["asteroides", "exploração espacial", "China", "sistema solar", "Tianwen 2"]
 date: "2026-07-09"
-image: "https://apod.nasa.gov/apod/image/2405/three_ats_beletsky.jpg"
-imageCredit: "Yuri Beletsky"
+image: "https://upload.wikimedia.org/wikipedia/commons/7/73/2023_FW13.gif"
+imageCredit: "NASA JPL / Wikimedia Commons / CC0"
 ---
 
 Imagine que a Terra tem uma companheira secreta — não exatamente uma lua de verdade, mas um pequeno asteroide que a acompanha em sua jornada ao redor do Sol há décadas, como um satélite natural improvisado. Esse objeto se chama Kamoʻoalewa, nome de origem havaiana, e é classificado pelos cientistas como uma "quase-lua" (ou quasi-satélite). Ele não orbita a Terra da mesma forma que a Lua, mas se move de maneira sincronizada com o nosso planeta, criando uma dança gravitacional fascinante que pode durar séculos.

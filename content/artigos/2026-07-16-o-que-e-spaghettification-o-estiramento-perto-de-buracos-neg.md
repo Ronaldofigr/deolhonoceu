@@ -8,8 +8,8 @@ categoryEs: "Agujeros Negros"
 type: "concept"
 readingTime: 3
 date: "2026-07-16"
-image: "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e000719/GSFC_20171208_Archive_e000719~small.jpg"
-imageCredit: "NASA/GSFC"
+image: "https://apod.nasa.gov/apod/image/1901/LunarEclipseCologne_Junius_1280.jpg"
+imageCredit: "Martin Junius"
 ---
 
 Imagine segurar duas pontas de um elástico e puxá-las em direções opostas. Agora imagine que essa força está agindo sobre o seu próprio corpo — esticando-o dos pés à cabeça como se você fosse um fio de macarrão. Esse fenômeno aterrorizante, batizado pelos cientistas de 'espaguetificação', é exatamente o que aconteceria com qualquer objeto — ou pessoa — que se aproximasse demais de um buraco negro. Não se trata de ficção científica: é uma consequência real e inevitável da gravidade extrema que esses objetos exercem sobre tudo ao redor.

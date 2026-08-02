@@ -8,8 +8,8 @@ categoryEs: "Astronomía"
 type: "concept"
 readingTime: 3
 date: "2026-07-15"
-image: "https://apod.nasa.gov/apod/image/1903/M82Magnet_SOFIA_2412.jpg"
-imageCredit: "NASA"
+image: "https://upload.wikimedia.org/wikipedia/commons/6/6b/HRDiagram.png"
+imageCredit: "Richard Powell / Wikimedia Commons / CC BY-SA 2.5"
 ---
 
 Imagine que você entra em uma loja de roupas e decide organizar tudo por tamanho e cor ao mesmo tempo. De repente, padrões surgem: roupas grandes tendem a ser de certas cores, enquanto as pequenas aparecem em outras. Foi exatamente esse tipo de organização genial que os astrônomos Ejnar Hertzsprung e Henry Norris Russell fizeram com as estrelas no início do século XX. Eles criaram um gráfico — hoje chamado de Diagrama HR — que coloca a temperatura das estrelas em um eixo e o brilho delas no outro. O resultado foi uma das ferramentas mais poderosas da astronomia moderna.

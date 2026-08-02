@@ -16,8 +16,8 @@ aiProvider: "OpenAI"
 aiModel: "gpt-5.6-sol"
 humanReviewed: false
 references: [{"title": "NASA’s Juno Takes Temperature of Jupiter’s Fiery Moon Io", "url": "https://www.nasa.gov/missions/juno/nasas-juno-takes-temperature-of-jupiters-fiery-moon-io/"}]
-image: "https://apod.nasa.gov/apod/image/2607/red_sprite.jpg"
-imageCredit: "Mario Vargas  Text: Keighley Rockcliffe   (NASA GSFC,  UMBC CSST,  CRESST II)"
+image: "https://images-assets.nasa.gov/image/PIA00292/PIA00292~small.jpg"
+imageCredit: "NASA/JPL"
 ---
 
 A missão Juno, da NASA, obteve as primeiras medições da temperatura existente abaixo da superfície de Io, uma das luas de Júpiter. Os dados mostram que há aquecimento significativo nas camadas rasas do subsolo desse mundo, considerado o mais vulcanicamente ativo do Sistema Solar. Em vez de observar apenas os pontos quentes visíveis na superfície, a missão conseguiu investigar o calor associado ao material que está logo abaixo dela, acrescentando uma nova dimensão ao estudo da atividade de Io.

@@ -11,8 +11,8 @@ sourceUrl: "https://www.nasa.gov/centers-and-facilities/johnson/nasa-johnson-int
 sourceTitle: "NASA Johnson Interns Shaping the Future of Exploration"
 tags: ["NASA", "estagiários", "exploração espacial", "Johnson Space Center", "educação"]
 date: "2026-07-30"
-image: "https://apod.nasa.gov/apod/image/2107/FlemingsTriangle_Saab_4546.jpg"
-imageCredit: "Anthony Saab"
+image: "https://images-assets.nasa.gov/image/jsc2025e041084/jsc2025e041084~medium.jpg"
+imageCredit: "NASA/JSC"
 ---
 
 Imagine ter a oportunidade, ainda na faculdade, de trabalhar nos bastidores das missões que levam seres humanos ao espaço. É exatamente isso que acontece no Centro Espacial Johnson da NASA, localizado em Houston, nos Estados Unidos. Estudantes selecionados como estagiários têm a chance única de colocar a mão na massa em projetos reais, ao lado de profissionais experientes que trabalham diariamente para avançar a exploração humana do espaço.

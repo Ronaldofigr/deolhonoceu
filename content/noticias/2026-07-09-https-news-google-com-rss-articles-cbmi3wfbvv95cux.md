@@ -11,8 +11,8 @@ sourceUrl: "https://news.google.com/rss/articles/CBMi3wFBVV95cUxPT3pkZTlRQndSXzh
 sourceTitle: "Japão: ação da ispace dispara com plano de serviço lunar na Starship, da SpaceX - UOL Economia"
 tags: ["lua", "SpaceX", "ispace", "Starship", "exploração espacial"]
 date: "2026-07-09"
-image: "https://apod.nasa.gov/apod/image/2503/JupiterRing_WebbSchmidt_2429.jpg"
-imageCredit: "NASA"
+image: "https://images-assets.nasa.gov/image/iss072e220043/iss072e220043~medium.jpg"
+imageCredit: "NASA/JSC"
 ---
 
 A corrida comercial à Lua está ganhando velocidade, e uma empresa japonesa chamada ispace acaba de dar um passo surpreendente nessa direção. A companhia anunciou que pretende utilizar o Starship — o maior e mais poderoso foguete já construído pela SpaceX — para oferecer um serviço de transporte de cargas e equipamentos até a superfície lunar. A notícia foi tão impactante para o mercado financeiro que as ações da ispace dispararam na bolsa de valores japonesa.

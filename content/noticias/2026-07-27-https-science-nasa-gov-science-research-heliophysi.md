@@ -11,8 +11,8 @@ sourceUrl: "https://science.nasa.gov/science-research/heliophysics/nasa-science-
 sourceTitle: "NASA Science Soars During August Total Solar Eclipse"
 tags: ["eclipse solar", "NASA", "coroa solar", "heliofsica", "astronomia"]
 date: "2026-07-27"
-image: "https://apod.nasa.gov/apod/image/2010/GhoulGood.jpg"
-imageCredit: "Casey Good/Steve Timmons"
+image: "https://images-assets.nasa.gov/image/AFRC2017-0233-009/AFRC2017-0233-009~medium.jpg"
+imageCredit: "NASA/AFRC"
 ---
 
 Imagine tentar estudar a chama de uma vela enquanto ela está iluminada por um holofote potente. Essa é, em essência, a dificuldade que os cientistas enfrentam ao tentar observar a coroa solar — a camada mais externa e tênue da atmosfera do Sol — durante o dia comum. A luz intensa do Sol simplesmente apaga qualquer chance de enxergá-la. É exatamente por isso que os eclipses solares totais são momentos tão preciosos para a ciência.

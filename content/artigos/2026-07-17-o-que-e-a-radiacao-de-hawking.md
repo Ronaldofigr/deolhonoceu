@@ -8,8 +8,8 @@ categoryEs: "Astrofísica"
 type: "concept"
 readingTime: 3
 date: "2026-07-17"
-image: "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e000984/GSFC_20171208_Archive_e000984~medium.jpg"
-imageCredit: "NASA/GSFC"
+image: "https://images-assets.nasa.gov/image/PIA23122/PIA23122~medium.jpg"
+imageCredit: "NASA/JPL"
 ---
 
 Buracos negros são famosos por uma regra aparentemente absoluta: nada escapa de sua gravidade, nem mesmo a luz. Por isso, durante décadas, os cientistas os trataram como prisões cósmicas perfeitas. Mas em 1974, o físico britânico Stephen Hawking fez uma descoberta revolucionária que abalou essa certeza: os buracos negros não são completamente negros. Eles emitem um tipo sutil de radiação — batizada em sua homenagem — e, ao longo de um tempo incrivelmente longo, podem até desaparecer por completo.

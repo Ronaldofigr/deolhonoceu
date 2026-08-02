@@ -16,8 +16,8 @@ aiProvider: "OpenAI"
 aiModel: "gpt-5.6-sol"
 humanReviewed: false
 references: [{"title": "SpaceX tenta lançar foguete Starship uma semana após abortar voo - Folha de S.Paulo", "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPeUFUUHMzTHhsTWpzQnFiNkoxdVZEQXJ1b3NYdVNyR1lIWVFJUlRJNUx5M1Z2Z0tTR3ZMb3U0LWVHTzRmWk5ULXVVcEdSWUd0UE10TVJjTDEzVkcwUXhudkZEZVBjS0toVzFvTWlwemhiQlhwcXctRHRXRWRVRjVkR0wxSm9Wdl9BcGhsUzFobk1GUDdHd3RmY2pfd1pLT2xEVVhNcWc1Rlh0Wkg1Y2dEbW5lOHQ1Zms?oc=5"}]
-image: "https://apod.nasa.gov/apod/image/2302/CometZtfMars_Lioce_4229.jpg"
-imageCredit: "Donato Lioce"
+image: "https://apod.nasa.gov/apod/image/1511/Orion212_Volskiy_5574.jpg"
+imageCredit: "Stanislav Volskiy,  Rollover Annotation:  Judy Schmidt"
 ---
 
 A SpaceX prepara uma nova tentativa de lançamento do foguete Starship aproximadamente uma semana depois de abortar um voo. A informação disponível não esclarece em que etapa ocorreu a interrupção nem apresenta sua causa. Por isso, não é possível concluir, apenas com base no relato, se houve um problema técnico, uma condição operacional inadequada ou uma decisão preventiva. Em atividades espaciais, “abortar” significa interromper uma operação planejada quando os critérios estabelecidos para continuar não são atendidos. Isso não indica automaticamente que um componente foi destruído ou que todo o projeto fracassou.

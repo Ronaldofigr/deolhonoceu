@@ -11,8 +11,8 @@ sourceUrl: "https://science.nasa.gov/earth/earth-observatory/where-venezuelas-ea
 sourceTitle: "Where Venezuela’s Earthquakes Shifted the Ground"
 tags: ["terremotos", "Venezuela", "satélite NISAR", "NASA", "geodesia", "desastres naturais"]
 date: "2026-07-10"
-image: "https://apod.nasa.gov/apod/image/2212/25BrightestStars_Jittasaiyapan_1500.jpg"
-imageCredit: "Tragoolchitr Jittasaiyapan"
+image: "https://images-assets.nasa.gov/image/PIA23428/PIA23428~small.jpg"
+imageCredit: "NASA/JPL"
 ---
 
 Imagine tentar medir com precisão milimétrica o quanto o chão sob seus pés se moveu depois de um terremoto — sem nem precisar estar lá. É exatamente isso que o satélite NISAR, desenvolvido em parceria entre a NASA e a agência espacial indiana ISRO, consegue fazer usando um sistema de radar de alta tecnologia. Após os terremotos que sacudiram a Venezuela em junho de 2026, o NISAR apontou seus instrumentos para a região costeira de La Guaira e capturou imagens detalhadas de como o solo se deslocou durante os tremores.

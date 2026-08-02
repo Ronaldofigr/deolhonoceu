@@ -8,8 +8,8 @@ categoryEs: "Astronomía y Cosmología"
 type: "concept"
 readingTime: 3
 date: "2026-07-15"
-image: "https://apod.nasa.gov/apod/image/2302/NGC_2626_CDK_700_II_20_Jan_2023.jpg"
-imageCredit: "Mike Selby"
+image: "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001774/GSFC_20171208_Archive_e001774~medium.jpg"
+imageCredit: "NASA/GSFC"
 ---
 
 Imagine que você entra em uma sala completamente escura e, ao tentar atravessá-la, esbarra em móveis que não consegue enxergar. Você não os vê, mas sente claramente o impacto — eles estão lá, ocupando espaço, tendo peso, interferindo no seu caminho. É exatamente assim que os cientistas perceberam a existência da matéria escura: não por observação direta, mas pelos seus efeitos sobre tudo ao redor. Ela é invisível, não emite luz, não reflete luz e não absorve luz — por isso o nome. Mas sua gravidade é absolutamente real.

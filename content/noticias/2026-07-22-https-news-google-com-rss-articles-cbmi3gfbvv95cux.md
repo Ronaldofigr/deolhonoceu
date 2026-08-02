@@ -16,8 +16,8 @@ aiProvider: "OpenAI"
 aiModel: "gpt-5.6-sol"
 humanReviewed: false
 references: [{"title": "Elon Musk pede que humanos se preparem para o que acontecerá nesta quinta-feira (23/07) - Diário do Comércio", "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxQLXhrNUxnQmlIQmxzd1hOVzRKM0xFS2pPMXFVQXBlXy1oVENTYXZZZkUwbXpsZEhNQUg4a3BJUGhEWVJJd3NKTEtFMHBMYnRidHg5aUhOWkVjdXNRTkpDM1R3YkdyWGVsTDNhYjF6QnJMYUlPOTYtUzgzTnlsNWVkV1FRcG1MZ21NWVB3SGRWV0FwaUNVeHprbG03NkhTTUl6NTFHQXpVYTZVelNoNFB3T0VEUFctQmUwVEVnb1daZlR3d0RzRnVpMTQtVHloR1M2TTZnUVRjUFYxZ09lVkE?oc=5"}]
-image: "https://apod.nasa.gov/apod/image/2101/Pluto-Mountains-Plains9-17-15.jpg"
-imageCredit: "NASA"
+image: "https://live.staticflickr.com/3216/2944375891_78d6d82f4a_b.jpg"
+imageCredit: "jurvetson / flickr"
 ---
 
 A informação disponível consiste em uma manchete segundo a qual Elon Musk teria pedido que os seres humanos se preparassem para algo que aconteceria em uma quinta-feira, 23 de julho. O resumo fornecido apenas repete essa afirmação e não esclarece qual seria o evento, em que ano ocorreria, onde poderia ser observado nem qual declaração original sustentaria o alerta. Por isso, não há elementos suficientes para afirmar que se trata de uma descoberta, missão espacial, fenômeno astronômico ou demonstração tecnológica.

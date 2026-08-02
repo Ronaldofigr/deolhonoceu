@@ -10,8 +10,8 @@ sourceType: "nasa"
 sourceUrl: "https://science.nasa.gov/missions/new-horizons/nasas-new-horizons-spacecraft-wakes-from-hibernation-in-good-health/"
 tags: ["New Horizons", "NASA", "Cinturão de Kuiper", "espaço profundo", "Plutão", "sonda espacial"]
 date: "2026-07-07"
-image: "https://apod.nasa.gov/apod/image/2105/TLEMay2021Kraus.jpg"
-imageCredit: "John Kraus"
+image: "https://apod.nasa.gov/apod/image/2108/PIA24688_RTE_Anaglyph.jpg"
+imageCredit: "NASA"
 ---
 
 Imagine que você manda um robô explorador para o fim do mundo — literalmente — e, para economizar energia durante a longa viagem pelo vazio do espaço, você o coloca para dormir por quase um ano inteiro. É exatamente isso que a NASA fez com a sonda New Horizons, e em 23 de junho os cientistas confirmaram com alívio: ela acordou, está bem de saúde e pronta para trabalhar. O sinal de confirmação foi recebido pelos controladores de voo no Laboratório de Física Aplicada Johns Hopkins, em Maryland, após o maior período de hibernação da história da missão.

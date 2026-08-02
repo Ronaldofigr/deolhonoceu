@@ -10,8 +10,8 @@ sourceType: "sci"
 sourceUrl: "https://www.space.com/entertainment/space-movies-shows/this-week-in-space-podcast-episode-217-america-in-space"
 tags: ["exploração espacial", "NASA", "corrida espacial"]
 date: "2026-07-04"
-image: "https://apod.nasa.gov/apod/image/1911/MercuryTransit_Dierick_1500.jpg"
-imageCredit: "Dominique Dierick"
+image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/The_Gatekeeper_%2834794503522%29.jpg/1280px-The_Gatekeeper_%2834794503522%29.jpg"
+imageCredit: "Thomas from Philadelphia Area, USA / Wikimedia Commons / CC BY-SA 2.0"
 ---
 
 A exploração espacial americana vive um dos seus momentos mais dinâmicos desde a era Apollo. Diferente dos anos 1960 e 1970, quando tudo era responsabilidade exclusiva do governo federal por meio da NASA, hoje o cenário é bem mais diversificado: empresas privadas como SpaceX, Blue Origin e Boeing dividem o protagonismo com as agências governamentais. É como se, antes, apenas uma grande empreiteira construísse todas as estradas do país — e agora dezenas de construtoras competissem para fazer isso de forma mais rápida e barata.

@@ -8,8 +8,8 @@ categoryEs: "Astronomía"
 type: "concept"
 readingTime: 3
 date: "2026-07-15"
-image: "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e000053/GSFC_20171208_Archive_e000053~medium.jpg"
-imageCredit: "NASA/GSFC"
+image: "https://images-assets.nasa.gov/image/PIA13449/PIA13449~medium.jpg"
+imageCredit: "NASA/JPL"
 ---
 
 Imagine uma fogueira gigantesca que queima sem parar por bilhões de anos. As estrelas funcionam de forma parecida: elas passam a vida inteira numa espécie de cabo de guerra entre duas forças opostas. De um lado, a gravidade tenta colapsar tudo para dentro, como se a estrela quisesse se amassar em uma bola cada vez menor. Do outro lado, as reações nucleares no núcleo liberam energia enorme, empurrando tudo para fora e mantendo a estrela estável. Enquanto esse equilíbrio se sustenta, a estrela brilha tranquilamente. O problema começa quando o combustível acaba.

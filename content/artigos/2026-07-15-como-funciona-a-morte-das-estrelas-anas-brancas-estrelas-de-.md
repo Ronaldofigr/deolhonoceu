@@ -8,8 +8,8 @@ categoryEs: "Astronomía"
 type: "concept"
 readingTime: 3
 date: "2026-07-15"
-image: "https://apod.nasa.gov/apod/image/2405/N3169N3166Final.jpg"
-imageCredit: "Christophe Vergnes"
+image: "https://images-assets.nasa.gov/image/PIA13449/PIA13449~medium.jpg"
+imageCredit: "NASA/JPL"
 ---
 
 Assim como nós, as estrelas nascem, vivem e morrem. A diferença é que elas fazem isso em escalas de tempo inimagináveis — bilhões de anos — e o seu fim pode ser ao mesmo tempo devastador e magnificamente belo. O destino de cada estrela depende basicamente de uma coisa: o seu peso. Pense nas estrelas como fogueiras cósmicas. Enquanto há combustível, a chama arde. Quando o combustível acaba, a fogueira se apaga — mas o que sobra atrás dela depende do tamanho da lenha que foi usada.

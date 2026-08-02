@@ -16,8 +16,8 @@ aiProvider: "OpenAI"
 aiModel: "gpt-5.6-sol"
 humanReviewed: false
 references: [{"title": "Mapping Io’s Hidden Heat With NASA’s Juno", "url": "https://science.nasa.gov/photojournal/mapping-ios-hidden-heat-with-nasas-juno/"}]
-image: "https://apod.nasa.gov/apod/image/2509/NGC4565_APOD_sRGB.jpg"
-imageCredit: "José Rodrigues"
+image: "https://images-assets.nasa.gov/image/PIA26526/PIA26526~medium.jpg"
+imageCredit: "NASA/JPL"
 ---
 
 A sonda Juno, da NASA, usou seu Radiômetro de Micro-ondas, conhecido pela sigla MWR, para examinar partes de Io durante dois sobrevoos próximos dessa lua de Júpiter. Um gráfico divulgado pela agência espacial mostra exatamente quais áreas foram amostradas pelo instrumento. Em vez de apresentar uma fotografia convencional da superfície, a imagem funciona como um mapa do caminho percorrido pelas observações, permitindo visualizar onde a Juno conseguiu coletar informações relacionadas ao calor oculto de Io.

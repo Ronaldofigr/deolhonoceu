@@ -10,8 +10,8 @@ sourceType: "nasa"
 sourceUrl: "https://www.nasa.gov/humans-in-space/commercial-space/nasa-seeks-industry-input-on-second-phase-of-commercial-space-stations/"
 tags: ["NASA", "estações espaciais", "exploração espacial", "órbita baixa", "comercial"]
 date: "2026-07-07"
-image: "https://apod.nasa.gov/apod/image/1904/scorpio_guisard_1328.jpg"
-imageCredit: "Stéphane Guisard,  TWAN"
+image: "https://images-assets.nasa.gov/image/KSC-20170207-PH_SWW01_0094/KSC-20170207-PH_SWW01_0094~medium.jpg"
+imageCredit: "NASA/KSC"
 ---
 
 Imagine que a famosa Estação Espacial Internacional (ISS) é um grande hotel histórico que, depois de décadas de serviço, está prestes a fechar suas portas. A NASA precisa garantir que novos hotéis — modernos e geridos por empresas privadas — estejam prontos para receber os hóspedes antes que o antigo feche definitivamente. É exatamente isso que a agência espacial americana está tentando fazer ao divulgar um rascunho de proposta pedindo sugestões à indústria sobre a próxima fase do seu programa de estações espaciais comerciais.

@@ -16,8 +16,8 @@ aiProvider: "OpenAI"
 aiModel: "gpt-5.6-sol"
 humanReviewed: false
 references: [{"title": "From Hampton to Mars: How NASA Langley Helped Land on the Red Planet", "url": "https://www.nasa.gov/general/from-hampton-to-mars-how-nasa-langley-helped-land-on-the-red-planet/"}]
-image: "https://apod.nasa.gov/apod/image/2112/NGC6822LRGB-1.jpg"
-imageCredit: "Dietmar Hager"
+image: "https://images-assets.nasa.gov/image/PIA00565/PIA00565~thumb.jpg"
+imageCredit: "NASA/JPL"
 ---
 
 Há cinquenta anos, as sondas Viking 1 e 2 alcançaram um marco da exploração espacial: os primeiros pousos bem-sucedidos em Marte. O feito abriu uma nova fase no estudo de outros mundos, pois permitiu que instrumentos científicos operassem diretamente na superfície marciana. Em vez de observar o planeta apenas à distância, as missões passaram a examiná-lo a partir do próprio solo. Era como deixar de estudar uma praia por fotografias aéreas e finalmente colocar equipamentos sobre a areia para investigar o ambiente de perto.

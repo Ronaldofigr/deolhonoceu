@@ -16,8 +16,8 @@ aiProvider: "OpenAI"
 aiModel: "gpt-5.6-sol"
 humanReviewed: false
 references: [{"title": "Establishing a VTE Risk Score for Astronauts Algorithm", "url": "https://www.nasa.gov/organizations/ochmo/establishing-a-vte-risk-score-for-astronauts-algorithm/"}]
-image: "https://apod.nasa.gov/apod/image/1902/Iwamoto-104-2019griffin.jpg"
-imageCredit: "Ian Griffin"
+image: "https://images-assets.nasa.gov/image/iss072e189112/iss072e189112~medium.jpg"
+imageCredit: "NASA/JSC"
 ---
 
 A NASA está trabalhando na criação de um algoritmo para avaliar o risco de tromboembolismo venoso, conhecido pela sigla VTE em inglês, entre astronautas. O termo descreve problemas relacionados à formação de coágulos dentro das veias. Segundo a agência, seu Escritório do Diretor de Saúde e Medicina iniciou, em abril de 2026, um grupo de trabalho dedicado a revisar informações atualizadas sobre casos e novos dados obtidos em uma coorte, isto é, um grupo acompanhado de astronautas.

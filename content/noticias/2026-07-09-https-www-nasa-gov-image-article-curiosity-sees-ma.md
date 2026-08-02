@@ -10,8 +10,8 @@ sourceType: "nasa"
 sourceUrl: "https://www.nasa.gov/image-article/curiosity-sees-martian-sulfur-up-close/"
 tags: ["Marte", "Curiosity", "NASA", "geologia", "enxofre", "exploração espacial"]
 date: "2026-07-09"
-image: "https://apod.nasa.gov/apod/image/2402/M106field_KyunghoonLim2048.jpg"
-imageCredit: "Kyunghoon Lim"
+image: "https://images-assets.nasa.gov/image/PIA15991/PIA15991~thumb.jpg"
+imageCredit: "NASA/JPL"
 ---
 
 Imagine dirigir um carro e, ao passar por cima de uma pedra na estrada, descobrir um tesouro escondido dentro dela. Foi exatamente esse tipo de acidente feliz que aconteceu com o rover Curiosity, o robô explorador da NASA que percorre a superfície de Marte há mais de uma década. Em 30 de maio de 2024, ao cruzar uma região rochosa, o veículo esmagou inadvertidamente uma pedra — e o que estava dentro surpreendeu os cientistas: cristais de enxofre puro, vistos pela primeira vez no Planeta Vermelho.

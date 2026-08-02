@@ -11,8 +11,8 @@ sourceUrl: "https://skyandtelescope.org/uncategorized/rogue-neptunes-are-detache
 sourceTitle: "'Rogue' Neptunes Are Detached But Not Alone"
 tags: ["exoplanetas", "sistema solar", "astronomia", "planetas errantes", "Netuno"]
 date: "2026-07-15"
-image: "https://apod.nasa.gov/apod/image/2201/IMG_9447.jpg"
-imageCredit: "Mark Carter"
+image: "https://apod.nasa.gov/apod/image/2411/IC348_B3_2048.jpg"
+imageCredit: "Ashraf Abu Sara"
 ---
 
 Imagine um cachorro que escapou da coleira e saiu vagando pela vizinhança. Parece perdido, mas ainda mora no mesmo bairro que o dono. Algo parecido pode estar acontecendo com certos planetas do tamanho de Netuno que os astrônomos chamavam de 'planetas errantes' ou 'planetas desonestos' — mundos que pareciam flutuar livremente pelo espaço, sem nenhuma estrela para chamar de lar.

@@ -11,8 +11,8 @@ sourceUrl: "https://news.google.com/rss/articles/CBMiywFBVV95cUxPbFFES2RuTDBLZUp
 sourceTitle: "SpaceX apresenta pedido à FCC para 100.000 satélites Starlink Gen3 - Data Center Dynamics"
 tags: ["SpaceX", "Starlink", "satélites", "internet espacial", "FCC", "telecomunicações"]
 date: "2026-07-10"
-image: "https://apod.nasa.gov/apod/image/2308/Perseids18_Horalek_1494.jpg"
-imageCredit: "Petr Horálek / Institute of Physics in Opava"
+image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/SpaceX%2C_Falcon_9_Starlink_6-3%2C_May_19_2023_%2852911023850%29.jpg/1280px-SpaceX%2C_Falcon_9_Starlink_6-3%2C_May_19_2023_%2852911023850%29.jpg"
+imageCredit: "Charles &amp; Maggie Boyer / Wikimedia Commons / CC0"
 ---
 
 Imagine uma teia de aranha gigantesca cobrindo todo o planeta Terra, mas no espaço. É assim que podemos visualizar o projeto ambicioso que a SpaceX, empresa fundada por Elon Musk, acaba de protocolar junto à FCC — a agência reguladora de comunicações dos Estados Unidos. O pedido é para lançar nada menos do que 100.000 satélites de nova geração, chamados de Starlink Gen3, em órbita ao redor da Terra. Para ter uma ideia da escala disso, hoje existem cerca de 6.000 satélites Starlink ativos no espaço, o que já representa a maior constelação de satélites da história humana.

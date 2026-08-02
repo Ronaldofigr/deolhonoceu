@@ -10,8 +10,8 @@ sourceType: "spacex"
 sourceUrl: "https://news.google.com/rss/articles/CBMi2wFBVV95cUxQMEpESHdpbFVldlBTRG5zdk8xTWxIbXdVWjZpMnlaaUxkS2RidUJFZW0tQ18tdWdvQ3RKeXRWenF5b3lqSlBIVFNEMUJuLVBrWlI0VHpVOFdDY3NXNkZudXMtWjF4ZTZIcVpBTFB1S2l2NlY2WVgyQjhlczZNR0ljS1RINklWcnhLZ2I1eE1URDR1Tl9GckQzWUQ2TzhyMmdmbXhPRjlmUkFfSWpNWnV6LU1vQkFnQ2VKWDZ0T2FjZTA2ZmRldmlqdThrc2I3SWw1NGFkdTFLVEJWTTQ?oc=5"
 tags: ["SpaceX", "Starship", "exploração espacial"]
 date: "2026-07-07"
-image: "https://apod.nasa.gov/apod/image/2309/HarvestMoonNest.jpg"
-imageCredit: "Antonio Tartarini"
+image: "https://apod.nasa.gov/apod/image/2204/SouthPoleShadows_LRO_1214.jpg"
+imageCredit: "NASA"
 ---
 
 O banco suíço UBS, um dos maiores do mundo, decidiu começar a acompanhar oficialmente a SpaceX — a empresa aeroespacial fundada por Elon Musk — e já de cara fez uma recomendação de compra. O motivo principal é o Starship, o foguete mais alto, mais pesado e mais poderoso já construído pela humanidade. Para ter uma ideia da escala: o Starship tem quase 120 metros de altura, o equivalente a um prédio de 40 andares, e é projetado para carregar mais de 100 toneladas de carga ao espaço de uma só vez.

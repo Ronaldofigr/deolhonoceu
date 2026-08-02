@@ -8,7 +8,7 @@ categoryEs: "Astrofísica"
 type: "concept"
 readingTime: 3
 date: "2026-07-04"
-image: "https://apod.nasa.gov/apod/image/2011/ngc5866_hst_1235.jpg"
+image: "https://apod.nasa.gov/apod/image/1906/MwCenter_SofiaHubble_1032.jpg"
 imageCredit: "NASA"
 ---
 

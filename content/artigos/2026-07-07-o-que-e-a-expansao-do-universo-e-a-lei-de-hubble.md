@@ -9,8 +9,8 @@ type: "concept"
 readingTime: 3
 date: "2026-07-07"
 
-image: "https://apod.nasa.gov/apod/image/2109/Irish_RC8_LHaRGB.png"
-imageCredit: "Satwant Kumar"
+image: "https://images-assets.nasa.gov/image/PIA12110/PIA12110~medium.jpg"
+imageCredit: "NASA/STScI (Hubble)"
 ---
 
 Imagine que você assa um pão de passas. Enquanto a massa cresce no forno, cada passa se afasta de todas as outras — não porque elas se movam sozinhas pelo pão, mas porque a própria massa está se expandindo. O universo funciona de maneira surpreendentemente parecida. As galáxias não estão voando umas para longe das outras através do espaço: é o próprio espaço que está crescendo, levando as galáxias junto com ele, como as passas presas na massa em expansão.

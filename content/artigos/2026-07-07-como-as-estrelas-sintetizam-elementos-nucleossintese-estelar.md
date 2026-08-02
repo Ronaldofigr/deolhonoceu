@@ -8,8 +8,8 @@ categoryEs: "Astronomía"
 type: "concept"
 readingTime: 3
 date: "2026-07-07"
-image: "https://apod.nasa.gov/apod/image/2302/iapetus_cassini_960.jpg"
-imageCredit: "NASA"
+image: "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e000226/GSFC_20171208_Archive_e000226~medium.jpg"
+imageCredit: "NASA/GSFC"
 ---
 
 Imagine uma cozinha gigantesca onde os ingredientes mais simples do universo são transformados em receitas cada vez mais complexas. É exatamente isso que acontece no interior das estrelas. Logo após o Big Bang, o cosmos era composto quase exclusivamente de hidrogênio e hélio — os elementos mais leves da tabela periódica. Tudo o que existe além disso, do oxigênio que respiramos ao ferro no nosso sangue, nasceu dentro de estrelas ao longo de bilhões de anos. Esse processo tem nome: nucleossíntese estelar.

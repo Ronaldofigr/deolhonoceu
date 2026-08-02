@@ -16,8 +16,8 @@ aiProvider: "OpenAI"
 aiModel: "gpt-5.6-sol"
 humanReviewed: false
 references: [{"title": "SpaceX planeja outra tentativa de lançamento da Starship na próxima semana - InfoMoney", "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQeUVBZDkzem5lQ1dyRHVadnhOTHJWd2dTOWZSZ2pWVnFHNzI1VlNVeU0xLTZrazNVTElPUXRtUW9jOVI1alB3M2FSb3F0ZmpxNWNWWDZhNzgzdWRZUGE0RHdRVko2a3lKMlRVWXZJVGFMQ1RmdzNXVFFxQkttZ1pwSzZSZFZUeTY2WFpZNVpTcDI1SHhQU09ZbXRKeFVhZDNVSkJsX3ViNmlDS05ROE50VWt6bHF1QzB50gG4AUFVX3lxTFB5RUFkOTN6bmVDV3JEdVp2eE5MclZ3Z1M5ZlJnalZWcUc3MjVWU1V5TTEtNmtrM1VMSU9RdG1Rb2M5UjVqUHczYVJvcXRmanE1Y1ZYNmE3ODN1ZFlQYTREd1FWSjZreUoyVFVZdklUYUxDVGZ3M1dUUXFCS21nWnBLNlJkVlR5NjZYWlk1WlNwMjVIeFBTT1ltdEp4VWFkM1VKQmxfdWI2aUNLTlE4TnRVa3pscXVDMHk?oc=5"}]
-image: "https://apod.nasa.gov/apod/image/1901/vltlaser_beletsky_1400.jpg"
-imageCredit: "NASA"
+image: "https://images-assets.nasa.gov/image/iss072e220043/iss072e220043~medium.jpg"
+imageCredit: "NASA/JSC"
 ---
 
 A SpaceX planeja fazer outra tentativa de lançamento da Starship na próxima semana, segundo a informação divulgada. A palavra “tentativa” é importante: em atividades espaciais, anunciar uma janela não significa garantir que o veículo decolará naquele período. O cronograma funciona mais como uma oportunidade prevista do que como um compromisso imutável. Se algum requisito técnico ou operacional não estiver atendido, a partida pode ser adiada para reduzir riscos.

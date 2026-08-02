@@ -8,8 +8,8 @@ categoryEs: "Cosmología"
 type: "concept"
 readingTime: 3
 date: "2026-07-07"
-image: "https://apod.nasa.gov/apod/image/2010/VenusVolcano_NasaRubin_1600.jpg"
-imageCredit: "NASA"
+image: "https://images-assets.nasa.gov/image/01pp1126/01pp1126~medium.jpg"
+imageCredit: "NASA/KSC"
 ---
 
 Imagine que você acende uma fogueira enorme numa floresta e, horas depois de apagá-la, o calor ainda irradia suavemente por toda a área ao redor. Algo muito parecido aconteceu com o universo. Cerca de 380 mil anos após o Big Bang, o cosmos esfriou o suficiente para que a luz pudesse finalmente viajar livremente pelo espaço — antes disso, tudo era tão quente e denso que nenhum fóton conseguia percorrer nem um milímetro sem ser absorvido. Quando essa 'neblina' primordial se dissipou, uma enorme quantidade de luz foi liberada em todas as direções. Essa luz, esticada e resfriada ao longo de 13,8 bilhões de anos de expansão do universo, é o que chamamos de Radiação Cósmica de Fundo, ou CMB (do inglês Cosmic Microwave Background).

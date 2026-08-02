@@ -11,8 +11,8 @@ sourceUrl: "https://news.google.com/rss/articles/CBMiugFBVV95cUxPdnBjZWIxWHRqbWt
 sourceTitle: "SpaceX pode atingir valor de mercado de US$ 3,2 trilhões com Starship - Meio News"
 tags: ["SpaceX", "Starship", "exploração espacial", "foguetes", "mercado espacial"]
 date: "2026-07-12"
-image: "https://apod.nasa.gov/apod/image/1903/F_JellyFish_FIN_APOD.jpg"
-imageCredit: "Steve Milne"
+image: "https://images-assets.nasa.gov/image/iss072e220043/iss072e220043~medium.jpg"
+imageCredit: "NASA/JSC"
 ---
 
 A SpaceX, empresa de exploração espacial fundada por Elon Musk, pode se tornar a companhia mais valiosa do mundo — superando gigantes como Apple e Microsoft. Analistas financeiros estimam que, com o sucesso pleno do foguete Starship, a empresa poderia atingir um valor de mercado de impressionantes US$ 3,2 trilhões. Para ter uma ideia da grandiosidade desse número, é como se você empilhasse 3,2 milhões de milhões de dólares — uma quantia difícil até de imaginar.

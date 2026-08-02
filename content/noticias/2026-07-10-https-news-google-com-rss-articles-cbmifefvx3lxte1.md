@@ -11,8 +11,8 @@ sourceUrl: "https://news.google.com/rss/articles/CBMifEFVX3lxTE1vM3JtNjRxRnZlaHF
 sourceTitle: "Nos Estados Unidos, SpaceX pede aval para 100 mil novos satélites - TELETIME News"
 tags: ["SpaceX", "Starlink", "satélites", "internet espacial", "órbita baixa"]
 date: "2026-07-10"
-image: "https://apod.nasa.gov/apod/image/2401/2024_01_15-Jup-2h30-Chronograph.png"
-imageCredit: "NASA"
+image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/SpaceX%2C_Falcon_9_Starlink_6-3%2C_May_19_2023_%2852911023850%29.jpg/1280px-SpaceX%2C_Falcon_9_Starlink_6-3%2C_May_19_2023_%2852911023850%29.jpg"
+imageCredit: "Charles &amp; Maggie Boyer / Wikimedia Commons / CC0"
 ---
 
 Imagine o céu noturno como uma gigantesca rodovia. Hoje, essa rodovia já está movimentada, mas a SpaceX, empresa de Elon Musk, quer torná-la ainda mais agitada. A companhia protocolou um pedido junto às autoridades regulatórias dos Estados Unidos para lançar nada menos do que 100 mil novos satélites ao espaço, ampliando de forma dramática sua constelação Starlink, que já opera com milhares de unidades em órbita baixa — a uma altitude de cerca de 550 quilômetros acima da Terra.

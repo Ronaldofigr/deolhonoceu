@@ -8,8 +8,8 @@ categoryEs: "Astronomía y Física"
 type: "concept"
 readingTime: 3
 date: "2026-07-15"
-image: "https://apod.nasa.gov/apod/image/1812/IMG_8741_cSunHaloEdback2048.jpg"
-imageCredit: "Magnus Edback"
+image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Emission_versus_absorption_ESA21461679.tiff/lossy-page1-1280px-Emission_versus_absorption_ESA21461679.tiff.jpg"
+imageCredit: "European Space Agency / Wikimedia Commons / CC BY 4.0"
 ---
 
 Imagine que você está segurando um prisma de vidro sob a luz do sol. De repente, uma faixa colorida surge na parede — o famoso arco-íris artificial. Esse fenômeno simples, que encanta crianças, é na verdade a porta de entrada para uma das ferramentas mais poderosas da ciência: a espectroscopia. Quando a luz branca passa pelo prisma, ela se separa em suas cores componentes, do vermelho ao violeta, revelando o que os cientistas chamam de espectro. Mais do que uma exibição bonita, esse espectro carrega informações preciosas sobre a origem da luz — e é assim que descobrimos do que as estrelas são feitas, mesmo sem jamais tocá-las.

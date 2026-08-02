@@ -8,8 +8,8 @@ categoryEs: "Astronomía y Cosmología"
 type: "concept"
 readingTime: 3
 date: "2026-07-31"
-image: "https://apod.nasa.gov/apod/image/2411/m4_STXL16200_RC14_LRGB.jpg"
-imageCredit: "Steve Crouch"
+image: "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001020/GSFC_20171208_Archive_e001020~medium.jpg"
+imageCredit: "NASA/GSFC"
 ---
 
 Imagine dois redemoinhos de fumaça se aproximando lentamente no ar — eles não se chocam de forma violenta, mas se entrelaçam, giram um ao redor do outro e, aos poucos, se tornam um único turbilhão. É exatamente assim que acontece quando duas galáxias colidem. Ao contrário do que o nome sugere, uma 'colisão galáctica' raramente envolve destruição imediata. O processo é extraordinariamente lento, levando centenas de milhões a bilhões de anos para se completar. Isso acontece porque as galáxias são, em sua essência, muito mais espaço vazio do que matéria. As estrelas dentro delas são tão distantes umas das outras que a chance de duas delas se chocarem diretamente é quase zero — como atirar dois punhados de areia em lados opostos de uma cidade e esperar que um grão bata no outro.

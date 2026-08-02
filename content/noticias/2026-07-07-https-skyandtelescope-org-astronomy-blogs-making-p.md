@@ -10,8 +10,8 @@ sourceType: "sci"
 sourceUrl: "https://skyandtelescope.org/astronomy-blogs/making-peace-with-terrible-astrophotography/"
 tags: ["astrofotografia", "astronomia", "céu noturno"]
 date: "2026-07-07"
-image: "https://apod.nasa.gov/apod/image/1805/AuroraSunrise_ISS_5568.jpg"
-imageCredit: "NASA"
+image: "https://images-assets.nasa.gov/image/iss073e0818308/iss073e0818308~large.jpg"
+imageCredit: "NASA/JSC"
 ---
 
 Fotografar estrelas, nebulosas e galáxias é um dos hobbies mais recompensadores que existem — mas também um dos mais exigentes. Ao contrário de tirar uma foto de uma paisagem ou de um rosto, a astrofotografia exige lidar com objetos extremamente distantes, com pouca luz, em movimento constante por causa da rotação da Terra. O resultado, especialmente no início, quase sempre decepciona: imagens borradas, granuladas ou completamente escuras. E tudo isso é absolutamente normal.

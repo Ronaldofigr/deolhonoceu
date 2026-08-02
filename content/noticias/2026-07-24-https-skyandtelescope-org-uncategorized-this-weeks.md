@@ -16,8 +16,8 @@ aiProvider: "OpenAI"
 aiModel: "gpt-5.6-sol"
 humanReviewed: false
 references: [{"title": "This Week's Sky at a Glance, July 24 – August 2", "url": "https://skyandtelescope.org/uncategorized/this-weeks-sky-at-a-glance-july-24-august-2/"}]
-image: "https://apod.nasa.gov/apod/image/2305/STSCI_FomalhautDisk.png"
-imageCredit: "NASA"
+image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Antares_%28Updated%29.jpg/1280px-Antares_%28Updated%29.jpg"
+imageCredit: "Danny William Wilson / Wikimedia Commons / CC BY-SA 4.0"
 ---
 
 O guia de observação para o período de 24 de julho a 2 de agosto destaca um encontro aparente entre a Lua crescente gibosa e Antares. Nessa fase, mais da metade da face lunar visível está iluminada, mas a Lua ainda caminha em direção à fase cheia. A passagem perto de Antares não significa que os dois astros estejam realmente próximos no espaço. É um efeito de perspectiva: vistos da Terra, eles aparecem na mesma região do céu, como duas paisagens muito distantes que parecem se tocar em uma fotografia.

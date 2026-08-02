@@ -16,8 +16,8 @@ aiProvider: "OpenAI"
 aiModel: "gpt-5.6-sol"
 humanReviewed: false
 references: [{"title": "Após falha nos motores, SpaceX prepara novo lançamento da Starship - Exame", "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQMkdwSHpGMnRMQ0hacUZRdGk4NE5ybDVLQWJCbUl6bTNldDAwRWdrbzMtQllqZWVicEptYUJWdEVzcElsV2FyUkZQTU9rcngxaVJyejY2bGtjMkpUWmZGTmRiREpYVjJMVk1qWjVGc0xVZHVMVVo4UlJTUTRIS2VwdkhLMTVuMTFUQUJ4UWtvUFhqc0Y1eG04?oc=5"}]
-image: "https://apod.nasa.gov/apod/image/2003/M77Halpha_HubbleSchmidt_2290.jpg"
-imageCredit: "NASA"
+image: "https://images-assets.nasa.gov/image/iss072e220043/iss072e220043~medium.jpg"
+imageCredit: "NASA/JSC"
 ---
 
 A SpaceX está preparando um novo lançamento da Starship após um episódio de falha nos motores, segundo a informação divulgada. A fonte fornecida não detalha quando ocorreu o problema, quais motores foram afetados, o que provocou a falha nem a data da próxima tentativa. Por isso, não é possível concluir se houve um único defeito ou uma combinação de fatores. O anúncio indica, de forma mais geral, que a empresa pretende retomar os testes do veículo depois de analisar o desempenho anterior.

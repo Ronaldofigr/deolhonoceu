@@ -11,8 +11,8 @@ sourceUrl: "https://science.nasa.gov/earth/earth-observatory/sizing-up-the-sarga
 sourceTitle: "Sizing Up the Sargassum Belt"
 tags: ["sargassum", "oceanos", "NASA", "algas marinhas", "meio ambiente"]
 date: "2026-07-29"
-image: "https://apod.nasa.gov/apod/image/2106/MultiEclipse_Eder_1080.jpg"
-imageCredit: "Helmut Eder"
+image: "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001007/GSFC_20171208_Archive_e001007~medium.jpg"
+imageCredit: "NASA/GSFC"
 ---
 
 Imagine uma faixa gigantesca de algas flutuando no oceano, tão extensa que pode ser vista do espaço. É exatamente isso que é o Grande Cinturão de Sargassum do Atlântico — uma massa de algas marrons chamadas sargassum que deriva pelas águas tropicais do Atlântico. Em junho de 2026, essa faixa atingiu níveis quase recordes, segundo monitoramento da NASA, com o Mar do Caribe e o Golfo da América registrando as maiores concentrações já medidas desde que os cientistas começaram a acompanhar o fenômeno.

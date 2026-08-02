@@ -10,8 +10,8 @@ sourceType: "spacex"
 sourceUrl: "https://news.google.com/rss/articles/CBMi0wFBVV95cUxNS0d2T3REVVRVOC1NNm4xQ19UbDJDeXIzdExoWFZpTGd3MG5kOE5ETjRCQ01OQk1BQ1N0YmlMTi1GUDBBSzdjTUttVUtqMnU5Qmx0M0V6TXM4ck9POG90dzBHSWFsU3VMVWlvcHJSUDlZdXFJMWZkLWc2RERSQUZib29lNDBQYnlpVTRZWGJZVU5EbW9SS2hwaFc5c3I5MW1FdnpHeUZOQjU1d1p2a1lWM3l1dEJLTlRCa3F2dEpmWmJraGhHSHZHcnhjTG55ZmNQanc0?oc=5"
 tags: ["Lua", "SpaceX", "Starship", "ispace", "exploração espacial"]
 date: "2026-07-08"
-image: "https://apod.nasa.gov/apod/image/1812/Earthrise1_Apollo8AndersWeigang_2048.jpg"
-imageCredit: "NASA"
+image: "https://images-assets.nasa.gov/image/KSC-20170217-PH_KLS02_0037/KSC-20170217-PH_KLS02_0037~medium.jpg"
+imageCredit: "NASA/KSC"
 ---
 
 Imagine dividir o custo de um táxi com outros passageiros para chegar ao mesmo destino — mas, em vez de atravessar a cidade, o destino é a Lua. É exatamente essa a ideia da startup japonesa ispace, que anunciou planos para oferecer o que seria um serviço de 'carona compartilhada' para missões lunares, utilizando a gigantesca espaçonave Starship, desenvolvida pela SpaceX. Em vez de um único cliente pagar pelo custo total de uma missão, vários clientes dividiriam o mesmo voo, reduzindo drasticamente o preço individual do transporte espacial.

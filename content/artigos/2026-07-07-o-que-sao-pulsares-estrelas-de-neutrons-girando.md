@@ -8,8 +8,8 @@ categoryEs: "Astronomía"
 type: "concept"
 readingTime: 3
 date: "2026-07-07"
-image: "https://apod.nasa.gov/apod/image/2202/NGC1555texas2021.jpg"
-imageCredit: "Dawn Lowry"
+image: "https://images-assets.nasa.gov/image/7890338/7890338~medium.jpg"
+imageCredit: "NASA/MSFC"
 ---
 
 Imagine um farol à beira-mar girando sem parar, varrendo o horizonte com seu feixe de luz em intervalos perfeitamente regulares. Agora transporte essa imagem para o espaço, aumente a escala para algo do tamanho de uma cidade e coloque esse objeto girando centenas de vezes por segundo. Você acaba de visualizar um pulsar — uma das criaturas mais espetaculares e estranhas do universo. Pulsares são estrelas de nêutrons em rotação frenética, os restos compactos deixados após a explosão catastrófica de estrelas massivas, eventos que chamamos de supernovas.

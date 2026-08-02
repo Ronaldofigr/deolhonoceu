@@ -10,8 +10,8 @@ sourceType: "nasa"
 sourceUrl: "https://science.nasa.gov/learning-resources/science-activation/students-connect-nasa-science-with-indigenous-knowledge-to-study-coastal-erosion/"
 tags: ["erosão costeira", "conhecimento indígena", "NASA", "mudanças climáticas", "meio ambiente"]
 date: "2026-07-08"
-image: "https://apod.nasa.gov/apod/image/2405/StairwayToMilkyway_Marcin_6000.jpg"
-imageCredit: "Marcin Rosadziński"
+image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Coastal_Erosion_poses_a_threat_to_the_Atlantic_coasts_of_France.jpg/1280px-Coastal_Erosion_poses_a_threat_to_the_Atlantic_coasts_of_France.jpg"
+imageCredit: "European Union, Sentinel-2 imagery / Wikimedia Commons / Attribution"
 ---
 
 Imagine que sua casa fica às margens do mar e, a cada ano que passa, o chão sob seus pés vai desaparecendo, levado pelas ondas. Essa não é uma metáfora: é a realidade vivida pelo povo Passamaquoddy, uma nação indígena que habita a reserva conhecida como Sipayik, no litoral do estado do Maine, nos Estados Unidos. Ali, onde o Oceano Atlântico encontra a Baía de Passamaquoddy, a erosão costeira vem corroendo fisicamente a terra que esse povo habita há séculos.

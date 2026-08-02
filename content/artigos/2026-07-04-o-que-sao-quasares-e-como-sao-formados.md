@@ -8,8 +8,8 @@ categoryEs: "Astronomía"
 type: "concept"
 readingTime: 3
 date: "2026-07-04"
-image: "https://apod.nasa.gov/apod/image/2409/RayosCrepusculares.jpg"
-imageCredit: "Emili Vilamala"
+image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Black_Hole_Pair_Embedded_in_Middle_of_Active_Galaxy_MCG-03-34-064_%282024-022%29.png/1280px-Black_Hole_Pair_Embedded_in_Middle_of_Active_Galaxy_MCG-03-34-064_%282024-022%29.png"
+imageCredit: "Image: NASA, ESA, Anna Trindade Falcão (CfA) Image Processing: Joseph DePasquale (STScI) / Wikimedia Commons / Public domain"
 ---
 
 Imagine um cogumelo atômico de uma explosão nuclear, mas bilhões de vezes mais brilhante e do tamanho de um sistema solar inteiro. Essa é, em essência, a melhor forma de descrever um quasar. O nome vem do inglês *quasi-stellar object* — objeto quase estelar —, porque quando foram descobertos, nos anos 1960, pareciam estrelas comuns. Mas eram muito mais: os objetos mais luminosos do universo conhecido, capazes de brilhar mais do que uma galáxia inteira contendo centenas de bilhões de estrelas. Enxergar um quasar é como ver a chama de uma vela a milhares de quilômetros de distância — e ainda assim ela ofuscar tudo ao redor.

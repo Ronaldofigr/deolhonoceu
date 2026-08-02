@@ -16,8 +16,8 @@ aiProvider: "OpenAI"
 aiModel: "gpt-5.6-sol"
 humanReviewed: false
 references: [{"title": "SpaceX realiza 13º voo teste da Starship nesta quinta-feira - Revista Oeste", "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNSFpfSXRJRGZsYVkzdkFOSHJKMHVSNXl3bGFCMl9fZXBfbjJMT04zZWZ3SW1jMlJlbXVaZlV0VlFDOUJVMVRDY1k1ZlV1YllyekpkVTM0X3VvOS1mcU1NY0twc2JEMHhKeFczcmNvSG5kRHlRWnE0WGpJaG9yOF8yZHRFb3BKSGNYUEVEdk5NTmoycnZYaFE?oc=5"}]
-image: "https://apod.nasa.gov/apod/image/2511/NGC1055JohnHayes.jpg"
-imageCredit: "John Hayes"
+image: "https://images-assets.nasa.gov/image/iss072e220043/iss072e220043~medium.jpg"
+imageCredit: "NASA/JSC"
 ---
 
 A SpaceX realiza nesta quinta-feira o 13º voo de teste da Starship, segundo o título da notícia fornecida. A informação disponível, porém, é bastante limitada: não apresenta o horário, os objetivos específicos, a configuração do veículo nem os resultados da missão. Por isso, não é possível afirmar a partir dessa fonte quais etapas serão executadas ou quais critérios a empresa usará para considerar o ensaio bem-sucedido. O dado central é que se trata do décimo terceiro voo de uma sequência de testes, e não de uma missão descrita como operacional.

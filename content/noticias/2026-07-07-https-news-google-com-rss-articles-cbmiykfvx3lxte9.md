@@ -10,8 +10,8 @@ sourceType: "spacex"
 sourceUrl: "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9WWkEwYVlqZmdvUk8yUXhaenMxSURvZEZUQ21EVVhFTEU0Y09KWXlSQm5fd0x0RDlNTDlaamFVYkpIWmRLMEFCbm5ZbkpjRGFYVVBMNEV5WW1vcEFIcVVKX3dB?oc=5"
 tags: ["SpaceX", "economia espacial", "Starlink"]
 date: "2026-07-07"
-image: "https://apod.nasa.gov/apod/image/2001/QuadrantidsChineseGreatWall.jpg"
-imageCredit: "Cheng Luo"
+image: "https://apod.nasa.gov/apod/image/2203/noirlab2209a_ngc772.jpg"
+imageCredit: "NASA"
 ---
 
 Imagine uma empresa que começou lançando foguetes como uma startup ousada e, em menos de duas décadas, se tornou candidata a ser o primeiro negócio do setor espacial a movimentar US$ 1 trilhão por ano. É exatamente isso que analistas do banco brasileiro BTG Pactual projetam para a SpaceX, empresa fundada por Elon Musk, com previsão de atingir essa marca histórica até 2031. Para ter uma ideia da grandiosidade desse número, US$ 1 trilhão equivale a todo o Produto Interno Bruto (PIB) de países como a Holanda ou a Arábia Saudita.

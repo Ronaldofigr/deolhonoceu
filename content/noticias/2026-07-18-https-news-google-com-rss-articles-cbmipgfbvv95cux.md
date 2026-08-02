@@ -16,8 +16,8 @@ aiProvider: "OpenAI"
 aiModel: "gpt-5.6-sol"
 humanReviewed: false
 references: [{"title": "SpaceX vê ações caírem mais de 5% após cancelar lançamento de um de seus foguetes Starship - Times Brasil | CNBC", "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOUWxWZ3FYUGlkNVNpc0F3ckpzd2h0OElHMWdVSUZGYWZIWEhDc0h2RUVMWmZWaU51R2JxNVdMeHJ6SVVkdTdybTctSEg2Y09qRG5kZ2paODFsWk9YTFNCUDFXTlpUdm44cFFsVXRYQ1JpYlVhRE9aemRRVHlpN2tBTElvYkFqeWxIUkhYNDBJeW9oR3RnUkJYdllRdm1nWlRIS2Z3NVhn?oc=5"}]
-image: "https://apod.nasa.gov/apod/image/2309/Arp142_HubbleChakrabarti_2627.jpg"
-imageCredit: "NASA"
+image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/SpaceX_Starship_before_IFT-5.jpg/1280px-SpaceX_Starship_before_IFT-5.jpg"
+imageCredit: "Steve Jurvetson / Wikimedia Commons / CC BY 2.0"
 ---
 
 Uma notícia atribuída à SpaceX informa que ações teriam caído mais de 5% após o cancelamento do lançamento de um foguete Starship. O resumo disponível, porém, não identifica claramente quais ações foram afetadas, em que período ocorreu a variação ou qual foi a razão técnica para interromper a tentativa. Por isso, a informação deve ser lida como um relato inicial, e não como uma explicação completa sobre o lançamento ou sobre a reação financeira mencionada no título.

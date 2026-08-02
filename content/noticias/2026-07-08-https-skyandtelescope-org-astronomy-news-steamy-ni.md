@@ -10,8 +10,8 @@ sourceType: "sci"
 sourceUrl: "https://skyandtelescope.org/astronomy-news/steamy-nights-at-the-galactic-equator/"
 tags: ["Via Láctea", "astronomia", "objetos do céu profundo", "nebulosas", "aglomerados estelares"]
 date: "2026-07-08"
-image: "https://apod.nasa.gov/apod/image/1901/Cuadrantidas30estelasDLopez.jpg"
-imageCredit: "El Cielo de Canarias"
+image: "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e000022/GSFC_20171208_Archive_e000022~medium.jpg"
+imageCredit: "NASA/GSFC"
 ---
 
 Imagine traçar uma linha imaginária ao redor de um globo terrestre, bem no meio entre os dois polos — isso é o equador. Agora, pense na Via Láctea, nossa galáxia em forma de disco achatado, e imagine a mesma coisa: uma linha que percorre exatamente o plano central dessa galáxia. Essa linha é o chamado equador galáctico, e ela representa uma das regiões mais fascinantes e ricas que um astrônomo amador pode observar no céu noturno.

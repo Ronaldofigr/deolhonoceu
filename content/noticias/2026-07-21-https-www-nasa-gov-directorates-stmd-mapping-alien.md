@@ -16,8 +16,8 @@ aiProvider: "OpenAI"
 aiModel: "gpt-5.6-sol"
 humanReviewed: false
 references: [{"title": "Mapping Alien Continents: Achieving Optical VLBI for Exoplanet Imaging", "url": "https://www.nasa.gov/directorates/stmd/mapping-alien-continents-achieving-optical-vlbi-for-exoplanet-imaging/"}]
-image: "https://apod.nasa.gov/apod/image/1908/AntaresRho_McGarvey_2200.jpg"
-imageCredit: "NASA"
+image: "https://images-assets.nasa.gov/image/PIA09376/PIA09376~thumb.jpg"
+imageCredit: "NASA/JPL"
 ---
 
 Observar diretamente a superfície de um planeta semelhante à Terra fora do Sistema Solar é um desafio muito diferente de apenas detectar sua presença. A proposta apresentada por Paul Stankus, da Brookhaven Science Associates, tem como objetivo científico reconstruir, em luz visível, uma imagem de um exoplaneta desse tipo ao redor de uma estrela próxima. Em vez de registrar somente um ponto luminoso, a ideia é alcançar resolução suficiente para separar características da superfície. O título do projeto fala em “mapear continentes alienígenas”, mas isso expressa uma ambição tecnológica: o trabalho é uma proposta de método, não o anúncio de que continentes já foram observados.

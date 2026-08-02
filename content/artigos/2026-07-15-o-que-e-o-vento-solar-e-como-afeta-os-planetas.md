@@ -8,8 +8,8 @@ categoryEs: "Sistema Solar"
 type: "concept"
 readingTime: 3
 date: "2026-07-15"
-image: "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001646/GSFC_20171208_Archive_e001646~medium.jpg"
-imageCredit: "NASA/GSFC"
+image: "https://images-assets.nasa.gov/image/PIA00624/PIA00624~medium.jpg"
+imageCredit: "NASA/JPL"
 ---
 
 Imagine que o Sol é uma fogueira gigantesca e que, em vez de apenas luz e calor, ela também sopra uma brisa invisível em todas as direções. Essa "brisa" é o vento solar: um fluxo constante de partículas carregadas — principalmente prótons e elétrons — que o Sol libera continuamente a velocidades impressionantes, chegando a 800 quilômetros por segundo. Não se trata de vento como sentimos na Terra, feito de moléculas de ar, mas de uma corrente de matéria energética que percorre o Sistema Solar inteiro como uma rajada sem fim.

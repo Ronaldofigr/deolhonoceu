@@ -10,8 +10,8 @@ sourceType: "sci"
 sourceUrl: "https://skyandtelescope.org/astronomy-news/did-a-passing-star-shower-us-with-comets/"
 tags: ["cometas", "Nuvem de Oort", "Sistema Solar", "astronomia", "estrelas"]
 date: "2026-07-08"
-image: "https://apod.nasa.gov/apod/image/2204/SouthPoleShadows_LRO_1214.jpg"
-imageCredit: "NASA"
+image: "https://apod.nasa.gov/apod/image/2401/Ain_4096.jpg"
+imageCredit: "Reg Pratt"
 ---
 
 Imagine o Sistema Solar envolto por uma gigantesca nuvem esférica de bilhões de fragmentos gelados, situada a uma distância tão absurda que a luz do Sol mal os ilumina. Essa estrutura existe e tem nome: a Nuvem de Oort. É dali que vêm a maioria dos cometas de longo período — aqueles visitantes gelados que cruzam o céu e só retornam ao interior do Sistema Solar depois de milhares ou até milhões de anos. Por ser tão distante e tão frágil gravitacionalmente, qualquer perturbação nessa região pode lançar cometas em trajetórias que os empurram em direção ao Sol.

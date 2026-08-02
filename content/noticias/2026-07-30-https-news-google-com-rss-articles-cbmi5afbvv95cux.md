@@ -11,8 +11,8 @@ sourceUrl: "https://news.google.com/rss/articles/CBMi5AFBVV95cUxQLUdzajdUTDVIR1d
 sourceTitle: "Impressionante: imagens de drone mostram Starship, da SpaceX, pousando no meio do oceano - Época Negócios"
 tags: ["SpaceX", "Starship", "exploração espacial"]
 date: "2026-07-30"
-image: "https://apod.nasa.gov/apod/image/2009/LightningStorm_Randall_5184.jpg"
-imageCredit: "Joe Randall"
+image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Booster_10_%28cropped%29.jpg/1280px-Booster_10_%28cropped%29.jpg"
+imageCredit: "Jenny Hautmann / Wikimedia Commons / CC BY-SA 4.0"
 ---
 
 A SpaceX, empresa aeroespacial fundada por Elon Musk, registrou um momento histórico: imagens capturadas por drones mostram a Starship — o foguete mais poderoso e maior já construído pela companhia — realizando um pouso no meio do oceano. As imagens, que circularam amplamente, impressionam não apenas pela beleza visual, mas pelo que representam tecnologicamente para o futuro da exploração espacial.

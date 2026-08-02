@@ -10,8 +10,8 @@ sourceType: "spacex"
 sourceUrl: "https://news.google.com/rss/articles/CBMivAFBVV95cUxNQU42TFE5QzlLVkhvNVQwTXVTRW9XSklxWHB3ejRyenZldkRtaDkxNnBNQlJta2RPSmRuaGFqZ2NUS0FaU0k5amFHajIyOFlLS3FncU15aWx0MHo4NjJzVHZreVlSa0s5Rk9ycUw4bEFIeG5UYUJvLUNJUWZ0eUFHS0w2cWI4ak5OTDJWenJhQW95dXVpUkJ3NENfb182Vi05WFBsTng1ZVJkVnUtTUp0Z3NMdE9reTg2MzVsWA?oc=5"
 tags: ["SpaceX", "Inteligência Artificial", "Exploração Espacial", "Tecnologia", "Inovação"]
 date: "2026-07-07"
-image: "https://apod.nasa.gov/apod/image/2305/NGC6543_wide.jpg"
-imageCredit: "Jean-François Bax"
+image: "https://apod.nasa.gov/apod/image/2507/HebesChasma_esa_960.jpg"
+imageCredit: "NASA"
 ---
 
 Quando uma grande firma de análise financeira como a William Blair decide começar a acompanhar uma empresa, isso é um sinal de que algo importante está acontecendo. No caso da SpaceX, a empresa fundada por Elon Musk para levar a humanidade ao espaço, o destaque vai além dos foguetes: os analistas apontam os avanços em inteligência artificial (IA) como um dos principais motores do crescimento futuro da companhia.

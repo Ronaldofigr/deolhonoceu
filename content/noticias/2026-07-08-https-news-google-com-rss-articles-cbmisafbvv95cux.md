@@ -10,8 +10,8 @@ sourceType: "spacex"
 sourceUrl: "https://news.google.com/rss/articles/CBMisAFBVV95cUxNZmw4eVlMQWtIRkhHTkl2UWxyNk93Z1lUdjlxZ2hJU3VNOWl5RzFqcmdFakRZcGp6QjV6YUhSY3N1OFFiVXBGWF9sVFItOXRXWlhhTkg1T0g0a2RCMllmRTZIdzA3RHF1SWlGT2F2bGp3dk1fb1RTbjE4MXJNVFp0Y0ktNTBRbUZCVS1HM2tsUTVDUEdrdVZ0WW9JNkZZa2ZNd1d1MlJUNnkyN0NjSW96adIBsAFBVV95cUxNZmw4eVlMQWtIRkhHTkl2UWxyNk93Z1lUdjlxZ2hJU3VNOWl5RzFqcmdFakRZcGp6QjV6YUhSY3N1OFFiVXBGWF9sVFItOXRXWlhhTkg1T0g0a2RCMllmRTZIdzA3RHF1SWlGT2F2bGp3dk1fb1RTbjE4MXJNVFp0Y0ktNTBRbUZCVS1HM2tsUTVDUEdrdVZ0WW9JNkZZa2ZNd1d1MlJUNnkyN0NjSW96aQ?oc=5"
 tags: ["SpaceX", "exploração espacial", "tecnologia"]
 date: "2026-07-08"
-image: "https://apod.nasa.gov/apod/image/2209/DSCF4968_PS_Lioce.jpg"
-imageCredit: "Donato Lioce"
+image: "https://images-assets.nasa.gov/image/NHQ202409270002/NHQ202409270002~medium.jpg"
+imageCredit: "NASA/HQ"
 ---
 
 A SpaceX, empresa aeroespacial fundada por Elon Musk em 2002, deixou de ser apenas um sonho de ficção científica para se tornar um dos negócios mais cobiçados do planeta. Três dos maiores bancos do mundo — JPMorgan, Goldman Sachs e Bank of America — estão recomendando que seus clientes invistam na companhia. Mas o que exatamente eles enxergam nessa empresa que a torna tão valiosa?

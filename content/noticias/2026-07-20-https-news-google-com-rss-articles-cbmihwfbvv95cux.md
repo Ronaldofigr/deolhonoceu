@@ -16,8 +16,8 @@ aiProvider: "OpenAI"
 aiModel: "gpt-5.6-sol"
 humanReviewed: false
 references: [{"title": "SpaceX define nova data para 13º voo de teste da Starship após adiamento bilionário - ADVFN", "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNaTlINnlTcVU2NDhsdHlWRFhqMVdSZjhmd3A2SXZ3cTFOSHBCMENBemRlN21wS21mUG9TVk9WSmJhcFFSZjBzSWVjT2kwTFFVZHkzU3J1TUlFMW90T2pxU2lCVXBISHhxX1BySUFpN3puUnhUcnloOWtSa1ZaSTBNa3U5Y2xRbkU?oc=5"}]
-image: "https://apod.nasa.gov/apod/image/2201/DarkNebulaVd_HmoRuuth_4096.jpg"
-imageCredit: "Jarmo Ruuth,  Telescope Live,  Heaven's Mirror Observatory"
+image: "https://images-assets.nasa.gov/image/iss072e220043/iss072e220043~medium.jpg"
+imageCredit: "NASA/JSC"
 ---
 
 A SpaceX definiu uma nova data para o 13º voo de teste da Starship após um adiamento, de acordo com a notícia fornecida. O resumo disponível, porém, não apresenta a data escolhida, as razões da mudança nem o cronograma detalhado da missão. Também não explica a expressão “adiamento bilionário” usada no título. Por isso, não é possível concluir, apenas com esse material, se o termo se refere a custos, valor do projeto, impacto financeiro estimado ou outro aspecto. A informação segura é que a empresa pretende realizar mais um teste de voo e que o planejamento foi revisto.

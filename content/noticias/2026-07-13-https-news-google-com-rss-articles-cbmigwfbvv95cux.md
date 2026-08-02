@@ -11,8 +11,8 @@ sourceUrl: "https://news.google.com/rss/articles/CBMigwFBVV95cUxPSXpMOEZLSjhwRlh
 sourceTitle: "SpaceX recebe aval da FAA para novo voo do Starship e levará satélites Starlink V3 pela primeira vez - BlockTrends"
 tags: ["SpaceX", "Starship", "Starlink"]
 date: "2026-07-13"
-image: "https://apod.nasa.gov/apod/image/1904/M33Meteor_Chokshi_2000.jpg"
-imageCredit: "NASA"
+image: "https://images-assets.nasa.gov/image/iss072e220043/iss072e220043~medium.jpg"
+imageCredit: "NASA/JSC"
 ---
 
 A SpaceX acaba de receber luz verde da Administração Federal de Aviação dos Estados Unidos (FAA, na sigla em inglês) para realizar um novo voo de teste do Starship. Essa autorização é um passo burocrático essencial: antes de qualquer lançamento, a agência reguladora precisa avaliar se o foguete e a missão atendem a rigorosos critérios de segurança ambiental e aérea. Sem esse aval, nenhum foguete pode sair do chão legalmente nos EUA.

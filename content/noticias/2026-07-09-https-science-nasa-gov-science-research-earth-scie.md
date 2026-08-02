@@ -11,8 +11,8 @@ sourceUrl: "https://science.nasa.gov/science-research/earth-science/principal-in
 sourceTitle: "Principal Investigator and Quality Assessment Reports Evaluate Umbra Synthetic Aperture Radar Data"
 tags: ["NASA", "radar", "satélites comerciais", "sensoriamento remoto", "ciências da Terra"]
 date: "2026-07-09"
-image: "https://apod.nasa.gov/apod/image/2101/NGC1316Center_HubbleNobre_2585.jpg"
-imageCredit: "NASA"
+image: "https://images-assets.nasa.gov/image/PIA25771/PIA25771~medium.jpg"
+imageCredit: "NASA/JPL"
 ---
 
 Imagine poder enxergar através das nuvens, da chuva e até da escuridão da noite para observar o que acontece na superfície da Terra. Isso é exatamente o que faz o chamado Radar de Abertura Sintética, conhecido pela sigla SAR. Diferente das câmeras comuns que dependem da luz do sol, o SAR emite seus próprios pulsos de micro-ondas e capta o reflexo desses sinais ao bater na superfície terrestre, formando imagens detalhadas em qualquer condição climática ou horário do dia.

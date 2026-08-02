@@ -10,8 +10,8 @@ sourceType: "spacex"
 sourceUrl: "https://news.google.com/rss/articles/CBMihwJBVV95cUxOWU1ZcHc1X0JfMUhVUFdCMW5CLUFDQUVhN24tUmNqUEJHLW1XSldIbUg0WTBOYzU2Y3lfYmxRUEU1elRYTWt4R2h3cEozeGtfR1NqMG5fNDFVS09yRHpYV0FGUmFveG9hYk41V1Jodk5oZjZ5T3JlNG03NlRlVFBCcVpoYW93LXFvSmQ0SW9lVW9oQWJVUTRoYktGLXRGS0dEbk5kb1h0ejBJbDFsLXNwQ2tKM2NoRExQRUNRSV8xS2xMMjY2MFNxa0RQdUlnOW4tcmlxaHdGSXQ1YVF2c1JvYUE1S3NNUFRidk1va1V4czdSeFYzeExrQTFGMGlDWFVnRkozZ05MSQ?oc=5"
 tags: ["Lua", "SpaceX", "Starship", "exploração espacial", "ispace", "transporte espacial", "comercialização do espaço"]
 date: "2026-07-08"
-image: "https://apod.nasa.gov/apod/image/2207/Analemma1.jpg"
-imageCredit: "Pinholove"
+image: "https://images-assets.nasa.gov/image/11 03 24 artemis 3 on surface/11 03 24 artemis 3 on surface~medium.jpg"
+imageCredit: "NASA/MSFC"
 ---
 
 Imagine que você precisa enviar uma encomenda para uma cidade distante, mas alugar um caminhão inteiro seria caro demais. A solução? Dividir o espaço do caminhão com outras pessoas que também têm encomendas para o mesmo destino. É exatamente esse o raciocínio por trás do acordo anunciado entre a empresa japonesa ispace e a SpaceX: pagar por um 'assento' na gigantesca espaçonave Starship para chegar à Lua sem precisar arcar com o custo total de uma missão exclusiva.

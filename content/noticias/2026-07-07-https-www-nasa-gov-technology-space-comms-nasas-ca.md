@@ -10,8 +10,8 @@ sourceType: "nasa"
 sourceUrl: "https://www.nasa.gov/technology/space-comms/nasas-capstone-completes-extended-mission-testing-lunar-technologies/"
 tags: ["NASA", "Lua", "CAPSTONE", "exploração espacial", "tecnologia"]
 date: "2026-07-07"
-image: "https://apod.nasa.gov/apod/image/2512/sunspectrum_mpso_3071.jpg"
-imageCredit: "NASA"
+image: "https://images-assets.nasa.gov/image/PIA25258/PIA25258~medium.jpg"
+imageCredit: "NASA/JPL"
 ---
 
 Imagine tentar se localizar em uma cidade completamente desconhecida sem GPS, sem internet e sem ninguém para te dar informações em tempo real. É algo parecido com o desafio que as futuras espaçonaves precisarão enfrentar ao operar nos arredores da Lua. A NASA desenvolveu o CAPSTONE — sigla para Experimento de Navegação e Operações do Sistema de Posicionamento Autônomo Cislunar — justamente para testar se um satélite consegue se orientar e se comunicar nesse ambiente desafiador sem depender de comandos diretos vindos da Terra.

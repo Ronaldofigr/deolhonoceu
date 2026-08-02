@@ -16,8 +16,8 @@ aiProvider: "OpenAI"
 aiModel: "gpt-5.6-sol"
 humanReviewed: false
 references: [{"title": "Foguete da SpaceX dá chabu e lançamento de seu Starship é cancelado - Hora do Povo", "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPQVBiNFZXYURBa1BkdW5SZV9SLVZ3Ni03djBvd0paUkt2TVE3dk54WFNJaDkwWDNBdmpEcE5CMTdISnVOUFFvdHV0Z21UMjd4YjZqVm43dmJ1LUpVZHl0Ylg0WTRZLWl6T0JLYWk2V1lEaTVUTERvVXZ1c0lKOFZtc1JyVjdIVzRjVDhxRGlXbWRpRmVxeDZnZUxR?oc=5"}]
-image: "https://apod.nasa.gov/apod/image/2303/RainbowTree_Houck_3198.jpg"
-imageCredit: "Eric Houck"
+image: "https://apod.nasa.gov/apod/image/2310/Vincenzo_Mirabella_20210529_134459.jpg"
+imageCredit: "Vincenzo Mirabella"
 ---
 
 Um problema no foguete da SpaceX levou ao cancelamento de um lançamento da Starship, segundo a notícia informada. O material disponível, porém, não explica qual componente apresentou dificuldade, em que momento ela foi detectada ou se já existe previsão para uma nova tentativa. Por isso, não é possível concluir se ocorreu uma falha grave ou apenas uma condição técnica que exigia mais verificações. A expressão coloquial “dar chabu”, usada no título original, indica que algo não funcionou como esperado, mas não oferece um diagnóstico de engenharia.

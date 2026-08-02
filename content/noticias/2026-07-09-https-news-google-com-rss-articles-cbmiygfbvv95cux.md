@@ -11,8 +11,8 @@ sourceUrl: "https://news.google.com/rss/articles/CBMiygFBVV95cUxNU01pU3lXamVrTDJ
 sourceTitle: "SpaceX: empresa japonesa reserva 500 kg de espaço de carga em missão à Lua - Olhar Digital"
 tags: ["SpaceX", "Lua", "exploração espacial", "missão lunar", "espaço comercial"]
 date: "2026-07-09"
-image: "https://apod.nasa.gov/apod/image/2004/WindmillStarTrails.jpg"
-imageCredit: "Antonio Gonzalez"
+image: "https://images-assets.nasa.gov/image/hls-crew-elevator-demo-20240503-dsc00138/hls-crew-elevator-demo-20240503-dsc00138~medium.jpg"
+imageCredit: "NASA/JSC"
 ---
 
 A corrida ao espaço ganhou um novo capítulo comercial: uma empresa japonesa anunciou a reserva de 500 quilogramas de espaço de carga em uma missão à Lua organizada pela SpaceX, a empresa aeroespacial fundada por Elon Musk. Para ter uma ideia do que isso representa, imagine encher metade de um carro popular com equipamentos científicos e tecnológicos e enviá-los a cerca de 384 mil quilômetros da Terra — essa é a distância média que nos separa da Lua.

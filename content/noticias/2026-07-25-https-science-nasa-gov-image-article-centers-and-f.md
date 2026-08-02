@@ -16,8 +16,8 @@ aiProvider: "OpenAI"
 aiModel: "gpt-5.6-sol"
 humanReviewed: false
 references: [{"title": "NASA’s ESCAPADE Snaps Family Portrait of Earth, Moon", "url": "https://science.nasa.gov/image-article/centers-and-facilities/goddard/nasas-escapade-snaps-family-portrait-of-earth-moon/"}]
-image: "https://apod.nasa.gov/apod/image/1907/SpotlessSunIss_Colacurcio_2048.jpg"
-imageCredit: "Rainee Colacurcio"
+image: "https://images-assets.nasa.gov/image/PIA00559/PIA00559~medium.jpg"
+imageCredit: "NASA/JPL"
 ---
 
 Uma das duas espaçonaves ESCAPADE, da NASA, produziu em 3 de julho um retrato conjunto da Terra e da Lua durante sua viagem com destino a Marte. As fotografias foram feitas em luz visível e em infravermelho térmico, oferecendo duas maneiras diferentes de observar os mesmos astros. No momento do registro, a sonda estava a 584.600 quilômetros da Terra e a 186.100 quilômetros da Lua. Isso significa que o veículo já se encontrava além da distância que normalmente separa nosso planeta de seu satélite natural.

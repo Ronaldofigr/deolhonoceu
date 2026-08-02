@@ -11,8 +11,8 @@ sourceUrl: "https://www.nasa.gov/centers-and-facilities/armstrong/nasa-study-poi
 sourceTitle: "NASA Study Points to Smoother Air Taxi Rides"
 tags: ["táxi aéreo", "NASA", "mobilidade urbana", "eVTOL", "conforto"]
 date: "2026-07-14"
-image: "https://apod.nasa.gov/apod/image/2202/PerseveranceSol354Nav1_1br2_KenKremer.jpg"
-imageCredit: "NASA"
+image: "https://images-assets.nasa.gov/image/AFRC2019-0242-03/AFRC2019-0242-03~medium.jpg"
+imageCredit: "NASA/AFRC"
 ---
 
 Imagine pedir um carro pelo celular, mas em vez de rodar pelas ruas congestionadas da cidade, o veículo decola verticalmente e te leva ao destino voando baixo entre os prédios. Essa é a promessa dos táxis aéreos — pequenas aeronaves elétricas capazes de pousar e decolar sem precisar de pista, conhecidas pela sigla eVTOL. Empresas do mundo todo já estão desenvolvendo esses veículos, mas há uma pergunta fundamental que precisa ser respondida antes que qualquer pessoa embarque: a viagem será confortável o bastante para valer a pena?

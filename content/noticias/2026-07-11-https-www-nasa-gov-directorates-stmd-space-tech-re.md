@@ -11,8 +11,8 @@ sourceUrl: "https://www.nasa.gov/directorates/stmd/space-tech-research-grants/ec
 sourceTitle: "Early Career Faculty (ECF) 2025 Awards"
 tags: ["NASA", "inteligência artificial", "exploração espacial", "tecnologia", "jovens cientistas"]
 date: "2026-07-11"
-image: "https://apod.nasa.gov/apod/image/1812/GeminidAurora_Hansen1_850.jpg"
-imageCredit: "Bjørnar G. Hansen"
+image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Dr_John_Wu_%282024-019%29.jpg/1280px-Dr_John_Wu_%282024-019%29.jpg"
+imageCredit: "Image: NASA, ESA, STScI, Andrew Baker (Rutgers University) / Wikimedia Commons / Public domain"
 ---
 
 A NASA acaba de anunciar os vencedores do programa Early Career Faculty (ECF) de 2025, uma iniciativa que apoia professores universitários no início de suas carreiras científicas para desenvolver pesquisas de ponta voltadas à exploração espacial. Esses prêmios funcionam como uma espécie de "impulso de decolagem" para cientistas talentosos que ainda estão construindo seus laboratórios e equipes, mas já apresentam ideias brilhantes e promissoras para o futuro da humanidade no espaço.

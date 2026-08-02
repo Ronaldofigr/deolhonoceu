@@ -10,8 +10,8 @@ sourceType: "nasa"
 sourceUrl: "https://www.nasa.gov/image-article/hubble-captures-star-studded-cluster/"
 tags: ["Hubble", "aglomerado globular", "Messier 3", "Via Láctea", "astronomia"]
 date: "2026-07-08"
-image: "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e000278/GSFC_20171208_Archive_e000278~medium.jpg"
-imageCredit: "NASA/GSFC"
+image: "https://images-assets.nasa.gov/image/PIA04231/PIA04231~small.jpg"
+imageCredit: "NASA/JPL"
 ---
 
 Imagine uma bola de natal gigante, mas em vez de enfeites, ela é preenchida por centenas de milhares de estrelas brilhantes. É exatamente isso que o Telescópio Espacial Hubble, da NASA, capturou em sua mais recente imagem: Messier 3, também conhecido como M3, um dos aglomerados globulares mais massivos que orbitam a nossa galáxia, a Via Láctea. A foto é de tirar o fôlego e revela uma concentração densa e esférica de estrelas que parecem se fundir em um brilho único no centro.

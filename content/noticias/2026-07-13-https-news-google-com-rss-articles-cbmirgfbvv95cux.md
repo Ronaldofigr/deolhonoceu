@@ -11,8 +11,8 @@ sourceUrl: "https://news.google.com/rss/articles/CBMirgFBVV95cUxPekFLZC04eEV1Ujl
 sourceTitle: "Novo voo do Starship já tem data; saiba o que esperar - Olhar Digital"
 tags: ["SpaceX", "Starship", "exploração espacial"]
 date: "2026-07-13"
-image: "https://apod.nasa.gov/apod/image/2308/M82_HubblePathak_8150.jpg"
-imageCredit: "NASA"
+image: "https://images-assets.nasa.gov/image/iss072e220043/iss072e220043~medium.jpg"
+imageCredit: "NASA/JSC"
 ---
 
 O Starship é o foguete mais alto e mais poderoso já construído na história da humanidade. Desenvolvido pela SpaceX, a empresa de Elon Musk, ele tem quase 120 metros de altura — o equivalente a um prédio de 40 andares — e é composto por dois estágios: a nave espacial propriamente dita, chamada de Starship, e o propulsor gigante que a lança, o Super Heavy. Juntos, eles são capazes de gerar uma força de empuxo maior do que qualquer foguete já lançado antes, incluindo o lendário Saturno V, que levou os astronautas à Lua.

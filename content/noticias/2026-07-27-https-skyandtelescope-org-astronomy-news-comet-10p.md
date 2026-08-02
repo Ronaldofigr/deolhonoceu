@@ -11,8 +11,8 @@ sourceUrl: "https://skyandtelescope.org/astronomy-news/comet-10p-tempel-brighten
 sourceTitle: "Comet 10P/Tempel Brightens, Sets Sail South"
 tags: ["cometa", "10P/Tempel", "supernova", "Ursa Maior", "astronomia"]
 date: "2026-07-27"
-image: "https://apod.nasa.gov/apod/image/2007/169A2911Dai.jpg"
-imageCredit: "Jeff Dai"
+image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/10P_Tempel_on_21_June_2026.jpg/1280px-10P_Tempel_on_21_June_2026.jpg"
+imageCredit: "Dimitrios Katevainis / Wikimedia Commons / CC BY-SA 4.0"
 ---
 
 Você já imaginou ver um cometa com seus próprios olhos, sem precisar de um telescópio sofisticado? Esse momento chegou para quem tem um par de binóculos e acesso a um céu bem escuro. O cometa 10P/Tempel, um visitante periódico do nosso sistema solar, está passando por um aumento de brilho que o torna visível a olho nu com o auxílio de binóculos. Pense nos binóculos como uma janela um pouco maior para o universo — eles captam mais luz do que nossos olhos sozinhos e revelam objetos que normalmente ficam escondidos no escuro da noite.

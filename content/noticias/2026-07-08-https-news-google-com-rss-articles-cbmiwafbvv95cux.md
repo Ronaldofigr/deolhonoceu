@@ -10,8 +10,8 @@ sourceType: "spacex"
 sourceUrl: "https://news.google.com/rss/articles/CBMiwAFBVV95cUxONW1YRUMyMnd6X3ZkWXhMektiX0VVRWZaNkh4TmdmdnVQWkZDbEtpTVBQX1VNZ25kZk9VUUxNX0NaS3hVb2hqOXhtcmZfbnZFT2FTMkY1SDN0UzlabENudmtDTzVjZmtENU9TNWloNEVEdldSWUpnaDQ0cEJELXRud2x4bUV0bkpuYU9yLXk2OEs2dTBmTmppY05QSXhfaHZHLW84RWtMcVczdzVhNl90dVJfNDFYRmJnM0c2MEF6NG0?oc=5"
 tags: ["Lua", "SpaceX", "exploração espacial", "transporte espacial", "corrida lunar"]
 date: "2026-07-08"
-image: "https://apod.nasa.gov/apod/image/2205/PyramidPlanets_Fatehi_8356.jpg"
-imageCredit: "Osama Fatehi"
+image: "https://images-assets.nasa.gov/image/11 14 24 fuel depot/11 14 24 fuel depot~medium.jpg"
+imageCredit: "NASA/MSFC"
 ---
 
 Imagine que, no passado, viajar de um continente a outro exigia expedições militares ou missões diplomáticas de alto custo. Hoje, qualquer pessoa compra uma passagem e embarca num avião. Algo parecido está começando a acontecer com as viagens à Lua. Empresas privadas, impulsionadas pela SpaceX e outras startups aeroespaciais, estão desenvolvendo o conceito de rotas comerciais regulares até a superfície lunar — uma espécie de 'Uber espacial', onde satélites, cargas científicas e até futuros módulos habitacionais podem ser enviados à Lua mediante pagamento, sem depender exclusivamente de agências governamentais como a NASA.

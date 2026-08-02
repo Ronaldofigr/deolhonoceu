@@ -8,8 +8,8 @@ categoryEs: "Exploración Espacial"
 type: "concept"
 readingTime: 3
 date: "2026-08-01"
-image: "https://apod.nasa.gov/apod/image/2605/ThackerayGlobs_Hayes_2664.jpg"
-imageCredit: "John Hayes"
+image: "https://images-assets.nasa.gov/image/KSC-03pd1884/KSC-03pd1884~medium.jpg"
+imageCredit: "NASA/KSC"
 ---
 
 Imagine um apartamento do tamanho de um campo de futebol americano flutuando silenciosamente ao redor da Terra, a cerca de 400 quilômetros de altitude. Essa é a Estação Espacial Internacional, a ISS — sigla em inglês para International Space Station. Construída ao longo de mais de uma década com peças enviadas em diferentes missões, como um gigantesco quebra-cabeça montado no vácuo do espaço, a ISS é hoje o maior objeto já colocado em órbita pela humanidade. Ela abriga normalmente entre seis e sete astronautas de diferentes países, que vivem e trabalham juntos em nome da ciência.

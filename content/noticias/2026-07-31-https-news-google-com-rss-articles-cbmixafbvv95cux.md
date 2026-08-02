@@ -11,8 +11,8 @@ sourceUrl: "https://news.google.com/rss/articles/CBMixAFBVV95cUxQd1ZnT2cwQXF2T3R
 sourceTitle: "Starship continua flutuando uma semana após pouso histórico no oceano - Olhar Digital"
 tags: ["SpaceX", "Starship", "foguetes reutilizáveis", "exploração espacial", "tecnologia"]
 date: "2026-07-31"
-image: "https://apod.nasa.gov/apod/image/2011/DoubleCluster_Polanski_4560.jpg"
-imageCredit: "Greg Polanski"
+image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Booster_10_%28cropped%29.jpg/1280px-Booster_10_%28cropped%29.jpg"
+imageCredit: "Jenny Hautmann / Wikimedia Commons / CC BY-SA 4.0"
 ---
 
 A Starship, o maior foguete já construído pela humanidade, protagonizou mais um momento surpreendente: após realizar um pouso histórico nas águas do oceano, a nave permaneceu flutuando por pelo menos uma semana inteira. Isso pode parecer um detalhe simples, mas representa algo significativo para os engenheiros e entusiastas da exploração espacial.

@@ -16,8 +16,8 @@ aiProvider: "OpenAI"
 aiModel: "gpt-5.6-sol"
 humanReviewed: false
 references: [{"title": "SpaceX remarca lançamento do 13º voo da Starship - Poder360", "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOMkl0UHJOazRZU3U5TGpVX3pOT0ZoWHMydDVMSXhObUd1dWFMV3VUeHpfeVA2Tk1wempoRHRMVUw0cVJfLXNGY1ZmRXl1cnRWTXlLUkplQWxZVk9KOTFBcVYtSnVnSUZRSzdpTXQ2b2xjSGVFTUc1d2ZOQTBpYWlsS2d4a1JQTW9EOWVBTTZnY0t4Zw?oc=5"}]
-image: "https://apod.nasa.gov/apod/image/2012/MonsRumker_Letellier.jpg"
-imageCredit: "Jean-Yves Letellier"
+image: "https://images-assets.nasa.gov/image/iss072e220043/iss072e220043~medium.jpg"
+imageCredit: "NASA/JSC"
 ---
 
 A SpaceX remarcou o lançamento do 13º voo da Starship, segundo a informação divulgada. O material fornecido, porém, não apresenta uma nova data nem explica o que levou à alteração. Sem esses detalhes, não é possível afirmar se a mudança está relacionada ao veículo, às condições meteorológicas, à infraestrutura de lançamento ou a qualquer outro fator. A conclusão segura, por enquanto, é apenas que a tentativa não acontecerá no cronograma anteriormente previsto.

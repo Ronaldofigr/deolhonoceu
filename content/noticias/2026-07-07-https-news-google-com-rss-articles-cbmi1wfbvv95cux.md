@@ -10,7 +10,7 @@ sourceType: "spacex"
 sourceUrl: "https://news.google.com/rss/articles/CBMi1wFBVV95cUxOMW1mT0gzbjFSR250bk9mRC12WlJXT0VLUzF3RzNWdkxLZmJPdG95M2VPaWZ6YXJBeEh6M3Roa2E5cDRKR25wd0pwbzNEOEZZbXJ6T19FX1VPcHVrQUZVRzF4eUtwQk10RjhySVVoc29SNWFsSXFfX0NvTGFoRFZ4ajZNcFpCVUVkUDRWd3hZWFphZVdGUXFDZHZLU2hYV1hjSXBhME5kVzVJT1hVemVXZFdfOXRLWHdUeVg0RkhXbWZJakM1ZzNVMDFCaWN5ZWhxRHAwMXV5c9IB1wFBVV95cUxOMW1mT0gzbjFSR250bk9mRC12WlJXT0VLUzF3RzNWdkxLZmJPdG95M2VPaWZ6YXJBeEh6M3Roa2E5cDRKR25wd0pwbzNEOEZZbXJ6T19FX1VPcHVrQUZVRzF4eUtwQk10RjhySVVoc29SNWFsSXFfX0NvTGFoRFZ4ajZNcFpCVUVkUDRWd3hZWFphZVdGUXFDZHZLU2hYV1hjSXBhME5kVzVJT1hVemVXZFdfOXRLWHdUeVg0RkhXbWZJakM1ZzNVMDFCaWN5ZWhxRHAwMXV5cw?oc=5"
 tags: ["SpaceX", "exploração espacial", "mercado financeiro"]
 date: "2026-07-07"
-image: "https://apod.nasa.gov/apod/image/1807/CerealiaFaculaPIA21924.jpg"
+image: "https://apod.nasa.gov/apod/image/2308/rollcloud_hanrahan_3072.jpg"
 imageCredit: "NASA"
 ---
 

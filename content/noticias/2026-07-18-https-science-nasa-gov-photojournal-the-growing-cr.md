@@ -16,8 +16,8 @@ aiProvider: "OpenAI"
 aiModel: "gpt-5.6-sol"
 humanReviewed: false
 references: [{"title": "The Growing Crescent of Mars as NASA’s Psyche Mission Approaches", "url": "https://science.nasa.gov/photojournal/the-growing-crescent-of-mars-as-nasas-psyche-mission-approaches/"}]
-image: "https://apod.nasa.gov/apod/image/2502/BirdAurora_Coulon_2581.jpg"
-imageCredit: "Mickael Coulon"
+image: "https://images-assets.nasa.gov/image/PIA22262/PIA22262~medium.jpg"
+imageCredit: "NASA/JPL"
 ---
 
 Uma composição divulgada pela NASA reúne imagens de Marte registradas pela missão Psyche durante sua aproximação ao planeta, entre 2 e 15 de maio de 2026. Na sequência, o disco marciano aparece parcialmente iluminado, formando um crescente que aumenta progressivamente. A menor imagem fica no centro da composição e corresponde ao momento em que Marte estava mais distante da espaçonave. As demais permitem acompanhar visualmente a redução dessa distância ao longo dos dias.

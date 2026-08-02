@@ -11,8 +11,8 @@ sourceUrl: "https://news.google.com/rss/articles/CBMirAFBVV95cUxQYlMwd2tHYlJYUVh
 sourceTitle: "Corrida espacial: China recupera propulsor no mar e ameaça domínio de Elon Musk - TudoCelular.com"
 tags: ["corrida espacial", "China", "SpaceX", "foguetes reutilizáveis", "propulsor"]
 date: "2026-07-11"
-image: "https://apod.nasa.gov/apod/image/2108/j20210815a_cgo.jpg"
-imageCredit: "Christopher Go"
+image: "https://apod.nasa.gov/apod/image/2403/PIA19048europa.jpg"
+imageCredit: "NASA"
 ---
 
 Durante décadas, foguetes espaciais eram basicamente descartáveis: após cumprirem sua missão de empurrar uma carga ao espaço, os propulsores — os enormes motores que geram o impulso inicial — simplesmente caíam ao mar ou se destruíam na atmosfera. Isso tornava cada lançamento extremamente caro, como se você jogasse fora o motor de um avião após cada voo. Foi a SpaceX, de Elon Musk, que revolucionou esse conceito ao desenvolver propulsores capazes de pousar de volta e ser reutilizados, reduzindo drasticamente os custos das missões espaciais.

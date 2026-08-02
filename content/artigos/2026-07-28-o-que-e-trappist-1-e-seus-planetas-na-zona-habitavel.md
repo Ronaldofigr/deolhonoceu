@@ -8,8 +8,8 @@ categoryEs: "Astronomía y Astrobiología"
 type: "concept"
 readingTime: 3
 date: "2026-07-28"
-image: "https://apod.nasa.gov/apod/image/2005/CarinaPerspective_Fairbairn_1160.jpg"
-imageCredit: "Carlos Kiko Fairbairn"
+image: "https://images-assets.nasa.gov/image/PIA21422/PIA21422~medium.jpg"
+imageCredit: "NASA/JPL"
 ---
 
 Imagine uma fogueira bem pequena no meio de uma floresta escura. Agora imagine que, bem pertinho dessa fogueira, existem sete pedras de tamanhos parecidos com a Terra, girando ao redor da chama. Esse é, em linhas gerais, o sistema TRAPPIST-1, descoberto em 2017 por astrônomos usando telescópios no Chile e no espaço. A estrela central, TRAPPIST-1, é uma anã vermelha — um tipo de sol muito menor, mais frio e mais fraco que o nosso. Ela tem apenas 8% da massa do Sol e brilha com uma luz avermelhada e tênue. Mesmo assim, ao seu redor orbitam sete planetas rochosos, o maior conjunto de mundos com tamanho similar ao da Terra já encontrado em torno de uma única estrela.

@@ -8,8 +8,8 @@ categoryEs: "Cosmología"
 type: "concept"
 readingTime: 3
 date: "2026-07-27"
-image: "https://apod.nasa.gov/apod/image/2209/liciacube_leia_l0_1664234215_00000_01_0.jpg"
-imageCredit: "NASA"
+image: "https://images-assets.nasa.gov/image/KSC-08pd0903/KSC-08pd0903~medium.jpg"
+imageCredit: "NASA/KSC"
 ---
 
 Imagine que o universo é uma fogueira gigantesca acesa há 13,8 bilhões de anos. A grande questão que mantém os cosmólogos acordados à noite é simples e aterrorizante ao mesmo tempo: essa fogueira vai se apagar lentamente, explodir de vez ou implodir sobre si mesma? Três teorias principais disputam o título de 'fim do universo', e cada uma delas é mais dramática do que qualquer roteiro de Hollywood.

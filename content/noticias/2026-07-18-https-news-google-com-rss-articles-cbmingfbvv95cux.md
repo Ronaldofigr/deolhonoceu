@@ -16,8 +16,8 @@ aiProvider: "OpenAI"
 aiModel: "gpt-5.6-sol"
 humanReviewed: false
 references: [{"title": "Lançamento da Starship 13 da SpaceX é cancelado; veja como foi falha - CNN Brasil", "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxQRDdRZDFTc1lLWXV0eTdJZVlrTk9oaXcwc3I0cFVuMThGLVhoY3dJSjF2TWVsWFE2MDdaN01ac0k3RHgza0VnUkR2d0UxNzhFM0ZOdlctaVVOVzJPdW1XQWlXczJGYi1xQi0tb0RybzZHMzRCV2J1WjR1R3BnZ1pDeDNKV0Y1UE9uRlJETFdkUjgyS0U5bFkySzVDeXNtUQ?oc=5"}]
-image: "https://apod.nasa.gov/apod/image/2101/NGC-1365-RGB-19-DEC-2020_Leo_Mike.jpg"
-imageCredit: "island universe"
+image: "https://apod.nasa.gov/apod/image/2601/AuroraFireworksstormRoiLevi.jpg"
+imageCredit: "Roi Levi"
 ---
 
 O lançamento da Starship 13, da SpaceX, foi cancelado após uma falha, de acordo com o título e o resumo da notícia fornecida. O material disponível, porém, não descreve qual componente apresentou problema, em que momento isso aconteceu ou se o veículo chegou a iniciar alguma etapa da missão. Também não informa uma nova data para a tentativa. Por isso, não é possível concluir, com base apenas nessa fonte, se o cancelamento decorreu de uma anomalia no veículo, na infraestrutura de solo, nos sistemas de comunicação ou em outro elemento da operação.

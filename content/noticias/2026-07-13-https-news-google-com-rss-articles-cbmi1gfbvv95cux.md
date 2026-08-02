@@ -11,8 +11,8 @@ sourceUrl: "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPczVUYzhvTUxMclE
 sourceTitle: "SpaceX recebe autorização para novo voo de teste do Starship ainda esta semana - Investing.com Brasil - Finanças, Câmbio e Investimentos"
 tags: ["SpaceX", "Starship", "foguetes", "exploração espacial", "NASA"]
 date: "2026-07-13"
-image: "https://apod.nasa.gov/apod/image/2605/CometOrion_Perrot_960.jpg"
-imageCredit: "Luc Perrot (TWAN)"
+image: "https://apod.nasa.gov/apod/image/2203/telescope_alignment_evaluation_image_labeled.jpg"
+imageCredit: "NASA"
 ---
 
 O Starship, desenvolvido pela SpaceX de Elon Musk, recebeu luz verde das autoridades regulatórias americanas para realizar um novo voo de teste ainda esta semana. Trata-se do maior foguete já construído pela humanidade — para ter uma ideia, ele tem cerca de 120 metros de altura, o equivalente a um prédio de 40 andares — e é peça central nos planos de retorno humano à Lua e, futuramente, de viagens a Marte.

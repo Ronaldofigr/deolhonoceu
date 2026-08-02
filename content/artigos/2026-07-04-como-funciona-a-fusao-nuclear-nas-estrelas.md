@@ -8,8 +8,8 @@ categoryEs: "Astronomía"
 type: "concept"
 readingTime: 3
 date: "2026-07-04"
-image: "https://apod.nasa.gov/apod/image/2404/VelaSnr_CTIO_3989.jpg"
-imageCredit: "NASA"
+image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/A_Stellar_Close_Encounter_at_the_Core_of_Globular_Cluster_M15_%281993-13-104%29.tiff/lossy-page1-1280px-A_Stellar_Close_Encounter_at_the_Core_of_Globular_Cluster_M15_%281993-13-104%29.tiff.jpg"
+imageCredit: "Illustration by: G. Dana Berry, STSCI / Wikimedia Commons / Public domain"
 ---
 
 Imagine que você tem duas bolinhas de borracha e tenta juntá-las com força. Elas resistem, certo? Agora imagine que, se você conseguisse uni-las completamente, a energia liberada fosse capaz de iluminar uma cidade inteira. É exatamente isso — em escala inconcebível — que acontece no interior das estrelas. O processo se chama fusão nuclear, e é a razão pela qual o Sol brilha há cerca de 4,6 bilhões de anos sem nunca 'acabar o combustível' aos nossos olhos.

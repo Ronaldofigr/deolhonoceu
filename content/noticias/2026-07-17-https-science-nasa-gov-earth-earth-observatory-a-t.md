@@ -11,8 +11,8 @@ sourceUrl: "https://science.nasa.gov/earth/earth-observatory/a-tide-fueled-trove
 sourceTitle: "A Tide-Fueled Trove of Biodiversity in Guinea-Bissau"
 tags: ["biodiversidade", "manguezais", "aves migratórias", "tartarugas marinhas", "Guiné-Bissau"]
 date: "2026-07-17"
-image: "https://apod.nasa.gov/apod/image/2405/AuroraSweden_Strand_1500.jpg"
-imageCredit: "Göran Strand"
+image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Tidal_landscapes_of_the_Bijag%C3%B3s_Archipelago%2C_Guinea-Bissau_%28Copernicus_2026-05-05%29.webp/1280px-Tidal_landscapes_of_the_Bijag%C3%B3s_Archipelago%2C_Guinea-Bissau_%28Copernicus_2026-05-05%29.webp.png"
+imageCredit: "European Union, Copernicus Sentinel-2 imagery / Wikimedia Commons / Attribution"
 ---
 
 Imagine um labirinto de ilhas cobertas por florestas densas, separadas por canais onde a maré entra e sai duas vezes ao dia, redesenhando praias e expondo extensas planícies de lama rica em nutrientes. Esse é o arquipélago de Bijagós, situado na costa da Guiné-Bissau, na África Ocidental. Com cerca de 88 ilhas e ilhotas, essa região é reconhecida pela UNESCO como Reserva da Biosfera desde 1996 — um título reservado a lugares que equilibram de forma exemplar a conservação da natureza com a presença humana.

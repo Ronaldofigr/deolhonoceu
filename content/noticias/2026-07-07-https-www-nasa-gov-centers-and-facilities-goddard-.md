@@ -10,8 +10,8 @@ sourceType: "nasa"
 sourceUrl: "https://www.nasa.gov/centers-and-facilities/goddard/nasa-transfers-hundred-acre-wood-to-patuxent-research-refuge/"
 tags: ["conservação", "NASA", "biodiversidade", "meio ambiente", "vida selvagem"]
 date: "2026-07-07"
-image: "https://apod.nasa.gov/apod/image/2504/GCenter_MeerKatWebb_7642.jpg"
-imageCredit: "NASA"
+image: "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001772/GSFC_20171208_Archive_e001772~medium.jpg"
+imageCredit: "NASA/GSFC"
 ---
 
 Quando pensamos na NASA, o que vem à mente são foguetes, telescópios espaciais e missões a Marte. Mas a agência espacial americana acaba de protagonizar uma iniciativa bem mais terrena — e igualmente importante: a doação de cerca de 42 hectares de floresta preservada no estado de Maryland, nos Estados Unidos. A área, carinhosamente apelidada de 'Hundred Acre Wood' (uma referência à floresta do Ursinho Pooh), ficava dentro do campus do Centro de Voo Espacial Goddard, em Greenbelt, e era conhecida internamente como Área 400.

@@ -10,8 +10,8 @@ sourceType: "nasa"
 sourceUrl: "https://science.nasa.gov/earth/earth-observatory/cottonwood-fire-chars-utah/"
 tags: ["incêndios florestais", "NASA", "Utah", "clima", "satélite"]
 date: "2026-07-08"
-image: "https://apod.nasa.gov/apod/image/2209/NeptuneTriton_webb1059.png"
-imageCredit: "NASA"
+image: "https://apod.nasa.gov/apod/image/2311/M31Alps_Kananovich_1639.jpg"
+imageCredit: "Dzmitry Kananovich"
 ---
 
 Um dos incêndios florestais mais impactantes do verão norte-americano recente, o chamado Cottonwood Fire, destruiu mais de 150 milhas quadradas — o equivalente a cerca de 400 quilômetros quadrados — no estado de Utah, nos Estados Unidos. Para ter uma noção da escala, isso é maior do que muitas cidades brasileiras de médio porte. As chamas avançaram por florestas densas, vegetação seca e chegaram a varrer partes de uma estação de esqui, um tipo de infraestrutura turística que normalmente associamos ao frio e à neve, mas que se tornou vulnerável ao fogo durante a estação quente.

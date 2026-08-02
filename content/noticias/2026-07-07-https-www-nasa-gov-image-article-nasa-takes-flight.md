@@ -10,8 +10,8 @@ sourceType: "nasa"
 sourceUrl: "https://www.nasa.gov/image-article/nasa-takes-flight-for-americas-250th/"
 tags: ["NASA", "aviação", "história espacial"]
 date: "2026-07-07"
-image: "https://apod.nasa.gov/apod/image/2602/Miranda_Voyager2Zelario12_2320.jpg"
-imageCredit: "NASA"
+image: "https://images-assets.nasa.gov/image/AFRC2026-0146-90/AFRC2026-0146-90~large.jpg"
+imageCredit: "NASA/AFRC"
 ---
 
 No dia 4 de julho de 2026, enquanto milhões de americanos celebravam os 250 anos de independência dos Estados Unidos, a NASA escolheu uma forma bastante especial de marcar a data: um sobrevoo emocionante sobre o National Mall, em Washington, D.C. O administrador da agência, Jared Isaacman, pilotou pessoalmente um caça Northrop F-5 Tiger — uma aeronave supersônica leve, desenvolvida originalmente nos anos 1960 e famosa por sua agilidade e desempenho. Imagine um esportivo voador capaz de cortar o céu com precisão cirúrgica: é exatamente isso que o F-5 representa no mundo da aviação.

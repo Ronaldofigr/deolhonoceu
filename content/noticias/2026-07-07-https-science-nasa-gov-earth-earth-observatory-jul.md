@@ -10,8 +10,8 @@ sourceType: "nasa"
 sourceUrl: "https://science.nasa.gov/earth/earth-observatory/july-2026-satellite-puzzler/"
 tags: ["NASA", "satélite", "sensoriamento remoto", "imagens espaciais", "ciência cidadã"]
 date: "2026-07-07"
-image: "https://apod.nasa.gov/apod/image/1808/EclipseBalloon_Kuaray_1093.jpg"
-imageCredit: "NASA"
+image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Space_Shuttle_Endeavour_at_California_Science_Center_%288143982389%29.jpg/1280px-Space_Shuttle_Endeavour_at_California_Science_Center_%288143982389%29.jpg"
+imageCredit: "InSapphoWeTrust from Los Angeles, California, USA / Wikimedia Commons / CC BY-SA 2.0"
 ---
 
 Todo mês, a NASA propõe um desafio curioso e acessível para o público: identificar um local do planeta Terra a partir de uma imagem capturada por satélite. O chamado 'Satellite Puzzler' — ou 'Quebra-Cabeça de Satélite' — é uma forma lúdica e educativa de aproximar as pessoas da ciência espacial e da observação da Terra. Em julho de 2026, um novo enigma foi lançado, e a missão é simples: descobrir onde aquela imagem foi tirada e por que aquele lugar é especial.

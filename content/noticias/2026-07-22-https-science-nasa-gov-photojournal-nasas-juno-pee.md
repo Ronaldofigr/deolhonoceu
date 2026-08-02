@@ -16,8 +16,8 @@ aiProvider: "OpenAI"
 aiModel: "gpt-5.6-sol"
 humanReviewed: false
 references: [{"title": "NASA’s Juno Peers Beneath Io’s Surface", "url": "https://science.nasa.gov/photojournal/nasas-juno-peers-beneath-ios-surface/"}]
-image: "https://apod.nasa.gov/apod/image/2011/DoubleCluster_Polanski_4560.jpg"
-imageCredit: "Greg Polanski"
+image: "https://images-assets.nasa.gov/image/PIA00282/PIA00282~small.jpg"
+imageCredit: "NASA/JPL"
 ---
 
 A sonda Juno, da NASA, observou Io, uma das luas de Júpiter, de uma maneira que vai além de registrar apenas o que acontece em sua superfície. Um mapa produzido com dados do Radiômetro de Micro-ondas, conhecido pela sigla MWR, indica calor subindo de regiões localizadas logo abaixo da camada externa da lua. O resultado não deve ser interpretado como uma fotografia comum. Trata-se de uma representação construída a partir das micro-ondas detectadas pelo instrumento, traduzindo essas medições em um mapa que ajuda os cientistas a visualizar a distribuição da energia térmica escondida.

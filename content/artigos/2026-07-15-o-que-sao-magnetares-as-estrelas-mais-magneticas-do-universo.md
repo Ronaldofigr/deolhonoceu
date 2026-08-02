@@ -8,8 +8,8 @@ categoryEs: "Astronomía"
 type: "concept"
 readingTime: 3
 date: "2026-07-15"
-image: "https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e000279/GSFC_20171208_Archive_e000279~thumb.jpg"
-imageCredit: "NASA/GSFC"
+image: "https://images-assets.nasa.gov/image/PIA23863/PIA23863~medium.jpg"
+imageCredit: "NASA/JPL"
 ---
 
 Imagine espremer toda a massa do Sol — uma esfera que caberia mais de um milhão de Terras dentro dela — em uma bolinha do tamanho de uma cidade como São Paulo. O resultado seria uma estrela de nêutrons, um dos objetos mais densos do universo. Agora imagine que essa bolinha gira dezenas de vezes por segundo e possui um campo magnético tão intenso que, a distância de meia Lua da Terra, seria capaz de apagar os dados de todos os cartões de crédito do planeta e distorcer os próprios átomos do seu corpo. Isso é um magnetar: uma estrela de nêutrons que ganhou o título de objeto com o maior campo magnético já registrado no universo.

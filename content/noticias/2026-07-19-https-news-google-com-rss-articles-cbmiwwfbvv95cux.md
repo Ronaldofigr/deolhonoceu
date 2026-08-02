@@ -16,8 +16,8 @@ aiProvider: "OpenAI"
 aiModel: "gpt-5.6-sol"
 humanReviewed: false
 references: [{"title": "Ações da SpaceX caem 5,4% após adiamento de lançamento do Starship - UOL Economia", "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOTlJxVGV2X0RTX1V2bUlWZy13b1J3bUFiSjJ6NWs4cWIxc2VwbkI3MFIyZXFFR0RKWko5cVJpRXRiZXBPRF9PRkg1S2hycG0xSUllT3MxWUY4ZkhQMUc4NEN6UlBCcS0ySUxMd1dSM0VrNDlqZ3V4UVVLdTRnY2kyLXlKQ0hCN1hrbU1vT3VhY2pBTklVSXdTb2IwaUNpQUFQNnl0SHJMaWRsQUNSZFN5dFpsaDA5QWxGaXJSQ0lLcktwTXM?oc=5"}]
-image: "https://apod.nasa.gov/apod/image/1809/AutumnSky_u2go_5000.jpg"
-imageCredit: "Universe2go.com"
+image: "https://apod.nasa.gov/apod/image/2209/HorseheadIr_HubbleNachman_2691.jpg"
+imageCredit: "NASA"
 ---
 
 O adiamento de um lançamento do Starship foi acompanhado, segundo o título da notícia fornecida, por uma queda de 5,4% em ações atribuídas à SpaceX. Essa associação sugere que participantes do mercado interpretaram a mudança de calendário como um sinal relevante para as perspectivas do projeto. Entretanto, o resumo apresentado é extremamente curto e não informa quando ocorreu a oscilação, qual foi o período usado na comparação ou em que ambiente o ativo teria sido negociado. Por isso, o número deve ser entendido como uma informação relatada, e não como prova de que o adiamento causou sozinho a queda.

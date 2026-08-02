@@ -10,8 +10,8 @@ sourceType: "spacex"
 sourceUrl: "https://news.google.com/rss/articles/CBMid0FVX3lxTE1pSDNJQ0VUZ1huNjBqNDA2dmRrRnFmVUVtUXVKRmRtdEROQ09BdXZCQ3Q3Y0hsbUdwMjIySHU4UlQ2dHF5T29ZY0lJMUxyMnVZSEM5dGJQbDhEdlhmUHBjRDZqdDFSZGE2Uzd6U1o4WDVaNWZoRExJ?oc=5"
 tags: ["Lua", "SpaceX", "Starship", "ispace", "exploração espacial"]
 date: "2026-07-08"
-image: "https://apod.nasa.gov/apod/image/2112/IssMoon_McCarthy_1663.jpg"
-imageCredit: "Andrew McCarthy"
+image: "https://images-assets.nasa.gov/image/11 03 24 artemis 3 on surface/11 03 24 artemis 3 on surface~medium.jpg"
+imageCredit: "NASA/MSFC"
 ---
 
 Imagine que você precisa enviar uma encomenda para uma cidade distante, mas não tem carga suficiente para preencher um caminhão inteiro. A solução natural é dividir o frete com outras pessoas e pagar apenas pela parte que você ocupa. É exatamente isso que a empresa japonesa ispace está propondo — só que o destino não é outra cidade, mas a Lua. A companhia anunciou que vai oferecer um serviço de 'carona compartilhada' lunar utilizando o poderoso foguete Starship, desenvolvido pela SpaceX de Elon Musk.

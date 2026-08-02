@@ -8,8 +8,8 @@ categoryEs: "Astronomía"
 type: "concept"
 readingTime: 3
 date: "2026-07-07"
-image: "https://apod.nasa.gov/apod/image/1807/20180721_apparentSizes.jpg"
-imageCredit: "Fernando Cabrerizo"
+image: "https://images-assets.nasa.gov/image/PIA13932/PIA13932~medium.jpg"
+imageCredit: "NASA/JPL"
 ---
 
 Imagine uma cidade gigantesca vista de cima, à noite, com milhões de luzes brilhando em espiral a partir do centro. Agora multiplique essa cidade por um número impossível de se imaginar: cerca de 200 a 400 bilhões de estrelas. Isso é a Via Láctea — a galáxia onde vivemos, uma estrutura em forma de disco com braços espirais que se enrolam a partir de um núcleo central denso e brilhante. Se você pudesse sair dela e olhar de fora, veria algo parecido com um redemoinho cósmico, com um "olho" luminoso no centro e braços se estendendo por todos os lados. Ela tem cerca de 100.000 anos-luz de diâmetro — ou seja, mesmo viajando na velocidade da luz, você levaria 100.000 anos para atravessá-la de ponta a ponta.

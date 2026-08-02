@@ -11,8 +11,8 @@ sourceUrl: "https://www.nasa.gov/news-release/nasa-invites-media-to-serbia-artem
 sourceTitle: "NASA Invites Media to Serbia Artemis Accords Signing Ceremony"
 tags: ["Artemis", "exploração espacial", "diplomacia espacial", "NASA", "Lua"]
 date: "2026-07-15"
-image: "https://apod.nasa.gov/apod/image/2601/Ctb1_Konzelmann_4009.jpg"
-imageCredit: "NASA"
+image: "https://images-assets.nasa.gov/image/DSC07878/DSC07878~medium.jpg"
+imageCredit: "NASA/MSFC"
 ---
 
 Imagine que a humanidade está prestes a voltar à Lua e, desta vez, a intenção é ficar — construir bases, explorar recursos e avançar rumo a Marte. Para que essa jornada seja segura, justa e colaborativa entre diferentes países, a NASA criou os chamados Acordos Artemis, um conjunto de princípios e regras que funcionam como uma espécie de 'constituição' para a exploração espacial do século XXI. Recentemente, a República da Sérvia se tornou mais um país a assinar esse documento histórico, em cerimônia realizada na sede da NASA, em Washington.

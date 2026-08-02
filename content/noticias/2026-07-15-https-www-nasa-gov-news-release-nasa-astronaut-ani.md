@@ -11,8 +11,8 @@ sourceUrl: "https://www.nasa.gov/news-release/nasa-astronaut-anil-menon-crewmate
 sourceTitle: "NASA Astronaut Anil Menon, Crewmates Arrive at Space Station"
 tags: ["ISS", "NASA", "Soyuz", "espaço", "astronautas"]
 date: "2026-07-15"
-image: "https://apod.nasa.gov/apod/image/2310/DesertEclipse_Daviron_2000.jpg"
-imageCredit: "Maxime Daviron"
+image: "https://images-assets.nasa.gov/image/KSC-20210416-PH-KLS01_0114/KSC-20210416-PH-KLS01_0114~medium.jpg"
+imageCredit: "NASA/KSC"
 ---
 
 Imagine uma casa flutuando a cerca de 400 quilômetros acima da Terra, viajando a mais de 27 mil quilômetros por hora ao redor do planeta. Essa é a Estação Espacial Internacional (ISS), um laboratório científico orbital que abriga astronautas de diferentes países trabalhando juntos em experimentos únicos, impossíveis de realizar na superfície terrestre. Na última terça-feira, essa casa recebeu três novos moradores temporários.
