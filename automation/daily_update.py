@@ -376,48 +376,13 @@ def iso_week():
     return f"{y}-W{w:02d}"
 
 def call_claude(prompt, max_tokens=1200):
-    """Gera texto via API da Anthropic usando Claude Sonnet — para tarefas que exigem qualidade máxima.
-    Usa prompt caching no system prompt para reduzir custo em 50-90% nas chamadas repetidas."""
+    """Gera texto via API da Anthropic usando Claude Sonnet — para tarefas que exigem qualidade máxima."""
     client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
-
-    # System prompt cacheado: contexto fixo enviado em toda chamada
-    # O cache dura 5 minutos e é renovado a cada uso — ideal para o loop de geração de artigos/notícias
-    SYSTEM_CACHED = (
-        "Você é um redator especializado em divulgação científica de astronomia para o site "
-        "\"De Olho no Céu\" (deolhonoceu.com.br), escrevendo para leitores leigos no Brasil.\n\n"
-        "Regras obrigatórias:\n"
-        "- Responda SEMPRE com JSON puro e válido, sem nenhum texto antes ou depois\n"
-        "- Nunca inclua blocos ```json``` nem qualquer marcação markdown\n"
-        "- Use linguagem acessível, analogias do cotidiano, sem fórmulas matemáticas\n"
-        "- Parágrafos separados pelo literal \\n\\n dentro das strings JSON\n"
-        "- Produza conteúdo trilíngue: português, inglês e espanhol, conforme solicitado\n"
-        "- Títulos em português: máx 90 caracteres\n"
-        "- Não invente fatos que não estejam na fonte fornecida\n"
-        "- imageQuery: sempre em inglês, 3-5 palavras sobre o SUJEITO VISUAL ESPECÍFICO "
-        "(nome do foguete, planeta, telescópio, fenômeno) — nunca termos abstratos como 'science' ou 'discovery'\n\n"
-        f"Tópicos cobertos pelo site (para contextualização):\n{json.dumps(TOPICS, ensure_ascii=False)}"
-    )
-
     message = client.messages.create(
         model="claude-sonnet-4-6",
         max_tokens=max_tokens,
-        system=[
-            {
-                "type": "text",
-                "text": SYSTEM_CACHED,
-                "cache_control": {"type": "ephemeral"},  # ← cache aqui
-            }
-        ],
         messages=[{"role": "user", "content": prompt}],
     )
-
-    # Log de uso do cache (visível nos logs do GitHub Actions)
-    usage = message.usage
-    cache_read = getattr(usage, "cache_read_input_tokens", 0)
-    cache_write = getattr(usage, "cache_creation_input_tokens", 0)
-    if cache_read or cache_write:
-        print(f"    💾 Cache — lidos: {cache_read} | gravados: {cache_write} | saída: {usage.output_tokens}")
-
     text = message.content[0].text.strip() if message.content else ""
     if not text:
         raise ValueError("A API da Anthropic retornou uma resposta vazia")
@@ -551,21 +516,56 @@ def news_already_saved(key):
     if not folder.exists(): return False
     return any(key in f.stem for f in folder.glob("*.md"))
 
+# Keywords que indicam conteúdo claramente fora do escopo do site
+_OFFTOPIC_KEYWORDS = [
+    "video game", "videogame", "game review", "gears of war", "call of duty",
+    "fortnite", "minecraft", "xbox", "playstation", "nintendo", "esports",
+    "movie review", "box office", "streaming series", "tv show", "celebrity",
+    "recipe", "fashion", "sports score", "football match", "soccer",
+]
+
+def is_offtopic(title: str, excerpt: str) -> bool:
+    """Filtro rápido que rejeita conteúdo obviamente fora do escopo antes de chamar o Claude."""
+    text = (title + " " + excerpt).lower()
+    return any(kw in text for kw in _OFFTOPIC_KEYWORDS)
+
 def gen_news(entry):
+    # Filtro rápido: rejeita sem gastar tokens do Claude
+    if is_offtopic(entry["title_original"], entry["excerpt_original"]):
+        titulo = entry["title_original"]
+        print(f"  ⛔ Fora do escopo (filtro rápido): {titulo[:70]}")
+        return None
+
     prompt = f"""Notícia científica bruta:
 TÍTULO: {entry['title_original']}
 RESUMO: {entry['excerpt_original']}
 FONTE: {entry['source']}
 URL DA FONTE: {entry['url']}
 
-Reescreva como divulgação científica. O campo "content" deve ter MÍNIMO 200 palavras, 3-4 parágrafos (\\n\\n entre cada um), com contexto, analogias e relevância da descoberta. Não acrescente fatos que não estejam na fonte.
+Primeiro, verifique se esta notícia é relevante para astronomia, astrofísica, exploração espacial, ciências do espaço ou fenômenos naturais do céu.
+Se NÃO for relevante (ex: videogame, filme, esporte, culinária, política), responda SOMENTE: {{"relevant": false}}
 
-Responda com JSON:
-{{"title":"título PT","titleEn":"title EN","titleEs":"título ES","excerpt":"resumo PT 2-3 frases max 280 chars","excerptEn":"summary EN","excerptEs":"resumen ES","tags":["tag1","tag2","tag3"],"content":"texto PT mín 200 palavras","contentEn":"text EN min 200 words","contentEs":"texto ES mín 200 palabras","imageQuery":"3-5 keywords visual subject"}}"""
+Se FOR relevante, reescreva como divulgação científica para leigos.
+
+IMPORTANTE sobre o campo "content":
+- Deve ter NO MÍNIMO 200 palavras (bem mais longo que o excerpt, nunca repetir o excerpt)
+- Deve ter 3-4 parágrafos SEPARADOS PELO LITERAL \\n\\n (duas quebras de linha) entre cada parágrafo
+- Explique contexto, detalhes técnicos em linguagem simples, com analogias, e relevância da descoberta
+- Sem fórmulas matemáticas
+- Não acrescente fatos específicos que não estejam sustentados pela fonte informada
+
+O mesmo vale para "contentEn" em inglês e "contentEs" em espanhol.
+
+Responda SOMENTE com JSON válido:
+{{"relevant": true, "title":"título PT máx 90 chars","titleEn":"title EN max 90 chars","titleEs":"título ES máx 90 chars","excerpt":"resumo PT 2-3 frases max 280 chars","excerptEn":"summary EN 2-3 sentences max 280 chars","excerptEs":"resumen ES 2-3 frases máx 280 chars","tags":["tag1","tag2","tag3"],"content":"texto PT mínimo 200 palavras, 3-4 parágrafos separados por \\n\\n, sem fórmulas, com analogias","contentEn":"text EN minimum 200 words, 3-4 paragraphs separated by \\n\\n, no formulas","contentEs":"texto ES mínimo 200 palabras, 3-4 párrafos separados por \\n\\n, sin fórmulas","imageQuery":"3-5 keywords describing the SPECIFIC visual subject (rocket name, planet, telescope, celestial body or phenomenon) — never abstract terms like science or discovery"}}"""
     try:
         raw = call_claude(prompt, max_tokens=1600)
         data = extract_json(raw)
         if data:
+            # Claude sinalizou que a notícia está fora do escopo
+            if data.get("relevant") is False:
+                print(f"  ⛔ Fora do escopo (Claude): {entry['title_original'][:70]}")
+                return None
             data.update({"source": entry["source"], "sourceType": entry["source_type"],
                          "sourceUrl": entry["url"], "date": entry["date"]})
             if entry.get("image_from_rss"):
@@ -627,10 +627,13 @@ date: "{data['date']}"
 
 def gen_article(topic):
     prompt = f"""Escreva artigo de divulgação científica sobre: "{topic}"
-350-500 palavras, 3-4 parágrafos, último parágrafo com curiosidade surpreendente.
+- Linguagem acessível para leigos, ZERO fórmulas matemáticas
+- Use analogias do cotidiano
+- 350-500 palavras, 3-4 parágrafos
+- Último parágrafo: curiosidade surpreendente
 
-Responda com JSON:
-{{"title":"título PT criativo","titleEn":"title EN","titleEs":"título ES","category":"categoria PT","categoryEn":"category EN","categoryEs":"categoría ES","content":"texto PT parágrafos separados por \\n\\n","contentEn":"text EN paragraphs \\n\\n","contentEs":"texto ES párrafos \\n\\n","readingTime":3,"imageQuery":"3-5 keywords visual subject","references":[{{"title":"fonte","url":"https://..."}}]}}"""
+Responda SOMENTE com JSON válido:
+{{"title":"título PT criativo","titleEn":"title EN","titleEs":"título ES creativo","category":"categoria PT","categoryEn":"category EN","categoryEs":"categoría ES","content":"texto PT parágrafos separados por \\n\\n","contentEn":"text EN paragraphs separated by \\n\\n","contentEs":"texto ES párrafos separados por \\n\\n","readingTime":3,"imageQuery":"3-5 keywords describing the SPECIFIC visual subject (planet, telescope, phenomenon, celestial body)","references":[{{"title":"nome da fonte","url":"https://..."}}]}}"""
     try:
         raw = call_claude(prompt, max_tokens=1600)
         data = extract_json(raw)
