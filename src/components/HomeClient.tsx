@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import type { NewsItem, Article } from '@/lib/content'
+import { AdsterraResponsive } from '@/components/AdsterraAd'
 
 const T = {
   pt: {
@@ -283,7 +284,7 @@ export default function HomeClient({
             <div className="panel-title">📰 {t.leftTitle}</div>
             <span className="panel-count">{news.length} itens</span>
           </div>
-          <div className="ad-slot"><span className="ad-slot-label">PUBLICIDADE · ADVERTISEMENT</span></div>
+          <AdsterraResponsive />
 
           {news.length === 0
             ? <p style={{color:'var(--text-muted)',fontSize:'0.85rem',padding:'2rem 0',textAlign:'center'}}>{t.noNews}</p>
@@ -356,7 +357,7 @@ export default function HomeClient({
             <div className="panel-title">🧠 {t.rightTitle}</div>
             <span className="panel-count">{articles.length} artigos</span>
           </div>
-          <div className="ad-slot"><span className="ad-slot-label">PUBLICIDADE · ADVERTISEMENT</span></div>
+          <AdsterraResponsive />
 
           {articles.length === 0
             ? <p style={{color:'var(--text-muted)',fontSize:'0.85rem',padding:'2rem 0',textAlign:'center'}}>{t.noArt}</p>
