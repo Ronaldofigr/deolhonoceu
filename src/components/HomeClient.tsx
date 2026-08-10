@@ -1,9 +1,9 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { AdsterraResponsive } from '@/components/AdsterraAd'
 import Link from 'next/link'
 import type { NewsItem, Article } from '@/lib/content'
-import { AdsterraResponsive } from '@/components/AdsterraAd'
 
 const T = {
   pt: {
