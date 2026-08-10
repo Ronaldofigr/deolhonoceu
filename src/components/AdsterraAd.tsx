@@ -1,8 +1,5 @@
 'use client'
 
-import Script from 'next/script'
-import { useId } from 'react'
-
 // ─── Keys dos Ad Units ───────────────────────────────────────────────────────
 export const ADSTERRA_KEYS = {
   banner728x90:  '302a00e08f2cfc0797142fcb0f709480', // ID 30534629
@@ -18,39 +15,39 @@ interface AdsterraAdProps {
 }
 
 /**
- * Renderiza um banner Adsterra usando next/script (strategy=lazyOnload).
- * Compatível com output: 'export' (static site).
+ * Banner Adsterra via iframe direto.
+ * O formato 'iframe' do Adsterra é exatamente isso — sem JS intermediário.
+ * Funciona em qualquer static site / SSG sem depender de next/script ou useEffect.
  */
 export default function AdsterraAd({ atKey, width, height }: AdsterraAdProps) {
-  const uid = useId().replace(/:/g, '')
+  const src = `//www.highperformanceformat.com/${atKey}/invoke.js`
+
+  // O Adsterra no formato iframe carrega via um documento HTML mínimo
+  const iframeDoc = `<!DOCTYPE html>
+<html>
+<head><style>body{margin:0;padding:0;}</style></head>
+<body>
+<script>
+atOptions={'key':'${atKey}','format':'iframe','height':${height},'width':${width},'params':{}};
+<\/script>
+<script src="${src}"><\/script>
+</body>
+</html>`
 
   return (
     <div
-      className="ad-slot adsterra-slot"
-      style={{ minHeight: height, overflow: 'hidden' }}
+      className="adsterra-slot"
+      style={{ width, height, maxWidth: '100%', margin: '0.75rem auto', display: 'block' }}
       aria-label="Publicidade"
     >
-      {/* 1. Define atOptions com id único para não colidir entre instâncias */}
-      <Script
-        id={`adsterra-cfg-${uid}`}
-        strategy="lazyOnload"
-        dangerouslySetInnerHTML={{
-          __html: `
-            window.atOptions = {
-              'key': '${atKey}',
-              'format': 'iframe',
-              'height': ${height},
-              'width': ${width},
-              'params': {}
-            };
-          `,
-        }}
-      />
-      {/* 2. Carrega o invoke.js após atOptions estar definido */}
-      <Script
-        id={`adsterra-invoke-${uid}`}
-        strategy="lazyOnload"
-        src={`//www.highperformanceformat.com/${atKey}/invoke.js`}
+      <iframe
+        srcDoc={iframeDoc}
+        width={width}
+        height={height}
+        frameBorder="0"
+        scrolling="no"
+        style={{ display: 'block', border: 'none', maxWidth: '100%' }}
+        title="Publicidade"
       />
     </div>
   )
@@ -58,7 +55,6 @@ export default function AdsterraAd({ atKey, width, height }: AdsterraAdProps) {
 
 /**
  * Banner responsivo: 728×90 desktop / 320×50 mobile.
- * CSS em globals.css controla qual aparece (breakpoint 640px).
  */
 export function AdsterraResponsive() {
   return (
@@ -74,26 +70,37 @@ export function AdsterraResponsive() {
 }
 
 /**
- * Native Banner (ID 30534627) — script externo + div container.
- */
-export function AdsterraNative() {
-  const uid = useId().replace(/:/g, '')
-  return (
-    <div className="ad-slot adsterra-slot" aria-label="Publicidade">
-      <div id={`container-734cbfd9cf45895d9eaf3c91cbeed7e4-${uid}`} />
-      <Script
-        id={`adsterra-native-${uid}`}
-        strategy="lazyOnload"
-        data-cfasync="false"
-        src="https://pl30635126.effectivecpmnetwork.com/734cbfd9cf45895d9eaf3c91cbeed7e4/invoke.js"
-      />
-    </div>
-  )
-}
-
-/**
- * Banner 300×250 — bom entre cards.
+ * Banner 300×250 — entre cards.
  */
 export function AdsterraRectangle() {
   return <AdsterraAd atKey={ADSTERRA_KEYS.banner300x250} width={300} height={250} />
+}
+
+/**
+ * Native Banner (ID 30534627).
+ */
+export function AdsterraNative() {
+  const atKey = ADSTERRA_KEYS.nativeBanner
+  const iframeDoc = `<!DOCTYPE html>
+<html>
+<head><style>body{margin:0;padding:0;}</style></head>
+<body>
+<script async data-cfasync="false" src="https://pl30635126.effectivecpmnetwork.com/${atKey}/invoke.js"><\/script>
+<div id="container-${atKey}"></div>
+</body>
+</html>`
+
+  return (
+    <div className="adsterra-slot" style={{ minHeight: 90, margin: '0.75rem 0' }} aria-label="Publicidade">
+      <iframe
+        srcDoc={iframeDoc}
+        width="100%"
+        height={120}
+        frameBorder="0"
+        scrolling="no"
+        style={{ display: 'block', border: 'none', width: '100%' }}
+        title="Publicidade"
+      />
+    </div>
+  )
 }
