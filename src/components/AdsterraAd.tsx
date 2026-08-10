@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useId } from 'react'
 
 // ─── Keys dos Ad Units (painel Adsterra → Sites → deolhonoceu.com.br) ──────
 export const ADSTERRA_KEYS = {
@@ -23,15 +23,16 @@ export default function AdsterraAd({
   height = 90,
   format = 'iframe',
 }: AdsterraAdProps) {
+  // useId garante um id único por instância — corrige o bug de injected compartilhado
+  const uid = useId()
   const containerRef = useRef<HTMLDivElement>(null)
-  const injected = useRef(false)
 
   useEffect(() => {
-    if (injected.current) return
-    injected.current = true
-
     const container = containerRef.current
     if (!container) return
+
+    // Evita dupla injeção em strict mode (checa se já tem script filho)
+    if (container.querySelector('script')) return
 
     const configScript = document.createElement('script')
     configScript.type = 'text/javascript'
@@ -56,7 +57,8 @@ export default function AdsterraAd({
     return () => {
       if (container) container.innerHTML = ''
     }
-  }, [atKey, width, height, format])
+  // uid entra como dep para garantir re-run caso o React reutilize o componente
+  }, [atKey, width, height, format, uid])
 
   return (
     <div
@@ -71,12 +73,12 @@ export default function AdsterraAd({
 
 /**
  * Banner responsivo: 728×90 no desktop, 320×50 no mobile.
- * Use este componente nos painéis de notícias e artigos.
+ * CSS em globals.css controla qual aparece via media query (breakpoint 640px).
  */
 export function AdsterraResponsive() {
   return (
     <>
-      {/* Desktop: 728×90 */}
+      {/* Desktop: 728×90 — oculto em telas < 640px */}
       <div className="ad-desktop">
         <AdsterraAd
           atKey={ADSTERRA_KEYS.banner728x90}
@@ -84,7 +86,7 @@ export function AdsterraResponsive() {
           height={90}
         />
       </div>
-      {/* Mobile: 320×50 */}
+      {/* Mobile: 320×50 — oculto em telas >= 640px */}
       <div className="ad-mobile">
         <AdsterraAd
           atKey={ADSTERRA_KEYS.banner320x50}
@@ -97,18 +99,15 @@ export function AdsterraResponsive() {
 }
 
 /**
- * Native Banner (ID 30534627) — usa script externo + div container.
+ * Native Banner (ID 30534627) — script externo + div container.
  * Coloque entre cards para integração nativa com o conteúdo.
  */
 export function AdsterraNative() {
   const containerRef = useRef<HTMLDivElement>(null)
-  const injected = useRef(false)
 
   useEffect(() => {
-    if (injected.current) return
-    injected.current = true
     const container = containerRef.current
-    if (!container) return
+    if (!container || container.querySelector('script')) return
 
     const script = document.createElement('script')
     script.async = true
@@ -129,7 +128,7 @@ export function AdsterraNative() {
 }
 
 /**
- * Banner 300×250 (ID 30534628) — rectangle, bom para lateral ou entre cards.
+ * Banner 300×250 (ID 30534628) — rectangle, bom entre cards ou sidebar.
  */
 export function AdsterraRectangle() {
   return (
