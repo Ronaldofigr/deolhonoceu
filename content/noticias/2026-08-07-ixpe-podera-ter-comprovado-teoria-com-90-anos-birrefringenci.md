@@ -9,7 +9,7 @@ source: "NASA / Nature"
 sourceUrl: "https://www.ccvalg.pt/astronomia/noticias/2026/08/7_magnetar_birrefringencia_vacuo.htm"
 sourceType: "nasa"
 date: "2026-08-07"
-image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Neutron_Star_Magnetic_Field-es.svg/640px-Neutron_Star_Magnetic_Field-es.svg.png"
+image: "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/ixpe/IXPEMagnetarArtistsConcept_Web.png"
 imageCredit: "NASA/Pablo Garcia"
 aiGenerated: false
 humanReviewed: true
