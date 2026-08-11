@@ -9,7 +9,7 @@ source: "Universidade de Michigan / UC Berkeley"
 sourceUrl: "https://www.ccvalg.pt/astronomia/noticias/2026/08/7_cinturas_radiacao_mercurio.htm"
 sourceType: "sci"
 date: "2026-08-07"
-image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Mercury_in_color_-_Prockter07_centered.jpg/600px-Mercury_in_color_-_Prockter07_centered.jpg"
+image: "https://news.umich.edu/wp-content/uploads/mc-image-cache/2026/07/mercury-has-part-time-radiation-belts-BepiColombo.jpg"
 imageCredit: "ESA / BepiColombo"
 aiGenerated: false
 humanReviewed: true
