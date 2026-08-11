@@ -9,7 +9,7 @@ source: "Carnegie Mellon University / NOIRLab"
 sourceUrl: "https://www.ccvalg.pt/astronomia/noticias/2026/08/7_sn_2026gzf.htm"
 sourceType: "obs"
 date: "2026-08-07"
-image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/NGC_1232_ESO.jpg/640px-NGC_1232_ESO.jpg"
+image: "https://storage.noirlab.edu/media/archives/images/large/noirlab2619a.jpg"
 imageCredit: "Observatório Vera C. Rubin da NSF-DOE/NOIRLab/SLAC/AURA"
 aiGenerated: false
 humanReviewed: true
