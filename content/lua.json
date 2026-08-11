@@ -1,7 +1,7 @@
 {
-  "fase": "Lua Minguante",
-  "faseEn": "Waning crescent moon",
-  "iluminacao": 4,
+  "fase": "Lua Nova",
+  "faseEn": "New moon",
+  "iluminacao": 2,
   "proximaFase": "Lua Nova",
   "proximaFaseData": "2026-08-13",
   "evento": "Chuva de meteoros Perseidas (pico)",
@@ -9,6 +9,6 @@
   "nomeCultural": "Lua do Esturjão",
   "mes": 8,
   "atualizadoEm": "2026-08-11",
-  "imagem": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Chang%27e_5_lunar_orbiter_image_of_the_Moon.jpg/1280px-Chang%27e_5_lunar_orbiter_image_of_the_Moon.jpg",
-  "imagemCredito": "CNSA / Chang'e 5"
+  "imagem": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Full_Moon_Luc_Viatour.jpg/800px-Full_Moon_Luc_Viatour.jpg",
+  "imagemCredito": "Luc Viatour / Wikimedia Commons / CC BY-SA 3.0"
 }
