@@ -1,4 +1,4 @@
-import { getAllNews, getAllArticles, getPhotoWeek, getMoonInfo } from '@/lib/content'
+import { getAllNews, getAllArticles, getPhotoWeek, getMoonInfo, getTicker } from '@/lib/content'
 import HomeClient from '@/components/HomeClient'
 
 export default function Home() {
@@ -6,5 +6,6 @@ export default function Home() {
   const articles  = getAllArticles()
   const photoWeek = getPhotoWeek()
   const moonInfo  = getMoonInfo()
-  return <HomeClient news={news} articles={articles} photoWeek={photoWeek} moonInfo={moonInfo} />
+  const ticker    = getTicker()
+  return <HomeClient news={news} articles={articles} photoWeek={photoWeek} moonInfo={moonInfo} ticker={ticker} />
 }
