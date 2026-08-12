@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { AdsterraResponsive } from '@/components/AdsterraAd'
 import Link from 'next/link'
-import type { NewsItem, Article } from '@/lib/content'
+import type { NewsItem, Article, TickerData } from '@/lib/content'
 
 const T = {
   pt: {
@@ -104,7 +104,8 @@ const T = {
   }
 }
 
-const TICKERS = {
+// Fallback hardcoded — usado apenas se ticker.json não existir
+const TICKER_FALLBACK: TickerData = {
   pt: [
     '🌌 A Via Láctea tem entre 100 e 400 bilhões de estrelas',
     '🛰️ O James Webb opera a 1,5 milhão km da Terra',
@@ -125,7 +126,7 @@ const TICKERS = {
     '⚫ El agujero negro M87* equivale a 6.500 millones de soles',
     '🪐 Saturno flotaría en el agua — es menos denso que ella',
     '☀️ La luz del Sol tarda 8 min 20 s en llegar a la Tierra',
-  ]
+  ],
 }
 
 interface PhotoWeek {
@@ -147,8 +148,6 @@ function fmtDate(d: string, lang: string) {
   return dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
 }
 
-// Escolhe o texto no idioma ativo, com fallback em cascata (es → en → pt)
-// para conteúdo antigo que ainda não tenha tradução em todos os idiomas.
 function pick(lang: string, pt: string, en?: string, es?: string) {
   if (lang === 'pt') return pt
   if (lang === 'es') return es || en || pt
@@ -160,11 +159,13 @@ export default function HomeClient({
   articles,
   photoWeek = null,
   moonInfo = null,
+  ticker = null,
 }: {
   news: import('@/lib/content').NewsItem[]
   articles: import('@/lib/content').Article[]
   photoWeek?: PhotoWeek | null
   moonInfo?: import('@/lib/content').MoonInfo | null
+  ticker?: TickerData | null
 }) {
   const [lang, setLang] = useState<'pt' | 'en' | 'es'>('pt')
   const [tick, setTick] = useState(0)
@@ -172,10 +173,20 @@ export default function HomeClient({
   const [expandedNews, setExpandedNews] = useState<string | null>(null)
   const t = T[lang]
 
+  // Usa o ticker vindo do JSON; se nulo, cai para o fallback hardcoded
+  const TICKERS = ticker ?? TICKER_FALLBACK
+
   useEffect(() => {
-    const id = setInterval(() => setTick(i => (i + 1) % TICKERS[lang].length), 6000)
+    const items = TICKERS[lang]
+    if (!items?.length) return
+    setTick(0) // reset ao trocar idioma
+    const id = setInterval(() => setTick(i => (i + 1) % items.length), 6000)
     return () => clearInterval(id)
-  }, [lang])
+  }, [lang, TICKERS])
+
+  // Garante que tick não ultrapasse o array se o JSON tiver menos itens que o fallback
+  const tickerItems = TICKERS[lang] ?? []
+  const currentTick = tickerItems.length ? tick % tickerItems.length : 0
 
   return (
     <>
@@ -230,12 +241,16 @@ export default function HomeClient({
         </div>
       )}
 
-      {/* TICKER */}
-      <div className="live-ticker">
-        <span className="ticker-label">{t.live}</span>
-        <span className="ticker-dot" />
-        <span className="ticker-text"><strong>{TICKERS[lang][tick]}</strong></span>
-      </div>
+      {/* TICKER — só renderiza se houver itens */}
+      {tickerItems.length > 0 && (
+        <div className="live-ticker">
+          <span className="ticker-label">{t.live}</span>
+          <span className="ticker-dot" />
+          <span className="ticker-text">
+            <strong>{tickerItems[currentTick]}</strong>
+          </span>
+        </div>
+      )}
 
       {/* FASE DA LUA */}
       {moonInfo && (
@@ -318,7 +333,6 @@ export default function HomeClient({
                     </p>
                   )}
 
-                  {/* Texto completo expansível */}
                   {newsParas.length > 0 && (
                     <div className="news-article-body" style={{marginTop:'0.6rem'}}>
                       {(isNewsOpen ? newsParas : newsParas.slice(0,1)).map((p,i)=>(
