@@ -9,7 +9,7 @@ source: "SwRI / NASA"
 sourceUrl: "https://www.swri.org/press-release/new-horizons-finds-evidence-recent-liquid-pluto"
 sourceType: "nasa"
 date: "2026-08-11"
-image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Pluto_in_True_Color_-_High-Res.jpg/640px-Pluto_in_True_Color_-_High-Res.jpg"
+image: "https://cdn.imgchest.com/files/5c62c7f9f062.jpg"
 imageCredit: "NASA/JHUAPL/SwRI"
 aiGenerated: false
 humanReviewed: true
