@@ -54,10 +54,6 @@ function ensureDir(dir: string) {
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true })
 }
 
-// O corpo do markdown pode conter o texto em PT, seguido de marcadores
-// <!--lang:en--> e <!--lang:es--> com as versões em inglês e espanhol.
-// Arquivos antigos (sem marcadores) simplesmente retornam en/es vazios,
-// e o frontend cai de volta para o conteúdo em PT nesse caso.
 function splitLangContent(raw: string) {
   const enTag = '<!--lang:en-->'
   const esTag = '<!--lang:es-->'
@@ -103,6 +99,7 @@ export function getAllArticles(): Article[] {
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 10)
   }
+
 export interface PhotoWeek {
   imageUrl: string
   title: string
@@ -125,6 +122,7 @@ export function getPhotoWeek(): PhotoWeek | null {
     return null
   }
 }
+
 export interface MoonInfo {
   fase: string
   faseEn: string
@@ -148,6 +146,53 @@ export function getMoonInfo(): MoonInfo | null {
     return JSON.parse(raw) as MoonInfo
   } catch {
     return null
+  }
+}
+
+// ── TICKER ─────────────────────────────────────────────────────────────────────
+export interface TickerData {
+  pt: string[]
+  en: string[]
+  es: string[]
+}
+
+const TICKER_DEFAULTS: TickerData = {
+  pt: [
+    '🌌 A Via Láctea tem entre 100 e 400 bilhões de estrelas',
+    '🛰️ O James Webb opera a 1,5 milhão km da Terra',
+    '⚫ O buraco negro M87* equivale a 6,5 bilhões de sóis',
+    '🪐 Saturno flutuaria na água — é menos denso que ela',
+    '☀️ A luz do Sol leva 8 min 20 s para chegar à Terra',
+  ],
+  en: [
+    '🌌 The Milky Way has between 100–400 billion stars',
+    '🛰️ James Webb operates 1.5 million km from Earth',
+    '⚫ Black hole M87* equals 6.5 billion suns in mass',
+    '🪐 Saturn would float on water — less dense than it',
+    '☀️ Sunlight takes 8 min 20 sec to reach Earth',
+  ],
+  es: [
+    '🌌 La Vía Láctea tiene entre 100 y 400 mil millones de estrellas',
+    '🛰️ El James Webb opera a 1,5 millones de km de la Tierra',
+    '⚫ El agujero negro M87* equivale a 6.500 millones de soles',
+    '🪐 Saturno flotaría en el agua — es menos denso que ella',
+    '☀️ La luz del Sol tarda 8 min 20 s en llegar a la Tierra',
+  ],
+}
+
+export function getTicker(): TickerData {
+  const file = path.join(process.cwd(), 'content', 'ticker.json')
+  if (!fs.existsSync(file)) return TICKER_DEFAULTS
+  try {
+    const raw = fs.readFileSync(file, 'utf8')
+    const parsed = JSON.parse(raw) as Partial<TickerData>
+    return {
+      pt: parsed.pt?.length ? parsed.pt : TICKER_DEFAULTS.pt,
+      en: parsed.en?.length ? parsed.en : TICKER_DEFAULTS.en,
+      es: parsed.es?.length ? parsed.es : TICKER_DEFAULTS.es,
+    }
+  } catch {
+    return TICKER_DEFAULTS
   }
 }
 
