@@ -1,11 +1,12 @@
 {
-  "imageUrl": "https://apod.nasa.gov/apod/image/2608/HelixKnots_JWST_2000.jpg",
-  "title": "Os Misteriosos Nós da Nebulosa da Hélice",
-  "titleEn": "Curious Cometary Knots in the Helix Nebula",
-  "titleEs": "Los Misteriosos Nudos de la Nebulosa de la Hélice",
-  "caption": "A Nebulosa da Hélice, uma das mais próximas de nós, revela estruturas enigmáticas chamadas nós cometários que ainda intrigam os cientistas. Esses aglomerados de gás e poeira têm tamanho gigantesco, apesar de possuírem massa semelhante à da Terra. O Telescópio James Webb capturou detalhes impressionantes em luz infravermelha, mostrando como ventos estelares poderosos do núcleo da nebulosa podem fragmentar e moldar essas estruturas notáveis.",
-  "captionEn": "What causes unusual knots of gas and dust in planetary nebulas?  Seen also in the Ring Nebula, the Dumbbell Nebula and NGC 2392, the knots' existence was not initially predicted, and their origins are still not well understood.  Pictured here is a fascinating image of part of the Helix Nebula by the James Webb Space Telescope showing tremendous detail in infrared light. The cometary knots have masses similar to the Earth but have sizes typically several times the orbit of Pluto.  One hypothesis for the fragmentation and evolution of the knots includes existing gas being driven out by a less dense but highly energetic stellar wind of the central evolving star.  The Helix Nebula is one of the closest examples of a planetary nebula created at the end of the life of a Sun-like star.  Given a technical designation of NGC 7293, the Helix Nebula lies about 650 light-years away towards the constellation of Water Carrier (Aquarius).   Open Science: Browse 4,000+ codes in the Astrophysics Source Code Library",
-  "captionEs": "La Nebulosa de la Hélice, una de las más cercanas a nosotros, revela estructuras enigmáticas llamadas nudos cometarios que aún intrigan a los científicos. Estos aglomerados de gas y polvo tienen un tamaño gigantesco, a pesar de poseer una masa similar a la de la Tierra. El Telescopio James Webb capturó detalles impresionantes en luz infrarroja, mostrando cómo los vientos estelares poderosos del núcleo de la nebulosa pueden fragmentar y moldear estas notables estructuras.",
-  "credit": "NASA",
-  "week": "2026-W32"
+  "imageUrl": "https://stsci-opo.org/STScI-01KX6D0XBHSYP7Q1EM5QTC43RP.png",
+  "title": "Nebulosa do Leão (NGC 2392) pelo James Webb",
+  "titleEn": "The Lion Nebula (NGC 2392) by James Webb",
+  "titleEs": "La Nebulosa del León (NGC 2392) por James Webb",
+  "caption": "O Telescópio Espacial James Webb da NASA capturou a nebulosa planetária NGC 2392, apelidada de Nebulosa do Leão, usando os instrumentos NIRCam e MIRI. Os restos da estrela central são responsáveis pela estrutura da nebulosa, incluindo uma bolha de gás ionizado e poeira em forma de rosto de leão com uma 'juba' bem definida. Imagem divulgada em 10 de agosto de 2026.",
+  "captionEn": "NASA's James Webb Space Telescope imaged the planetary nebula NGC 2392, the Lion Nebula, using NIRCam and MIRI instruments. The central star's remains are responsible for the nebula's structure, including a lion face-shaped bubble of ionized gas and dust 'mane'. Released on Aug. 10, 2026.",
+  "captionEs": "El Telescopio Espacial James Webb de la NASA capturó la nebulosa planetaria NGC 2392, apodada Nebulosa del León, usando los instrumentos NIRCam y MIRI. Los restos de la estrella central son responsables de la estructura de la nebulosa, incluyendo una burbuja de gas ionizado y polvo con forma de cara de león con una 'melena' bien definida. Imagen divulgada el 10 de agosto de 2026.",
+  "credit": "NASA, ESA, CSA, STScI; Image Processing: Alyssa Pagan (STScI)",
+  "week": "2026-W33",
+  "moonPhase": "Crescente Minguante"
 }
