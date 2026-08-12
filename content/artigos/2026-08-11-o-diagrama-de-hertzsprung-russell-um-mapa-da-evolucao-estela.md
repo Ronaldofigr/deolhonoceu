@@ -8,8 +8,7 @@ categoryEs: "Astrofísica"
 type: "explainer"
 readingTime: 7
 date: "2026-08-11"
-image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Hertzsprung-Russel_StarData.png/1024px-Hertzsprung-Russel_StarData.png"
-imageCredit: "ESO / Wikipedia Commons"
+imageCredit: "Gerado por AI/Microsoft Copilot"
 aiGenerated: false
 humanReviewed: true
 ---
