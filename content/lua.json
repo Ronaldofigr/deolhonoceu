@@ -1,7 +1,7 @@
 {
-  "fase": "Quarto Crescente",
-  "faseEn": "First quarter moon",
-  "iluminacao": 68,
+  "fase": "Lua Gibosa Crescente",
+  "faseEn": "Waxing gibbous moon",
+  "iluminacao": 70,
   "proximaFase": "Lua Cheia",
   "proximaFaseData": "2026-08-28",
   "evento": "Equinócio de setembro",
@@ -9,6 +9,6 @@
   "nomeCultural": "Lua do Esturjão",
   "mes": 8,
   "atualizadoEm": "2026-08-22",
-  "imagem": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/NASA-Apollo8-Dec24-Earthrise.jpg/1280px-NASA-Apollo8-Dec24-Earthrise.jpg",
-  "imagemCredito": "NASA / Apollo 8"
+  "imagem": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Supermoon_comparison.jpg/1280px-Supermoon_comparison.jpg",
+  "imagemCredito": "NASA / Goddard Space Flight Center"
 }
