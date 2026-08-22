@@ -8,7 +8,7 @@ excerptEs: "La estrella S301 completa una órbita alrededor de Sagitario A* en s
 source: "GRAVITY / Nature / SAPO TEK"
 sourceUrl: "https://tek.sapo.pt/noticias/ciencia/artigos/cientistas-portugueses-ajudam-a-descobrir-estrela-que-orbita-buraco-negro-a-velocidade-recorde/"
 sourceType: "obs"
-date: "2026-08-19"
+date: "2026-08-22"
 image: "https://cdn.teknoticias.pt/uploads/2026/08/Gemini_Generated_estrelas-perto-de-um-buraco-negro.jpg"
 imageCredit: "ESO / GRAVITY Collaboration"
 aiGenerated: false
