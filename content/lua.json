@@ -1,14 +1,14 @@
 {
   "fase": "Lua Gibosa Crescente",
   "faseEn": "Waxing gibbous moon",
-  "iluminacao": 70,
+  "iluminacao": 77,
   "proximaFase": "Lua Cheia",
   "proximaFaseData": "2026-08-28",
   "evento": "Equinócio de setembro",
   "eventoData": "2026-09-22",
   "nomeCultural": "Lua do Esturjão",
   "mes": 8,
-  "atualizadoEm": "2026-08-22",
+  "atualizadoEm": "2026-08-23",
   "imagem": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Supermoon_comparison.jpg/1280px-Supermoon_comparison.jpg",
   "imagemCredito": "NASA / Goddard Space Flight Center"
 }
