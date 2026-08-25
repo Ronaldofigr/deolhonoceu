@@ -9,7 +9,7 @@ source: "Folhapress / Bem Paraná"
 sourceUrl: "https://www.bemparana.com.br/noticias/mundo/nancy-grace-roman-novo-telescopio-espacial-da-nasa-e-satelite-espiao-para-explorar-o-universo/"
 sourceType: "sci"
 date: "2026-08-25"
-image: "https://www.bemparana.com.br/wp-content/uploads/2026/08/filtroscortelescopionancy-1024x671.jpg"
+image: "https://telegrafo.mx/wp-content/uploads/2023/09/telescopio-nancy-grace-roman.webp"
 imageCredit: "NASA"
 aiGenerated: false
 humanReviewed: true
