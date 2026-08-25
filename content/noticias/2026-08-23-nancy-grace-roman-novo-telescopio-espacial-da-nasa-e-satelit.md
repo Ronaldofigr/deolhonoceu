@@ -6,11 +6,11 @@ excerpt: "Com espelho de 2,4 m herdado de um programa de satélites-espiões do 
 excerptEn: "With a 2.4 m mirror inherited from a Pentagon spy-satellite program, the Roman telescope covers about 140 times more sky area than Hubble and is due to launch on 30 August on a Falcon Heavy."
 excerptEs: "Con un espejo de 2,4 m heredado de un programa de satélites espía del Pentágono, el telescopio Roman cubre unas 140 veces más área del cielo que el Hubble y debe lanzarse el 30 de agosto en un Falcon Heavy."
 source: "Folhapress / Bem Paraná"
-sourceUrl: "https://www.bemparana.com.br/noticias/mundo/nancy-grace-roman-novo-telescopio-espacial-da-nasa-e-satelite-espiao-para-explorar-o-universo/amp/"
+sourceUrl: "https://www.bemparana.com.br/noticias/mundo/nancy-grace-roman-novo-telescopio-espacial-da-nasa-e-satelite-espiao-para-explorar-o-universo/"
 sourceType: "sci"
 date: "2026-08-25"
 image: "https://www.bemparana.com.br/wp-content/uploads/2026/08/filtroscortelescopionancy-1024x671.jpg"
-imageCredit: "Os filtros do Conjunto de Filtros de Cor do Instrumento Coronógrafo do Telescópio Espacial Roman da NASA bloqueiam toda a luz, exceto uma cor específica, ou comprimento de onda. Muitos dos filtros parecem escuros nesta foto porque são transparentes apenas à luz infravermelha, que é invisível ao olho humano."
+imageCredit: "NASA"
 aiGenerated: false
 humanReviewed: true
 ---
