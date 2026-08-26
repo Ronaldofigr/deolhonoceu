@@ -27,7 +27,7 @@ Num TDE típico, a força de maré do buraco negro destrói completamente a estr
 
 Simulações anteriores mostravam que, mesmo com menos material perdido a cada encontro, as erupções mantinham aproximadamente o mesmo brilho — porque as forças de maré também aceleram a rotação da estrela, encurtando a escala temporal da recaída do material. “Ficámos estupefactos com isto durante dois anos”, afirma Bandopadhyay.
 
-Para reproduzir o escurecimento observado, era preciso um “novo ingrediente”: uma estrela que **já girasse rapidamente** antes do primeiro encontro. Essa rotação inicial impede que a estrela acelere muito mais a cada passagem. Sem esse aumento adicional, a escala temporal da recaída permanece constante e, com menos material perdido, o brilho finalmente diminui.
+Para reproduzir o escurecimento observado, era preciso um “novo ingrediente”: uma estrela que *já girasse rapidamente* antes do primeiro encontro. Essa rotação inicial impede que a estrela acelere muito mais a cada passagem. Sem esse aumento adicional, a escala temporal da recaída permanece constante e, com menos material perdido, o brilho finalmente diminui.
 
 ## O mecanismo de Hills
 
