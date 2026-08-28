@@ -1,7 +1,7 @@
 {
   "fase": "Lua Cheia",
   "faseEn": "Full moon",
-  "iluminacao": 100,
+  "iluminacao": 99,
   "proximaFase": "Quarto Minguante",
   "proximaFaseData": "2026-09-04",
   "evento": "Equinócio de setembro",
