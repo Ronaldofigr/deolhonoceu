@@ -1,7 +1,7 @@
 {
-  "fase": "Lua Gibosa Minguante",
-  "faseEn": "Waning gibbous moon",
-  "iluminacao": 70,
+  "fase": "Quarto Minguante",
+  "faseEn": "Last quarter moon",
+  "iluminacao": 69,
   "proximaFase": "Quarto Minguante",
   "proximaFaseData": "2026-09-04",
   "evento": "Equinócio de setembro",
@@ -9,6 +9,6 @@
   "nomeCultural": "Lua da Colheita",
   "mes": 9,
   "atualizadoEm": "2026-09-02",
-  "imagem": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/LRO_WAC_mosaic_global_color.jpg/1280px-LRO_WAC_mosaic_global_color.jpg",
-  "imagemCredito": "NASA/GSFC/Arizona State University"
+  "imagem": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Moon_nearside.jpg/800px-Moon_nearside.jpg",
+  "imagemCredito": "NASA / Goddard Space Flight Center / Arizona State University"
 }
