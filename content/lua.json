@@ -1,7 +1,7 @@
 {
   "fase": "Lua Nova",
   "faseEn": "New moon",
-  "iluminacao": 0,
+  "iluminacao": 1,
   "proximaFase": "Quarto Crescente",
   "proximaFaseData": "2026-09-19",
   "evento": "Equinócio de setembro",
