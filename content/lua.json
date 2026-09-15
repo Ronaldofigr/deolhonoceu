@@ -1,14 +1,14 @@
 {
   "fase": "Lua Crescente",
   "faseEn": "Waxing crescent moon",
-  "iluminacao": 9,
+  "iluminacao": 15,
   "proximaFase": "Quarto Crescente",
   "proximaFaseData": "2026-09-19",
   "evento": "Equinócio de setembro",
   "eventoData": "2026-09-22",
   "nomeCultural": "Lua da Colheita",
   "mes": 9,
-  "atualizadoEm": "2026-09-14",
+  "atualizadoEm": "2026-09-15",
   "imagem": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/ISS040-E-080672_-_View_of_Earth.jpg/1024px-ISS040-E-080672_-_View_of_Earth.jpg",
   "imagemCredito": "NASA"
 }
