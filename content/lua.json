@@ -1,14 +1,14 @@
 {
   "fase": "Lua Gibosa Crescente",
   "faseEn": "Waxing gibbous moon",
-  "iluminacao": 83,
+  "iluminacao": 90,
   "proximaFase": "Lua Cheia",
   "proximaFaseData": "2026-09-26",
-  "evento": "Equinócio de setembro",
-  "eventoData": "2026-09-22",
+  "evento": "Chuva de meteoros Oriônidas (pico)",
+  "eventoData": "2026-10-21",
   "nomeCultural": "Lua da Colheita",
   "mes": 9,
-  "atualizadoEm": "2026-09-22",
+  "atualizadoEm": "2026-09-23",
   "imagem": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Supermoon_comparison.jpg/1280px-Supermoon_comparison.jpg",
   "imagemCredito": "NASA / Goddard Space Flight Center"
 }
