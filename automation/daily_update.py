@@ -759,6 +759,7 @@ Responda SOMENTE com JSON válido:
         return f"  ⚠️  Foto da semana: {e}"
 
 def cleanup(days=30):
+    """NÃO é mais chamada em main(): o conteúdo antigo deve ser mantido para o arquivo mensal."""
     cutoff = datetime.date.today() - datetime.timedelta(days=days)
     for folder in ["noticias","artigos"]:
         p = BASE_DIR / "content" / folder
@@ -1119,8 +1120,7 @@ def main():
     print(gen_sitemap())
     print(gen_robots_txt())
 
-    print("\n🗑️  Limpando conteúdo antigo...")
-    cleanup()
+    # cleanup() desativado: notícias/artigos antigos ficam nas páginas de arquivo (por mês).
     print("\n✅ Concluído!\n")
 
 if __name__ == "__main__":
