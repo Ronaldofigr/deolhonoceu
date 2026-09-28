@@ -1,13 +1,16 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import type { NewsItem, Article } from '@/lib/content'
+import { AdsterraResponsive } from '@/components/AdsterraAd'
+import Link from 'next/link'
+import type { NewsItem, Article, TickerData } from '@/lib/content'
 
 const T = {
   pt: {
     nav: ['Notícias','Artigos','Sobre'],
     eyebrow: 'Astronomia & Astrofísica',
-    title: 'De Olho no', glow: 'Céu',
+    title: 'De Olho no',
+    glow: 'Céu',
     sub: 'O universo explicado para todos — notícias e descobertas em linguagem simples.',
     live: 'Ao vivo',
     leftTitle: 'Notícias & Descobertas',
@@ -15,23 +18,31 @@ const T = {
     readMore: 'Ler artigo completo →',
     source: 'Fonte original',
     minRead: 'min de leitura',
-    concept: '✦ Conceito',
-    discovery: '🔭 Descoberta',
+    concept: '★ Conceito',
+    discovery: '☄️ Descoberta',
     noNews: 'Execute o script Python para gerar notícias automaticamente.',
     noArt: 'Execute o script Python para gerar artigos automaticamente.',
     footer: 'De Olho no Céu · Conteúdo gerado por IA a partir de fontes científicas · Atualizado diariamente',
-    about: 'De Olho no Céu reúne automaticamente notícias de fontes como NASA, ESA, Space.com e o Centro de Ciência Viva do Algarve, e usa inteligência artificial para reescrever cada descoberta em linguagem acessível — sem fórmulas, sem jargão. Dois artigos conceituais sobre física e astrofísica são publicados todos os dias.',
+    about: 'De Olho no Céu recria automaticamente notícias de fontes como NASA, ESA, Space.com e o Centro de Ciência Viva do Algarve, e usa inteligência artificial para reescrever cada descoberta em linguagem acessível — sem fórmulas, sem jargão. Dois artigos conceituais sobre física e astrofísica são publicados todos os dias.',
     aboutLabel: 'Sobre o projeto',
-    less: '← Menos',
+    less: '↑ Menos',
     readNews: 'Ler notícia completa →',
-    lessNews: '← Recolher',
+    lessNews: '↑ Recolher',
     photoWeek: '📷 Imagem da Semana',
     photoCredit: 'Crédito',
+    archiveNews: 'Arquivo de Notícias',
+    archiveArticles: 'Arquivo de Artigos',
+    moonPhase: 'Fase atual',
+    moonIllum: 'iluminada',
+    moonNext: 'Próxima fase',
+    moonEvent: 'Próximo evento',
+    moonCultural: 'Nome cultural do mês',
   },
   en: {
     nav: ['News','Articles','About'],
     eyebrow: 'Astronomy & Astrophysics',
-    title: 'Eye on the', glow: 'Sky',
+    title: 'Eye on the',
+    glow: 'Sky',
     sub: 'The universe explained for everyone — news and discoveries in plain language.',
     live: 'Live',
     leftTitle: 'News & Discoveries',
@@ -39,89 +50,161 @@ const T = {
     readMore: 'Read full article →',
     source: 'Original source',
     minRead: 'min read',
-    concept: '✦ Concept',
-    discovery: '🔭 Discovery',
+    concept: '★ Concept',
+    discovery: '☄️ Discovery',
     noNews: 'Run the Python script to automatically generate news.',
     noArt: 'Run the Python script to automatically generate articles.',
     footer: 'Eye on the Sky · AI-generated content from scientific sources · Updated daily',
     about: 'Eye on the Sky automatically gathers news from NASA, ESA, Space.com and the Algarve Living Science Centre, and uses AI to rewrite each discovery in plain language — no formulas, no jargon. Two conceptual articles on physics and astrophysics are published every day.',
     aboutLabel: 'About',
-    less: '← Less',
+    less: '↑ Less',
     readNews: 'Read full news →',
-    lessNews: '← Collapse',
+    lessNews: '↑ Collapse',
     photoWeek: '📷 Image of the Week',
     photoCredit: 'Credit',
+    archiveNews: 'News Archive',
+    archiveArticles: 'Articles Archive',
+    moonPhase: 'Current phase',
+    moonIllum: 'illuminated',
+    moonNext: 'Next phase',
+    moonEvent: 'Next event',
+    moonCultural: "This month's cultural name",
+  },
+  es: {
+    nav: ['Noticias','Artículos','Acerca de'],
+    eyebrow: 'Astronomía y Astrofísica',
+    title: 'Con la Mirada en el',
+    glow: 'Cielo',
+    sub: 'El universo explicado para todos — noticias y descubrimientos en lenguaje simple.',
+    live: 'En vivo',
+    leftTitle: 'Noticias y Descubrimientos',
+    rightTitle: 'Conceptos y Física',
+    readMore: 'Leer artículo completo →',
+    source: 'Fuente original',
+    minRead: 'min de lectura',
+    concept: '★ Concepto',
+    discovery: '☄️ Descubrimiento',
+    noNews: 'Ejecute el script de Python para generar noticias automáticamente.',
+    noArt: 'Ejecute el script de Python para generar artículos automáticamente.',
+    footer: 'Con la Mirada en el Cielo · Contenido generado por IA a partir de fuentes científicas · Actualizado diariamente',
+    about: 'Con la Mirada en el Cielo recopila automáticamente noticias de fuentes como la NASA, la ESA, Space.com y el Centro de Ciencia Viva del Algarve, y usa inteligencia artificial para reescribir cada descubrimiento en lenguaje accesible — sin fórmulas, sin jerga. Todos los días se publican dos artículos conceptuales sobre física y astrofísica.',
+    aboutLabel: 'Sobre el proyecto',
+    less: '↑ Menos',
+    readNews: 'Leer noticia completa →',
+    lessNews: '↑ Contraer',
+    photoWeek: '📷 Imagen de la Semana',
+    photoCredit: 'Crédito',
+    archiveNews: 'Archivo de Noticias',
+    archiveArticles: 'Archivo de Artículos',
+    moonPhase: 'Fase actual',
+    moonIllum: 'iluminada',
+    moonNext: 'Próxima fase',
+    moonEvent: 'Próximo evento',
+    moonCultural: 'Nombre cultural del mes',
   }
 }
 
-const TICKERS = {
+// Fallback hardcoded — usado apenas se ticker.json não existir
+const TICKER_FALLBACK: TickerData = {
   pt: [
     '🌌 A Via Láctea tem entre 100 e 400 bilhões de estrelas',
-    '🔭 O James Webb opera a 1,5 milhão km da Terra',
+    '🛰️ O James Webb opera a 1,5 milhão km da Terra',
     '⚫ O buraco negro M87* equivale a 6,5 bilhões de sóis',
-    '🪐 Saturno flutuaria na água — é menos denso que H₂O',
-    '💫 A luz do Sol leva 8 min 20 s para chegar à Terra',
+    '🪐 Saturno flutuaria na água — é menos denso que ela',
+    '☀️ A luz do Sol leva 8 min 20 s para chegar à Terra',
   ],
   en: [
     '🌌 The Milky Way has between 100–400 billion stars',
-    '🔭 James Webb operates 1.5 million km from Earth',
+    '🛰️ James Webb operates 1.5 million km from Earth',
     '⚫ Black hole M87* equals 6.5 billion suns in mass',
-    '🪐 Saturn would float on water — less dense than H₂O',
-    '💫 Sunlight takes 8 min 20 sec to reach Earth',
-  ]
+    '🪐 Saturn would float on water — less dense than it',
+    '☀️ Sunlight takes 8 min 20 sec to reach Earth',
+  ],
+  es: [
+    '🌌 La Vía Láctea tiene entre 100 y 400 mil millones de estrellas',
+    '🛰️ El James Webb opera a 1,5 millones de km de la Tierra',
+    '⚫ El agujero negro M87* equivale a 6.500 millones de soles',
+    '🪐 Saturno flotaría en el agua — es menos denso que ella',
+    '☀️ La luz del Sol tarda 8 min 20 s en llegar a la Tierra',
+  ],
 }
 
 interface PhotoWeek {
   imageUrl: string
   title: string
   titleEn: string
+  titleEs: string
   caption: string
   captionEn: string
+  captionEs: string
   credit: string
   week: string
 }
 
 function fmtDate(d: string, lang: string) {
   const dt = new Date(d)
-  return lang === 'pt'
-    ? dt.toLocaleDateString('pt-BR', { day:'2-digit', month:'short', year:'numeric' })
-    : dt.toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' })
+  if (lang === 'pt') return dt.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' })
+  if (lang === 'es') return dt.toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' })
+  return dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+}
+
+function pick(lang: string, pt: string, en?: string, es?: string) {
+  if (lang === 'pt') return pt
+  if (lang === 'es') return es || en || pt
+  return en || pt
 }
 
 export default function HomeClient({
   news,
   articles,
-  photoWeek,
+  photoWeek = null,
+  moonInfo = null,
+  ticker = null,
 }: {
   news: import('@/lib/content').NewsItem[]
   articles: import('@/lib/content').Article[]
-  photoWeek: PhotoWeek | null
+  photoWeek?: PhotoWeek | null
+  moonInfo?: import('@/lib/content').MoonInfo | null
+  ticker?: TickerData | null
 }) {
-  const [lang, setLang] = useState<'pt'|'en'>('pt')
+  const [lang, setLang] = useState<'pt' | 'en' | 'es'>('pt')
   const [tick, setTick] = useState(0)
-  const [expanded, setExpanded] = useState<string|null>(null)
-  const [expandedNews, setExpandedNews] = useState<string|null>(null)
+  const [expanded, setExpanded] = useState<string | null>(null)
+  const [expandedNews, setExpandedNews] = useState<string | null>(null)
   const t = T[lang]
 
+  // Usa o ticker vindo do JSON; se nulo, cai para o fallback hardcoded
+  const TICKERS = ticker ?? TICKER_FALLBACK
+
   useEffect(() => {
-    const id = setInterval(() => setTick(i => (i+1) % TICKERS[lang].length), 6000)
+    const items = TICKERS[lang]
+    if (!items?.length) return
+    setTick(0) // reset ao trocar idioma
+    const id = setInterval(() => setTick(i => (i + 1) % items.length), 6000)
     return () => clearInterval(id)
-  }, [lang])
+  }, [lang, TICKERS])
+
+  // Garante que tick não ultrapasse o array se o JSON tiver menos itens que o fallback
+  const tickerItems = TICKERS[lang] ?? []
+  const currentTick = tickerItems.length ? tick % tickerItems.length : 0
 
   return (
     <>
       {/* HEADER */}
       <header className="site-header">
-        <a href="/" className="header-logo">
+        <Link href="/" className="header-logo">
           <div className="logo-icon" />
-          <span className="logo-text">{t.title} <span>{t.glow}</span></span>
-        </a>
+          <span className="logo-text">{t.title} <span className="glow">{t.glow}</span></span>
+        </Link>
         <nav className="header-nav">
-          {t.nav.map(n => <a key={n} href={#${n.toLowerCase()}}>{n}</a>)}
+          {t.nav.map(n => <a key={n} href={`#${n.toLowerCase()}`}>{n}</a>)}
+          <Link href="/arquivo-noticias/">{t.archiveNews}</Link>
+          <Link href="/arquivo-artigos/">{t.archiveArticles}</Link>
         </nav>
         <div className="lang-toggle">
-          <button className={lang-btn${lang==='pt'?' active':''}} onClick={()=>setLang('pt')}>PT</button>
-          <button className={lang-btn${lang==='en'?' active':''}} onClick={()=>setLang('en')}>EN</button>
+          <button className={`lang-btn ${lang==='pt' ? 'active':''}`} onClick={()=>setLang('pt')}>PT</button>
+          <button className={`lang-btn ${lang==='en' ? 'active':''}`} onClick={()=>setLang('en')}>EN</button>
+          <button className={`lang-btn ${lang==='es' ? 'active':''}`} onClick={()=>setLang('es')}>ES</button>
         </div>
       </header>
 
@@ -139,16 +222,16 @@ export default function HomeClient({
           <div className="photo-week-inner">
             <img
               src={photoWeek.imageUrl}
-              alt={lang === 'pt' ? photoWeek.title : photoWeek.titleEn}
+              alt={pick(lang, photoWeek.title, photoWeek.titleEn, photoWeek.titleEs)}
               className="photo-week-img"
               onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
             />
             <div className="photo-week-caption">
               <h3 className="photo-week-title">
-                {lang === 'pt' ? photoWeek.title : photoWeek.titleEn}
+                {pick(lang, photoWeek.title, photoWeek.titleEn, photoWeek.titleEs)}
               </h3>
               <p className="photo-week-text">
-                {lang === 'pt' ? photoWeek.caption : photoWeek.captionEn}
+                {pick(lang, photoWeek.caption, photoWeek.captionEn, photoWeek.captionEs)}
               </p>
               <span className="photo-week-credit">
                 {t.photoCredit}: {photoWeek.credit}
@@ -158,41 +241,100 @@ export default function HomeClient({
         </div>
       )}
 
-      {/* TICKER */}
-      <div className="live-ticker">
-        <span className="ticker-label">{t.live}</span>
-        <span className="ticker-dot" />
-        <span className="ticker-text"><strong>{TICKERS[lang][tick]}</strong></span>
-      </div>
+      {/* TICKER — só renderiza se houver itens */}
+      {tickerItems.length > 0 && (
+        <div className="live-ticker">
+          <span className="ticker-label">{t.live}</span>
+          <span className="ticker-dot" />
+          <span className="ticker-text">
+            <strong>{tickerItems[currentTick]}</strong>
+          </span>
+        </div>
+      )}
+
+      {/* FASE DA LUA */}
+      {moonInfo && (
+        <div className="moon-bar">
+          {moonInfo.imagem && (
+            <img
+              src={moonInfo.imagem}
+              alt={pick(lang, moonInfo.fase, moonInfo.faseEn)}
+              className="moon-bar-img"
+              onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+            />
+          )}
+          <div className="moon-bar-items">
+            <div className="moon-bar-item">
+              <span className="moon-bar-label">{t.moonPhase}</span>
+              <span className="moon-bar-value">
+                🌙 {pick(lang, moonInfo.fase, moonInfo.faseEn)} · {moonInfo.iluminacao}% {t.moonIllum}
+              </span>
+            </div>
+            <div className="moon-bar-item">
+              <span className="moon-bar-label">{t.moonNext}</span>
+              <span className="moon-bar-value">{moonInfo.proximaFase} — {fmtDate(moonInfo.proximaFaseData, lang)}</span>
+            </div>
+            <div className="moon-bar-item">
+              <span className="moon-bar-label">{t.moonEvent}</span>
+              <span className="moon-bar-value">{moonInfo.evento} — {fmtDate(moonInfo.eventoData, lang)}</span>
+            </div>
+            {moonInfo.nomeCultural && (
+              <div className="moon-bar-item">
+                <span className="moon-bar-label">{t.moonCultural}</span>
+                <span className="moon-bar-value">{moonInfo.nomeCultural}</span>
+              </div>
+            )}
+          </div>
+          {moonInfo.imagemCredito && (
+            <span className="moon-bar-credit">{t.photoCredit}: {moonInfo.imagemCredito}</span>
+          )}
+        </div>
+      )}
 
       {/* MAIN GRID */}
       <main className="main-grid">
         {/* LEFT — NEWS */}
         <section className="panel-left" id="noticias">
           <div className="panel-header">
-            <div className="panel-title">📡 {t.leftTitle}</div>
+            <div className="panel-title">📰 {t.leftTitle}</div>
             <span className="panel-count">{news.length} itens</span>
           </div>
-          <div className="ad-slot"><span className="ad-slot-label">PUBLICIDADE · ADVERTISEMENT</span></div>
+          <AdsterraResponsive />
 
           {news.length === 0
             ? <p style={{color:'var(--text-muted)',fontSize:'0.85rem',padding:'2rem 0',textAlign:'center'}}>{t.noNews}</p>
             : news.map(item => {
               const isNewsOpen = expandedNews === item.slug
-              const newsBody = lang==='pt' ? item.content : (item.contentEn||item.content)
+              const newsBody = pick(lang, item.content, item.contentEn, item.contentEs) || item.content
               const newsParas = newsBody ? newsBody.split('\n\n').filter(Boolean) : []
               return (
                 <article className="news-card" key={item.slug}>
                   <div className="news-card-meta">
-                    <span className={news-source ${item.sourceType}}>{item.source}</span>
+                    <span className={`news-source ${item.sourceType}`}>{item.source}</span>
                     <span className="news-date">{fmtDate(item.date, lang)}</span>
                   </div>
-                  <h2 className="news-title">{lang==='pt' ? item.title : (item.titleEn||item.title)}</h2>
-                  <p className="news-excerpt">{lang==='pt' ? item.excerpt : (item.excerptEn||item.excerpt)}</p>
+                  {item.image && (
+                    <div className="news-card-image-wrap">
+                      <img
+                        src={item.image}
+                        alt={pick(lang, item.title, item.titleEn, item.titleEs)}
+                        className="news-card-image"
+                        loading="lazy"
+                        onError={(e) => { (e.target as HTMLImageElement).parentElement!.style.display = 'none' }}
+                      />
+                      {item.imageCredit && <span className="news-card-image-credit">{t.photoCredit}: {item.imageCredit}</span>}
+                    </div>
+                  )}
+                  <h2 className="news-title">{pick(lang, item.title, item.titleEn, item.titleEs)}</h2>
+                  <p className="news-excerpt">{pick(lang, item.excerpt, item.excerptEn, item.excerptEs)}</p>
+                  {item.aiGenerated && (
+                    <p style={{fontSize:'0.65rem',color:'var(--text-muted)',margin:'0.45rem 0'}}>
+                      🤖 {lang === 'pt' ? 'Gerado automaticamente pela OpenAI, sem revisão humana.' : lang === 'es' ? 'Generado automáticamente por OpenAI, sin revisión humana.' : 'Automatically generated by OpenAI, without human review.'}
+                    </p>
+                  )}
 
-                  {/* Texto completo expansível */}
                   {newsParas.length > 0 && (
-                    <div className="article-body" style={{marginTop:'0.6rem'}}>
+                    <div className="news-article-body" style={{marginTop:'0.6rem'}}>
                       {(isNewsOpen ? newsParas : newsParas.slice(0,1)).map((p,i)=>(
                         <p key={i} style={{fontFamily:"'Crimson Pro',serif",fontSize:'0.9rem',color:'var(--text-secondary)',lineHeight:1.65,marginBottom:'0.5rem'}}>{p}</p>
                       ))}
@@ -204,7 +346,7 @@ export default function HomeClient({
                   )}
 
                   <div style={{display:'flex',alignItems:'center',gap:'0.75rem',marginTop:'0.6rem',flexWrap:'wrap'}}>
-                    {newsParas.length > 1 && (
+                    {newsBody && newsBody.length > (item.excerpt?.length || 0) + 20 && (
                       <button
                         className="read-more-btn"
                         onClick={()=>setExpandedNews(isNewsOpen?null:item.slug)}
@@ -223,35 +365,58 @@ export default function HomeClient({
           }
         </section>
 
-        {/* RIGHT — ARTICLES */}
+        {/* RIGHT — ARTIGOS */}
         <section className="panel-right" id="artigos">
           <div className="panel-header">
-            <div className="panel-title">✨ {t.rightTitle}</div>
+            <div className="panel-title">🧠 {t.rightTitle}</div>
             <span className="panel-count">{articles.length} artigos</span>
           </div>
-          <div className="ad-slot"><span className="ad-slot-label">PUBLICIDADE · ADVERTISEMENT</span></div>
+          <AdsterraResponsive />
 
           {articles.length === 0
             ? <p style={{color:'var(--text-muted)',fontSize:'0.85rem',padding:'2rem 0',textAlign:'center'}}>{t.noArt}</p>
             : articles.map(item => {
               const isOpen = expanded === item.slug
-              const body = lang==='pt' ? item.content : (item.contentEn||item.content)
-              const title = lang==='pt' ? item.title : (item.titleEn||item.title)
-              const cat = lang==='pt' ? item.category : (item.categoryEn||item.category)
+              const body = pick(lang, item.content, item.contentEn, item.contentEs) || item.content
+              const title = pick(lang, item.title, item.titleEn, item.titleEs)
+              const cat = pick(lang, item.category, item.categoryEn, item.categoryEs)
               const paras = body.split('\n\n').filter(Boolean)
               return (
                 <article className="article-card" key={item.slug}>
                   <div className="article-badge">
-                    <span className={item.type==='concept'?'badge-concept':'badge-news-art'}>
+                    <span className={item.type==='concept' ? 'badge-concept' : 'badge-news-art'}>
                       {item.type==='concept' ? t.concept : t.discovery}
                     </span>
-                    <span style={{color:'var(--text-muted)',fontSize:'0.6rem'}}>{cat} · {fmtDate(item.date,lang)}</span>
+                    <span style={{color:'var(--text-muted)',fontSize:'0.6rem'}}>{cat} · {fmtDate(item.date, lang)}</span>
                   </div>
+                  {item.image && (
+                    <div className="news-card-image-wrap">
+                      <img
+                        src={item.image}
+                        alt={title}
+                        className="news-card-image"
+                        loading="lazy"
+                        onError={(e) => { (e.target as HTMLImageElement).parentElement!.style.display = 'none' }}
+                      />
+                      {item.imageCredit && <span className="news-card-image-credit">{t.photoCredit}: {item.imageCredit}</span>}
+                    </div>
+                  )}
                   <h2 className="article-title">{title}</h2>
-                  <div className="article-reading-time">⏱️ {item.readingTime} {t.minRead}</div>
+                  <div className="article-reading-time">☕ {item.readingTime} {t.minRead}</div>
                   <div className="article-body">
                     {(isOpen ? paras : paras.slice(0,2)).map((p,i)=><p key={i}>{p}</p>)}
                   </div>
+                  {item.aiGenerated && (
+                    <p style={{fontSize:'0.65rem',color:'var(--text-muted)',margin:'0.45rem 0'}}>
+                      🤖 {lang === 'pt' ? 'Gerado automaticamente pela OpenAI, sem revisão humana.' : lang === 'es' ? 'Generado automáticamente por OpenAI, sin revisión humana.' : 'Automatically generated by OpenAI, without human review.'}
+                    </p>
+                  )}
+                  {isOpen && item.references && item.references.length > 0 && (
+                    <div style={{marginTop:'0.7rem',fontSize:'0.7rem',color:'var(--text-muted)'}}>
+                      <strong>{lang === 'pt' ? 'Referências verificáveis:' : lang === 'es' ? 'Referencias verificables:' : 'Verifiable references:'}</strong>{' '}
+                      {item.references.map((ref, i) => <span key={ref.url}>{i > 0 ? ' · ' : ''}<a href={ref.url} target="_blank" rel="noopener noreferrer" className="news-link">{ref.title} ↗</a></span>)}
+                    </div>
+                  )}
                   <button className="read-more-btn" onClick={()=>setExpanded(isOpen?null:item.slug)}>
                     {isOpen ? t.less : t.readMore}
                   </button>

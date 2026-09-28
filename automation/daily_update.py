@@ -1,24 +1,27 @@
 #!/usr/bin/env python3
 """
 De Olho no Céu — Automação diária
-Busca RSS científicos e gera artigos com Claude API.
+Busca RSS científicos e gera artigos com a API da Anthropic (Claude).
 """
 
-import os, sys, json, time, re, datetime, feedparser, anthropic
+import os, sys, json, time, re, math, datetime, feedparser, requests, anthropic
 from pathlib import Path
 
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
+NASA_API_KEY = os.environ.get("NASA_API_KEY", "DEMO_KEY")
 BASE_DIR = Path(__file__).parent.parent
 
 RSS_SOURCES = [
+    {"url": "https://news.google.com/rss/search?q=Starship+SpaceX+when:2d&hl=pt-BR&gl=BR&ceid=BR:pt-BR", "name": "SpaceX/Starship", "type": "spacex", "label": "SpaceX"},
     {"url": "https://www.nasa.gov/news-release/feed/",            "name": "NASA",                        "type": "nasa", "label": "NASA"},
     {"url": "https://www.esa.int/rssfeed/Our_Activities/Space_Science", "name": "ESA",                  "type": "esa",  "label": "ESA"},
     {"url": "https://www.space.com/feeds/all",                    "name": "Space.com",                   "type": "sci",  "label": "Space.com"},
     {"url": "https://skyandtelescope.org/feed/",                  "name": "Sky & Telescope",             "type": "sci",  "label": "Sky & Tel."},
-    {"url": "https://www.ccvalg.pt/feed/",                        "name": "Centro Ciência Viva Algarve", "type": "obs",  "label": "C. Ciência Viva"},
+    {"url": "https://www.ccvalg.pt/astronomia/?feed=rss2",        "name": "Centro Ciência Viva Algarve", "type": "obs",  "label": "C. Ciência Viva"},
 ]
 
 TOPICS = [
+    # Estrelas e vida estelar
     "o que é a teoria da relatividade especial",
     "como funciona a fusão nuclear nas estrelas",
     "o que são quasares e como são formados",
@@ -35,7 +38,329 @@ TOPICS = [
     "o que são aglomerados globulares",
     "o que é a força de maré e como ela afeta luas",
     "o que é a sequência principal das estrelas no diagrama HR",
+    "o que é o diagrama de Hertzsprung-Russell e como classifica estrelas",
+    "o que é a espectroscopia e como revela a composição das estrelas",
+    "o que é o efeito Doppler e como detecta planetas e galáxias",
+    "como funciona a morte das estrelas — anãs brancas, estrelas de nêutrons e buracos negros",
+    "o que é uma supernova e por que explode",
+    "o que é uma estrela de nêutrons e como se forma",
+    "o que são magnetares — as estrelas mais magnéticas do universo",
+    "o que é uma anã branca e o que acontece quando esfria",
+    "o que é uma anã marrom — entre estrela e planeta",
+    "o que é a luminosidade e a magnitude das estrelas",
+    "o que é a paralaxe espectroscópica",
+    "como estrelas duplas e múltiplas se formam e evoluem",
+    "o que são nébulas e como formam estrelas",
+    "o que é o vento solar e como afeta os planetas",
+    # Buracos negros e gravidade
+    "o que é um buraco negro e como se detecta",
+    "o que é o horizonte de eventos de um buraco negro",
+    "o que é a radiação de Hawking",
+    "o que é a relatividade geral de Einstein",
+    "o que são ondas gravitacionais e como se detectam",
+    "o que é a singularidade de um buraco negro",
+    "o que são buracos negros supermassivos e como existem no centro das galáxias",
+    "o que é spaghettification — o estiramento perto de buracos negros",
+    "o que é um buraco de minhoca — existe mesmo",
+    "como a gravidade curva a luz — lente gravitacional",
+    "o que é a precessão de Mercúrio e a prova da relatividade geral",
+    # Cosmologia e universo
+    "o que é a teoria do Big Bang",
+    "o que é a matéria escura e por que não conseguimos vê-la",
+    "o que é a energia escura e por que acelera o universo",
+    "o que é a inflação cósmica — o universo inflando em frações de segundo",
+    "o que é o princípio cosmológico",
+    "o que é a constante cosmológica de Einstein",
+    "o que é o destino final do universo — Big Freeze, Big Rip ou Big Crunch",
+    "o que são filamentos cósmicos e a teia do universo",
+    "o que é o paradoxo de Olbers — por que o céu noturno é escuro",
+    "o que é o multiverso",
+    "o que é o princípio antrópico",
+    "o que é a nucleossíntese do Big Bang — formação dos primeiros elementos",
+    "o que é a recombinação cósmica — quando o universo ficou transparente",
+    "o que é a época da reionização",
+    # Galáxias
+    "o que são galáxias e como se classificam",
+    "o que é uma galáxia elíptica, espiral e irregular",
+    "como galáxias colidem e se fundem",
+    "o que é o Grupo Local — nossa vizinhança galáctica",
+    "o que é a Grande Nuvem de Magalhães",
+    "o que é Andrômeda e o que acontecerá quando colidir com a Via Láctea",
+    "o que são galáxias anãs e como orbitam as galáxias maiores",
+    "o que é o núcleo galáctico ativo (AGN)",
+    "o que é um blazar",
+    "o que são jatos relativísticos de galáxias",
+    # Planetas e sistema solar
+    "como se formou o sistema solar — teoria da nebular",
+    "o que é a zona de Goldilocks no sistema solar",
+    "por que Plutão deixou de ser planeta",
+    "o que é o cinturão de asteroides e como se formou",
+    "o que é o Cinturão de Kuiper",
+    "o que é a Nuvem de Oort e de onde vêm os cometas",
+    "como os anéis de Saturno se formaram",
+    "o que é a Grande Mancha Vermelha de Júpiter",
+    "o que torna a Europa de Júpiter um candidato à vida",
+    "o que é Encélado e seus gêiseres de água",
+    "o que é Titã e sua atmosfera densa",
+    "o que é Marte e por que queremos colonizá-lo",
+    "o que é a proteção magnética da Terra",
+    "como a Lua se formou — teoria do grande impacto",
+    "o que são marés e como a Lua as controla",
+    # Exoplanetas e vida
+    "o que são exoplanetas e como os detectamos",
+    "o que é o método de trânsito para detectar exoplanetas",
+    "o que é o método da velocidade radial para detectar exoplanetas",
+    "o que é a biosfera e os marcadores de vida em exoplanetas",
+    "o que é TRAPPIST-1 e seus planetas na zona habitável",
+    "o que é a equação de Drake — estimando civilizações no universo",
+    "o que é o paradoxo de Fermi — onde estão os alienígenas",
+    "o que é panspermia — a vida viajando pelo espaço",
+    "o que é a zona habitável galáctica",
+    # Física e instrumentos
+    "o que é a mecânica quântica e como se aplica à astrofísica",
+    "o que é o princípio da incerteza de Heisenberg",
+    "o que é a pressão de degenerescência que sustenta anãs brancas",
+    "o que é um telescópio e como funciona — refrator e refletor",
+    "o que é o telescópio espacial Hubble e suas descobertas",
+    "o que é o telescópio James Webb e o que pode observar",
+    "o que é radioastronomia e como expandiu nossa visão do universo",
+    "o que é a astronomia de raios-X e gama",
+    "o que é interferometria e como cria telescópios do tamanho da Terra",
+    "o que é a astronomia de ondas gravitacionais — LIGO e Virgo",
+    "o que é o redshift e como mede a expansão do universo",
+    "o que é o fundo difuso de micro-ondas e o que revela",
+    "o que é a fotometria estelar",
+    "o que são raios cósmicos e de onde vêm",
+    "o que são neutrinos e como os detectamos",
+    # Exploração espacial
+    "o que é a ISS e como os astronautas vivem em órbita",
+    "o que é propulsão iônica e como funciona",
+    "o que é a manobra gravitacional — viagem aos planetas mais rápido",
+    "como funciona uma órbita — por que satélites não caem",
+    "o que é a órbita geoestacionária",
+    "o que é o Starship da SpaceX e seus objetivos",
+    "como funciona o foguete — terceira lei de Newton no espaço",
+    "o que é a corrida espacial e seu legado científico",
+    "o que é o programa Artemis e o retorno à Lua",
+    "o que são satélites Starlink e como a rede de satélites funciona",
+    # Conceitos físicos fundamentais
+    "o que é a velocidade da luz e por que é o limite",
+    "o que é dilatação temporal — o tempo passando diferente para cada um",
+    "o que é a contração do espaço na relatividade especial",
+    "o que é equivalência massa-energia — E=mc²",
+    "o que é a pressão de radiação — a luz empurrando objetos",
+    "o que é a temperatura e como se mede no espaço",
+    "o que é o plasma e por que a maioria da matéria do universo é plasma",
+    "o que é o campo magnético e como molda o universo",
+    "o que é a constante de Hubble e a controvérsia da sua medição",
+    "o que é o paradoxo dos gêmeos da relatividade",
+    "o que é o colapso de função de onda na mecânica quântica",
+    "o que é o emaranhamento quântico",
+    "o que é a cromodinâmica quântica — quarks e glúons",
 ]
+
+def strip_html(s):
+    return re.sub(r'<[^>]+>', '', s or '').strip()
+
+def extract_rss_image(e):
+    """Tenta achar uma imagem já embutida no próprio item do RSS (enclosure, media:content, ou <img> no HTML)."""
+    media = e.get("media_content") or e.get("media_thumbnail")
+    if media and isinstance(media, list) and media[0].get("url"):
+        return media[0]["url"]
+    for l in e.get("links", []):
+        if l.get("rel") == "enclosure" and "image" in l.get("type", ""):
+            return l.get("href")
+    html = e.get("summary", "") or e.get("description", "")
+    m = re.search(r'<img[^>]+src=["\']([^"\']+)["\']', html)
+    if m:
+        return m.group(1)
+    return None
+
+import time
+
+def _image_relevance_score(query, title, description):
+    """Pontua relevância de uma imagem em relação à query.
+    Retorna número de keywords da query encontradas no título/descrição da imagem."""
+    keywords = set(re.sub(r'[^a-z0-9 ]', ' ', query.lower()).split())
+    stopwords = {'the','a','an','of','in','on','at','to','for','and','or','is','are','was','were','with','this','that','from'}
+    keywords -= stopwords
+    if not keywords:
+        return 0
+    haystack = (title + " " + description).lower()
+    return sum(1 for kw in keywords if kw in haystack)
+
+def find_image_nasa(query):
+    """Busca imagem no acervo da NASA escolhendo o resultado mais relevante para a query,
+    não simplesmente o primeiro. Valida relevância via keywords no título/descrição."""
+    time.sleep(1.2)
+    try:
+        resp = requests.get("https://images-api.nasa.gov/search",
+                             params={"q": query, "media_type": "image", "page_size": 10}, timeout=15)
+        resp.raise_for_status()
+        resp.encoding = "utf-8"
+        items = resp.json().get("collection", {}).get("items", [])
+        best_score = -1
+        best = None
+        for it in items[:10]:
+            links = it.get("links", [])
+            data = it.get("data", [{}])[0]
+            img = next((l["href"] for l in links if l.get("render") == "image"), None)
+            if not img:
+                continue
+            title = data.get("title", "")
+            description = data.get("description", "")
+            score = _image_relevance_score(query, title, description)
+            if score > best_score:
+                best_score = score
+                center = data.get("center", "")
+                credit = f"NASA/{center}" if center and center != "NASA" else "NASA"
+                best = {"url": img, "credit": credit, "score": score}
+        # Só aceita se tiver ao menos 1 keyword em comum com a query
+        if best and best_score >= 1:
+            return {"url": best["url"], "credit": best["credit"]}
+    except Exception as e:
+        print(f"    ⚠️  NASA Images: {e}")
+    return None
+
+def find_image_wikimedia(query):
+    """Busca imagem no Wikimedia Commons escolhendo o resultado mais relevante via keywords.
+    Restringe a fotos/ilustrações reais, rejeitando documentos escaneados."""
+    time.sleep(1.5)
+    try:
+        resp = requests.get("https://commons.wikimedia.org/w/api.php", params={
+            "action": "query", "format": "json", "generator": "search",
+            "gsrsearch": f"{query} filetype:bitmap", "gsrnamespace": 6, "gsrlimit": 8,
+            "prop": "imageinfo", "iiprop": "url|mime|size|extmetadata", "iiurlwidth": 1200,
+        }, timeout=15, headers={"User-Agent": "DeOlhoNoCeu/1.0 (site automatizado de astronomia)"})
+        resp.raise_for_status()
+        resp.encoding = "utf-8"
+        pages = resp.json().get("query", {}).get("pages", {})
+        best_score = -1
+        best = None
+        for _, page in pages.items():
+            info = page.get("imageinfo", [{}])[0]
+            mime = info.get("mime", "")
+            url = info.get("thumburl") or info.get("url")
+            if not url or not mime.startswith("image/") or mime in ("image/svg+xml",):
+                continue
+            if ".pdf" in url.lower():
+                continue
+            width, height = info.get("width", 0), info.get("height", 0)
+            if width and height and height / width > 1.3:
+                continue
+            # Usa o nome do arquivo como proxy do título para validar relevância
+            filename = page.get("title", "").replace("File:", "").replace("_", " ")
+            meta = info.get("extmetadata", {})
+            description_meta = strip_html(meta.get("ImageDescription", {}).get("value", ""))
+            score = _image_relevance_score(query, filename, description_meta)
+            if score > best_score:
+                best_score = score
+                artist = strip_html(meta.get("Artist", {}).get("value", ""))
+                license_name = meta.get("LicenseShortName", {}).get("value", "")
+                credit_parts = [p for p in [artist, "Wikimedia Commons", license_name] if p]
+                best = {"url": url, "credit": " / ".join(credit_parts), "score": score}
+        if best and best_score >= 1:
+            return {"url": best["url"], "credit": best["credit"]}
+    except Exception as e:
+        print(f"    ⚠️  Wikimedia: {e}")
+    return None
+
+def find_image_wikipedia(query):
+    """Usa a busca e a miniatura de artigos da Wikipédia em português — geralmente uma foto bem curada."""
+    time.sleep(1.5)
+    try:
+        search = requests.get("https://pt.wikipedia.org/w/api.php", params={
+            "action": "opensearch", "search": query, "limit": 1, "namespace": 0, "format": "json",
+        }, timeout=15, headers={"User-Agent": "DeOlhoNoCeu/1.0 (site automatizado de astronomia)"})
+        search.raise_for_status()
+        search.encoding = "utf-8"
+        titles = search.json()[1]
+        if not titles:
+            return None
+        title = titles[0]
+        resp = requests.get("https://pt.wikipedia.org/w/api.php", params={
+            "action": "query", "format": "json", "prop": "pageimages",
+            "piprop": "original", "titles": title,
+        }, timeout=15, headers={"User-Agent": "DeOlhoNoCeu/1.0 (site automatizado de astronomia)"})
+        resp.raise_for_status()
+        resp.encoding = "utf-8"
+        pages = resp.json().get("query", {}).get("pages", {})
+        for _, page in pages.items():
+            url = page.get("original", {}).get("source")
+            if url and not url.lower().endswith(".svg"):
+                return {"url": url, "credit": f"Wikipédia — {title}"}
+    except Exception as e:
+        print(f"    ⚠️  Wikipedia: {e}")
+    return None
+
+def find_image_openverse(query):
+    """Busca ampla em bancos de imagens de licença aberta (Flickr, museus, arquivos públicos etc.)."""
+    time.sleep(1.2)
+    try:
+        resp = requests.get("https://api.openverse.org/v1/images/", params={
+            "q": query, "license_type": "commercial,modification", "page_size": 1,
+        }, timeout=15, headers={"User-Agent": "DeOlhoNoCeu/1.0 (site automatizado de astronomia)"})
+        resp.raise_for_status()
+        resp.encoding = "utf-8"
+        results = resp.json().get("results", [])
+        if results:
+            item = results[0]
+            url = item.get("url")
+            creator = item.get("creator") or "Openverse"
+            source = item.get("source") or ""
+            if url:
+                return {"url": url, "credit": f"{creator} / {source}" if source else creator}
+    except Exception as e:
+        print(f"    ⚠️  Openverse: {e}")
+    return None
+
+def find_image_fallback_apod():
+    """Último recurso: uma foto real e aleatória do arquivo histórico da NASA (APOD).
+    Garante que sempre haja uma imagem, mesmo quando nenhuma busca por palavra-chave encontra nada."""
+    import random
+    if NASA_API_KEY == "DEMO_KEY":
+        print("    ⚠️  Usando DEMO_KEY da NASA (limite baixo e compartilhado). "
+              "Configure o secret NASA_API_KEY com uma chave própria e gratuita em https://api.nasa.gov para evitar falhas por limite de requisições.")
+    for _ in range(4):
+        time.sleep(1.2)
+        try:
+            date_try = datetime.date.today() - datetime.timedelta(days=random.randint(1, 3000))
+            resp = requests.get("https://api.nasa.gov/planetary/apod",
+                                 params={"api_key": NASA_API_KEY, "date": date_try.isoformat()}, timeout=15)
+            resp.raise_for_status()
+            resp.encoding = "utf-8"
+            data = resp.json()
+            if data.get("media_type") == "image":
+                url = data.get("hdurl") or data.get("url")
+                credit = data.get("copyright")
+                credit = credit.strip().replace("\n", " ") if credit else "NASA"
+                if url:
+                    return {"url": url, "credit": credit}
+        except Exception as e:
+            print(f"    ⚠️  APOD (fallback): {e}")
+            continue
+    return None
+
+def is_valid_image_url(url):
+    if not url: return False
+    url_lower = url.lower()
+    bad_exts = ('.pdf', '.svg', '.txt', '.html', '.htm', '.xml', '.doc', '.docx')
+    if any(url_lower.endswith(e) or f'{e}/' in url_lower or f'{e}?' in url_lower for e in bad_exts):
+        return False
+    if 'page1-' in url_lower and '.pdf.' in url_lower:
+        return False
+    return True
+
+def find_image(query):
+    """Ordem de prioridade com validação: NASA → Wikipédia → Wikimedia → Openverse → APOD aleatório."""
+    for fn in (find_image_nasa, find_image_wikipedia, find_image_wikimedia, find_image_openverse):
+        result = fn(query)
+        if result and is_valid_image_url(result.get("url", "")):
+            return result
+    result = find_image_fallback_apod()
+    if result and is_valid_image_url(result.get("url", "")):
+        return result
+    return None
 
 def slug(text):
     text = text.lower()
@@ -46,15 +371,75 @@ def slug(text):
 
 def today(): return datetime.date.today().isoformat()
 
+def iso_week():
+    y, w, _ = datetime.date.today().isocalendar()
+    return f"{y}-W{w:02d}"
+
 def call_claude(prompt, max_tokens=1200):
+    """Gera texto via API da Anthropic usando Claude Sonnet — para tarefas que exigem qualidade máxima."""
     client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
-    resp = client.messages.create(
+    message = client.messages.create(
         model="claude-sonnet-4-6",
         max_tokens=max_tokens,
-        system="Você é um cientista e escritor de divulgação científica de alta qualidade.",
-        messages=[{"role": "user", "content": prompt}]
+        messages=[{"role": "user", "content": prompt}],
     )
-    return resp.content[0].text.strip()
+    text = message.content[0].text.strip() if message.content else ""
+    if not text:
+        raise ValueError("A API da Anthropic retornou uma resposta vazia")
+    return text
+
+def call_haiku(prompt, max_tokens=600):
+    """Gera texto via API da Anthropic usando Claude Haiku — para tarefas simples (10× mais barato que Sonnet).
+    Usar para: foto da semana, scripts YouTube, info da Lua, tradução de legendas curtas."""
+    client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
+    message = client.messages.create(
+        model="claude-haiku-4-5-20251001",
+        max_tokens=max_tokens,
+        messages=[{"role": "user", "content": prompt}],
+    )
+    text = message.content[0].text.strip() if message.content else ""
+    if not text:
+        raise ValueError("A API Haiku retornou uma resposta vazia")
+    return text
+
+def extract_json(raw):
+    """Extrai e faz o parse do JSON retornado pela IA, tolerando os erros mais comuns."""
+    m = re.search(r'\{[\s\S]+\}', raw)
+    if not m:
+        return None
+    texto = m.group()
+    try:
+        return json.loads(texto)
+    except json.JSONDecodeError:
+        pass
+    reparado = []
+    dentro_de_string = False
+    escapado = False
+    for ch in texto:
+        if dentro_de_string:
+            if escapado:
+                reparado.append(ch); escapado = False; continue
+            if ch == '\\':
+                reparado.append(ch); escapado = True; continue
+            if ch == '"':
+                dentro_de_string = False; reparado.append(ch); continue
+            if ch == '\n':
+                reparado.append('\\n'); continue
+            if ch == '\r':
+                continue
+            if ch == '\t':
+                reparado.append('\\t'); continue
+            reparado.append(ch)
+        else:
+            if ch == '"':
+                dentro_de_string = True
+            reparado.append(ch)
+    texto_reparado = "".join(reparado)
+    texto_reparado = re.sub(r',\s*([}\]])', r'\1', texto_reparado)
+    try:
+        return json.loads(texto_reparado)
+    except json.JSONDecodeError:
+        return None
 
 def fetch_rss():
     entries = []
@@ -65,50 +450,177 @@ def fetch_rss():
                 raw = re.sub(r'<[^>]+>', '', e.get("summary","") or e.get("description","")).strip()
                 entries.append({"source": src["label"], "source_type": src["type"],
                                 "url": e.get("link","#"), "title_original": e.get("title",""),
-                                "excerpt_original": raw[:600], "date": today()})
+                                "excerpt_original": raw[:600], "date": today(),
+                                "image_from_rss": extract_rss_image(e)})
         except Exception as ex:
             print(f"  ⚠️  {src['name']}: {ex}")
     return entries
 
+STOPWORDS_TITULO = set(
+    "a o os as um uma de do da dos das em no na nos nas para por com que e ou se sua seu suas seus ao aos à às "
+    "the a an of to in on for and or is are new via aboard using announces plans reveals says says' after".split()
+)
+
+def normalize_title(t):
+    t = t.lower()
+    for a,b in [('áàãâä','a'),('éèê','e'),('íìî','i'),('óòõôö','o'),('úùû','u'),('ç','c')]:
+        for c in a: t = t.replace(c, b)
+    t = re.sub(r'[^a-z0-9 ]', ' ', t)
+    return re.sub(r'\s+', ' ', t).strip()
+
+def title_keywords(t):
+    return set(w for w in normalize_title(t).split() if len(w) > 2 and w not in STOPWORDS_TITULO)
+
+def titles_similar(a, b, threshold=0.4):
+    """Compara palavras-chave de dois títulos para saber se são provavelmente a mesma
+    notícia, mesmo vindos de fontes/URLs diferentes e com manchetes reescritas de forma diferente."""
+    if not a or not b:
+        return False
+    ka, kb = title_keywords(a), title_keywords(b)
+    if not ka or not kb:
+        return False
+    return len(ka & kb) / len(ka | kb) >= threshold
+
+def recent_source_titles(days=5):
+    """Recupera os títulos ORIGINAIS (da fonte, antes da reescrita pela IA) das notícias
+    salvas nos últimos dias, para detectar a mesma notícia relatada por fontes diferentes."""
+    folder = BASE_DIR / "content" / "noticias"
+    if not folder.exists():
+        return []
+    cutoff = datetime.date.today() - datetime.timedelta(days=days)
+    titulos = []
+    for f in folder.glob("*.md"):
+        try:
+            file_date = datetime.date.fromisoformat(f.name[:10])
+            if file_date < cutoff:
+                continue
+        except ValueError:
+            continue
+        text = f.read_text(encoding="utf-8")
+        m = re.search(r'^sourceTitle:\s*"([^"]*)"', text, re.MULTILINE)
+        if m:
+            titulos.append(m.group(1))
+    return titulos
+
+def news_key(entry):
+    """Chave estável baseada na fonte original (não no título reescrito pela IA),
+    para reconhecer a mesma notícia em execuções diferentes do script."""
+    base = entry.get("url") or entry.get("title_original", "")
+    key = slug(base)
+    if not key:
+        key = slug(entry.get("title_original", "")) or "item"
+    return key[:50]
+
+def news_already_saved(key):
+    folder = BASE_DIR / "content" / "noticias"
+    if not folder.exists(): return False
+    return any(key in f.stem for f in folder.glob("*.md"))
+
+# Keywords que indicam conteúdo claramente fora do escopo do site
+_OFFTOPIC_KEYWORDS = [
+    "video game", "videogame", "game review", "gears of war", "call of duty",
+    "fortnite", "minecraft", "xbox", "playstation", "nintendo", "esports",
+    "movie review", "box office", "streaming series", "tv show", "celebrity",
+    "recipe", "fashion", "sports score", "football match", "soccer",
+]
+
+def is_offtopic(title: str, excerpt: str) -> bool:
+    """Filtro rápido que rejeita conteúdo obviamente fora do escopo antes de chamar o Claude."""
+    text = (title + " " + excerpt).lower()
+    return any(kw in text for kw in _OFFTOPIC_KEYWORDS)
+
 def gen_news(entry):
+    # Filtro rápido: rejeita sem gastar tokens do Claude
+    if is_offtopic(entry["title_original"], entry["excerpt_original"]):
+        titulo = entry["title_original"]
+        print(f"  ⛔ Fora do escopo (filtro rápido): {titulo[:70]}")
+        return None
+
     prompt = f"""Notícia científica bruta:
 TÍTULO: {entry['title_original']}
 RESUMO: {entry['excerpt_original']}
 FONTE: {entry['source']}
+URL DA FONTE: {entry['url']}
 
-Reescreva como divulgação científica para leigos. Responda SOMENTE com JSON válido:
-{{"title":"título PT máx 90 chars","titleEn":"title EN max 90 chars","excerpt":"resumo PT 2-3 frases max 280 chars","excerptEn":"summary EN 2-3 sentences max 280 chars","tags":["tag1","tag2","tag3"],"content":"texto PT 3-4 parágrafos sem fórmulas com analogias","contentEn":"text EN 3-4 paragraphs no formulas"}}"""
+Primeiro, verifique se esta notícia é relevante para astronomia, astrofísica, exploração espacial, ciências do espaço ou fenômenos naturais do céu.
+Se NÃO for relevante (ex: videogame, filme, esporte, culinária, política), responda SOMENTE: {{"relevant": false}}
+
+Se FOR relevante, reescreva como divulgação científica para leigos.
+
+IMPORTANTE sobre o campo "content":
+- Deve ter NO MÍNIMO 200 palavras (bem mais longo que o excerpt, nunca repetir o excerpt)
+- Deve ter 3-4 parágrafos SEPARADOS PELO LITERAL \\n\\n (duas quebras de linha) entre cada parágrafo
+- Explique contexto, detalhes técnicos em linguagem simples, com analogias, e relevância da descoberta
+- Sem fórmulas matemáticas
+- Não acrescente fatos específicos que não estejam sustentados pela fonte informada
+
+O mesmo vale para "contentEn" em inglês e "contentEs" em espanhol.
+
+Responda SOMENTE com JSON válido:
+{{"relevant": true, "title":"título PT máx 90 chars","titleEn":"title EN max 90 chars","titleEs":"título ES máx 90 chars","excerpt":"resumo PT 2-3 frases max 280 chars","excerptEn":"summary EN 2-3 sentences max 280 chars","excerptEs":"resumen ES 2-3 frases máx 280 chars","tags":["tag1","tag2","tag3"],"content":"texto PT mínimo 200 palavras, 3-4 parágrafos separados por \\n\\n, sem fórmulas, com analogias","contentEn":"text EN minimum 200 words, 3-4 paragraphs separated by \\n\\n, no formulas","contentEs":"texto ES mínimo 200 palabras, 3-4 párrafos separados por \\n\\n, sin fórmulas","imageQuery":"3-5 keywords describing the SPECIFIC visual subject (rocket name, planet, telescope, celestial body or phenomenon) — never abstract terms like science or discovery"}}"""
     try:
-        raw = call_claude(prompt)
-        m = re.search(r'\{[\s\S]+\}', raw)
-        if m:
-            data = json.loads(m.group())
+        raw = call_claude(prompt, max_tokens=1600)
+        data = extract_json(raw)
+        if data:
+            # Claude sinalizou que a notícia está fora do escopo
+            if data.get("relevant") is False:
+                print(f"  ⛔ Fora do escopo (Claude): {entry['title_original'][:70]}")
+                return None
             data.update({"source": entry["source"], "sourceType": entry["source_type"],
                          "sourceUrl": entry["url"], "date": entry["date"]})
+            if entry.get("image_from_rss"):
+                data["image"] = entry["image_from_rss"]
+                data["imageCredit"] = entry["source"]
+            else:
+                image_query = (data.get("imageQuery") or entry["title_original"] or data.get("titleEn") or data.get("title", ""))
+                img = find_image(image_query)
+                if img:
+                    data["image"] = img["url"]
+                    data["imageCredit"] = img["credit"]
             return data
     except Exception as e:
         print(f"  ⚠️  {e}")
     return None
 
-def save_news(data):
-    s = f"{data['date']}-{slug(data['title'])}"
+def save_news(data, key, source_title_original=""):
+    s = f"{data['date']}-{key}"
     folder = BASE_DIR / "content" / "noticias"
     folder.mkdir(parents=True, exist_ok=True)
-    if any(folder.glob(f"*{slug(data['title'])}*")): return f"  ⏭  Já existe: {s}"
     tags = "[" + ", ".join(f'"{t}"' for t in data.get("tags",[])) + "]"
+    image_fields = ""
+    if data.get("image"):
+        img_credit = (data.get("imageCredit") or "").replace('"', "'")
+        image_fields = f'image: "{data["image"]}"\nimageCredit: "{img_credit}"\n'
+    titulo_es = (data.get('titleEs') or data['titleEn']).replace('"', "'")
+    resumo_es = (data.get('excerptEs') or data['excerptEn']).replace('"', "'")
+    content_en = data.get('contentEn', '')
+    content_es = data.get('contentEs') or content_en
+    source_title_field = ""
+    if source_title_original:
+        source_title_field = f'sourceTitle: "{source_title_original.replace(chr(34), chr(39))}"\n'
     md = f"""---
 title: "{data['title']}"
 titleEn: "{data['titleEn']}"
+titleEs: "{titulo_es}"
 excerpt: "{data['excerpt']}"
 excerptEn: "{data['excerptEn']}"
+excerptEs: "{resumo_es}"
 source: "{data['source']}"
 sourceType: "{data['sourceType']}"
 sourceUrl: "{data['sourceUrl']}"
-tags: {tags}
+{source_title_field}tags: {tags}
 date: "{data['date']}"
----
+{image_fields}---
 
 {data['content']}
+
+<!--lang:en-->
+
+{content_en}
+
+<!--lang:es-->
+
+{content_es}
 """
     (folder / f"{s}.md").write_text(md, encoding="utf-8")
     return f"  ✅  {s}"
@@ -121,36 +633,133 @@ def gen_article(topic):
 - Último parágrafo: curiosidade surpreendente
 
 Responda SOMENTE com JSON válido:
-{{"title":"título PT criativo","titleEn":"title EN","category":"categoria PT","categoryEn":"category EN","content":"texto PT parágrafos separados por \\n\\n","contentEn":"text EN paragraphs separated by \\n\\n","readingTime":3}}"""
+{{"title":"título PT criativo","titleEn":"title EN","titleEs":"título ES creativo","category":"categoria PT","categoryEn":"category EN","categoryEs":"categoría ES","content":"texto PT parágrafos separados por \\n\\n","contentEn":"text EN paragraphs separated by \\n\\n","contentEs":"texto ES párrafos separados por \\n\\n","readingTime":3,"imageQuery":"3-5 keywords describing the SPECIFIC visual subject (planet, telescope, phenomenon, celestial body)","references":[{{"title":"nome da fonte","url":"https://..."}}]}}"""
     try:
-        raw = call_claude(prompt, max_tokens=1500)
-        m = re.search(r'\{[\s\S]+\}', raw)
-        if m: return json.loads(m.group())
+        raw = call_claude(prompt, max_tokens=1600)
+        data = extract_json(raw)
+        if data:
+            image_query = data.get("imageQuery") or topic
+            img = find_image(image_query)
+            if img:
+                data["image"] = img["url"]
+                data["imageCredit"] = img["credit"]
+            return data
     except Exception as e:
         print(f"  ⚠️  {e}")
     return None
 
-def save_article(data):
-    s = f"{today()}-{slug(data['title'])}"
+def save_article(data, topic_key):
+    s = f"{today()}-{topic_key}"
     folder = BASE_DIR / "content" / "artigos"
     folder.mkdir(parents=True, exist_ok=True)
-    if any(folder.glob(f"*{slug(data['title'])}*")): return f"  ⏭  Já existe: {s}"
+    image_fields = ""
+    if data.get("image"):
+        img_credit = (data.get("imageCredit") or "").replace('"', "'")
+        image_fields = f'image: "{data["image"]}"\nimageCredit: "{img_credit}"\n'
+    categoria_es = (data.get('categoryEs') or data['categoryEn']).replace('"', "'")
+    titulo_es = (data.get('titleEs') or data['titleEn']).replace('"', "'")
+    content_en = data.get('contentEn', '')
+    content_es = data.get('contentEs') or content_en
     md = f"""---
 title: "{data['title']}"
 titleEn: "{data['titleEn']}"
+titleEs: "{titulo_es}"
 category: "{data['category']}"
 categoryEn: "{data['categoryEn']}"
+categoryEs: "{categoria_es}"
 type: "concept"
 readingTime: {data.get('readingTime',3)}
 date: "{today()}"
----
+{image_fields}---
 
 {data['content']}
+
+<!--lang:en-->
+
+{content_en}
+
+<!--lang:es-->
+
+{content_es}
 """
     (folder / f"{s}.md").write_text(md, encoding="utf-8")
     return f"  ✅  {s}"
 
+def article_topic_used(topic_key):
+    folder = BASE_DIR / "content" / "artigos"
+    if not folder.exists(): return False
+    return any(topic_key in f.stem for f in folder.glob("*.md"))
+
+def gen_photo_week():
+    """Busca a Imagem Astronômica do Dia (APOD) da NASA e atualiza 1x por semana."""
+    photo_path = BASE_DIR / "content" / "foto-semana.json"
+    current_week = iso_week()
+
+    if photo_path.exists():
+        try:
+            existing = json.loads(photo_path.read_text(encoding="utf-8"))
+            if existing.get("week") == current_week:
+                return "  ⏭  Foto da semana já atualizada"
+        except Exception:
+            pass
+
+    try:
+        date_cursor = datetime.date.today()
+        apod = None
+        for _ in range(6):
+            resp = requests.get(
+                "https://api.nasa.gov/planetary/apod",
+                params={"api_key": NASA_API_KEY, "date": date_cursor.isoformat()},
+                timeout=20,
+            )
+            resp.raise_for_status()
+            resp.encoding = "utf-8"
+            candidate = resp.json()
+            if candidate.get("media_type") == "image":
+                apod = candidate
+                break
+            date_cursor -= datetime.timedelta(days=1)
+
+        if not apod:
+            return "  ⚠️  Foto da semana: nenhuma imagem encontrada nos últimos dias"
+
+        image_url = apod.get("hdurl") or apod.get("url")
+        title_en = apod.get("title", "")
+        explanation_en = apod.get("explanation", "")
+        credit = apod.get("copyright", "NASA")
+        if credit:
+            credit = credit.strip().replace("\n", " ")
+        else:
+            credit = "NASA"
+
+        prompt = f"""Traduza e adapte para português do Brasil E para espanhol, em tom de divulgação científica acessível:
+TÍTULO: {title_en}
+LEGENDA: {explanation_en}
+
+Responda SOMENTE com JSON válido:
+{{"title":"título PT curto e atrativo","caption":"legenda PT em até 3 frases, linguagem simples, sem jargão","titleEs":"título ES corto y atractivo","captionEs":"leyenda ES en hasta 3 frases, lenguaje simple"}}"""
+        raw = call_haiku(prompt, max_tokens=500)
+        m = re.search(r'\{[\s\S]+\}', raw)
+        data_pt = json.loads(m.group()) if m else {}
+
+        photo_data = {
+            "imageUrl": image_url,
+            "title": data_pt.get("title") or title_en,
+            "titleEn": title_en,
+            "titleEs": data_pt.get("titleEs") or title_en,
+            "caption": data_pt.get("caption") or explanation_en[:300],
+            "captionEn": explanation_en,
+            "captionEs": data_pt.get("captionEs") or explanation_en[:300],
+            "credit": credit,
+            "week": current_week,
+        }
+        photo_path.write_text(json.dumps(photo_data, ensure_ascii=False, indent=2), encoding="utf-8")
+        return f"  ✅  Foto da semana atualizada ({current_week})"
+    except Exception as e:
+        return f"  ⚠️  Foto da semana: {e}"
+
 def cleanup(days=30):
+    """NÃO é mais chamada em main(): o conteúdo antigo deve ser mantido para o arquivo mensal."""
     cutoff = datetime.date.today() - datetime.timedelta(days=days)
     for folder in ["noticias","artigos"]:
         p = BASE_DIR / "content" / folder
@@ -163,6 +772,280 @@ def cleanup(days=30):
                         f.unlink(); print(f"  🗑️  {f.name}")
                 except: pass
 
+# ---------------------------------------------------------------------------
+# 🌙 Fase da Lua, próximos eventos astronômicos e nomes culturais
+# ---------------------------------------------------------------------------
+
+SYNODIC_MONTH = 29.530588853
+REF_NEW_MOON = datetime.datetime(2000, 1, 6, 18, 14, tzinfo=datetime.timezone.utc)
+
+FASES_LUA = [
+    (0.0, "Lua Nova", "new moon"),
+    (1.84566, "Lua Crescente", "waxing crescent moon"),
+    (5.53699, "Quarto Crescente", "first quarter moon"),
+    (9.22831, "Lua Gibosa Crescente", "waxing gibbous moon"),
+    (12.91963, "Lua Cheia", "full moon"),
+    (16.61096, "Lua Gibosa Minguante", "waning gibbous moon"),
+    (20.30228, "Quarto Minguante", "last quarter moon"),
+    (23.99361, "Lua Minguante", "waning crescent moon"),
+    (27.68493, "Lua Nova", "new moon"),
+]
+
+FASES_PRINCIPAIS = [
+    (0.0, "Lua Nova"),
+    (7.38265, "Quarto Crescente"),
+    (14.76529, "Lua Cheia"),
+    (22.14794, "Quarto Minguante"),
+]
+
+# Nomes culturais tradicionais (folclore norte-americano/europeu) para a lua cheia de cada mês
+NOMES_CULTURAIS_LUA_CHEIA = {
+    1: "Lua do Lobo", 2: "Lua da Neve", 3: "Lua do Verme", 4: "Lua Rosa",
+    5: "Lua das Flores", 6: "Lua do Morango", 7: "Lua do Cervo", 8: "Lua do Esturjão",
+    9: "Lua da Colheita", 10: "Lua do Caçador", 11: "Lua do Castor", 12: "Lua Fria",
+}
+
+# Datas anuais aproximadas de eventos astronômicos recorrentes (mês, dia, nome)
+EVENTOS_ASTRONOMICOS = [
+    (1, 3, "Chuva de meteoros Quadrantídeas (pico)"),
+    (3, 20, "Equinócio de março"),
+    (4, 22, "Chuva de meteoros Líridas (pico)"),
+    (5, 5, "Chuva de meteoros Eta Aquáridas (pico)"),
+    (6, 21, "Solstício de junho"),
+    (7, 30, "Chuva de meteoros Delta Aquáridas do Sul (pico)"),
+    (8, 12, "Chuva de meteoros Perseidas (pico)"),
+    (9, 22, "Equinócio de setembro"),
+    (10, 21, "Chuva de meteoros Oriônidas (pico)"),
+    (11, 17, "Chuva de meteoros Leônidas (pico)"),
+    (12, 13, "Chuva de meteoros Gemínidas (pico)"),
+    (12, 21, "Solstício de dezembro"),
+]
+
+
+def moon_age(dt):
+    dias = (dt - REF_NEW_MOON).total_seconds() / 86400
+    return dias % SYNODIC_MONTH
+
+
+def moon_phase_now(dt):
+    age = moon_age(dt)
+    nome_pt, nome_en = "Lua Nova", "new moon"
+    for limite, pt, en in FASES_LUA:
+        if age >= limite:
+            nome_pt, nome_en = pt, en
+    iluminacao = round((1 - math.cos(2 * math.pi * age / SYNODIC_MONTH)) / 2 * 100)
+    return nome_pt, nome_en, iluminacao
+
+
+def proxima_fase_principal(dt):
+    age = moon_age(dt)
+    melhor = None
+    for alvo, nome in FASES_PRINCIPAIS:
+        delta = (alvo - age) % SYNODIC_MONTH
+        if melhor is None or delta < melhor[0]:
+            melhor = (delta, nome)
+    delta_dias, nome = melhor
+    data_futura = (dt + datetime.timedelta(days=delta_dias)).date()
+    return nome, data_futura.isoformat()
+
+
+def proximo_evento_astronomico(dt):
+    hoje = dt.date()
+    candidatos = []
+    for mes, dia, nome in EVENTOS_ASTRONOMICOS:
+        try:
+            data_evento = datetime.date(hoje.year, mes, dia)
+        except ValueError:
+            continue
+        if data_evento < hoje:
+            data_evento = datetime.date(hoje.year + 1, mes, dia)
+        candidatos.append((data_evento, nome))
+    candidatos.sort()
+    data_evento, nome = candidatos[0]
+    return nome, data_evento.isoformat()
+
+
+# Imagens das fases da lua com URLs de download e créditos.
+# As imagens são baixadas para public/moon/ durante o workflow,
+# evitando hotlinking externo que é bloqueado por Wikimedia/NASA.
+MOON_PHASE_IMAGES = {
+    "new moon": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Full_Moon_Luc_Viatour.jpg/800px-Full_Moon_Luc_Viatour.jpg",
+        "credit": "Luc Viatour / Wikimedia Commons / CC BY-SA 3.0",
+        "filename": "new-moon.jpg"
+    },
+    "waxing crescent moon": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/ISS040-E-080672_-_View_of_Earth.jpg/1024px-ISS040-E-080672_-_View_of_Earth.jpg",
+        "credit": "NASA",
+        "filename": "waxing-crescent.jpg"
+    },
+    "first quarter moon": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/NASA-Apollo8-Dec24-Earthrise.jpg/1280px-NASA-Apollo8-Dec24-Earthrise.jpg",
+        "credit": "NASA / Apollo 8",
+        "filename": "first-quarter.jpg"
+    },
+    "waxing gibbous moon": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Supermoon_comparison.jpg/1280px-Supermoon_comparison.jpg",
+        "credit": "NASA / Goddard Space Flight Center",
+        "filename": "waxing-gibbous.jpg"
+    },
+    "full moon": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/800px-FullMoon2010.jpg",
+        "credit": "Gregory H. Revera / Wikimedia Commons / CC BY-SA 3.0",
+        "filename": "full-moon.jpg"
+    },
+    "waning gibbous moon": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/LRO_WAC_mosaic_global_color.jpg/1280px-LRO_WAC_mosaic_global_color.jpg",
+        "credit": "NASA/GSFC/Arizona State University",
+        "filename": "waning-gibbous.jpg"
+    },
+    "last quarter moon": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Moon_nearside.jpg/800px-Moon_nearside.jpg",
+        "credit": "NASA / Goddard Space Flight Center / Arizona State University",
+        "filename": "last-quarter.jpg"
+    },
+    "waning crescent moon": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Chang%27e_5_lunar_orbiter_image_of_the_Moon.jpg/1280px-Chang%27e_5_lunar_orbiter_image_of_the_Moon.jpg",
+        "credit": "CNSA / Chang'e 5",
+        "filename": "waning-crescent.jpg"
+    },
+}
+
+MOON_IMG_DIR = BASE_DIR / "public" / "moon"
+
+def download_moon_images():
+    """Baixa imagens das fases da lua para public/moon/ se ainda não existirem.
+    Isso evita hotlinking externo (Wikimedia/NASA bloqueiam requisições de domínios externos)."""
+    MOON_IMG_DIR.mkdir(parents=True, exist_ok=True)
+    headers = {"User-Agent": "DeOlhoNoCeu/1.0 (https://www.deolhonoceu.com.br)"}
+    for fase, info in MOON_PHASE_IMAGES.items():
+        dest = MOON_IMG_DIR / info["filename"]
+        if dest.exists() and dest.stat().st_size > 10_000:
+            continue  # já baixada e parece válida
+        try:
+            resp = requests.get(info["url"], headers=headers, timeout=20, stream=True)
+            if resp.status_code == 200 and "image" in resp.headers.get("content-type", ""):
+                dest.write_bytes(resp.content)
+        except Exception:
+            pass  # silencia erros — fallback mantém imagem anterior se existir
+
+def moon_phase_image(nome_fase_en):
+    """Retorna path local da imagem da fase da Lua (servida pelo GitHub Pages).
+    Se o arquivo local ainda não existir, retorna URL externa como fallback."""
+    key = nome_fase_en.lower().replace("'", "")
+    info = MOON_PHASE_IMAGES.get(key)
+    if not info:
+        return None
+    local_file = MOON_IMG_DIR / info["filename"]
+    if local_file.exists() and local_file.stat().st_size > 10_000:
+        return {"url": f"/moon/{info['filename']}", "credit": info["credit"]}
+    # fallback: URL externa (pode não funcionar em hotlink, mas melhor que nada)
+    return {"url": info["url"], "credit": info["credit"]}
+
+
+def gen_moon_info():
+    """Calcula a fase atual da Lua, a próxima fase, o próximo evento astronômico
+    e o nome cultural da lua cheia do mês — sempre com uma imagem ilustrativa e crédito."""
+    try:
+        download_moon_images()  # garante que as imagens estão em public/moon/
+        agora = datetime.datetime.now(datetime.timezone.utc)
+        nome_fase_pt, nome_fase_en, iluminacao = moon_phase_now(agora)
+        proxima_fase_nome, proxima_fase_data = proxima_fase_principal(agora)
+        evento_nome, evento_data = proximo_evento_astronomico(agora)
+        nome_cultural = NOMES_CULTURAIS_LUA_CHEIA.get(agora.month, "")
+
+        data = {
+            "fase": nome_fase_pt,
+            "faseEn": nome_fase_en[0].upper() + nome_fase_en[1:],
+            "iluminacao": iluminacao,
+            "proximaFase": proxima_fase_nome,
+            "proximaFaseData": proxima_fase_data,
+            "evento": evento_nome,
+            "eventoData": evento_data,
+            "nomeCultural": nome_cultural,
+            "mes": agora.month,
+            "atualizadoEm": today(),
+        }
+
+        img = moon_phase_image(nome_fase_en)
+        if img:
+            data["imagem"] = img["url"]
+            data["imagemCredito"] = img["credit"]
+
+        (BASE_DIR / "content" / "lua.json").write_text(
+            json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+        return f"  ✅  Fase atual: {nome_fase_pt} ({iluminacao}% iluminada)"
+    except Exception as e:
+        return f"  ⚠️  {e}"
+
+
+def extract_yaml_field(text, field):
+    m = re.search(rf'^{field}:\s*"([^"]*)"', text, re.MULTILINE)
+    return m.group(1) if m else ""
+
+def gen_sitemap():
+    try:
+        base = "https://www.deolhonoceu.com.br"
+        urls = [
+            (base + "/", "1.0", "daily"),
+            (base + "/arquivo-noticias/", "0.8", "daily"),
+            (base + "/arquivo-artigos/", "0.8", "daily"),
+        ]
+        sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n'
+        sitemap += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        for url, priority, changefreq in urls:
+            sitemap += f"""  <url>
+    <loc>{url}</loc>
+    <lastmod>{today()}</lastmod>
+    <changefreq>{changefreq}</changefreq>
+    <priority>{priority}</priority>
+  </url>\n"""
+        sitemap += '</urlset>'
+        out = BASE_DIR / "public" / "sitemap.xml"
+        out.write_text(sitemap, encoding="utf-8")
+        return "  ✅  sitemap.xml gerado"
+    except Exception as e:
+        return f"  ⚠️  {e}"
+
+def gen_robots_txt():
+    try:
+        robots = "User-agent: *\nAllow: /\n\nSitemap: https://www.deolhonoceu.com.br/sitemap.xml\n"
+        (BASE_DIR / "public" / "robots.txt").write_text(robots, encoding="utf-8")
+        return "  ✅  robots.txt gerado"
+    except Exception as e:
+        return f"  ⚠️  {e}"
+
+def gen_youtube_scripts(entries):
+    try:
+        folder = BASE_DIR / "content" / "youtube"
+        folder.mkdir(parents=True, exist_ok=True)
+        date_str = today()
+        output_file = folder / f"{date_str}-scripts.md"
+        if output_file.exists():
+            return "  ⏭  Scripts YouTube já gerados hoje"
+        scripts = []
+        if entries:
+            entry = entries[0]
+            prompt = f"""Crie um script curto (45-60 segundos, ~120 palavras) para YouTube Short sobre:
+TÍTULO: {entry.get('title_original', '')}
+RESUMO: {entry.get('excerpt_original', '')[:200]}
+Termine com: "Leia no link da bio: www.deolhonoceu.com.br"
+Responda SOMENTE com JSON: {{"titulo":"título do vídeo","script":"texto do script","hashtags":"#astronomia #espaco #ciencia #nasa #universo"}}"""
+            raw = call_haiku(prompt, max_tokens=400)
+            data = extract_json(raw)
+            if data:
+                scripts.append(("📰 NOTÍCIA", data))
+        if not scripts:
+            return "  ⚠️  Nenhum script YouTube gerado"
+        md = f"# Scripts YouTube — {date_str}\n\n"
+        for tipo, s in scripts:
+            md += f"## {tipo}: {s.get('titulo','')}\n\n**Script:**\n\n{s.get('script','')}\n\n**Hashtags:** {s.get('hashtags','')}\n\n---\n\n"
+        output_file.write_text(md, encoding="utf-8")
+        return f"  ✅  {len(scripts)} script(s) YouTube em content/youtube/{date_str}-scripts.md"
+    except Exception as e:
+        return f"  ⚠️  YouTube scripts: {e}"
+
+
 def main():
     print(f"\n🔭 De Olho no Céu — {today()}")
     if not ANTHROPIC_API_KEY:
@@ -173,22 +1056,71 @@ def main():
     print(f"   {len(entries)} entradas")
 
     print("\n✍️  Gerando notícias...")
-    for e in entries[:5]:
+    generated = 0
+    titulos_recentes = recent_source_titles(days=5)
+    for e in entries:
+        if generated >= 5:
+            break
+        key = news_key(e)
+        if news_already_saved(key):
+            print(f"  ⏭  Já existe: {key}")
+            continue
+        if any(titles_similar(e["title_original"], t) for t in titulos_recentes):
+            print(f"  ⏭  Duplicata (mesmo assunto já coberto): {e['title_original'][:60]}")
+            continue
         data = gen_news(e)
-        if data: print(save_news(data)); time.sleep(2)
+        if data:
+            print(save_news(data, key, source_title_original=e["title_original"]))
+            generated += 1
+            titulos_recentes.append(e["title_original"])
+            time.sleep(2)
 
     print("\n🌌 Gerando artigos conceituais...")
-    folder = BASE_DIR / "content" / "artigos"
-    existing = " ".join(f.stem for f in folder.glob("*.md")) if folder.exists() else ""
-    available = [t for t in TOPICS if slug(t) not in existing]
-    if not available: available = TOPICS
-    for topic in available[:2]:
+    generated_articles = 0
+    for topic in TOPICS:
+        if generated_articles >= 2:
+            break
+        topic_key = slug(topic)
+        if article_topic_used(topic_key):
+            continue
         print(f"   Tópico: {topic}")
         data = gen_article(topic)
-        if data: print(save_article(data)); time.sleep(2)
+        if data:
+            print(save_article(data, topic_key))
+            generated_articles += 1
+            time.sleep(2)
+    if generated_articles == 0:
+        print("  ⏭  Todos os tópicos fixos cobertos — gerando artigo baseado nas notícias do dia...")
+        noticias_hoje = [e for e in entries if e["date"] == today()][:3]
+        if not noticias_hoje:
+            noticias_hoje = entries[:3]
+        if noticias_hoje:
+            assuntos = "; ".join(e["title_original"] for e in noticias_hoje)
+            topic_inspirado = f"conceito científico relacionado a: {assuntos[:200]}"
+            topic_key = slug(f"inspirado-noticias-{today()}")
+            if not article_topic_used(topic_key):
+                print(f"   Tópico inspirado nas notícias do dia")
+                data = gen_article(topic_inspirado)
+                if data:
+                    print(save_article(data, topic_key))
+                    generated_articles += 1
+        if generated_articles == 0:
+            print("  ⏭  Nenhum artigo gerado hoje")
 
-    print("\n🗑️  Limpando conteúdo antigo...")
-    cleanup()
+    print("\n📷 Atualizando foto da semana...")
+    print(gen_photo_week())
+
+    print("\n🌙 Atualizando informações da Lua...")
+    print(gen_moon_info())
+
+    print("\n🎬 Gerando scripts para YouTube...")
+    print(gen_youtube_scripts(entries))
+
+    print("\n🗺️  Gerando sitemap e robots.txt...")
+    print(gen_sitemap())
+    print(gen_robots_txt())
+
+    # cleanup() desativado: notícias/artigos antigos ficam nas páginas de arquivo (por mês).
     print("\n✅ Concluído!\n")
 
 if __name__ == "__main__":

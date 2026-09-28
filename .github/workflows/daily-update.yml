@@ -1,9 +1,20 @@
 name: Atualização Diária — De Olho no Céu
 
 on:
+  push:
+    branches: [main]
   schedule:
     - cron: '0 10 * * *'
   workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   update-content:
@@ -19,18 +30,68 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Instalar dependências
+      - name: Instalar dependências Python
         run: pip install -r automation/requirements.txt
 
       - name: Executar script
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          NASA_API_KEY: ${{ secrets.NASA_API_KEY }}
         run: python automation/daily_update.py
 
       - name: Commit e push
         run: |
           git config user.name "De Olho no Céu Bot"
           git config user.email "bot@deolhonoceu.vercel.app"
-          git add content/
+          git add content/ public/
           git diff --staged --quiet || git commit -m "🔭 Conteúdo automático: $(date '+%Y-%m-%d')"
-          git push
+
+          for tentativa in 1 2 3 4 5; do
+            git fetch origin main
+            # Garante que não há mudanças não-staged antes do rebase
+            git add -A
+            if ! git rebase origin/main; then
+              echo "⚠️  Conflito detectado. Mantendo a versão já publicada."
+              git diff --name-only --diff-filter=U | while read -r f; do
+                git checkout --theirs -- "$f"
+                git add "$f"
+              done
+              GIT_EDITOR=true git rebase --continue || git rebase --abort
+            fi
+            if git push; then
+              echo "✅ Push feito na tentativa $tentativa"
+              break
+            fi
+            echo "⚠️  Push rejeitado, tentativa $tentativa — tentando de novo..."
+            sleep $((RANDOM % 6 + 2))
+          done
+
+  build-and-deploy:
+    needs: update-content
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Instalar dependências Node
+        run: npm install
+
+      - name: Build (export estático)
+        run: npm run build
+
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload do artefato
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+
+      - name: Deploy no GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

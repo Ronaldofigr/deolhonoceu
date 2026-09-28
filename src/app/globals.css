@@ -100,6 +100,18 @@ h1,h2,h3,h4 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; line-h
 .hero-subtitle { font-family: 'Crimson Pro', serif; font-size: 1.05rem; color: var(--text-secondary); font-style: italic; max-width: 540px; margin: 0 auto; }
 
 /* TICKER */
+.moon-bar { background: var(--panel-dark); border-bottom: 1px solid var(--border-dim); padding: 0.75rem 1.5rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; position: relative; }
+.moon-bar-img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 1px solid var(--border-glow); }
+.moon-bar-items { display: flex; flex-wrap: wrap; gap: 1.25rem; flex: 1; }
+.moon-bar-item { display: flex; flex-direction: column; gap: 2px; }
+.moon-bar-label { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.08em; color: var(--text-muted); text-transform: uppercase; }
+.moon-bar-value { font-size: 0.8rem; color: var(--text-secondary); }
+.moon-bar-credit { font-family: 'Space Mono', monospace; font-size: 0.6rem; color: var(--text-muted); flex-basis: 100%; text-align: right; }
+@media (max-width: 640px) {
+  .moon-bar { padding: 0.75rem 1rem; }
+  .moon-bar-items { gap: 0.75rem; }
+}
+
 .live-ticker { background: var(--panel-dark); border-bottom: 1px solid var(--border-dim); padding: 0.45rem 1.5rem; display: flex; align-items: center; gap: 0.75rem; overflow: hidden; }
 .ticker-label { font-family: 'Space Mono', monospace; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; color: var(--solar-gold); background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.3); padding: 2px 7px; border-radius: 3px; flex-shrink: 0; text-transform: uppercase; }
 .ticker-dot { width: 6px; height: 6px; background: var(--solar-gold); border-radius: 50%; animation: pulse-gold 2s infinite; flex-shrink: 0; }
@@ -126,6 +138,9 @@ h1,h2,h3,h4 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; line-h
 .panel-count { font-family: 'Space Mono', monospace; font-size: 0.65rem; color: var(--text-muted); }
 
 /* NEWS CARD */
+.news-card-image-wrap { position: relative; margin-bottom: 0.75rem; border-radius: 6px; overflow: hidden; }
+.news-card-image { width: 100%; max-height: 220px; object-fit: cover; display: block; }
+.news-card-image-credit { position: absolute; bottom: 0; right: 0; background: rgba(0,0,0,0.6); color: var(--text-muted); font-size: 0.6rem; padding: 0.2rem 0.5rem; font-family: 'Space Mono', monospace; }
 .news-card { background: var(--panel-dark); border: 1px solid var(--border-dim); border-radius: 8px; padding: 1rem; margin-bottom: 0.75rem; transition: border-color 0.2s, transform 0.2s; cursor: pointer; }
 .news-card:hover { border-color: var(--border-glow); transform: translateX(3px); }
 .news-card-meta { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; }
@@ -160,6 +175,16 @@ h1,h2,h3,h4 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; line-h
 .ad-slot { background: var(--panel-dark); border: 1px dashed var(--border-dim); border-radius: 6px; padding: 1rem; text-align: center; margin: 1rem 0; min-height: 90px; display: flex; align-items: center; justify-content: center; }
 .ad-slot-label { font-family: 'Space Mono', monospace; font-size: 0.6rem; color: var(--text-muted); letter-spacing: 0.08em; }
 
+
+/* ── Adsterra responsivo ─────────────────────────────────────────── */
+.ad-desktop { display: block; }
+.ad-mobile  { display: none;  }
+@media (max-width: 640px) {
+  .ad-desktop { display: none;  }
+  .ad-mobile  { display: block; }
+}
+.adsterra-slot { background: var(--panel-dark); border: 1px dashed var(--border-dim); border-radius: 6px; margin: 0.75rem 0; display: flex; align-items: center; justify-content: center; }
+
 /* FOOTER */
 .site-footer { background: var(--cosmos-black); border-top: 1px solid var(--border-dim); padding: 1.5rem; text-align: center; position: relative; z-index: 1; }
 .footer-text { font-family: 'Space Mono', monospace; font-size: 0.65rem; color: var(--text-muted); letter-spacing: 0.06em; }
@@ -170,4 +195,75 @@ h1,h2,h3,h4 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; line-h
   .main-grid::after { display: none; }
   .header-nav { display: none; }
   .hero-title { font-size: 1.4rem; }
+}
+/* PHOTO OF THE WEEK */
+.photo-week {
+  position: relative; z-index: 1;
+  background: var(--deep-space);
+  border-bottom: 1px solid var(--border-dim);
+  padding: 1.5rem;
+}
+.photo-week-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--aurora-cyan);
+  margin-bottom: 0.9rem;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.photo-week-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 380px) 1fr;
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  background: var(--panel-dark);
+  border: 1px solid var(--border-dim);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.photo-week-img {
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  max-height: 320px;
+  object-fit: cover;
+  display: block;
+}
+.photo-week-caption {
+  padding: 1.2rem 1.5rem 1.2rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.photo-week-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--star-white);
+  line-height: 1.3;
+  margin-bottom: 0.6rem;
+}
+.photo-week-text {
+  font-family: 'Crimson Pro', serif;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 0.8rem;
+}
+.photo-week-credit {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .photo-week-inner { grid-template-columns: 1fr; }
+  .photo-week-img { max-height: 240px; }
+  .photo-week-caption { padding: 1rem 1.2rem 1.2rem; }
 }
