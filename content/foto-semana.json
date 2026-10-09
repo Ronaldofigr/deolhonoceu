@@ -1,11 +1,12 @@
 {
-  "imageUrl": "https://science.nasa.gov/wp-content/themes/nasa-child/assets/images/nasa-logo@2x.png",
-  "title": "A Cratera Gigante da Lua Marciana",
-  "titleEn": "NASA Science",
-  "titleEs": "El Cráter Gigante de la Luna Marciana",
-  "caption": "A cratera Stickney, a maior da lua Fobos, tem 9 quilômetros de largura e quase metade do tamanho de toda a lua! O impacto que a criou foi tão poderoso que quase destruiu Fobos completamente. Mesmo com uma gravidade muito fraca, material solto ainda escorrega pelas paredes da cratera ao longo do tempo.",
-  "captionEn": "Stickney Crater, the largest crater on the martian moon Phobos, is named for Chloe Angeline Stickney Hall, mathematician and wife of astronomer Asaph Hall. Asaph Hall discovered both the Red Planet's moons in 1877. Over 9 kilometers across, Stickney is nearly half the diameter of Phobos itself, so large that the impact that blasted out the crater likely came close to shattering the tiny moon. This enhanced-color image of Stickney and surroundings was recorded by the HiRISE camera onboard the Mars Reconnaissance Orbiter as it passed within some six thousand kilometers of Phobos in March of 2008. Even though the surface gravity of asteroid-like Phobos is less than 1/1000th Earth's gravity, streaks suggest loose material slid down inside the crater walls over time. Light bluish regions near the crater's rim could indicate a relatively freshly exposed surface. The origin of the curious grooves along the surface is mysterious but may be related to tidal stresses experienced by close-orbiting Phobos or the crater-forming impact itself.Tomorrow's picture: farside\t\t\t\t\t\t",
-  "captionEs": "El cráter Stickney, el más grande de la luna Fobos, tiene 9 kilómetros de ancho y casi la mitad del tamaño de toda la luna. El impacto que lo creó fue tan poderoso que casi destruye a Fobos completamente. Incluso con una gravedad muy débil, el material suelto sigue deslizándose por las paredes del cráter a lo largo del tiempo.",
-  "credit": "NASA",
-  "week": "2026-W41"
+  "imageUrl": "https://www.nasa.gov/wp-content/uploads/2026/10/davinci-heat-test-1.jpg",
+  "title": "Sonda DAVINCI da NASA resiste ao calor de Vénus",
+  "titleEn": "NASA’s DAVINCI probe can stand the heat",
+  "titleEs": "La sonda DAVINCI de la NASA resiste el calor de Venus",
+  "caption": "Modelo de engenharia da sonda de descida DAVINCI (Deep Atmosphere Venus Investigation of Noble gases, Chemistry, and Imaging) da NASA. O protótipo passou um teste-chave entre 28 de agosto e 10 de setembro de 2026, demonstrando que consegue sobreviver às temperaturas extremas de Vénus. Crédito: NASA/Mike Guinto.",
+  "captionEn": "An engineering model of NASA’s DAVINCI (Deep Atmosphere Venus Investigation of Noble gases, Chemistry, and Imaging) descent probe. The prototype passed a key test that ran from Aug. 28 to Sept. 10, 2026, showing it can survive the extreme temperatures of Venus. Credit: NASA/Mike Guinto.",
+  "captionEs": "Modelo de ingeniería de la sonda de descenso DAVINCI de la NASA. El prototipo superó una prueba clave entre el 28 de agosto y el 10 de septiembre de 2026, demostrando que puede sobrevivir a las temperaturas extremas de Venus. Crédito: NASA/Mike Guinto.",
+  "credit": "NASA/Mike Guinto",
+  "week": "2026-W40",
+  "moonPhase": "Lua Cheia"
 }
