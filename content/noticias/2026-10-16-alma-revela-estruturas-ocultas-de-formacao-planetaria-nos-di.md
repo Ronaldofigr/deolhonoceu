@@ -6,11 +6,11 @@ excerpt: "Com a máxima resolução angular do ALMA (~0,02″), astrónomos dete
 excerptEn: "With ALMA’s highest angular resolution (~0.02″), astronomers detected rings, gaps and cavities in extremely compact protoplanetary disks in Lupus — structures on scales comparable to the inner Solar System."
 excerptEs: "Con la máxima resolución angular de ALMA (~0,02″), astrónomos detectaron anillos, lagunas y cavidades en discos protoplanetarios extremadamente compactos en Lobo — estructuras a escalas comparables al Sistema Solar interior."
 source: "ALMA / The Astrophysical Journal Letters / CCVAlg"
-sourceUrl: "https://ccvalg.pt/astronomia/noticias/2026/10/16_discos_compactos_alma.htm"
+sourceUrl: "https://www.ccvalg.pt/astronomia/noticias/2026/10/16_discos_compactos_alma.htm"
 sourceType: "obs"
 date: "2026-10-16"
-image: "https://ts3.mm.bing.net/th?id=OIP.JiCbRnGoMPRRlMKK41ED-gHaHa&pid=15.1"
-imageCredit: "ALMA (ESO/NAOJ/NRAO)"
+image: "https://cdn.imgchest.com/files/9560c57a673b.jpg"
+imageCredit: "P. Curone et al. - ALMA (ESO/NAOJ/NRAO)"
 aiGenerated: false
 humanReviewed: true
 ---
