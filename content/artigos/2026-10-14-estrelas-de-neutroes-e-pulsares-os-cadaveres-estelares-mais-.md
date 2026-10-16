@@ -8,8 +8,8 @@ categoryEs: "Astrofísica estelar"
 type: "explainer"
 readingTime: 10
 date: "2026-10-14"
-excerpt: "Quando uma estrela com mais de cerca de oito massas solares esgota o combustível nuclear no núcleo, o colapso gravitacional é inevitável. Se a massa do núcleo…"
-excerptEn: "When a star of more than about eight solar masses exhausts the nuclear fuel in its core, gravitational collapse is inevitable. If the residual core mass lies…"
+excerpt: "Quando uma estrela massiva esgota o combustível no núcleo, o colapso pode originar uma estrela de neutrões — um dos objetos mais densos e extremos do Universo."
+excerptEn: "When a massive star exhausts the fuel in its core, collapse can produce a neutron star — one of the densest and most extreme objects in the Universe."
 excerptEs: "Las estrellas de neutrones (1,4–3 M☉, radio ~10–15 km) son el núcleo colapsado de estrellas masivas. Los púlsares son estrellas de neutrones en rotación rápida…"
 image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Pulsar_schematic.svg/640px-Pulsar_schematic.svg.png"
 imageCredit: "Wikimedia Commons / Mysid"
@@ -17,13 +17,13 @@ aiGenerated: false
 humanReviewed: true
 ---
 
-Quando uma estrela com mais de cerca de oito massas solares esgota o combustível nuclear no núcleo, o colapso gravitacional é inevitável. Se a massa do núcleo residual ficar entre aproximadamente 1,4 e 2–3 massas solares, o resultado não é um buraco negro — é uma **estrela de neutrões**: um dos objetos mais densos e extremos do Universo.
+Quando uma estrela massiva esgota o combustível no núcleo, o colapso pode originar uma **estrela de neutrões** — um dos objetos mais densos e extremos do Universo.
 
 <!--more-->
 
 ## O que é uma estrela de neutrões?
 
-Uma estrela de neutrões é o núcleo colapsado de uma estrela massiva após uma supernova de colapso do núcleo. Num volume com o tamanho de uma cidade (raio típico de 10–15 km) concentra-se uma massa superior à do Sol. A densidade média chega a (10^{17},mathrm{kg,m^{-3}}) — um dedal de matéria de estrela de neutrões pesaria milhares de milhões de toneladas na Terra.
+Uma estrela de neutrões é o núcleo colapsado de uma estrela massiva após uma supernova de colapso do núcleo. Se a massa do núcleo residual ficar entre cerca de 1,4 e 2–3 massas solares, o resultado é uma estrela de neutrões (e não um buraco negro). Num volume com o tamanho de uma cidade (raio típico de 10–15 km) concentra-se uma massa superior à do Sol. A densidade média chega a (10^{17},mathrm{kg,m^{-3}}) — um dedal de matéria de estrela de neutrões pesaria milhares de milhões de toneladas na Terra.
 
 Nessas condições, os eletrões são esmagados contra os protões e formam-se neutrões (processo de captura eletrónica). A pressão que impede o colapso total já não é a pressão térmica nem a degenerescência eletrónica: é a **pressão de degenerescência dos neutrões**, um efeito quântico da mecânica estatística de Fermi.
 
@@ -63,13 +63,13 @@ As estrelas de neutrões são o último estádio estável da evolução estelar 
 
 <!--lang:en-->
 
-When a star of more than about eight solar masses exhausts the nuclear fuel in its core, gravitational collapse is inevitable. If the residual core mass lies between roughly 1.4 and 2–3 solar masses, the outcome is not a black hole — it is a **neutron star**: one of the densest and most extreme objects in the Universe.
+When a massive star exhausts the fuel in its core, collapse can produce a **neutron star** — one of the densest and most extreme objects in the Universe.
 
 <!--more-->
 
 ## What is a neutron star?
 
-A neutron star is the collapsed core of a massive star after a core-collapse supernova. In a volume the size of a city (typical radius 10–15 km) sits a mass greater than the Sun’s. The average density reaches (10^{17},mathrm{kg,m^{-3}}) — a thimbleful of neutron-star matter would weigh billions of tonnes on Earth.
+A neutron star is the collapsed core of a massive star after a core-collapse supernova. If the residual core mass lies between roughly 1.4 and 2–3 solar masses, the outcome is a neutron star (not a black hole). In a volume the size of a city (typical radius 10–15 km) sits a mass greater than the Sun’s. The average density reaches (10^{17},mathrm{kg,m^{-3}}) — a thimbleful of neutron-star matter would weigh billions of tonnes on Earth.
 
 Under those conditions electrons are crushed onto protons and form neutrons (electron capture). The pressure that prevents total collapse is no longer thermal pressure or electron degeneracy: it is **neutron degeneracy pressure**, a quantum effect of Fermi statistics.
 
