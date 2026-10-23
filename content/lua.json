@@ -1,14 +1,14 @@
 {
   "fase": "Lua Gibosa Crescente",
   "faseEn": "Waxing gibbous moon",
-  "iluminacao": 87,
+  "iluminacao": 93,
   "proximaFase": "Lua Cheia",
   "proximaFaseData": "2026-10-26",
   "evento": "Chuva de meteoros Leônidas (pico)",
   "eventoData": "2026-11-17",
   "nomeCultural": "Lua do Caçador",
   "mes": 10,
-  "atualizadoEm": "2026-10-22",
+  "atualizadoEm": "2026-10-23",
   "imagem": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Supermoon_comparison.jpg/1280px-Supermoon_comparison.jpg",
   "imagemCredito": "NASA / Goddard Space Flight Center"
 }
