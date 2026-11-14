@@ -1,14 +1,14 @@
 {
   "fase": "Lua Crescente",
   "faseEn": "Waxing crescent moon",
-  "iluminacao": 16,
+  "iluminacao": 24,
   "proximaFase": "Quarto Crescente",
   "proximaFaseData": "2026-11-17",
   "evento": "Chuva de meteoros Leônidas (pico)",
   "eventoData": "2026-11-17",
   "nomeCultural": "Lua do Castor",
   "mes": 11,
-  "atualizadoEm": "2026-11-13",
+  "atualizadoEm": "2026-11-14",
   "imagem": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/ISS040-E-080672_-_View_of_Earth.jpg/1024px-ISS040-E-080672_-_View_of_Earth.jpg",
   "imagemCredito": "NASA"
 }
