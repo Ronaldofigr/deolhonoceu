@@ -849,6 +849,9 @@ def proxima_fase_principal(dt):
     return nome, data_futura.isoformat()
 
 
+from moon_calc import moon_phase_now, proxima_fase_principal  # noqa
+
+
 def proximo_evento_astronomico(dt):
     hoje = dt.date()
     candidatos = []

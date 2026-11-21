@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import './extras.css'
+import AdsterraScripts from '@/components/AdsterraScripts'
 
 const SITE_URL = 'https://www.deolhonoceu.com.br'
 const SITE_NAME = 'De Olho no Céu'
@@ -78,7 +80,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           gtag('config', 'G-1MSY7XE59V');
         `}} />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <AdsterraScripts />
+      </body>
     </html>
   )
 }

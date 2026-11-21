@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react'
 import { AdsterraResponsive } from '@/components/AdsterraAd'
 import Link from 'next/link'
+import MoonPhase from '@/components/MoonPhase'
+import { getMoonState, PHASE_NAMES, type MoonState } from '@/lib/moon'
 import type { NewsItem, Article, TickerData } from '@/lib/content'
 
 const T = {
@@ -104,6 +106,8 @@ const T = {
   }
 }
 
+const NAV_IDS = ['noticias', 'artigos', 'sobre']
+
 // Fallback hardcoded — usado apenas se ticker.json não existir
 const TICKER_FALLBACK: TickerData = {
   pt: [
@@ -141,8 +145,22 @@ interface PhotoWeek {
   week: string
 }
 
+const LOCALES = { pt: 'pt-BR', es: 'es-ES', en: 'en-US' } as const
+
+function parseDate(d: string) {
+  return /^\d{4}-\d{2}-\d{2}$/.test(d) ? new Date(+d.slice(0, 4), +d.slice(5, 7) - 1, +d.slice(8, 10)) : new Date(d)
+}
+
+function fmtDateObj(dt: Date, lang: 'pt' | 'en' | 'es') {
+  return dt.toLocaleDateString(LOCALES[lang], { day: '2-digit', month: 'short', year: 'numeric' })
+}
+
+function fmtISO(d: Date) {
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+}
+
 function fmtDate(d: string, lang: string) {
-  const dt = new Date(d)
+  const dt = parseDate(d)
   if (lang === 'pt') return dt.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' })
   if (lang === 'es') return dt.toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' })
   return dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
@@ -171,7 +189,25 @@ export default function HomeClient({
   const [tick, setTick] = useState(0)
   const [expanded, setExpanded] = useState<string | null>(null)
   const [expandedNews, setExpandedNews] = useState<string | null>(null)
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [moonNow, setMoonNow] = useState<MoonState | null>(null)
   const t = T[lang]
+
+  // Lua calculada no navegador (sempre a de agora) e atualizada a cada 10 min
+  useEffect(() => {
+    const update = () => setMoonNow(getMoonState(new Date()))
+    update()
+    const id = setInterval(update, 10 * 60 * 1000)
+    return () => clearInterval(id)
+  }, [])
+
+  // Fecha o menu mobile com Esc
+  useEffect(() => {
+    if (!menuOpen) return
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setMenuOpen(false)
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [menuOpen])
 
   // Usa o ticker vindo do JSON; se nulo, cai para o fallback hardcoded
   const TICKERS = ticker ?? TICKER_FALLBACK
@@ -196,15 +232,21 @@ export default function HomeClient({
           <div className="logo-icon" />
           <span className="logo-text">{t.title} <span className="glow">{t.glow}</span></span>
         </Link>
-        <nav className="header-nav">
-          {t.nav.map(n => <a key={n} href={`#${n.toLowerCase()}`}>{n}</a>)}
-          <Link href="/arquivo-noticias/">{t.archiveNews}</Link>
-          <Link href="/arquivo-artigos/">{t.archiveArticles}</Link>
+        <nav className={`header-nav${menuOpen ? ' open' : ''}`} id="site-nav">
+          {t.nav.map((n, i) => <a key={n} href={`#${NAV_IDS[i]}`} onClick={() => setMenuOpen(false)}>{n}</a>)}
+          <Link href="/arquivo-noticias/" onClick={() => setMenuOpen(false)}>{t.archiveNews}</Link>
+          <Link href="/arquivo-artigos/" onClick={() => setMenuOpen(false)}>{t.archiveArticles}</Link>
         </nav>
-        <div className="lang-toggle">
-          <button className={`lang-btn ${lang==='pt' ? 'active':''}`} onClick={()=>setLang('pt')}>PT</button>
-          <button className={`lang-btn ${lang==='en' ? 'active':''}`} onClick={()=>setLang('en')}>EN</button>
-          <button className={`lang-btn ${lang==='es' ? 'active':''}`} onClick={()=>setLang('es')}>ES</button>
+        <div className="header-actions">
+          <div className="lang-toggle">
+            <button className={`lang-btn ${lang==='pt' ? 'active':''}`} onClick={()=>setLang('pt')}>PT</button>
+            <button className={`lang-btn ${lang==='en' ? 'active':''}`} onClick={()=>setLang('en')}>EN</button>
+            <button className={`lang-btn ${lang==='es' ? 'active':''}`} onClick={()=>setLang('es')}>ES</button>
+          </div>
+          <button
+            className="menu-toggle" aria-label="Menu" aria-expanded={menuOpen} aria-controls="site-nav"
+            onClick={() => setMenuOpen(o => !o)}
+          >{menuOpen ? '✕' : '☰'}</button>
         </div>
       </header>
 
@@ -252,44 +294,45 @@ export default function HomeClient({
         </div>
       )}
 
-      {/* FASE DA LUA */}
-      {moonInfo && (
-        <div className="moon-bar">
-          {moonInfo.imagem && (
-            <img
-              src={moonInfo.imagem}
-              alt={pick(lang, moonInfo.fase, moonInfo.faseEn)}
-              className="moon-bar-img"
-              onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
-            />
-          )}
-          <div className="moon-bar-items">
-            <div className="moon-bar-item">
-              <span className="moon-bar-label">{t.moonPhase}</span>
-              <span className="moon-bar-value">
-                🌙 {pick(lang, moonInfo.fase, moonInfo.faseEn)} · {moonInfo.iluminacao}% {t.moonIllum}
-              </span>
-            </div>
-            <div className="moon-bar-item">
-              <span className="moon-bar-label">{t.moonNext}</span>
-              <span className="moon-bar-value">{moonInfo.proximaFase} — {fmtDate(moonInfo.proximaFaseData, lang)}</span>
-            </div>
-            <div className="moon-bar-item">
-              <span className="moon-bar-label">{t.moonEvent}</span>
-              <span className="moon-bar-value">{moonInfo.evento} — {fmtDate(moonInfo.eventoData, lang)}</span>
-            </div>
-            {moonInfo.nomeCultural && (
+      {/* FASE DA LUA — calculada ao vivo; JSON só como reserva antes da hidratação */}
+      {(moonNow || moonInfo) && (() => {
+        const todayISO = fmtISO(new Date())
+        const phaseName = moonNow ? PHASE_NAMES[lang][moonNow.phase] : pick(lang, moonInfo!.fase, moonInfo!.faseEn)
+        const illum = moonNow ? Math.round(moonNow.illumination) : moonInfo!.iluminacao
+        const nextName = moonNow ? PHASE_NAMES[lang][moonNow.next.key] : moonInfo!.proximaFase
+        const nextDate = moonNow ? fmtDateObj(moonNow.next.date, lang) : fmtDate(moonInfo!.proximaFaseData, lang)
+        const showEvent = !!moonInfo && moonInfo.eventoData >= todayISO
+        const showCultural = !!moonInfo?.nomeCultural && moonInfo.mes === new Date().getMonth() + 1
+        return (
+          <div className="moon-bar">
+            {moonNow
+              ? <MoonPhase illumination={moonNow.illumination} waxing={moonNow.waxing} label={`${phaseName} · ${illum}%`} />
+              : <span className="moon-bar-svg" aria-hidden="true" />}
+            <div className="moon-bar-items">
               <div className="moon-bar-item">
-                <span className="moon-bar-label">{t.moonCultural}</span>
-                <span className="moon-bar-value">{moonInfo.nomeCultural}</span>
+                <span className="moon-bar-label">{t.moonPhase}</span>
+                <span className="moon-bar-value">{phaseName} · {illum}% {t.moonIllum}</span>
               </div>
-            )}
+              <div className="moon-bar-item">
+                <span className="moon-bar-label">{t.moonNext}</span>
+                <span className="moon-bar-value">{nextName} — {nextDate}</span>
+              </div>
+              {showEvent && (
+                <div className="moon-bar-item">
+                  <span className="moon-bar-label">{t.moonEvent}</span>
+                  <span className="moon-bar-value">{moonInfo!.evento} — {fmtDate(moonInfo!.eventoData, lang)}</span>
+                </div>
+              )}
+              {showCultural && (
+                <div className="moon-bar-item">
+                  <span className="moon-bar-label">{t.moonCultural}</span>
+                  <span className="moon-bar-value">{moonInfo!.nomeCultural}</span>
+                </div>
+              )}
+            </div>
           </div>
-          {moonInfo.imagemCredito && (
-            <span className="moon-bar-credit">{t.photoCredit}: {moonInfo.imagemCredito}</span>
-          )}
-        </div>
-      )}
+        )
+      })()}
 
       {/* MAIN GRID */}
       <main className="main-grid">
