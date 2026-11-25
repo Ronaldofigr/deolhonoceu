@@ -9,8 +9,8 @@ source: "Kavli IPMU / The Astrophysical Journal Letters"
 sourceUrl: "https://www.ipmu.jp/en/20261125-LRD"
 sourceType: "sci"
 date: "2026-11-25"
-image: "https://www.ipmu.jp/sites/default/files/styles/large_width_550/public/2026-11/20261124-LRD_cosmic_history_v7_EN.png?itok=5s9tA301"
-imageCredit: "Kavli IPMU (galaxy images: NASA, ESA, CSA, STScI, S. Finkelstein, M. Bagley, R. Larson (UT Austin), ESA/Hubble, The Hubble Heritage Team (STScI/AURA), modified)"
+image: "https://www.asiaresearchnews.com/sites/default/files/articles_images/Fig1_14.png"
+imageCredit: "Kavli IPMU / COSMOS-Web / Tanaka et al."
 aiGenerated: false
 humanReviewed: true
 ---
