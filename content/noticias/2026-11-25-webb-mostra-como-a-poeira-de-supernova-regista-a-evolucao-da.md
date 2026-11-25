@@ -10,7 +10,7 @@ sourceUrl: "https://science.nasa.gov/missions/webb/nasas-webb-shows-how-supernov
 sourceType: "sci"
 date: "2026-11-25"
 image: "https://assets.science.nasa.gov/content/dam/science/missions/webb/science/2026/11/STScI-01M6PRXJ9A7S81CH1C9SJP1MB0.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg"
-imageCredit: "NASA, ESA, CSA, STScI, Tea Temim (Columbia), Rick Arendt (UMBC), Dan Milisavljevic (Purdue); Processing: Joseph DePasquale (STScI)"
+imageCredit: "NASA, ESA, CSA, STScI, et al."
 aiGenerated: false
 humanReviewed: true
 ---
