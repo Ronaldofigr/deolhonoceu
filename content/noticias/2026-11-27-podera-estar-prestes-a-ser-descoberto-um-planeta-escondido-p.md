@@ -1,0 +1,56 @@
+---
+title: "Poderá estar prestes a ser descoberto um planeta escondido para além de Neptuno?"
+titleEn: "Could a hidden planet beyond Neptune be about to be discovered?"
+titleEs: "¿Podría estar a punto de descubrirse un planeta escondido más allá de Neptuno?"
+excerpt: "Simulações apontam para o Planeta X2, com 1,5–2 massas terrestres e órbita entre 350–500 UA, como possível explicação para as órbitas invulgares de objetos transneptunianos."
+excerptEn: "Simulations point to Planet X2, with 1.5–2 Earth masses and an orbit of 350–500 AU, as a possible explanation for the unusual orbits of trans-Neptunian objects."
+excerptEs: "Simulaciones apuntan al Planeta X2, con 1,5–2 masas terrestres y órbita entre 350–500 UA, como posible explicación para las órbitas inusuales de objetos transneptunianos."
+source: "Monthly Notices of the Royal Astronomical Society / RAS / Starlust"
+sourceUrl: "https://starlust.org/possible-earth-class-planet-hiding-beyond-neptune-could-rewrite-solar-system-history/"
+sourceType: "sci"
+date: "2026-11-27"
+image: "https://d.techtimes.com/en/full/479014/artists-impression-hypothetical-planet-x2-which-could-hiding-beyond-neptune.jpg"
+imageCredit: "Patryk Sofia Lykawka / SpaceEngine"
+aiGenerated: false
+humanReviewed: true
+---
+
+A realmente existir um planeta escondido para além de Neptuno, os astrónomos identificaram como este poderá ser e qual o seu comportamento, de forma a explicar os acontecimentos misteriosos nos confins do nosso Sistema Solar. Tem havido muito debate sobre a existência deste mundo hipotético, mas os investigadores pensam que podem estar um passo mais perto de encontrar uma resposta, após terem utilizado simulações computacionais para modelar a massa, a órbita e a gravidade do planeta proposto.
+
+Estas características forneceriam uma explicação para algumas das órbitas invulgares de objetos gelados observados muito para além de Neptuno, de acordo com o novo artigo científico publicado na revista Monthly Notices of the Royal Astronomical Society. O planeta proposto difere da hipótese do Planeta Nove, que sugere que um mundo substancialmente mais massivo poderia ser responsável por algumas das órbitas peculiares observadas para além do oitavo planeta a contar do Sol.
+
+O professor da Universidade do Sul de Queensland, Patryk Sofia Lykawka — que trabalha na Universidade de Kindai, no Japão —, liderou a investigação sobre este possível mundo, ao qual ele e a sua equipa deram o nome de «Planeta X2» (PX2). O planeta proposto teria cerca de 1,5 a 2 vezes a massa da Terra e orbitaria a uma distância do Sol centenas de vezes maior do que a do nosso próprio planeta.
+
+Embora PX2 continue a ser hipotético, a investigação fornece uma nova maneira de estudar as regiões mais distantes do Sistema Solar — e o levantamento do céu que o Observatório Vera C. Rubin está a realizar poderá ajudar os astrónomos a testar a teoria. «Imaginem descobrir, após décadas a mapear o nosso Sistema Solar, que outro planeta estava escondido de nós este tempo todo», afirmou o professor Lykawka. «Se este planeta existir, poderá alterar o modo como compreendemos a história do nosso Sistema Solar e como os seus objetos mais distantes passaram a seguir órbitas tão invulgares.»
+
+Para lá de Neptuno encontra-se uma vasta região povoada por corpos gelados conhecidos como objetos transneptunianos. A maioria destes objetos pertence à Cintura de Kuiper e move-se em órbitas num amplo disco situado entre 38 e 50 vezes a distância da Terra ao Sol. Ao longo das últimas duas décadas, os astrónomos descobriram uma população crescente de objetos mais distantes que se movem em órbitas invulgarmente inclinadas ou alongadas, difíceis de explicar apenas pela influência gravitacional dos planetas conhecidos. Um dos mais intrigantes é Sedna, um objeto distante cuja órbita altamente alongada o leva muito para além da região ocupada pelos planetas conhecidos.
+
+Recorrendo a simulações computacionais que abrangem 4,5 mil milhões de anos da evolução do Sistema Solar, os investigadores estudaram se a gravidade de um planeta distante poderia ajudar a explicar estes padrões orbitais invulgares. As suas simulações mostram que a gravidade de PX2 poderia influenciar a forma como os objetos gelados se movem pelas regiões mais remotas do Sistema Solar, separando-os da influência gravitacional de Neptuno ou inclinando as suas órbitas para ângulos inesperadamente elevados. O modelo mostra que PX2 poderia ter uma órbita elíptica com um semieixo maior de cerca de 350 a 500 unidades astronómicas. Mesmo no seu ponto de maior aproximação, o planeta permaneceria a pelo menos 200 unidades astronómicas do Sol.
+
+<!--lang:en-->
+
+If a hidden planet really exists beyond Neptune, astronomers have identified what it might be like and how it would behave, in order to explain the mysterious events at the outer edges of our Solar System. There has been much debate about the existence of this hypothetical world, but researchers believe they may be one step closer to finding an answer after using computer simulations to model the mass, orbit and gravity of the proposed planet.
+
+These characteristics would provide an explanation for some of the unusual orbits of icy objects observed far beyond Neptune, according to the new scientific paper published in the journal Monthly Notices of the Royal Astronomical Society. The proposed planet differs from the Planet Nine hypothesis, which suggests that a substantially more massive world could be responsible for some of the peculiar orbits observed beyond the eighth planet from the Sun.
+
+Professor Patryk Sofia Lykawka of the University of Southern Queensland — who works at Kindai University in Japan — led the research into this possible world, which he and his team named “Planet X2” (PX2). The proposed planet would have about 1.5 to 2 times the mass of Earth and would orbit the Sun at a distance hundreds of times greater than that of our own planet.
+
+Although PX2 remains hypothetical, the research provides a new way to study the most distant regions of the Solar System — and the sky survey being carried out by the Vera C. Rubin Observatory could help astronomers test the theory. “Imagine discovering, after decades of mapping our Solar System, that another planet had been hidden from us all this time,” said Professor Lykawka. “If this planet exists, it could change the way we understand the history of our Solar System and how its most distant objects came to follow such unusual orbits.”
+
+Beyond Neptune lies a vast region populated by icy bodies known as trans-Neptunian objects. Most of these objects belong to the Kuiper Belt and move in orbits in a broad disk located between 38 and 50 times the Earth-Sun distance. Over the past two decades, astronomers have discovered a growing population of more distant objects that move in unusually inclined or elongated orbits, difficult to explain solely by the gravitational influence of the known planets. One of the most intriguing is Sedna, a distant object whose highly elongated orbit takes it far beyond the region occupied by the known planets.
+
+Using computer simulations spanning 4.5 billion years of Solar System evolution, the researchers studied whether the gravity of a distant planet could help explain these unusual orbital patterns. Their simulations show that the gravity of PX2 could influence the way icy objects move through the most remote regions of the Solar System, detaching them from Neptune’s gravitational influence or tilting their orbits to unexpectedly high angles. The model shows that PX2 could have an elliptical orbit with a semi-major axis of about 350 to 500 astronomical units. Even at its closest approach, the planet would remain at least 200 astronomical units from the Sun.
+
+<!--lang:es-->
+
+Si realmente existe un planeta escondido más allá de Neptuno, los astrónomos han identificado cómo podría ser y cuál sería su comportamiento, de forma a explicar los acontecimientos misteriosos en los confines de nuestro Sistema Solar. Ha habido mucho debate sobre la existencia de este mundo hipotético, pero los investigadores piensan que pueden estar un paso más cerca de encontrar una respuesta, tras haber utilizado simulaciones computacionales para modelar la masa, la órbita y la gravedad del planeta propuesto.
+
+Estas características proporcionarían una explicación para algunas de las órbitas inusuales de objetos helados observados mucho más allá de Neptuno, de acuerdo con el nuevo artículo científico publicado en la revista Monthly Notices of the Royal Astronomical Society. El planeta propuesto difiere de la hipótesis del Planeta Nueve, que sugiere que un mundo sustancialmente más masivo podría ser responsable de algunas de las órbitas peculiares observadas más allá del octavo planeta contando desde el Sol.
+
+El profesor de la Universidad del Sur de Queensland, Patryk Sofia Lykawka — que trabaja en la Universidad de Kindai, en Japón —, lideró la investigación sobre este posible mundo, al cual él y su equipo dieron el nombre de «Planeta X2» (PX2). El planeta propuesto tendría alrededor de 1,5 a 2 veces la masa de la Tierra y orbitaría a una distancia del Sol cientos de veces mayor que la de nuestro propio planeta.
+
+Aunque PX2 continúe siendo hipotético, la investigación proporciona una nueva manera de estudiar las regiones más distantes del Sistema Solar — y el levantamiento del cielo que el Observatorio Vera C. Rubin está realizando podría ayudar a los astrónomos a probar la teoría. «Imaginen descubrir, después de décadas mapeando nuestro Sistema Solar, que otro planeta estaba escondido de nosotros todo este tiempo», afirmó el profesor Lykawka. «Si este planeta existe, podría alterar el modo en que comprendemos la historia de nuestro Sistema Solar y cómo sus objetos más distantes pasaron a seguir órbitas tan inusuales.»
+
+Más allá de Neptuno se encuentra una vasta región poblada por cuerpos helados conocidos como objetos transneptunianos. La mayoría de estos objetos pertenece al Cinturón de Kuiper y se mueve en órbitas en un amplio disco situado entre 38 y 50 veces la distancia de la Tierra al Sol. A lo largo de las últimas dos décadas, los astrónomos han descubierto una población creciente de objetos más distantes que se mueven en órbitas inusualmente inclinadas o alargadas, difíciles de explicar solo por la influencia gravitacional de los planetas conocidos. Uno de los más intrigantes es Sedna, un objeto distante cuya órbita altamente alargada lo lleva mucho más allá de la región ocupada por los planetas conocidos.
+
+Recurriendo a simulaciones computacionales que abarcan 4,5 mil millones de años de la evolución del Sistema Solar, los investigadores estudiaron si la gravedad de un planeta distante podría ayudar a explicar estos patrones orbitales inusuales. Sus simulaciones muestran que la gravedad de PX2 podría influir en la forma en que los objetos helados se mueven por las regiones más remotas del Sistema Solar, separándolos de la influencia gravitacional de Neptuno o inclinando sus órbitas hacia ángulos inesperadamente elevados. El modelo muestra que PX2 podría tener una órbita elíptica con un semieje mayor de alrededor de 350 a 500 unidades astronómicas. Incluso en su punto de mayor aproximación, el planeta permanecería a por lo menos 200 unidades astronómicas del Sol.
